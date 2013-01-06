@@ -1,0 +1,6 @@
+*.d
+*.o
+*out
+ctdt.c
+Makefile
+*/PPC603gnu/*
