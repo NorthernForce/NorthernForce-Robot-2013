@@ -5,3 +5,4 @@ ctdt.c
 Makefile
 */PPC603gnu/*
 .DS_Store
+Doxyfile
