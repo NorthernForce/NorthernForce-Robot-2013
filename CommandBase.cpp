@@ -1,21 +1,32 @@
 #include "CommandBase.h"
-#include "Subsystems/ExampleSubsystem.h"
 #include "Commands/Scheduler.h"
 
-CommandBase::CommandBase(const char *name) : Command(name) {
+/**
+ * @brief Initializes the command base.
+ * @param name The name of the item which is extending commandbase.
+ */
+CommandBase::CommandBase(const char *name) : Command(name) 
+{
+	
 }
 
-CommandBase::CommandBase() : Command() {
+CommandBase::CommandBase() : Command() 
+{
+	
 }
 
 // Initialize a single static instance of all of your subsystems to NULL
-ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
+LogSystem* CommandBase::s_Log = NULL;
 
-void CommandBase::init() {
+/**
+ * @brief Initializes the commandbase. Creates instances of
+ * all the subsystems for use elsewhere on the robot.
+ */
+void CommandBase::init() 
+{
     // Create a single static instance of all of your subsystems. The following
 	// line should be repeated for each subsystem in the project.
-	examplesubsystem = new ExampleSubsystem();
-	
 	oi = new OI();
+	s_Log = new LogSystem(kLogPrioritySystem);
 }

@@ -1,40 +1,59 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
-#include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
+#include "Library.h"
 
-class NorthernForceRobot : public IterativeRobot {
+/**
+ * This class controls the entire robot.
+ */
+class NorthernForceRobot : public IterativeRobot 
+{
 private:
-	Command *autonomousCommand;
 	LiveWindow *lw;
 	
-	virtual void RobotInit() {
+	/**
+	 * @brief Initializes the robot.
+	 */
+	virtual void RobotInit() 
+	{
 		CommandBase::init();
-		autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 	}
 	
-	virtual void AutonomousInit() {
-		autonomousCommand->Start();
+	/**
+	 * @brief Initializes autonomous mode.
+	 */
+	virtual void AutonomousInit() 
+	{
+		
 	}
 	
-	virtual void AutonomousPeriodic() {
+	/**
+	 * @brief Executes during autonomous mode.
+	 */
+	virtual void AutonomousPeriodic() 
+	{
 		Scheduler::GetInstance()->Run();
 	}
 	
-	virtual void TeleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to 
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		autonomousCommand->Cancel();
+	/**
+	 * @brief Initializes teleoperated mode.
+	 */
+	virtual void TeleopInit() 
+	{
+		
 	}
 	
-	virtual void TeleopPeriodic() {
+	/**
+	 * @brief Executes during teleoperated mode. 
+	 */
+	virtual void TeleopPeriodic() 
+	{
 		Scheduler::GetInstance()->Run();
 	}
 	
-	virtual void TestPeriodic() {
+	virtual void TestPeriodic()
+	{
 		lw->Run();
 	}
 };
