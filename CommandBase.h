@@ -5,6 +5,7 @@
 #include "OI.h"
 #include "Library.h"
 #include "Subsystems/LogSystem.h"
+#include "Subsystems/DriveSubsystem.h"
 
 
 /**
@@ -22,6 +23,7 @@ public:
 	// Create a single static instance of all of your subsystems
 	static OI *oi;
 	static LogSystem *s_Log;
+	static DriveSubsystem *s_Drive;
 };
 
 #endif

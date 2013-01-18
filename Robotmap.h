@@ -8,16 +8,6 @@
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
- 
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-// #define LEFTMOTOR 1
-// #define RIGHTMOTOR 2
-
-// If you are using multiple modules, make sure to define both the port
-// number and the module. For example you with a rangefinder:
-// #define RANGE_FINDER_PORT 1
-// #define RANGE_FINDER_MODULE 1
 
  /*
   * @brief The button ports on the XBox Joystick, as interpreted by the cRIO.
@@ -39,8 +29,8 @@ enum XBoxJoystickButtonPort
 /*
  * @brief The button ports on the Attack 3 Joystick.
  */
- enum Attack3JoystickPort
- {
+enum Attack3JoystickPort
+{
  	kAttackJoystickButtonTrigger = 1,
  	kAttackJoystickButton2 = 2,
  	kAttackJoystickButton3 = 3,
@@ -52,17 +42,28 @@ enum XBoxJoystickButtonPort
  	kAttackJoystickButton9 = 9,
  	kAttackJoystickButton10 = 10,
  	kAttackJoystickButton11 = 11,
- 	kAttackJoystickButton12 = 12,
- };
+	kAttackJoystickButton12 = 12,
+};
  
- /**
-  * @brief The different possible levels of debug logging.
-  */
- enum LogPriority
- {
- 	kLogPrioritySystem = 1,
+/**
+ * @brief The different possible levels of debug logging.
+ */
+enum LogPriority
+{
+	kLogPrioritySystem = 1,
  	kLogPriorityDebug = 2,
  	kLogPriorityError = 3
- };
+};
+ 
+/**
+ * @brief The addresses of the jaguars on the CAN bus.
+ */
+enum JaguarAddresses
+{
+	 kFrontRightJaguarAddress = 1,
+	 kFrontLeftJaguarAddress = 2,
+	 kRearRightJaguarAddress = 3,
+	 kRearLeftJaguarAddress = 4,
+};
  
 #endif
