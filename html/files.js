@@ -16,6 +16,8 @@ var files =
     [ "lib/Vector2D.h", "_vector2_d_8h.html", null ],
     [ "lib/Vector3D.cpp", "_vector3_d_8cpp.html", "_vector3_d_8cpp" ],
     [ "lib/Vector3D.h", "_vector3_d_8h.html", null ],
+    [ "Subsystems/DriveSubsystem.cpp", "_drive_subsystem_8cpp.html", null ],
+    [ "Subsystems/DriveSubsystem.h", "_drive_subsystem_8h.html", null ],
     [ "Subsystems/LogSystem.cpp", "_log_system_8cpp.html", "_log_system_8cpp" ],
     [ "Subsystems/LogSystem.h", "_log_system_8h.html", null ]
 ];
