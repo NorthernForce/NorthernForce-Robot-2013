@@ -48,3 +48,11 @@ void DriveSubsystem::DriveWithJoystick(Attack3Joystick& moveStick, Attack3Joysti
 	//@TODO: Verify these. 
 	m_drive.ArcadeDrive(moveStick, 1, rotateStick, 2);
 }
+
+/**
+ * @brief Stops all motion on the robot.
+ */
+void DriveSubsystem::Stop()
+{
+	m_drive.StopMotor();
+}

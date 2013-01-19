@@ -26,6 +26,7 @@ public:
 	void InitDefaultCommand();
 	void DriveWithJoystick(FRCXboxJoystick& stick);
 	void DriveWithJoystick(Attack3Joystick& moveStick, Attack3Joystick& rotateStick);
+	void Stop();
 };
 
 #endif
