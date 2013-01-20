@@ -246,12 +246,12 @@
     <buildtargets>
         <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
             <contents>
-                <buildtargetreference name="/NorthernForceRobot2013/CommandBasedRobotTemplate_partialImage"/>
+                <buildtargetreference name="/NorthernForce-Robot-2013/CommandBasedRobotTemplate_partialImage"/>
             </contents>
         </buildtarget>
         <buildtarget buildtool="Partial Image Linker" name="CommandBasedRobotTemplate_partialImage" passed="true" targetname="CommandBasedRobotTemplate_partialImage">
             <contents>
-                <folder name="/NorthernForceRobot2013" recursive="true"/>
+                <folder name="/NorthernForce-Robot-2013" recursive="true"/>
             </contents>
         </buildtarget>
     </buildtargets>
