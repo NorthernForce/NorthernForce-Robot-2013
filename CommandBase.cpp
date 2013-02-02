@@ -19,6 +19,7 @@ CommandBase::CommandBase() : Command()
 OI* CommandBase::oi = NULL;
 LogSystem* CommandBase::s_Log = NULL;
 DriveSubsystem* CommandBase::s_Drive = NULL;
+SocketClient* CommandBase::s_SockClient = NULL;
 
 /**
  * @brief Initializes the commandbase. Creates instances of
@@ -30,5 +31,6 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	oi = new OI();
 	s_Log = new LogSystem(kLogPrioritySystem);
-	s_Drive = new DriveSubsystem();
+	//s_Drive = new DriveSubsystem();
+	s_SockClient = new SocketClient();
 }

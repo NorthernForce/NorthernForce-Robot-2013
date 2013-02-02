@@ -6,6 +6,7 @@
 #include "Library.h"
 #include "Subsystems/LogSystem.h"
 #include "Subsystems/DriveSubsystem.h"
+#include "Subsystems/SocketClient.h"
 
 
 /**
@@ -13,6 +14,7 @@
  * CommandBase stores creates and stores each control system. To access a
  * subsystem elsewhere in your code in your code use CommandBase.examplesubsystem
  */
+class SocketClient;
 class CommandBase: public Command 
 {
 public:
@@ -24,6 +26,7 @@ public:
 	static OI *oi;
 	static LogSystem *s_Log;
 	static DriveSubsystem *s_Drive;
+	static SocketClient *s_SockClient;
 };
 
 #endif
