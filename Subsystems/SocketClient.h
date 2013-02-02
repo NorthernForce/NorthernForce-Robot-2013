@@ -19,20 +19,35 @@
 #include "../CommandBase.h"
 
 /**
- *
+ * A library for connecting the cRIO to a telnet
+ * socket server. This class creates a thread
+ * and reads strings from the telnet server and stores
+ * them so that they can be read by other classes. 
  *
  * @author arthurlockman
  */
 class SocketClient: public Subsystem 
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	int m_port;
+	char* m_host;
+	struct sockaddr_in sa;
+	struct hostent hen;
+	char m_lastData[1024];
+	const SEM_ID m_socketSemaphore;
+	Task m_socketConnectionTask;
+	static void SocketConnectionTask(SocketClient& sock);
+	bool Connect();
+	bool Read();
+	int sockfd;
+	
 public:
-	SocketClient();
+	SocketClient(char* host, int port);
+	~SocketClient();
 	void InitDefaultCommand();
 	void run();
 	void errsys(char* err);
+	const char* GetLastData();
 };
 
 #endif
