@@ -19,5 +19,7 @@ var files =
     [ "Subsystems/DriveSubsystem.cpp", "_drive_subsystem_8cpp.html", null ],
     [ "Subsystems/DriveSubsystem.h", "_drive_subsystem_8h.html", null ],
     [ "Subsystems/LogSystem.cpp", "_log_system_8cpp.html", "_log_system_8cpp" ],
-    [ "Subsystems/LogSystem.h", "_log_system_8h.html", null ]
+    [ "Subsystems/LogSystem.h", "_log_system_8h.html", null ],
+    [ "Subsystems/SocketClient.cpp", "_socket_client_8cpp.html", null ],
+    [ "Subsystems/SocketClient.h", "_socket_client_8h.html", null ]
 ];

@@ -8,6 +8,7 @@ var annotated =
     [ "LogSystem", "class_log_system.html", "class_log_system" ],
     [ "NorthernForceRobot", "class_northern_force_robot.html", null ],
     [ "OI", "class_o_i.html", "class_o_i" ],
+    [ "SocketClient", "class_socket_client.html", "class_socket_client" ],
     [ "Vector2D", "class_vector2_d.html", "class_vector2_d" ],
     [ "Vector3D", "class_vector3_d.html", "class_vector3_d" ]
 ];

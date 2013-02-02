@@ -122,10 +122,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a77c2c4630ca19e64a7885154f3dc202f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_i.html#a77c2c4630ca19e64a7885154f3dc202f">OI</a> ()</td></tr>
+<tr class="memdesc:a77c2c4630ca19e64a7885154f3dc202f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the operator interface.  <a href="#a77c2c4630ca19e64a7885154f3dc202f"></a><br/></td></tr>
+<tr class="memitem:aa2737d12fc7666bb98987ade700b38fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_i.html#aa2737d12fc7666bb98987ade700b38fc">GetDriverStick</a> ()</td></tr>
+<tr class="memdesc:aa2737d12fc7666bb98987ade700b38fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the driver joystick.  <a href="#aa2737d12fc7666bb98987ade700b38fc"></a><br/></td></tr>
+<tr class="memitem:a391d742e8cb7bb797e811239c9015d81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_i.html#a391d742e8cb7bb797e811239c9015d81">GetManipulatorStick</a> ()</td></tr>
+<tr class="memdesc:a391d742e8cb7bb797e811239c9015d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the manipulator joystick.  <a href="#a391d742e8cb7bb797e811239c9015d81"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_o_i_8h_source.html#l00006">6</a> of file <a class="el" href="_o_i_8h_source.html">OI.h</a>.</p>
+<div class="textblock"><p>This class handles all operator input on the robot. All joysticks, custom boards, and any other method of interacting with real humans go in here. </p>
+
+<p>Definition at line <a class="el" href="_o_i_8h_source.html#l00012">12</a> of file <a class="el" href="_o_i_8h_source.html">OI.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a77c2c4630ca19e64a7885154f3dc202f"></a>
 <div class="memitem">
@@ -141,7 +147,52 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00003">3</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+<p>Initializes the operator interface. </p>
+
+<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00006">6</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="aa2737d12fc7666bb98987ade700b38fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp; <a class="el" href="class_o_i.html#aa2737d12fc7666bb98987ade700b38fc">OI::GetDriverStick</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Gets the driver joystick. </p>
+<dl class="section return"><dt>Returns:</dt><dd>A reference to the driver's joystick. </dd></dl>
+
+<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00017">17</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a391d742e8cb7bb797e811239c9015d81"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp; <a class="el" href="class_o_i.html#a391d742e8cb7bb797e811239c9015d81">OI::GetManipulatorStick</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Gets the manipulator joystick. </p>
+<dl class="section return"><dt>Returns:</dt><dd>A reference to the manipulator joystick. </dd></dl>
+
+<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00026">26</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
 
 </div>
 </div>
@@ -155,7 +206,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_o_i.html">OI</a>      </li>
 
-    <li class="footer">Generated on Thu Jan 17 2013 22:21:57 for Ultimate Ascent by
+    <li class="footer">Generated on Sat Feb 2 2013 17:38:07 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>
