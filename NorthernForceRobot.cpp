@@ -41,7 +41,7 @@ private:
 	 */
 	virtual void TeleopInit() 
 	{
-		CommandBase::s_SockClient->run();
+		
 	}
 	
 	/**
