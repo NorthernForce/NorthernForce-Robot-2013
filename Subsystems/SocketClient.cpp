@@ -128,6 +128,7 @@ bool SocketClient::Connect()
 	}
 	
 	errsys("Connected!");
+	sendln("CAMC 1000");
 	return true;
 }
 
@@ -139,14 +140,42 @@ bool SocketClient::Read()
 	int n;
 	char recvline[1024];
 	
-	n=read(sockfd,recvline,255);
+	n = read(sockfd,recvline,1024);
 	{
 		//printf("Read %d bytes\n",n);
 		recvline[n]=0;
-		printf("%s",recvline);
+		char cmd[5];
+		strncpy(cmd, recvline, 4);
+		cmd[4] = 0;
+		if (!strcmp(cmd,"CAMC"))
 		{
-			const Synchronized sync(m_socketSemaphore);
-			strcpy(m_lastData, recvline);
+			printf("%s",recvline+5);
+			//Parse here.
+			char* _tmpLn = strtok(recvline+5, ",");
+			CameraData _tmpCdata;
+			
+			_tmpCdata.angle1 = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpCdata.angle2 = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpCdata.distance = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpCdata.orientation = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpCdata.x = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpCdata.y = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpCdata.processingTime = atof(_tmpLn);
+			
+			{
+				const Synchronized sync(m_socketSemaphore);
+				m_lastData = _tmpCdata;
+			}
+		}
+		else
+		{
+			printf("WARNING: received unexpected command: [%s]\n",cmd);
 		}
 	}
 	if(n<1)
@@ -171,12 +200,36 @@ void SocketClient::errsys(char* err)
  * @brief Gets the last data that was read from the socket connection.
  * @return A string, the last data from the connection. 
  */
-const char* SocketClient::GetLastData()
+const CameraData SocketClient::GetLastData()
 {
-	char* ret;
+	const Synchronized sync (m_socketSemaphore);
+	return m_lastData;
+}
+
+/**
+ * @brief Sends a line of data back to the server. 
+ * @param line The line of data to send.
+ * @return The number of bytes sent. -1 if error. 
+ */
+int SocketClient::sendln(const char* line)
+{
+	int length = strlen(line);
+	int sent = send(sockfd, line, length, sendTimeout);
+	send(sockfd, "\n", 1, sendTimeout);
+	
+	//printf("Sent %i bytes.\n",sent);
+	if (sent == length)
+		return length;
+	else if (sent == -1)
 	{
-		const Synchronized sync (m_socketSemaphore);
-		strcpy(ret, m_lastData);
+		errsys("Error sending data to server. 0 bytes sent.");
+		return -1;
 	}
-	return ret;
+	else if (sent < length)
+	{
+		errsys("Error sending data to server. Some bytes sent.");
+		return sent;
+	}
+	
+	return -1;
 }

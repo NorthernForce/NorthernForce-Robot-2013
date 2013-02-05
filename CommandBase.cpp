@@ -32,5 +32,5 @@ void CommandBase::init()
 	oi = new OI();
 	s_Log = new LogSystem(kLogPrioritySystem);
 	//s_Drive = new DriveSubsystem();
-	s_SockClient = new SocketClient("10.1.72.12",1180);
+	s_SockClient = new SocketClient("10.1.72.13",1180);
 }

@@ -66,4 +66,18 @@ enum JaguarAddresses
 	 kRearLeftJaguarAddress = 4,
 };
  
+/**
+ * @brief A structure to hold the camera data.
+ */
+struct CameraData 
+{
+	float angle1;
+	float angle2;
+	float distance;
+	float x;
+	float y;
+	float orientation;
+	float processingTime;
+};
+
 #endif

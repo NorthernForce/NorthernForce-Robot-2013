@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <netdb.h>
+#include <stdarg.h>
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
@@ -33,13 +34,15 @@ private:
 	char* m_host;
 	struct sockaddr_in sa;
 	struct hostent hen;
-	char m_lastData[1024];
+	CameraData m_lastData;
 	const SEM_ID m_socketSemaphore;
 	Task m_socketConnectionTask;
 	static void SocketConnectionTask(SocketClient& sock);
 	bool Connect();
 	bool Read();
 	int sockfd;
+	int sendln(const char* line);
+	static const int sendTimeout = 0;
 	
 public:
 	SocketClient(char* host, int port);
@@ -47,7 +50,7 @@ public:
 	void InitDefaultCommand();
 	void run();
 	void errsys(char* err);
-	const char* GetLastData();
+	const CameraData GetLastData();
 };
 
 #endif
