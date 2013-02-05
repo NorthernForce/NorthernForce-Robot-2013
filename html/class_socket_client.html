@@ -131,14 +131,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1163fe544606f856c0c81066ab355df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles connection to the socket server.  <a href="#a1163fe544606f856c0c81066ab355df6"></a><br/></td></tr>
 <tr class="memitem:a7f4e8f6034ea6efccb028262be0f52a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a7f4e8f6034ea6efccb028262be0f52a3">errsys</a> (char *err)</td></tr>
 <tr class="memdesc:a7f4e8f6034ea6efccb028262be0f52a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a system error to the log system.  <a href="#a7f4e8f6034ea6efccb028262be0f52a3"></a><br/></td></tr>
-<tr class="memitem:a288fb24aa7982e6f3d1675a1e3b7e7d6"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a288fb24aa7982e6f3d1675a1e3b7e7d6">GetLastData</a> ()</td></tr>
-<tr class="memdesc:a288fb24aa7982e6f3d1675a1e3b7e7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#a288fb24aa7982e6f3d1675a1e3b7e7d6"></a><br/></td></tr>
+<tr class="memitem:a79dda836ed5a4fb30890dea3003c068a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_camera_data.html">CameraData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a79dda836ed5a4fb30890dea3003c068a">GetLastData</a> ()</td></tr>
+<tr class="memdesc:a79dda836ed5a4fb30890dea3003c068a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#a79dda836ed5a4fb30890dea3003c068a"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A library for connecting the cRIO to a telnet socket server. This class creates a thread and reads strings from the telnet server and stores them so that they can be read by other classes.</p>
 <dl class="section author"><dt>Author:</dt><dd>arthurlockman </dd></dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8h_source.html#l00029">29</a> of file <a class="el" href="_socket_client_8h_source.html">SocketClient.h</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8h_source.html#l00030">30</a> of file <a class="el" href="_socket_client_8h_source.html">SocketClient.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac3e658a1810d2d91e0a995f5d0f02ef2"></a>
 <div class="memitem">
@@ -222,16 +222,16 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00165">165</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00194">194</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a288fb24aa7982e6f3d1675a1e3b7e7d6"></a>
+<a class="anchor" id="a79dda836ed5a4fb30890dea3003c068a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char * <a class="el" href="class_socket_client.html#a288fb24aa7982e6f3d1675a1e3b7e7d6">SocketClient::GetLastData</a> </td>
+          <td class="memname">const <a class="el" href="struct_camera_data.html">CameraData</a> <a class="el" href="class_socket_client.html#a79dda836ed5a4fb30890dea3003c068a">SocketClient::GetLastData</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -243,7 +243,7 @@ Public Member Functions</h2></td></tr>
 <p>Gets the last data that was read from the socket connection. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A string, the last data from the connection. </dd></dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00174">174</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00203">203</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 
 </div>
 </div>
@@ -297,7 +297,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_socket_client.html">SocketClient</a>      </li>
 
-    <li class="footer">Generated on Sat Feb 2 2013 17:38:07 for Ultimate Ascent by
+    <li class="footer">Generated on Mon Feb 4 2013 19:59:38 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

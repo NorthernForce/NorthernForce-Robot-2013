@@ -15,7 +15,7 @@ var searchData=
   ['getbutton8',['GetButton8',['../class_attack3_joystick.html#a0406e53554d419d937d1d0a4314c957a',1,'Attack3Joystick']]],
   ['getbutton9',['GetButton9',['../class_attack3_joystick.html#abebabfc2edc4c5146c5bb52b4958b11b',1,'Attack3Joystick']]],
   ['getdriverstick',['GetDriverStick',['../class_o_i.html#aa2737d12fc7666bb98987ade700b38fc',1,'OI']]],
-  ['getlastdata',['GetLastData',['../class_socket_client.html#a288fb24aa7982e6f3d1675a1e3b7e7d6',1,'SocketClient']]],
+  ['getlastdata',['GetLastData',['../class_socket_client.html#a79dda836ed5a4fb30890dea3003c068a',1,'SocketClient']]],
   ['getlastmeasurementtime',['GetLastMeasurementTime',['../class_alpha_beta_filter.html#a43f4cfaa8e07d20e35c6dd0417ac024d',1,'AlphaBetaFilter']]],
   ['getleftbumper',['GetLeftBumper',['../class_f_r_c_xbox_joystick.html#a17b47359cb8bfbe3199ddd189f491b22',1,'FRCXboxJoystick']]],
   ['getleftstickx',['GetLeftStickX',['../class_f_r_c_xbox_joystick.html#aceeb9c0c296249f8c5a1b5ddc7a08f9c',1,'FRCXboxJoystick']]],
