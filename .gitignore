@@ -3,6 +3,7 @@
 *out
 ctdt.c
 Makefile
-*/PPC603gnu/*
+PPC603gnu
 .DS_Store
 Doxyfile
+cmdtools
