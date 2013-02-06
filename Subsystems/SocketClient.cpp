@@ -128,7 +128,7 @@ bool SocketClient::Connect()
 	}
 	
 	errsys("Connected!");
-	sendln("CAMC 1000");
+	StartDataStream(1000);
 	return true;
 }
 
@@ -147,9 +147,17 @@ bool SocketClient::Read()
 		char cmd[5];
 		strncpy(cmd, recvline, 4);
 		cmd[4] = 0;
-		if (!strcmp(cmd,"CAMC"))
+		if (!strcasecmp(cmd,"falg"))
 		{
-			printf("%s",recvline+5);
+			printdebug("Communications with Pi OK.\n");
+		}
+		else if (!strcasecmp(cmd,"came"))
+		{
+			//Second communications check. 
+		}
+		else if (!strcasecmp(cmd,"CAMC"))
+		{
+			//printf("%s",recvline+5);
 			//Parse here.
 			char* _tmpLn = strtok(recvline+5, ",");
 			CameraData _tmpCdata;
@@ -197,6 +205,15 @@ void SocketClient::errsys(char* err)
 }
 
 /**
+ * @brief Prints a debug message to the log system.
+ * @param err The message to print to the log.
+ */
+void SocketClient::printdebug(char* err)
+{
+	CommandBase::s_Log->LogMessage(err,kLogPriorityDebug);
+}
+
+/**
  * @brief Gets the last data that was read from the socket connection.
  * @return A string, the last data from the connection. 
  */
@@ -204,6 +221,25 @@ const CameraData SocketClient::GetLastData()
 {
 	const Synchronized sync (m_socketSemaphore);
 	return m_lastData;
+}
+
+/**
+ * @brief Starts the stream of data from the server.
+ * @param updateInterval The interval at which to receive camera updates. 
+ */
+int SocketClient::StartDataStream(int updateInterval)
+{
+	char msg[80];
+	sprintf(msg, "CAMC %i", updateInterval);
+	return sendln(msg);
+}
+
+/**
+ * @brief Stops the stream of data from the server. 
+ */
+int SocketClient::StopDataStream()
+{
+	return sendln("STOP");
 }
 
 /**

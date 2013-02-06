@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <netdb.h>
 #include <stdarg.h>
 
@@ -50,7 +51,10 @@ public:
 	void InitDefaultCommand();
 	void run();
 	void errsys(char* err);
+	void printdebug(char* err);
 	const CameraData GetLastData();
+	int StartDataStream(int updateInterval);
+	int StopDataStream();
 };
 
 #endif
