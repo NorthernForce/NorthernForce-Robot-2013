@@ -10,5 +10,7 @@ var searchData=
   ['socketclient_2eh',['SocketClient.h',['../_socket_client_8h.html',1,'']]],
   ['start',['Start',['../class_f_r_c_xbox_joystick.html#ab19d880a8c1eb9c236089411d98cadd0',1,'FRCXboxJoystick']]],
   ['start_5frobot_5fclass',['START_ROBOT_CLASS',['../_northern_force_robot_8cpp.html#a249b8c1d8f0b247adf6fd4466ce950a2',1,'NorthernForceRobot.cpp']]],
-  ['stop',['Stop',['../class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6',1,'DriveSubsystem']]]
+  ['startdatastream',['StartDataStream',['../class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4',1,'SocketClient']]],
+  ['stop',['Stop',['../class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6',1,'DriveSubsystem']]],
+  ['stopdatastream',['StopDataStream',['../class_socket_client.html#ab53e33045614a155b55769adce6ffa71',1,'SocketClient']]]
 ];

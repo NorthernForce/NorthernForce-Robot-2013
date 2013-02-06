@@ -4,5 +4,7 @@ var searchData=
   ['setcorrectiongains',['SetCorrectionGains',['../class_alpha_beta_filter.html#a10be556c47b51f2f1a1a6749d09b254a',1,'AlphaBetaFilter']]],
   ['socketclient',['SocketClient',['../class_socket_client.html#ac3e658a1810d2d91e0a995f5d0f02ef2',1,'SocketClient']]],
   ['start_5frobot_5fclass',['START_ROBOT_CLASS',['../_northern_force_robot_8cpp.html#a249b8c1d8f0b247adf6fd4466ce950a2',1,'NorthernForceRobot.cpp']]],
-  ['stop',['Stop',['../class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6',1,'DriveSubsystem']]]
+  ['startdatastream',['StartDataStream',['../class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4',1,'SocketClient']]],
+  ['stop',['Stop',['../class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6',1,'DriveSubsystem']]],
+  ['stopdatastream',['StopDataStream',['../class_socket_client.html#ab53e33045614a155b55769adce6ffa71',1,'SocketClient']]]
 ];

@@ -131,14 +131,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1163fe544606f856c0c81066ab355df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles connection to the socket server.  <a href="#a1163fe544606f856c0c81066ab355df6"></a><br/></td></tr>
 <tr class="memitem:a7f4e8f6034ea6efccb028262be0f52a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a7f4e8f6034ea6efccb028262be0f52a3">errsys</a> (char *err)</td></tr>
 <tr class="memdesc:a7f4e8f6034ea6efccb028262be0f52a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a system error to the log system.  <a href="#a7f4e8f6034ea6efccb028262be0f52a3"></a><br/></td></tr>
+<tr class="memitem:a5cdff94e4e3aea3146e419770e9696a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a5cdff94e4e3aea3146e419770e9696a3">printdebug</a> (char *err)</td></tr>
+<tr class="memdesc:a5cdff94e4e3aea3146e419770e9696a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a debug message to the log system.  <a href="#a5cdff94e4e3aea3146e419770e9696a3"></a><br/></td></tr>
 <tr class="memitem:a79dda836ed5a4fb30890dea3003c068a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_camera_data.html">CameraData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a79dda836ed5a4fb30890dea3003c068a">GetLastData</a> ()</td></tr>
 <tr class="memdesc:a79dda836ed5a4fb30890dea3003c068a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#a79dda836ed5a4fb30890dea3003c068a"></a><br/></td></tr>
+<tr class="memitem:a3ce46c8c78d6c13213bee97f87d589f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4">StartDataStream</a> (int updateInterval)</td></tr>
+<tr class="memdesc:a3ce46c8c78d6c13213bee97f87d589f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the stream of data from the server.  <a href="#a3ce46c8c78d6c13213bee97f87d589f4"></a><br/></td></tr>
+<tr class="memitem:ab53e33045614a155b55769adce6ffa71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#ab53e33045614a155b55769adce6ffa71">StopDataStream</a> ()</td></tr>
+<tr class="memdesc:ab53e33045614a155b55769adce6ffa71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the stream of data from the server.  <a href="#ab53e33045614a155b55769adce6ffa71"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A library for connecting the cRIO to a telnet socket server. This class creates a thread and reads strings from the telnet server and stores them so that they can be read by other classes.</p>
 <dl class="section author"><dt>Author:</dt><dd>arthurlockman </dd></dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8h_source.html#l00030">30</a> of file <a class="el" href="_socket_client_8h_source.html">SocketClient.h</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8h_source.html#l00031">31</a> of file <a class="el" href="_socket_client_8h_source.html">SocketClient.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac3e658a1810d2d91e0a995f5d0f02ef2"></a>
 <div class="memitem">
@@ -222,7 +228,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00194">194</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00202">202</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 
 </div>
 </div>
@@ -243,7 +249,7 @@ Public Member Functions</h2></td></tr>
 <p>Gets the last data that was read from the socket connection. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A string, the last data from the connection. </dd></dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00203">203</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00220">220</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 
 </div>
 </div>
@@ -267,6 +273,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5cdff94e4e3aea3146e419770e9696a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_socket_client.html#a5cdff94e4e3aea3146e419770e9696a3">SocketClient::printdebug</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>err</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Prints a debug message to the log system. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">err</td><td>The message to print to the log. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00211">211</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a1163fe544606f856c0c81066ab355df6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -287,6 +320,53 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3ce46c8c78d6c13213bee97f87d589f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4">SocketClient::StartDataStream</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>updateInterval</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Starts the stream of data from the server. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">updateInterval</td><td>The interval at which to receive camera updates. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00230">230</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab53e33045614a155b55769adce6ffa71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_socket_client.html#ab53e33045614a155b55769adce6ffa71">SocketClient::StopDataStream</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Stops the stream of data from the server. </p>
+
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00240">240</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Subsystems/<a class="el" href="_socket_client_8h_source.html">SocketClient.h</a></li>
 <li>Subsystems/<a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a></li>
@@ -297,7 +377,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_socket_client.html">SocketClient</a>      </li>
 
-    <li class="footer">Generated on Mon Feb 4 2013 19:59:38 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 5 2013 19:50:54 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>
