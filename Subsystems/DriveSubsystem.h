@@ -24,8 +24,8 @@ private:
 public:
 	DriveSubsystem();
 	void InitDefaultCommand();
-	void DriveWithJoystick(FRCXboxJoystick& stick);
-	void DriveWithJoystick(Attack3Joystick& moveStick, Attack3Joystick& rotateStick);
+	void DriveRobot(FRCXboxJoystick& stick);
+	void DriveRobot(Attack3Joystick& moveStick, Attack3Joystick& rotateStick);
 	void Stop();
 };
 

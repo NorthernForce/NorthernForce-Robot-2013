@@ -31,6 +31,6 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	oi = new OI();
 	s_Log = new LogSystem(kLogPrioritySystem);
-	//s_Drive = new DriveSubsystem();
+	s_Drive = new DriveSubsystem();
 	s_SockClient = new SocketClient("10.1.72.13",1180);
 }

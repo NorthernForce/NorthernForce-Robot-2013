@@ -1,5 +1,5 @@
 #include "DriveSubsystem.h"
-
+#include "../Commands/DriveWithJoystick.h"
 /**
  * @brief Initializes the drive subsystem. Catches any exception
  * that might occur in creating the jaguars. 
@@ -25,14 +25,14 @@ catch (exception e)
  */
 void DriveSubsystem::InitDefaultCommand() 
 {
-	
+	SetDefaultCommand(new DriveWithJoystick());
 }
 
 /**
  * @brief Drives the robot with an XBox Joystick.
  * @param stick The FRCXboxJoystick to drive the robot with.
  */
-void DriveSubsystem::DriveWithJoystick(FRCXboxJoystick& stick)
+void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {
 	//@TODO: Verify these axis values. 
 	m_drive.ArcadeDrive(stick.GetRightStickX(), stick.GetLeftStickY());
@@ -43,7 +43,7 @@ void DriveSubsystem::DriveWithJoystick(FRCXboxJoystick& stick)
  * @param moveStick The move Attack3Joystick to drive the robot with.
  * @param rotateStick The rotate Attack3Joystick to drive the robot with.
  */
-void DriveSubsystem::DriveWithJoystick(Attack3Joystick& moveStick, Attack3Joystick& rotateStick)
+void DriveSubsystem::DriveRobot(Attack3Joystick& moveStick, Attack3Joystick& rotateStick)
 {
 	//@TODO: Verify these. 
 	m_drive.ArcadeDrive(moveStick, 1, rotateStick, 2);
