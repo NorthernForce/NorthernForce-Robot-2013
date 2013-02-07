@@ -4,9 +4,9 @@
 #include "../CommandBase.h"
 
 /**
+ * Drive the robot with an XBox Joystick.
  *
- *
- * @author ExampleAuthor
+ * @author Joseph Martin
  */
 class DriveWithJoystick: public CommandBase {
 public:
