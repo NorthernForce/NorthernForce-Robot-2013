@@ -34,8 +34,11 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {
-	//@TODO: Verify these axis values. 
-	m_drive.ArcadeDrive(stick.GetRightStickX(), stick.GetLeftStickY());
+	//@TODO: Verify these axis values. For the moment, one is inverted, 
+    // to make the robot drive correctly, though we may want to check 
+    // the values coming from the joystick, and fix them in the 
+    // FRCXBoxJoystick class
+	m_drive.ArcadeDrive(stick.GetLeftStickY(), -stick.GetRightStickX());
 }
 
 /**
