@@ -80,4 +80,9 @@ struct CameraData
 	float processingTime;
 };
 
+static const float kDriveRamp = 0.4;
+static const float kDriveVelocityLimit = 1.0;
+static const float kDriveTolerance = 0.2;
+static const float kDriveThereTolerance = 0.1;
+
 #endif
