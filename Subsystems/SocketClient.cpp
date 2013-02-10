@@ -114,7 +114,7 @@ void SocketClient::run()
  */
 bool SocketClient::Connect()
 {
-	errsys("Trying to conect...");
+	errsys("Trying to connect...");
 	if((sockfd = socket(AF_INET,SOCK_STREAM,0)) < 0)
 	{
 		errsys("Socket error!");

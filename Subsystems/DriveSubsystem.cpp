@@ -17,6 +17,10 @@ DriveSubsystem::DriveSubsystem() try :
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor)
 {
 	//@TODO: Set up drive class. 
+	m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+	m_frontRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+	m_rearLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+	m_rearRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
 }
 catch (exception e)
 {
