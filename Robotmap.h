@@ -64,6 +64,20 @@ enum JaguarAddresses
 	 kFrontLeftJaguarAddress = 2,
 	 kRearRightJaguarAddress = 3,
 	 kRearLeftJaguarAddress = 4,
+     kShooterJaguarAddress = 5,
+};
+
+enum DigitalAdresses {
+	kShooterWheelLightSensorAddress = 1,
+};
+
+enum RelayAdresses {
+	kShooterFlickerRelayAddress = 1,
+	kShooterElevatorRealayAddress = 2,
+};
+
+enum AnalogChannels {
+	kShooterElevatorPotChannel = 1,
 };
  
 /**

@@ -16,7 +16,7 @@ DriveSubsystem::DriveSubsystem() try :
 }
 catch (exception e)
 {
-	printf("Error creating jaguars.");
+	printf("Error creating drive motor jaguars.");
 	printf(e.what());
 }
     

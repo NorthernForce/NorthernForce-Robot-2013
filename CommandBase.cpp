@@ -1,5 +1,6 @@
 #include "CommandBase.h"
 #include "Commands/Scheduler.h"
+#include <string>
 
 /**
  * @brief Initializes the command base.
