@@ -112,51 +112,62 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="_drive_subsystem_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="_drive_subsystem_8h.html">DriveSubsystem.h</a>&quot;</span>
-<a name="l00002"></a>00002 
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;../Commands/DriveWithJoystick.h&quot;</span>
 <a name="l00007"></a><a class="code" href="class_drive_subsystem.html#a3407432f9123b97c5d0bfc8601db76c2">00007</a> <a class="code" href="class_drive_subsystem.html#a3407432f9123b97c5d0bfc8601db76c2" title="Initializes the drive subsystem. Catches any exception that might occur in creating the jaguars...">DriveSubsystem::DriveSubsystem</a>() <span class="keyword">try</span> : 
 <a name="l00008"></a>00008         Subsystem(<span class="stringliteral">&quot;DriveSubsystem&quot;</span>),
-<a name="l00009"></a>00009         m_frontLeftMotor((printf(<span class="stringliteral">&quot;Initializing front left jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ad2f082afb327e014287e1cca082ce55d">kFrontLeftJaguarAddress</a>)),
-<a name="l00010"></a>00010         m_frontRightMotor((printf(<span class="stringliteral">&quot;Initializing front right jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ae829fdd281a80e471c56e5fe79bc4d7b">kFrontRightJaguarAddress</a>)),
-<a name="l00011"></a>00011         m_rearLeftMotor((printf(<span class="stringliteral">&quot;Initializing rear left jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ac937c786b35aa0bf707747abc9458e8d">kRearLeftJaguarAddress</a>)),
-<a name="l00012"></a>00012         m_rearRightMotor((printf(<span class="stringliteral">&quot;Initializing rear right jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a9c01d7c92c7d3da2785761a89eb90d1a">kRearRightJaguarAddress</a>)),
-<a name="l00013"></a>00013         m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor)
-<a name="l00014"></a>00014 {
-<a name="l00015"></a>00015         <span class="comment">//@TODO: Set up drive class. </span>
-<a name="l00016"></a>00016 }
-<a name="l00017"></a>00017 <span class="keywordflow">catch</span> (exception e)
+<a name="l00009"></a>00009         m_frontLeftMotor((printf(<span class="stringliteral">&quot;Initializing front left jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ad2f082afb327e014287e1cca082ce55d">kFrontLeftJaguarAddress</a>), 
+<a name="l00010"></a>00010                         kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+<a name="l00011"></a>00011         m_frontRightMotor((printf(<span class="stringliteral">&quot;Initializing front right jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ae829fdd281a80e471c56e5fe79bc4d7b">kFrontRightJaguarAddress</a>), 
+<a name="l00012"></a>00012                         kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+<a name="l00013"></a>00013         m_rearLeftMotor((printf(<span class="stringliteral">&quot;Initializing rear left jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ac937c786b35aa0bf707747abc9458e8d">kRearLeftJaguarAddress</a>), 
+<a name="l00014"></a>00014                         kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+<a name="l00015"></a>00015         m_rearRightMotor((printf(<span class="stringliteral">&quot;Initializing rear right jaguar. \n&quot;</span>), <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a9c01d7c92c7d3da2785761a89eb90d1a">kRearRightJaguarAddress</a>), 
+<a name="l00016"></a>00016                         kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+<a name="l00017"></a>00017         m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor)
 <a name="l00018"></a>00018 {
-<a name="l00019"></a>00019         printf(<span class="stringliteral">&quot;Error creating jaguars.&quot;</span>);
-<a name="l00020"></a>00020         printf(e.what());
-<a name="l00021"></a>00021 }
-<a name="l00022"></a>00022     
-<a name="l00026"></a><a class="code" href="class_drive_subsystem.html#ab5bc12cc6ea5355b1f6199706c520049">00026</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#ab5bc12cc6ea5355b1f6199706c520049" title="Initializes the default command for the subsystem.">DriveSubsystem::InitDefaultCommand</a>() 
-<a name="l00027"></a>00027 {
-<a name="l00028"></a>00028         
+<a name="l00019"></a>00019         <span class="comment">//@TODO: Set up drive class. </span>
+<a name="l00020"></a>00020         m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+<a name="l00021"></a>00021         m_frontRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+<a name="l00022"></a>00022         m_rearLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+<a name="l00023"></a>00023         m_rearRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+<a name="l00024"></a>00024 }
+<a name="l00025"></a>00025 <span class="keywordflow">catch</span> (exception e)
+<a name="l00026"></a>00026 {
+<a name="l00027"></a>00027         printf(<span class="stringliteral">&quot;Error creating jaguars.&quot;</span>);
+<a name="l00028"></a>00028         printf(e.what());
 <a name="l00029"></a>00029 }
-<a name="l00030"></a>00030 
-<a name="l00035"></a><a class="code" href="class_drive_subsystem.html#abc3cb3996b91432ad1c698e6b075a81b">00035</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#abc3cb3996b91432ad1c698e6b075a81b" title="Drives the robot with an XBox Joystick.">DriveSubsystem::DriveWithJoystick</a>(<a class="code" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a>&amp; stick)
-<a name="l00036"></a>00036 {
-<a name="l00037"></a>00037         <span class="comment">//@TODO: Verify these axis values. </span>
-<a name="l00038"></a>00038         m_drive.ArcadeDrive(stick.<a class="code" href="class_f_r_c_xbox_joystick.html#aab0f633fdc53322561219f1821a049e1" title="Gets the X of the right stick on the controller.">GetRightStickX</a>(), stick.<a class="code" href="class_f_r_c_xbox_joystick.html#ae399db2c5fd4e656ab74d6b223cf37da" title="Gets the Y of the left stick on the controller.">GetLeftStickY</a>());
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00046"></a><a class="code" href="class_drive_subsystem.html#a97701223087caddcde903d934b825f50">00046</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#abc3cb3996b91432ad1c698e6b075a81b" title="Drives the robot with an XBox Joystick.">DriveSubsystem::DriveWithJoystick</a>(<a class="code" href="class_attack3_joystick.html" title="This class is the driver for the Logitech Attack 3 Joystick. This joystick is often used at competiti...">Attack3Joystick</a>&amp; moveStick, <a class="code" href="class_attack3_joystick.html" title="This class is the driver for the Logitech Attack 3 Joystick. This joystick is often used at competiti...">Attack3Joystick</a>&amp; rotateStick)
-<a name="l00047"></a>00047 {
-<a name="l00048"></a>00048         <span class="comment">//@TODO: Verify these. </span>
-<a name="l00049"></a>00049         m_drive.ArcadeDrive(moveStick, 1, rotateStick, 2);
+<a name="l00030"></a>00030     
+<a name="l00034"></a><a class="code" href="class_drive_subsystem.html#ab5bc12cc6ea5355b1f6199706c520049">00034</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#ab5bc12cc6ea5355b1f6199706c520049" title="Initializes the default command for the subsystem.">DriveSubsystem::InitDefaultCommand</a>() 
+<a name="l00035"></a>00035 {
+<a name="l00036"></a>00036         SetDefaultCommand(<span class="keyword">new</span> <a class="code" href="class_drive_with_joystick.html">DriveWithJoystick</a>());
+<a name="l00037"></a>00037 }
+<a name="l00038"></a>00038 
+<a name="l00043"></a><a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd">00043</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd" title="Drives the robot with an XBox Joystick.">DriveSubsystem::DriveRobot</a>(<a class="code" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a>&amp; stick)
+<a name="l00044"></a>00044 {
+<a name="l00045"></a>00045         <span class="comment">//@TODO: Verify these axis values. For the moment, one is inverted, </span>
+<a name="l00046"></a>00046     <span class="comment">// to make the robot drive correctly, though we may want to check </span>
+<a name="l00047"></a>00047     <span class="comment">// the values coming from the joystick, and fix them in the </span>
+<a name="l00048"></a>00048     <span class="comment">// FRCXBoxJoystick class</span>
+<a name="l00049"></a>00049         m_drive.ArcadeDrive(-stick.<a class="code" href="class_f_r_c_xbox_joystick.html#ae399db2c5fd4e656ab74d6b223cf37da" title="Gets the Y of the left stick on the controller.">GetLeftStickY</a>(), -stick.<a class="code" href="class_f_r_c_xbox_joystick.html#aab0f633fdc53322561219f1821a049e1" title="Gets the X of the right stick on the controller.">GetRightStickX</a>());
 <a name="l00050"></a>00050 }
 <a name="l00051"></a>00051 
-<a name="l00055"></a><a class="code" href="class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6">00055</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6" title="Stops all motion on the robot.">DriveSubsystem::Stop</a>()
-<a name="l00056"></a>00056 {
-<a name="l00057"></a>00057         m_drive.StopMotor();
-<a name="l00058"></a>00058 }
+<a name="l00057"></a><a class="code" href="class_drive_subsystem.html#af839f84acb5a68c9c351a1761052167f">00057</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd" title="Drives the robot with an XBox Joystick.">DriveSubsystem::DriveRobot</a>(<a class="code" href="class_attack3_joystick.html" title="This class is the driver for the Logitech Attack 3 Joystick. This joystick is often used at competiti...">Attack3Joystick</a>&amp; moveStick, <a class="code" href="class_attack3_joystick.html" title="This class is the driver for the Logitech Attack 3 Joystick. This joystick is often used at competiti...">Attack3Joystick</a>&amp; rotateStick)
+<a name="l00058"></a>00058 {
+<a name="l00059"></a>00059         <span class="comment">//@TODO: Verify these. </span>
+<a name="l00060"></a>00060         m_drive.ArcadeDrive(moveStick, 1, rotateStick, 2);
+<a name="l00061"></a>00061 }
+<a name="l00062"></a>00062 
+<a name="l00066"></a><a class="code" href="class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6">00066</a> <span class="keywordtype">void</span> <a class="code" href="class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6" title="Stops all motion on the robot.">DriveSubsystem::Stop</a>()
+<a name="l00067"></a>00067 {
+<a name="l00068"></a>00068         m_drive.StopMotor();
+<a name="l00069"></a>00069 }
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_drive_subsystem_8cpp.html">DriveSubsystem.cpp</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 5 2013 19:50:54 for Ultimate Ascent by
+    <li class="footer">Generated on Sun Feb 10 2013 22:45:49 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

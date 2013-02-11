@@ -3,5 +3,13 @@ var _robotmap_8h =
     [ "Attack3JoystickPort", "_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890", null ],
     [ "JaguarAddresses", "_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9", null ],
     [ "LogPriority", "_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02", null ],
-    [ "XBoxJoystickButtonPort", "_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1f", null ]
+    [ "XBoxJoystickButtonPort", "_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1f", null ],
+    [ "kDriveRamp", "_robotmap_8h.html#a84841c7c88b202401eacbe1aa996f755", null ],
+    [ "kDriveThereTolerance", "_robotmap_8h.html#abaaf4bd5683737ca8c94d6ceeb23b538", null ],
+    [ "kDriveTolerance", "_robotmap_8h.html#a6fe0f0f87fddd425407e7472972ea4ce", null ],
+    [ "kDriveVelocityLimit", "_robotmap_8h.html#aff8521f71c512bb038f2e1b1b0931c06", null ],
+    [ "kGyroChannel", "_robotmap_8h.html#af5590dcf9ab0e444977bbddb9d7d7e0a", null ],
+    [ "kGyroSensitivity", "_robotmap_8h.html#aa7b55c86fcd8236bae7cd512c78e7f68", null ],
+    [ "kGyroSlot", "_robotmap_8h.html#ab43f18ea85206533b741149a290cfc39", null ],
+    [ "kGyroTemp", "_robotmap_8h.html#a3445c34c2945319c37184728d4ef22db", null ]
 ];

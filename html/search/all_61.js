@@ -3,8 +3,6 @@ var searchData=
   ['a',['A',['../class_f_r_c_xbox_joystick.html#a5b242e290d4a9274e7e9430344710c90',1,'FRCXboxJoystick']]],
   ['alphabetafilter',['AlphaBetaFilter',['../class_alpha_beta_filter.html',1,'AlphaBetaFilter&lt; T &gt;'],['../class_alpha_beta_filter.html#af36421917957aba3305ebe0ab7d2d2e1',1,'AlphaBetaFilter::AlphaBetaFilter()'],['../class_alpha_beta_filter.html#ae73f1ce8376075ff32f495b3dac5de78',1,'AlphaBetaFilter::AlphaBetaFilter(const T &amp;alpha, const T &amp;beta)']]],
   ['alphabetafilter_2eh',['AlphaBetaFilter.h',['../_alpha_beta_filter_8h.html',1,'']]],
-  ['angle1',['angle1',['../struct_camera_data.html#a04c9a575ff3a156a4dad6213ea135a5a',1,'CameraData']]],
-  ['angle2',['angle2',['../struct_camera_data.html#a4434d6a7fe5c471f38c01f9f6b8ebb12',1,'CameraData']]],
   ['attack3joystick',['Attack3Joystick',['../class_attack3_joystick.html',1,'Attack3Joystick'],['../class_attack3_joystick.html#af86cbfd17da6f1979d668cd7f7f70c95',1,'Attack3Joystick::Attack3Joystick()']]],
   ['attack3joystick_2ecpp',['Attack3Joystick.cpp',['../_attack3_joystick_8cpp.html',1,'']]],
   ['attack3joystick_2eh',['Attack3Joystick.h',['../_attack3_joystick_8h.html',1,'']]],

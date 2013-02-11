@@ -1,16 +1,25 @@
 var searchData=
 [
   ['s_5fdrive',['s_Drive',['../class_command_base.html#ad0706c31cc51896165a34d829c771d70',1,'CommandBase']]],
+  ['s_5fgyro',['s_Gyro',['../class_command_base.html#ae924b04453d3a85956b937740cf88dd6',1,'CommandBase']]],
   ['s_5flog',['s_Log',['../class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87',1,'CommandBase']]],
   ['s_5fsockclient',['s_SockClient',['../class_command_base.html#a0025fd9d883de5244af1136ce8882101',1,'CommandBase']]],
   ['seedfilter',['SeedFilter',['../class_alpha_beta_filter.html#ab825914ac120f759980f9e9bbcd6f2f3',1,'AlphaBetaFilter::SeedFilter(const T &amp;value, const T &amp;speed, const UINT32 now)'],['../class_alpha_beta_filter.html#a1d01226cf36be36781cf11682b7fb852',1,'AlphaBetaFilter::SeedFilter(const T &amp;value, const UINT32 now)']]],
   ['setcorrectiongains',['SetCorrectionGains',['../class_alpha_beta_filter.html#a10be556c47b51f2f1a1a6749d09b254a',1,'AlphaBetaFilter']]],
+  ['setmaxacceleration',['SetMaxAcceleration',['../class_ramped_c_a_n_jaguar.html#ab999c82b41f3f7dd9e2b22d297528a8d',1,'RampedCANJaguar']]],
+  ['setmaxvelocity',['SetMaxVelocity',['../class_ramped_c_a_n_jaguar.html#af82f27d4ccf19e7db7408b55acec1483',1,'RampedCANJaguar']]],
+  ['setoutput',['SetOutput',['../class_ramped_c_a_n_jaguar.html#aed711fb19f86eda53872112020a95473',1,'RampedCANJaguar']]],
+  ['setsensitivity',['SetSensitivity',['../class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6',1,'GyroSubsystem']]],
+  ['settolerance',['SetTolerance',['../class_ramped_c_a_n_jaguar.html#aa9597747286b8eac5e5cbc394b5279b5',1,'RampedCANJaguar']]],
   ['socketclient',['SocketClient',['../class_socket_client.html',1,'SocketClient'],['../class_socket_client.html#ac3e658a1810d2d91e0a995f5d0f02ef2',1,'SocketClient::SocketClient()']]],
   ['socketclient_2ecpp',['SocketClient.cpp',['../_socket_client_8cpp.html',1,'']]],
   ['socketclient_2eh',['SocketClient.h',['../_socket_client_8h.html',1,'']]],
   ['start',['Start',['../class_f_r_c_xbox_joystick.html#ab19d880a8c1eb9c236089411d98cadd0',1,'FRCXboxJoystick']]],
   ['start_5frobot_5fclass',['START_ROBOT_CLASS',['../_northern_force_robot_8cpp.html#a249b8c1d8f0b247adf6fd4466ce950a2',1,'NorthernForceRobot.cpp']]],
   ['startdatastream',['StartDataStream',['../class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4',1,'SocketClient']]],
+  ['stddevtheta',['stdDevTheta',['../struct_robot_position.html#a7673a2644676b746d7cf301177bab1a8',1,'RobotPosition']]],
+  ['stddevx',['stdDevX',['../struct_robot_position.html#ad2533176016c8f67f71eda84499960e8',1,'RobotPosition']]],
+  ['stddevy',['stdDevY',['../struct_robot_position.html#af0f0a49e1cf88cd4581a993451e31deb',1,'RobotPosition']]],
   ['stop',['Stop',['../class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6',1,'DriveSubsystem']]],
   ['stopdatastream',['StopDataStream',['../class_socket_client.html#ab53e33045614a155b55769adce6ffa71',1,'SocketClient']]]
 ];

@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['get',['Get',['../class_ramped_c_a_n_jaguar.html#a3152c1c599cf96b19e88f47edde8cdbe',1,'RampedCANJaguar']]],
   ['getabutton',['GetAButton',['../class_f_r_c_xbox_joystick.html#a6ea76bae339b010d6a15ae67f44c4212',1,'FRCXboxJoystick']]],
+  ['getangle',['GetAngle',['../class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431',1,'GyroSubsystem']]],
   ['getbackbutton',['GetBackButton',['../class_f_r_c_xbox_joystick.html#a4815267d173b73cbb58fdc432fbd1ef1',1,'FRCXboxJoystick']]],
   ['getbbutton',['GetBButton',['../class_f_r_c_xbox_joystick.html#a56518b5c66add30be455281f07cc77c6',1,'FRCXboxJoystick']]],
   ['getbutton10',['GetButton10',['../class_attack3_joystick.html#a71488444463682e99deeec255785ab36',1,'Attack3Joystick']]],
@@ -15,8 +17,9 @@ var searchData=
   ['getbutton8',['GetButton8',['../class_attack3_joystick.html#a0406e53554d419d937d1d0a4314c957a',1,'Attack3Joystick']]],
   ['getbutton9',['GetButton9',['../class_attack3_joystick.html#abebabfc2edc4c5146c5bb52b4958b11b',1,'Attack3Joystick']]],
   ['getdriverstick',['GetDriverStick',['../class_o_i.html#aa2737d12fc7666bb98987ade700b38fc',1,'OI']]],
-  ['getlastdata',['GetLastData',['../class_socket_client.html#a79dda836ed5a4fb30890dea3003c068a',1,'SocketClient']]],
+  ['getlastdata',['GetLastData',['../class_socket_client.html#ac672b3c5da856a74a0a3414abba00e94',1,'SocketClient']]],
   ['getlastmeasurementtime',['GetLastMeasurementTime',['../class_alpha_beta_filter.html#a43f4cfaa8e07d20e35c6dd0417ac024d',1,'AlphaBetaFilter']]],
+  ['getlastposition',['GetLastPosition',['../class_socket_client.html#a58ead1a8d3adda92f7ad9dcdded58541',1,'SocketClient']]],
   ['getleftbumper',['GetLeftBumper',['../class_f_r_c_xbox_joystick.html#a17b47359cb8bfbe3199ddd189f491b22',1,'FRCXboxJoystick']]],
   ['getleftstickx',['GetLeftStickX',['../class_f_r_c_xbox_joystick.html#aceeb9c0c296249f8c5a1b5ddc7a08f9c',1,'FRCXboxJoystick']]],
   ['getleftsticky',['GetLeftStickY',['../class_f_r_c_xbox_joystick.html#ae399db2c5fd4e656ab74d6b223cf37da',1,'FRCXboxJoystick']]],
@@ -33,5 +36,6 @@ var searchData=
   ['gettrigger',['GetTrigger',['../class_attack3_joystick.html#a4b875a3de16ab7203afea9207961da07',1,'Attack3Joystick::GetTrigger()'],['../class_f_r_c_xbox_joystick.html#aed676d598c83d085fe2b3d3e44c2386a',1,'FRCXboxJoystick::GetTrigger()']]],
   ['getvalue',['GetValue',['../class_alpha_beta_filter.html#a077d0628af55971b79b1eb6329ce04a6',1,'AlphaBetaFilter']]],
   ['getxbutton',['GetXButton',['../class_f_r_c_xbox_joystick.html#a87cdd1b6099fd8c27a0a7bc02f05c33b',1,'FRCXboxJoystick']]],
-  ['getybutton',['GetYButton',['../class_f_r_c_xbox_joystick.html#a37a69ce9c856d9fbf3f802287edd0051',1,'FRCXboxJoystick']]]
+  ['getybutton',['GetYButton',['../class_f_r_c_xbox_joystick.html#a37a69ce9c856d9fbf3f802287edd0051',1,'FRCXboxJoystick']]],
+  ['gyrosubsystem',['GyroSubsystem',['../class_gyro_subsystem.html#ac462f9024703142d3fba1998368c3de2',1,'GyroSubsystem']]]
 ];
