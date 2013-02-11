@@ -15,11 +15,11 @@ CommandBase::CommandBase() : Command()
 	
 }
 
-// Initialize a single static instance of all of your subsystems to NULL
 OI* CommandBase::oi = NULL;
 LogSystem* CommandBase::s_Log = NULL;
 DriveSubsystem* CommandBase::s_Drive = NULL;
 SocketClient* CommandBase::s_SockClient = NULL;
+GyroSubsystem* CommandBase::s_Gyro = NULL;
 
 /**
  * @brief Initializes the commandbase. Creates instances of
@@ -27,10 +27,9 @@ SocketClient* CommandBase::s_SockClient = NULL;
  */
 void CommandBase::init() 
 {
-    // Create a single static instance of all of your subsystems. The following
-	// line should be repeated for each subsystem in the project.
 	oi = new OI();
 	s_Log = new LogSystem(kLogPrioritySystem);
 	s_Drive = new DriveSubsystem();
 	s_SockClient = new SocketClient("10.1.72.11",1180);
+	s_Gyro = new GyroSubsystem(kGyroSlot, kGyroChannel, kGyroSensitivity);
 }

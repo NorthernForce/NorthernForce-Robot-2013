@@ -25,7 +25,8 @@ private:
 	 */
 	virtual void AutonomousInit() 
 	{
-		
+		CommandBase::s_Log->LogMessage("Entering autonomous mode.",kLogPriorityDebug);
+		CommandBase::s_Gyro->Reset();
 	}
 	
 	/**
@@ -41,7 +42,8 @@ private:
 	 */
 	virtual void TeleopInit() 
 	{
-		
+		CommandBase::s_Log->LogMessage("Entering teleoperated mode.",kLogPriorityDebug);
+		CommandBase::s_Gyro->Reset();
 	}
 	
 	/**
@@ -50,6 +52,23 @@ private:
 	virtual void TeleopPeriodic() 
 	{
 		Scheduler::GetInstance()->Run();
+	}
+	
+	/**
+	 * @brief Initializes disabled mode.
+	 */
+	virtual void DisabledInit()
+	{
+		CommandBase::s_Log->LogMessage("Robot disabled.",kLogPriorityDebug);
+		CommandBase::s_Gyro->Reset();
+	}
+	
+	/**
+	 * @brief Executes when the robot is disabled.
+	 */
+	virtual void DisabledPeriodic()
+	{
+		
 	}
 	
 	virtual void TestPeriodic()

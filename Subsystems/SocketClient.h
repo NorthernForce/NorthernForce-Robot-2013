@@ -14,6 +14,7 @@
 #include <strings.h>
 #include <netdb.h>
 #include <stdarg.h>
+#include <vector>
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
@@ -35,7 +36,8 @@ private:
 	char* m_host;
 	struct sockaddr_in sa;
 	struct hostent hen;
-	CameraData m_lastData;
+	vector<Target> m_lastTargets;
+	RobotPosition m_lastPosition;
 	const SEM_ID m_socketSemaphore;
 	Task m_socketConnectionTask;
 	static void SocketConnectionTask(SocketClient& sock);
@@ -52,7 +54,8 @@ public:
 	void run();
 	void errsys(char* err);
 	void printdebug(char* err);
-	const CameraData GetLastData();
+	const vector<Target> GetLastData();
+	const RobotPosition GetLastPosition();
 	int StartDataStream(int updateInterval);
 	int StopDataStream();
 };
