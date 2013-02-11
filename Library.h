@@ -17,6 +17,7 @@
 #include "lib/FRCXboxJoystick.h"
 #include "lib/Vector2D.h"
 #include "lib/Vector3D.h"
+#include "lib/RampedCANJaguar.h"
 #include "Robotmap.h"
 
 #endif

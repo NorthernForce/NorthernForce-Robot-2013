@@ -63,7 +63,6 @@ enum JaguarAddresses
 	 kFrontRightJaguarAddress = 1,
 	 kFrontLeftJaguarAddress = 2,
 	 kRearRightJaguarAddress = 3,
-	 kRearLeftJaguarAddress = 4,
      kShooterJaguarAddress = 5,
 };
 
@@ -79,19 +78,40 @@ enum RelayAdresses {
 enum AnalogChannels {
 	kShooterElevatorPotChannel = 1,
 };
- 
+
 /**
- * @brief A structure to hold the camera data.
+ * @brief A structure to hold a target data.
  */
-struct CameraData 
+struct Target
 {
-	float angle1;
-	float angle2;
-	float distance;
 	float x;
 	float y;
-	float orientation;
-	float processingTime;
+	int pixelCount;
 };
 
+/**
+ * @brief A structure to hold the camera-estimated position data.
+ */
+struct RobotPosition
+{
+	float x;
+	float y;
+	float theta;
+	float stdDevX;
+	float stdDevY;
+	float stdDevTheta;
+};
+
+static const float kDriveRamp = 0.4;
+static const float kDriveVelocityLimit = 1.0;
+static const float kDriveTolerance = 0.2;
+static const float kDriveThereTolerance = 0.1;
+
+//Gyro Control Variables
+static const int kGyroChannel = 1;
+static const int kGyroSlot = 1;
+static const int kGyroTemp = 2;
+static const float kGyroSensitivity = 0.05;
+
 #endif
+>>>>>>> 5fa316e6ea1b9fbc209e01fd451539dc0560b030

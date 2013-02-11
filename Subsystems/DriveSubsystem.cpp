@@ -6,13 +6,21 @@
  */
 DriveSubsystem::DriveSubsystem() try : 
 	Subsystem("DriveSubsystem"),
-	m_frontLeftMotor((printf("Initializing front left jaguar. \n"), kFrontLeftJaguarAddress)),
-	m_frontRightMotor((printf("Initializing front right jaguar. \n"), kFrontRightJaguarAddress)),
-	m_rearLeftMotor((printf("Initializing rear left jaguar. \n"), kRearLeftJaguarAddress)),
-	m_rearRightMotor((printf("Initializing rear right jaguar. \n"), kRearRightJaguarAddress)),
+	m_frontLeftMotor((printf("Initializing front left jaguar. \n"), kFrontLeftJaguarAddress), 
+			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+	m_frontRightMotor((printf("Initializing front right jaguar. \n"), kFrontRightJaguarAddress), 
+			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+	m_rearLeftMotor((printf("Initializing rear left jaguar. \n"), kRearLeftJaguarAddress), 
+			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+	m_rearRightMotor((printf("Initializing rear right jaguar. \n"), kRearRightJaguarAddress), 
+			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor)
 {
 	//@TODO: Set up drive class. 
+	m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+	m_frontRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+	m_rearLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
+	m_rearRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
 }
 catch (exception e)
 {
@@ -38,7 +46,7 @@ void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
     // to make the robot drive correctly, though we may want to check 
     // the values coming from the joystick, and fix them in the 
     // FRCXBoxJoystick class
-	m_drive.ArcadeDrive(stick.GetLeftStickY(), -stick.GetRightStickX());
+	m_drive.ArcadeDrive(-stick.GetLeftStickY(), -stick.GetRightStickX());
 }
 
 /**

@@ -7,3 +7,4 @@ PPC603gnu
 .DS_Store
 Doxyfile
 cmdtools
+.ucpp

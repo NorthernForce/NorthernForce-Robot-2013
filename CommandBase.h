@@ -7,6 +7,7 @@
 #include "Subsystems/LogSystem.h"
 #include "Subsystems/DriveSubsystem.h"
 #include "Subsystems/SocketClient.h"
+#include "Subsystems/GyroSubsystem.h"
 
 
 /**
@@ -27,6 +28,7 @@ public:
 	static LogSystem *s_Log;
 	static DriveSubsystem *s_Drive;
 	static SocketClient *s_SockClient;
+	static GyroSubsystem *s_Gyro;
 };
 
 #endif

@@ -1,6 +1,8 @@
 #include "SocketClient.h"
 #include "../Robotmap.h"
 
+using namespace std;
+
 /**
  * @brief Constructs the SocketClient class. This 
  * creates the connection, and starts the socket 
@@ -114,7 +116,7 @@ void SocketClient::run()
  */
 bool SocketClient::Connect()
 {
-	errsys("Trying to conect...");
+	errsys("Trying to connect...");
 	if((sockfd = socket(AF_INET,SOCK_STREAM,0)) < 0)
 	{
 		errsys("Socket error!");
@@ -157,28 +159,52 @@ bool SocketClient::Read()
 		}
 		else if (!strcasecmp(cmd,"CAMC"))
 		{
-			//printf("%s",recvline+5);
-			//Parse here.
 			char* _tmpLn = strtok(recvline+5, ",");
-			CameraData _tmpCdata;
+			int count = atoi(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
 			
-			_tmpCdata.angle1 = atof(_tmpLn);
-			_tmpLn = strtok(NULL, ",");
-			_tmpCdata.angle2 = atof(_tmpLn);
-			_tmpLn = strtok(NULL, ",");
-			_tmpCdata.distance = atof(_tmpLn);
-			_tmpLn = strtok(NULL, ",");
-			_tmpCdata.orientation = atof(_tmpLn);
-			_tmpLn = strtok(NULL, ",");
-			_tmpCdata.x = atof(_tmpLn);
-			_tmpLn = strtok(NULL, ",");
-			_tmpCdata.y = atof(_tmpLn);
-			_tmpLn = strtok(NULL, ",");
-			_tmpCdata.processingTime = atof(_tmpLn);
+			vector<Target> targets;
+			
+			for (int i = 0; i < count; i++)
+			{
+				Target t;
+				t.x = atof(_tmpLn);
+				_tmpLn = strtok(NULL, ",");
+				t.y = atof(_tmpLn);
+				_tmpLn = strtok(NULL, ",");
+				t.pixelCount = atoi(_tmpLn);
+				_tmpLn = strtok(NULL, ",");
+				
+				targets.push_back(t);
+			}
 			
 			{
 				const Synchronized sync(m_socketSemaphore);
-				m_lastData = _tmpCdata;
+				m_lastTargets.clear();
+				m_lastTargets = targets;
+			}
+		}
+		else if (!strcasecmp(cmd,"ROBP"))
+		{
+			char* _tmpLn = strtok(recvline+5, ",");
+			RobotPosition _tmpPosData;
+			
+			_tmpPosData.x = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpPosData.y = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpPosData.theta = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpPosData.stdDevX = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpPosData.stdDevY = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			_tmpPosData.stdDevTheta = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			
+			{
+				const Synchronized sync(m_socketSemaphore);
+				m_lastPosition = _tmpPosData;
 			}
 		}
 		else
@@ -217,10 +243,16 @@ void SocketClient::printdebug(char* err)
  * @brief Gets the last data that was read from the socket connection.
  * @return A string, the last data from the connection. 
  */
-const CameraData SocketClient::GetLastData()
+const vector<Target> SocketClient::GetLastData()
 {
 	const Synchronized sync (m_socketSemaphore);
-	return m_lastData;
+	return m_lastTargets;
+}
+
+const RobotPosition SocketClient::GetLastPosition()
+{
+	const Synchronized sync (m_socketSemaphore);
+	return m_lastPosition;
 }
 
 /**

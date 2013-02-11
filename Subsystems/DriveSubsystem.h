@@ -16,10 +16,10 @@
 class DriveSubsystem: public Subsystem 
 {
 private:
-	CANJaguar m_frontLeftMotor;
-	CANJaguar m_frontRightMotor;
-	CANJaguar m_rearLeftMotor;
-	CANJaguar m_rearRightMotor;
+	RampedCANJaguar m_frontLeftMotor;
+	RampedCANJaguar m_frontRightMotor;
+	RampedCANJaguar m_rearLeftMotor;
+	RampedCANJaguar m_rearRightMotor;
 	RobotDrive m_drive;
 public:
 	DriveSubsystem();
