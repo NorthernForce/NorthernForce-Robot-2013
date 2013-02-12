@@ -112,6 +112,6 @@ static const float kDriveThereTolerance = 0.1;
 static const int kGyroChannel = 1;
 static const int kGyroSlot = 1;
 static const int kGyroTemp = 2;
-static const float kGyroSensitivity = 0.05;
+static const float kGyroSensitivity = 0.007;
 
 #endif

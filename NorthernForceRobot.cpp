@@ -52,6 +52,7 @@ private:
 	virtual void TeleopPeriodic() 
 	{
 		Scheduler::GetInstance()->Run();
+		//printf("%f\n",CommandBase::s_Gyro->GetRate());
 	}
 	
 	/**

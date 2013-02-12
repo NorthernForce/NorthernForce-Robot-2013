@@ -52,3 +52,8 @@ float GyroSubsystem::GetAngle()
 	//@TODO: Convert this value to something meaningful.
 	return m_gyroSensor->GetAngle();
 }
+
+float GyroSubsystem::GetRate()
+{
+	return (m_gyroChannel.GetVoltage() - 2.5) / 2.5;
+}

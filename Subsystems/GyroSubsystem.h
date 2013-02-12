@@ -21,6 +21,7 @@ public:
 	void SetSensitivity(float sensitivity);
 	float GetAngle();
 	void Reset();
+	float GetRate();
 };
 
 #endif

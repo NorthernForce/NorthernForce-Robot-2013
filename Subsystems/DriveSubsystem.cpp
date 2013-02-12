@@ -16,7 +16,6 @@ DriveSubsystem::DriveSubsystem() try :
 			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor)
 {
-	//@TODO: Set up drive class. 
 	m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
 	m_frontRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
 	m_rearLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
@@ -42,11 +41,8 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {
-	//@TODO: Verify these axis values. For the moment, one is inverted, 
-    // to make the robot drive correctly, though we may want to check 
-    // the values coming from the joystick, and fix them in the 
-    // FRCXBoxJoystick class
-	m_drive.ArcadeDrive(-stick.GetLeftStickY(), -stick.GetRightStickX());
+	float rate = CommandBase::s_Gyro->GetRate();
+	m_drive.ArcadeDrive(stick.GetLeftStickY(), stick.GetRightStickX() + rate);
 }
 
 /**

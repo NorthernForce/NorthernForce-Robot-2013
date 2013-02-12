@@ -91,7 +91,7 @@ float FRCXboxJoystick::DeadbandAdjust(float val)
  */
 float FRCXboxJoystick::GetLeftStickY()
 {
-	return DeadbandAdjust(Joystick::GetRawAxis(2));
+	return -DeadbandAdjust(Joystick::GetRawAxis(2));
 }
 
 /**
@@ -100,7 +100,7 @@ float FRCXboxJoystick::GetLeftStickY()
  */
 float FRCXboxJoystick::GetLeftStickX()
 {
-	return DeadbandAdjust(Joystick::GetRawAxis(1));
+	return -DeadbandAdjust(Joystick::GetRawAxis(1));
 }
 
 /**
@@ -109,7 +109,7 @@ float FRCXboxJoystick::GetLeftStickX()
  */
 float FRCXboxJoystick::GetRightStickY()
 {
-	return DeadbandAdjust(Joystick::GetRawAxis(5));
+	return -DeadbandAdjust(Joystick::GetRawAxis(5));
 }
 
 /**
@@ -118,7 +118,7 @@ float FRCXboxJoystick::GetRightStickY()
  */
 float FRCXboxJoystick::GetRightStickX()
 {
-	return DeadbandAdjust(Joystick::GetRawAxis(4));
+	return -DeadbandAdjust(Joystick::GetRawAxis(4));
 }
 
 /**
