@@ -1,8 +1,10 @@
 #include "UpdateNav.h"
 
-UpdateNav::UpdateNav() {
+UpdateNav::UpdateNav() 
+{
+	Requires(s_Nav);
 	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+	// eg. Requires(s_chassis);
 }
 
 // Called just before this Command runs the first time
@@ -11,7 +13,19 @@ void UpdateNav::Initialize() {
 }
 
 // Called repeatedly when this Command is scheduled to run
-void UpdateNav::Execute() {
+void UpdateNav::Execute() 
+{
+	float theta;
+	double distance;
+	double deltaDistance;
+	
+	theta = s_Gyro->GetAngle();
+//TODO: Get Optical Encoder Value for distance
+	distance = m_Distance + 10;  // This is for stub, need Encoder Values converted to inches
+	deltaDistance = distance - m_Distance;
+	m_Distance = distance;
+	
+	s_Nav->propagate(GetFPGATime(), deltaDistance, theta);	
 	
 }
 
@@ -27,5 +41,6 @@ void UpdateNav::End() {
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void UpdateNav::Interrupted() {
+void UpdateNav::Interrupted() 
+{
 }

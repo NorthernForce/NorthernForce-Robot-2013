@@ -43,7 +43,7 @@ void RobotNav::propagate(unsigned int time, double deltaX, double deltaY, double
 	
 }
 
-
+/*
 void RobotNav::propagate(unsigned int time, double deltaDistance, double deltaTheta)
 {
 	
@@ -54,6 +54,19 @@ void RobotNav::propagate(unsigned int time, double deltaDistance, double deltaTh
 	
 	
 }
+*/
+
+void RobotNav::propagate(unsigned int time, double deltaDistance, double Theta)
+{
+	
+	m_Time = time;
+	m_Theta = Theta;
+	m_CurrentX = m_CurrentX + ( deltaDistance * cos(m_Theta));
+	m_CurrentY = m_CurrentY + (deltaDistance * sin(m_Theta));
+	
+	
+}
+
 
 
 void RobotNav::reset(unsigned int time, double x, double y, double theta)

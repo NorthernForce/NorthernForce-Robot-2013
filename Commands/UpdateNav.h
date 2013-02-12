@@ -3,6 +3,7 @@
 
 #include "../CommandBase.h"
 #include "../Subsystems/RobotNav.h"
+#include "../Subsystems/GyroSubsystem.h"
 
 
 /**
@@ -10,14 +11,20 @@
  *
  * @author jcrosby
  */
-class UpdateNav: public CommandBase {
-public:
+class UpdateNav: public CommandBase 
+{
+  public:
 	UpdateNav();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	
+  private:
+	double m_Distance;
+	
+	
 };
 
 #endif

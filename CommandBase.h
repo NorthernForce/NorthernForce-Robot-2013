@@ -8,6 +8,7 @@
 #include "Subsystems/DriveSubsystem.h"
 #include "Subsystems/SocketClient.h"
 #include "Subsystems/GyroSubsystem.h"
+#include "Subsystems/RobotNav.h"
 
 
 /**
@@ -29,6 +30,7 @@ public:
 	static DriveSubsystem *s_Drive;
 	static SocketClient *s_SockClient;
 	static GyroSubsystem *s_Gyro;
+	static RobotNav      *s_Nav;
 };
 
 #endif

@@ -20,7 +20,8 @@ public:
 	RobotNav(double CurrentX, double CurrentY, double Theta);
 	void InitDefaultCommand();
 	void propagate(unsigned int time, double deltaX, double deltaY, double deltaTheta);
-	void propagate(unsigned int time, double deltaDistance, double deltaTheta);
+	//void propagate(unsigned int time, double deltaDistance, double deltaTheta);
+	void propagate(unsigned int time, double deltaDistance, double Theta);
 	void reset(unsigned int time, double x, double y, double theta);
 	double GetX();
 	double GetY();
