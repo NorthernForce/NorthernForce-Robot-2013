@@ -1,5 +1,4 @@
 #include "GyroSubsystem.h"
-#include "../Robotmap.h"
 
 /**
  * @brief Constructs the Gyro subsystem.
@@ -10,7 +9,8 @@
  */
 GyroSubsystem::GyroSubsystem(int slot, int channel, float sensitivity) : 
 	Subsystem("GyroSubsystem"),
-	m_gyroChannel(slot, channel)
+	m_gyroChannel(slot, channel),
+	m_gyroLogFile("GyroLog.txt")
 {
 	m_gyroChannel.SetAccumulatorDeadband(0);
 	m_gyroSensor = new Gyro(&m_gyroChannel);
@@ -44,16 +44,48 @@ void GyroSubsystem::Reset()
 }
 
 /**
- * @brief Gets the angle that the gyro is reading.
+ * @brief Gets the angle that the gyro is reading,
+ * and writes it to a log file.
  * @return A float, the angle from the gyro.
  */
 float GyroSubsystem::GetAngle()
 {
-	//@TODO: Convert this value to something meaningful.
-	return m_gyroSensor->GetAngle();
+	float angle = m_gyroSensor->GetAngle();
+	char _tmp[10];
+	sprintf(_tmp, "Angle: %f", angle);
+	m_gyroLogFile.Write(_tmp);
+	return angle;
 }
 
+/**
+ * @brief Gets the rate from the gyro sensor, 
+ * and writes it to a log file.
+ * @return A float, the voltage (rate).
+ */
 float GyroSubsystem::GetRate()
 {
-	return (m_gyroChannel.GetVoltage() - 2.5) / 2.5;
+	float voltage = m_gyroChannel.GetVoltage() - m_channelCenter;
+	char _tmp[10];
+	sprintf(_tmp, "Voltage: %f", voltage);
+	m_gyroLogFile.Write(_tmp);
+	return voltage;
+	return voltage / 2.5;
+}
+
+/**
+ * @brief Completes a stationary calibration for the gyro
+ * sensor.
+ * @param samples The number of samples to take for calibration.
+ */
+void GyroSubsystem::DoStationaryCalibration(int samples)
+{
+	float _accumulator = 0;
+	for (int i = 0; i < samples; i++)
+		_accumulator += m_gyroChannel.GetVoltage();
+	
+	m_channelCenter = _accumulator / samples;
+	
+	char* _tmp;
+	sprintf(_tmp, "Gyro centered at %f", m_channelCenter);
+	CommandBase::s_Log->LogMessage(_tmp);
 }

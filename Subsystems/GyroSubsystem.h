@@ -2,7 +2,8 @@
 #define GYROSUBSYSTEM_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-
+#include "../Library.h"
+#include "../CommandBase.h"
 /**
  * A subsystem for accessing the data from the Gyro subsystem.
  *
@@ -15,13 +16,16 @@ private:
 	// for methods that implement subsystem capabilities
 	Gyro *m_gyroSensor;
 	AnalogChannel m_gyroChannel;
+	LogFile m_gyroLogFile;
+	float m_channelCenter;
 public:
-	GyroSubsystem(int slot, int channel, float sensitivity = 0.05);
+	GyroSubsystem(int slot, int channel, float sensitivity = 0.007);
 	void InitDefaultCommand();
 	void SetSensitivity(float sensitivity);
 	float GetAngle();
 	void Reset();
 	float GetRate();
+	void DoStationaryCalibration(int samples);
 };
 
 #endif

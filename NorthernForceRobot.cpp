@@ -27,6 +27,7 @@ private:
 	{
 		CommandBase::s_Log->LogMessage("Entering autonomous mode.",kLogPriorityDebug);
 		CommandBase::s_Gyro->Reset();
+		CommandBase::s_Gyro->DoStationaryCalibration(10);
 	}
 	
 	/**
@@ -44,6 +45,7 @@ private:
 	{
 		CommandBase::s_Log->LogMessage("Entering teleoperated mode.",kLogPriorityDebug);
 		CommandBase::s_Gyro->Reset();
+		CommandBase::s_Gyro->DoStationaryCalibration(10);
 	}
 	
 	/**

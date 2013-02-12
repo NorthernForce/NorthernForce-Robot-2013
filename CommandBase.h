@@ -10,13 +10,14 @@
 #include "Subsystems/GyroSubsystem.h"
 #include "Subsystems/RobotNav.h"
 
+class SocketClient;
+class GyroSubsystem;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
  * subsystem elsewhere in your code in your code use CommandBase.examplesubsystem
  */
-class SocketClient;
 class CommandBase: public Command 
 {
 public:
