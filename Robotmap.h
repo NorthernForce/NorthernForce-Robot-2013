@@ -63,6 +63,7 @@ enum JaguarAddresses
 	 kFrontRightJaguarAddress = 1,
 	 kFrontLeftJaguarAddress = 2,
 	 kRearRightJaguarAddress = 3,
+     kRearLeftJaguarAddress = 4,
      kShooterJaguarAddress = 5,
 };
 
@@ -114,4 +115,3 @@ static const int kGyroTemp = 2;
 static const float kGyroSensitivity = 0.05;
 
 #endif
->>>>>>> 5fa316e6ea1b9fbc209e01fd451539dc0560b030
