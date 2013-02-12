@@ -51,7 +51,7 @@ void GyroSubsystem::Reset()
 float GyroSubsystem::GetAngle()
 {
 	float angle = m_gyroSensor->GetAngle();
-	char _tmp[10];
+	char _tmp[32];
 	sprintf(_tmp, "Angle: %f", angle);
 	m_gyroLogFile.Write(_tmp);
 	return angle;
@@ -65,10 +65,9 @@ float GyroSubsystem::GetAngle()
 float GyroSubsystem::GetRate()
 {
 	float voltage = m_gyroChannel.GetVoltage() - m_channelCenter;
-	char _tmp[10];
+	char _tmp[32];
 	sprintf(_tmp, "Voltage: %f", voltage);
 	m_gyroLogFile.Write(_tmp);
-	return voltage;
 	return voltage / 2.5;
 }
 
@@ -79,6 +78,7 @@ float GyroSubsystem::GetRate()
  */
 void GyroSubsystem::DoStationaryCalibration(int samples)
 {
+	CommandBase::s_Log->LogMessage("Beginning stationary Gyro calibration...");
 	float _accumulator = 0;
 	for (int i = 0; i < samples; i++)
 		_accumulator += m_gyroChannel.GetVoltage();

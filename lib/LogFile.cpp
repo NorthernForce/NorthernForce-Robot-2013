@@ -11,6 +11,7 @@ IMAQ_FUNC int Priv_SetWriteFileAllowed(UINT32 enable);
  */
 LogFile::LogFile(const char* name)
 {
+	printf("Opening new logfile with name %s\n",name);
 	sprintf(m_fileName, name);
 	Priv_SetWriteFileAllowed(1);
 }

@@ -16,7 +16,7 @@ class LogFile
 {
 private:
 	void SetDirectory(const char* directory);
-	char* m_fileName;
+	char m_fileName[32];
 public:
 	LogFile(const char* name);
 	~LogFile();
