@@ -26,6 +26,7 @@ public:
 	void InitDefaultCommand();
 	void DriveRobot(FRCXboxJoystick& stick);
 	void DriveRobot(Attack3Joystick& moveStick, Attack3Joystick& rotateStick);
+	void DriveRobot(float moveValue, float rotateValue);
 	void Stop();
 };
 

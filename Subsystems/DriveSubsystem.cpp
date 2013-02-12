@@ -52,8 +52,17 @@ void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
  */
 void DriveSubsystem::DriveRobot(Attack3Joystick& moveStick, Attack3Joystick& rotateStick)
 {
-	//@TODO: Verify these. 
 	m_drive.ArcadeDrive(moveStick, 1, rotateStick, 2);
+}
+
+/**
+ * @brief Drives the robot given a move value and a rotate value.
+ * @param moveValue The speed to move forwards and backwards.
+ * @param rotateValue The speed to rotate the robot.
+ */
+void DriveSubsystem::DriveRobot(float moveValue, float rotateValue)
+{
+	m_drive.ArcadeDrive(moveValue, rotateValue, true);
 }
 
 /**

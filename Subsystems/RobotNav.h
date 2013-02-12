@@ -4,7 +4,7 @@
 #include "WPILib.h"
 
 /**
- *
+ * A navigation system for the robot. 
  *
  * @author jcrosby
  */

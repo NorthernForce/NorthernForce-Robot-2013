@@ -30,7 +30,7 @@ public:
 	static DriveSubsystem *s_Drive;
 	static SocketClient *s_SockClient;
 	static GyroSubsystem *s_Gyro;
-	static RobotNav      *s_Nav;
+	static RobotNav *s_Nav;
 };
 
 #endif
