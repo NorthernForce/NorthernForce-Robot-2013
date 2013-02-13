@@ -14,7 +14,9 @@ DriveSubsystem::DriveSubsystem() try :
 			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_rearRightMotor((printf("Initializing rear right jaguar. \n"), kRearRightJaguarAddress), 
 			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor)
+	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
+    _error(0.0),
+    m_DriveLog("DriveLog.csv")
 {
 	m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
 	m_frontRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
@@ -41,8 +43,14 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {
-	float rate = CommandBase::s_Gyro->GetRate();
-	m_drive.ArcadeDrive(stick.GetLeftStickY(), stick.GetRightStickX() + rate);
+	float gyroRate = CommandBase::s_Gyro->GetRate();
+    float spin = stick.GetRightStickX();
+    float error = spin - gyroRate;
+    _error += (20/1000)*error;
+    char _tmp[200];
+    sprintf(_tmp, "%f,%f,%f,%f",spin,gyroRate,error,_error);
+    m_DriveLog.Write(_tmp);
+	m_drive.ArcadeDrive(stick.GetLeftStickY(), 1*error+0.0000*_error);
 }
 
 /**

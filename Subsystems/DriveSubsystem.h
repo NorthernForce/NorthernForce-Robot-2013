@@ -21,6 +21,8 @@ private:
 	RampedCANJaguar m_rearLeftMotor;
 	RampedCANJaguar m_rearRightMotor;
 	RobotDrive m_drive;
+    float _error;
+    LogFile m_DriveLog;
 public:
 	DriveSubsystem();
 	void InitDefaultCommand();

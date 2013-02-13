@@ -68,7 +68,7 @@ float GyroSubsystem::GetRate()
 	char _tmp[32];
 	sprintf(_tmp, "Voltage: %f", voltage);
 	m_gyroLogFile.Write(_tmp);
-	return voltage / 2.5;
+	return -0.55*voltage;
 }
 
 /**
