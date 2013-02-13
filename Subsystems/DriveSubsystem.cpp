@@ -16,7 +16,9 @@ DriveSubsystem::DriveSubsystem() try :
 			kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
 	m_driveErrAccumulator(0.0),
-    m_DriveLog("DriveLog.csv")
+    m_DriveLog("DriveLog.csv"),
+    m_loggingEnabled(true),
+    m_gyroEnabled(true)
 {
 	m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
 	m_frontRightMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
@@ -43,14 +45,26 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {
-	float gyroRate = CommandBase::s_Gyro->GetRate();
-    float spin = stick.GetRightStickX();
-    float error = spin - gyroRate;
-    m_driveErrAccumulator += (20/1000)*error;
-    char _tmp[200];
-    sprintf(_tmp, "%f,%f,%f,%f",spin,gyroRate,error,m_driveErrAccumulator);
-    m_DriveLog.Write(_tmp);
-	m_drive.ArcadeDrive(stick.GetLeftStickY(), kDriveSpinP * error + kDriveSpinI * m_driveErrAccumulator);
+	if (m_gyroEnabled)
+	{
+		float gyroRate = CommandBase::s_Gyro->GetRate();
+	    float spin = stick.GetRightStickX();
+	    float error = spin - gyroRate;
+	    m_driveErrAccumulator += (20/1000)*error;
+	    
+	    if (m_loggingEnabled)
+	    {
+		    char _tmp[200];
+		    sprintf(_tmp, "%f,%f,%f,%f",spin,gyroRate,error,m_driveErrAccumulator);
+		    m_DriveLog.Write(_tmp);
+		}
+		
+		m_drive.ArcadeDrive(stick.GetLeftStickY(), kDriveSpinP * error + kDriveSpinI * m_driveErrAccumulator);
+	}
+	else
+	{
+		m_drive.ArcadeDrive(stick.GetLeftStickY(), stick.GetRightStickY());
+	}
 }
 
 /**
@@ -80,3 +94,20 @@ void DriveSubsystem::Stop()
 {
 	m_drive.StopMotor();
 }
+
+/**
+ * @brief Disables the gyro correction in drive.
+ */
+void DriveSubsystem::DisableGyro()
+{
+	m_gyroEnabled = false;
+}
+
+/**
+ * @brief Enables the gyro correction in drive.
+ */
+void DriveSubsystem::EnableGyro()
+{
+	m_gyroEnabled = true;
+}
+
