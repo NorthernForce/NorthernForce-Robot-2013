@@ -31,7 +31,7 @@ void UpdateNav::Execute()
 
 // Make this return true when this Command no longer needs to run execute()
 bool UpdateNav::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
@@ -43,4 +43,5 @@ void UpdateNav::End() {
 // subsystems is scheduled to run
 void UpdateNav::Interrupted() 
 {
+	
 }
