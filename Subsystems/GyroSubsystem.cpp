@@ -52,7 +52,7 @@ float GyroSubsystem::GetAngle()
 {
 	float angle = m_gyroSensor->GetAngle();
 	char _tmp[32];
-	sprintf(_tmp, "Angle: %f", angle);
+	//sprintf(_tmp, "Angle: %f", angle);
 	m_gyroLogFile.Write(_tmp);
 	return angle;
 }
@@ -67,7 +67,7 @@ float GyroSubsystem::GetRate()
 	float voltage = m_gyroChannel.GetVoltage() - m_channelCenter;
 	char _tmp[32];
 	sprintf(_tmp, "Voltage: %f", voltage);
-	m_gyroLogFile.Write(_tmp);
+	//m_gyroLogFile.Write(_tmp);
 	return -0.55*voltage;
 }
 

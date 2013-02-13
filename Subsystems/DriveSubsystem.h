@@ -21,8 +21,10 @@ private:
 	RampedCANJaguar m_rearLeftMotor;
 	RampedCANJaguar m_rearRightMotor;
 	RobotDrive m_drive;
-    float _error;
+    float m_driveErrAccumulator;
     LogFile m_DriveLog;
+    static const double kDriveSpinP = 1.75;
+    static const double kDriveSpinI = 0.0001;
 public:
 	DriveSubsystem();
 	void InitDefaultCommand();
