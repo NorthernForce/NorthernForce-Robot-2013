@@ -8,3 +8,5 @@ PPC603gnu
 Doxyfile
 cmdtools
 .ucpp
+*.sublime-project
+*.sublime-workspace
