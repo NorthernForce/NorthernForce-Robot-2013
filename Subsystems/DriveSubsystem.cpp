@@ -17,7 +17,7 @@ DriveSubsystem::DriveSubsystem() try :
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
 	m_driveErrAccumulator(0.0),
     m_DriveLog("DriveLog.csv"),
-    m_loggingEnabled(true),
+    m_loggingEnabled(false),
     m_gyroEnabled(true)
 {
 	m_frontLeftMotor.ConfigNeutralMode(RampedCANJaguar::kNeutralMode_Brake);
@@ -50,7 +50,7 @@ void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 		float gyroRate = CommandBase::s_Gyro->GetRate();
 	    float spin = stick.GetRightStickX();
 	    float error = spin - gyroRate;
-	    m_driveErrAccumulator += (20/1000)*error;
+	    m_driveErrAccumulator = m_driveErrAccumulator + error;
 	    
 	    if (m_loggingEnabled)
 	    {
@@ -100,6 +100,7 @@ void DriveSubsystem::Stop()
  */
 void DriveSubsystem::DisableGyro()
 {
+	CommandBase::s_Log->LogMessage("Disabling gyro-aided drive...");
 	m_gyroEnabled = false;
 }
 
@@ -108,6 +109,24 @@ void DriveSubsystem::DisableGyro()
  */
 void DriveSubsystem::EnableGyro()
 {
+	CommandBase::s_Log->LogMessage("Enabling gyro-aided drive...");
 	m_gyroEnabled = true;
 }
 
+/**
+ * @brief Enables logging of drive information.
+ */
+void DriveSubsystem::EnableLogging()
+{
+	CommandBase::s_Log->LogMessage("Enabling drive logging...");
+	m_loggingEnabled = true;
+}
+
+/**
+ * @brief Disables logging of drive information.
+ */
+void DriveSubsystem::DisableLogging()
+{
+	CommandBase::s_Log->LogMessage("Disabling drive logging...");
+	m_loggingEnabled = false;
+}
