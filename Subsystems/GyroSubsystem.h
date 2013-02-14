@@ -18,6 +18,8 @@ private:
 	AnalogChannel m_gyroChannel;
 	LogFile m_gyroLogFile;
 	float m_channelCenter;
+	AlphaBetaFilter<float> m_gyroFilter;
+	void Update();
 public:
 	GyroSubsystem(int slot, int channel, float sensitivity = 0.007);
 	void InitDefaultCommand();
