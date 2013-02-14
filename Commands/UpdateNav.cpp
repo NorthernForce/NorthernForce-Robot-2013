@@ -19,9 +19,11 @@ void UpdateNav::Execute()
 	double distance;
 	double deltaDistance;
 	
+//  Get Angle from Gyro
 	theta = s_Gyro->GetAngle();
-//TODO: Get Optical Encoder Value for distance
-	distance = m_Distance + 10;  // This is for stub, need Encoder Values converted to inches
+	
+//  Get Average Distance from the Jaguars
+	distance = s_Drive->GetAvgDistance();
 	deltaDistance = distance - m_Distance;
 	m_Distance = distance;
 	

@@ -130,3 +130,10 @@ void DriveSubsystem::DisableLogging()
 	CommandBase::s_Log->LogMessage("Disabling drive logging...");
 	m_loggingEnabled = false;
 }
+
+
+double DriveSubsystem::GetAvgDistance()
+{
+	return( ( m_frontLeftMotor.GetPosition() + m_frontRightMotor.GetPosition() ) / 2 );	
+
+}

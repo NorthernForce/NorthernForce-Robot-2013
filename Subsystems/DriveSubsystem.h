@@ -39,6 +39,7 @@ public:
 	void DisableGyro();
 	void EnableLogging();
 	void DisableLogging();
+	double GetAvgDistance();
 };
 
 #endif
