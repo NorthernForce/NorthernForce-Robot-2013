@@ -16,12 +16,13 @@ private:
 	// for methods that implement subsystem capabilities
 	Gyro *m_gyroSensor;
 	AnalogChannel m_gyroChannel;
+	AnalogChannel m_gyroTempChannel;
 	LogFile m_gyroLogFile;
 	float m_channelCenter;
 	AlphaBetaFilter<float> m_gyroFilter;
 	void Update();
 public:
-	GyroSubsystem(int slot, int channel, float sensitivity = 0.007);
+	GyroSubsystem(int slot, int sensorChannel, int tempSensorChannel, float sensitivity = 0.007);
 	void InitDefaultCommand();
 	void SetSensitivity(float sensitivity);
 	float GetAngle();

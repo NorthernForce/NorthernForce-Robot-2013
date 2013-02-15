@@ -3,17 +3,21 @@
 /**
  * @brief Constructs the Gyro subsystem.
  * @param slot The cRIO slot that the Analog module is in.
- * @param channel The analog channel on the analog module that the 
- * sensor output is in.
+ * @param sensorChannel The analog channel on the analog module that the 
+ * gyro sensor output is in.
+ * @param tempSensorChannel The analog channel on the analog module that the 
+ * gyro's temperature sensor output is in.
  * @param sensitivity The gyro sensitivity to set. 
  */
-GyroSubsystem::GyroSubsystem(int slot, int channel, float sensitivity) : 
+GyroSubsystem::GyroSubsystem(int slot, int sensorChannel, int tempSensorChannel, float sensitivity) : 
 	Subsystem("GyroSubsystem"),
-	m_gyroChannel(slot, channel),
+	m_gyroChannel(slot, sensorChannel),
+	m_gyroTempChannel(slot, tempSensorChannel),
 	m_gyroLogFile("GyroLog.txt"),
 	m_gyroFilter(0.1, 0.005)
 {
 	m_gyroChannel.SetAccumulatorDeadband(0);
+	m_gyroTempChannel.SetAccumulatorCenter(0);
 	m_gyroSensor = new Gyro(&m_gyroChannel);
 	m_gyroSensor->SetSensitivity(sensitivity);
 	this->Reset();
@@ -91,10 +95,11 @@ void GyroSubsystem::DoStationaryCalibration(int samples)
 	char* _tmp;
 	sprintf(_tmp, "Gyro centered at %f", m_channelCenter);
 	CommandBase::s_Log->LogMessage(_tmp);
+	this->Reset();
 }
 
 /**
- * @brief Updates the filter values.
+ * @brief Updates the gyro values in the filter. 
  */
 void GyroSubsystem::Update()
 {
