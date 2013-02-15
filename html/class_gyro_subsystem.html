@@ -122,29 +122,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac462f9024703142d3fba1998368c3de2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#ac462f9024703142d3fba1998368c3de2">GyroSubsystem</a> (int slot, int channel, float sensitivity=0.05)</td></tr>
-<tr class="memdesc:ac462f9024703142d3fba1998368c3de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the Gyro subsystem.  <a href="#ac462f9024703142d3fba1998368c3de2"></a><br/></td></tr>
+<tr class="memitem:a0e335a561a8925f6680fee7502ca83ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#a0e335a561a8925f6680fee7502ca83ef">GyroSubsystem</a> (int slot, int sensorChannel, int tempSensorChannel, float sensitivity=0.007)</td></tr>
+<tr class="memdesc:a0e335a561a8925f6680fee7502ca83ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the Gyro subsystem.  <a href="#a0e335a561a8925f6680fee7502ca83ef"></a><br/></td></tr>
 <tr class="memitem:a4f80be505ad1347cfddb52903d347569"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569">InitDefaultCommand</a> ()</td></tr>
 <tr class="memdesc:a4f80be505ad1347cfddb52903d347569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the default command for the gyro subsystem.  <a href="#a4f80be505ad1347cfddb52903d347569"></a><br/></td></tr>
 <tr class="memitem:ad7985df303536d3fc66bbc4a20acb8c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6">SetSensitivity</a> (float sensitivity)</td></tr>
 <tr class="memdesc:ad7985df303536d3fc66bbc4a20acb8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the sensitivity of the Gyro sensor.  <a href="#ad7985df303536d3fc66bbc4a20acb8c6"></a><br/></td></tr>
 <tr class="memitem:acbea92b181949a1f4e0fbfd0562ca431"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431">GetAngle</a> ()</td></tr>
-<tr class="memdesc:acbea92b181949a1f4e0fbfd0562ca431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the angle that the gyro is reading.  <a href="#acbea92b181949a1f4e0fbfd0562ca431"></a><br/></td></tr>
+<tr class="memdesc:acbea92b181949a1f4e0fbfd0562ca431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the angle that the gyro is reading, and writes it to a log file.  <a href="#acbea92b181949a1f4e0fbfd0562ca431"></a><br/></td></tr>
 <tr class="memitem:aa9b24b74976a49a453e4e16e5f3da30b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b">Reset</a> ()</td></tr>
 <tr class="memdesc:aa9b24b74976a49a453e4e16e5f3da30b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the gyro sensor to 0.  <a href="#aa9b24b74976a49a453e4e16e5f3da30b"></a><br/></td></tr>
+<tr class="memitem:aa823b0d30bff6692d2c303ad7255a263"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263">GetRate</a> ()</td></tr>
+<tr class="memdesc:aa823b0d30bff6692d2c303ad7255a263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the rate from the gyro sensor, and writes it to a log file.  <a href="#aa823b0d30bff6692d2c303ad7255a263"></a><br/></td></tr>
+<tr class="memitem:a3e449d6eab2491d663c6524ff6fe3497"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497">DoStationaryCalibration</a> (int samples)</td></tr>
+<tr class="memdesc:a3e449d6eab2491d663c6524ff6fe3497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completes a stationary calibration for the gyro sensor.  <a href="#a3e449d6eab2491d663c6524ff6fe3497"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A subsystem for accessing the data from the Gyro subsystem.</p>
 <dl class="section author"><dt>Author:</dt><dd>arthurlockman </dd></dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8h_source.html#l00011">11</a> of file <a class="el" href="_gyro_subsystem_8h_source.html">GyroSubsystem.h</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8h_source.html#l00012">12</a> of file <a class="el" href="_gyro_subsystem_8h_source.html">GyroSubsystem.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac462f9024703142d3fba1998368c3de2"></a>
+<a class="anchor" id="a0e335a561a8925f6680fee7502ca83ef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_gyro_subsystem.html#ac462f9024703142d3fba1998368c3de2">GyroSubsystem::GyroSubsystem</a> </td>
+          <td class="memname"><a class="el" href="class_gyro_subsystem.html#a0e335a561a8925f6680fee7502ca83ef">GyroSubsystem::GyroSubsystem</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>slot</em>, </td>
@@ -153,13 +157,19 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>channel</em>, </td>
+          <td class="paramname"><em>sensorChannel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tempSensorChannel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>sensitivity</em> = <code>0.05</code>&#160;</td>
+          <td class="paramname"><em>sensitivity</em> = <code>0.007</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -174,17 +184,45 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">slot</td><td>The cRIO slot that the Analog module is in. </td></tr>
-    <tr><td class="paramname">channel</td><td>The analog channel on the analog module that the sensor output is in. </td></tr>
+    <tr><td class="paramname">sensorChannel</td><td>The analog channel on the analog module that the gyro sensor output is in. </td></tr>
+    <tr><td class="paramname">tempSensorChannel</td><td>The analog channel on the analog module that the gyro's temperature sensor output is in. </td></tr>
     <tr><td class="paramname">sensitivity</td><td>The gyro sensitivity to set. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00011">11</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00012">12</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a3e449d6eab2491d663c6524ff6fe3497"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497">GyroSubsystem::DoStationaryCalibration</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>samples</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Completes a stationary calibration for the gyro sensor. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">samples</td><td>The number of samples to take for calibration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00086">86</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="acbea92b181949a1f4e0fbfd0562ca431"></a>
 <div class="memitem">
 <div class="memproto">
@@ -199,10 +237,31 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Gets the angle that the gyro is reading. </p>
+<p>Gets the angle that the gyro is reading, and writes it to a log file. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A float, the angle from the gyro. </dd></dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00050">50</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00057">57</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa823b0d30bff6692d2c303ad7255a263"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263">GyroSubsystem::GetRate</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Gets the rate from the gyro sensor, and writes it to a log file. </p>
+<dl class="section return"><dt>Returns:</dt><dd>A float, the voltage (rate). </dd></dl>
+
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00071">71</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -222,7 +281,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the default command for the gyro subsystem. </p>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00024">24</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00029">29</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +301,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Resets the gyro sensor to 0. </p>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00041">41</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00046">46</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -269,7 +328,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00033">33</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00038">38</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -283,7 +342,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_gyro_subsystem.html">GyroSubsystem</a>      </li>
 
-    <li class="footer">Generated on Sun Feb 10 2013 22:45:50 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Feb 15 2013 12:30:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

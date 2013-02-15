@@ -130,8 +130,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a64574f4ef16d79c1a2deae67fb1e24fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drives the robot with an XBox Joystick.  <a href="#a64574f4ef16d79c1a2deae67fb1e24fd"></a><br/></td></tr>
 <tr class="memitem:af839f84acb5a68c9c351a1761052167f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#af839f84acb5a68c9c351a1761052167f">DriveRobot</a> (<a class="el" href="class_attack3_joystick.html">Attack3Joystick</a> &amp;moveStick, <a class="el" href="class_attack3_joystick.html">Attack3Joystick</a> &amp;rotateStick)</td></tr>
 <tr class="memdesc:af839f84acb5a68c9c351a1761052167f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drives the robot with a pair of Attack 3 joysticks.  <a href="#af839f84acb5a68c9c351a1761052167f"></a><br/></td></tr>
+<tr class="memitem:acbceea3fc62d12f99d18b6043068ec33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#acbceea3fc62d12f99d18b6043068ec33">DriveRobot</a> (float moveValue, float rotateValue)</td></tr>
+<tr class="memdesc:acbceea3fc62d12f99d18b6043068ec33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drives the robot given a move value and a rotate value.  <a href="#acbceea3fc62d12f99d18b6043068ec33"></a><br/></td></tr>
 <tr class="memitem:a26084e362570f6f971676c17a8c584a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6">Stop</a> ()</td></tr>
 <tr class="memdesc:a26084e362570f6f971676c17a8c584a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops all motion on the robot.  <a href="#a26084e362570f6f971676c17a8c584a6"></a><br/></td></tr>
+<tr class="memitem:a120417f222b93e290ee47dd5d075d77f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a120417f222b93e290ee47dd5d075d77f">EnableGyro</a> ()</td></tr>
+<tr class="memdesc:a120417f222b93e290ee47dd5d075d77f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the gyro correction in drive.  <a href="#a120417f222b93e290ee47dd5d075d77f"></a><br/></td></tr>
+<tr class="memitem:a917bef2be9aed24d8d04e7c2d0bfea38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a917bef2be9aed24d8d04e7c2d0bfea38">DisableGyro</a> ()</td></tr>
+<tr class="memdesc:a917bef2be9aed24d8d04e7c2d0bfea38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the gyro correction in drive.  <a href="#a917bef2be9aed24d8d04e7c2d0bfea38"></a><br/></td></tr>
+<tr class="memitem:a45b7c4aa6ad19f98eec78452493f4365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a45b7c4aa6ad19f98eec78452493f4365">EnableLogging</a> ()</td></tr>
+<tr class="memdesc:a45b7c4aa6ad19f98eec78452493f4365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables logging of drive information.  <a href="#a45b7c4aa6ad19f98eec78452493f4365"></a><br/></td></tr>
+<tr class="memitem:a5f32f0b482127084b43c9ebe38cf0013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a5f32f0b482127084b43c9ebe38cf0013">DisableLogging</a> ()</td></tr>
+<tr class="memdesc:a5f32f0b482127084b43c9ebe38cf0013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables logging of drive information.  <a href="#a5f32f0b482127084b43c9ebe38cf0013"></a><br/></td></tr>
+<tr class="memitem:a58edbe12f157df8f943368017d2cf7ae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a58edbe12f157df8f943368017d2cf7ae">GetAvgDistance</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This is the class which controls the driving of the robot. This is a subsystem, and behaves just like every other subsystem in the code library. Rather than using a different class for drive like last year, it is better to contain it all inside this one class.</p>
@@ -155,11 +166,51 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the drive subsystem. Catches any exception that might occur in creating the jaguars. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00007">7</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00008">8</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a917bef2be9aed24d8d04e7c2d0bfea38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a917bef2be9aed24d8d04e7c2d0bfea38">DriveSubsystem::DisableGyro</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Disables the gyro correction in drive. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00107">107</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f32f0b482127084b43c9ebe38cf0013"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a5f32f0b482127084b43c9ebe38cf0013">DriveSubsystem::DisableLogging</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Disables logging of drive information. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00134">134</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a64574f4ef16d79c1a2deae67fb1e24fd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +234,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00043">43</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00048">48</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,7 +272,103 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00057">57</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00058">58</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbceea3fc62d12f99d18b6043068ec33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd">DriveSubsystem::DriveRobot</a> </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>moveValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rotateValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drives the robot given a move value and a rotate value. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">moveValue</td><td>The speed to move forwards and backwards. </td></tr>
+    <tr><td class="paramname">rotateValue</td><td>The speed to rotate the robot. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00068">68</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a120417f222b93e290ee47dd5d075d77f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a120417f222b93e290ee47dd5d075d77f">DriveSubsystem::EnableGyro</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Enables the gyro correction in drive. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00116">116</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a45b7c4aa6ad19f98eec78452493f4365"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a45b7c4aa6ad19f98eec78452493f4365">DriveSubsystem::EnableLogging</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Enables logging of drive information. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00125">125</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58edbe12f157df8f943368017d2cf7ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_drive_subsystem.html#a58edbe12f157df8f943368017d2cf7ae">DriveSubsystem::GetAvgDistance</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00141">141</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -241,7 +388,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the default command for the subsystem. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00034">34</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00039">39</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,7 +408,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Stops all motion on the robot. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00066">66</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00099">99</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -275,7 +422,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_drive_subsystem.html">DriveSubsystem</a>      </li>
 
-    <li class="footer">Generated on Sun Feb 10 2013 22:45:50 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Feb 15 2013 12:30:01 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

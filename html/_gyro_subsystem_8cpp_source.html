@@ -112,45 +112,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="_gyro_subsystem_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="_gyro_subsystem_8h.html">GyroSubsystem.h</a>&quot;</span>
-<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;../Robotmap.h&quot;</span>
-<a name="l00003"></a>00003 
-<a name="l00011"></a><a class="code" href="class_gyro_subsystem.html#ac462f9024703142d3fba1998368c3de2">00011</a> <a class="code" href="class_gyro_subsystem.html#ac462f9024703142d3fba1998368c3de2" title="Constructs the Gyro subsystem.">GyroSubsystem::GyroSubsystem</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> channel, <span class="keywordtype">float</span> sensitivity) : 
-<a name="l00012"></a>00012         Subsystem(<span class="stringliteral">&quot;GyroSubsystem&quot;</span>),
-<a name="l00013"></a>00013         m_gyroChannel(slot, channel)
-<a name="l00014"></a>00014 {
-<a name="l00015"></a>00015         m_gyroChannel.SetAccumulatorDeadband(0);
-<a name="l00016"></a>00016         m_gyroSensor = <span class="keyword">new</span> Gyro(&amp;m_gyroChannel);
-<a name="l00017"></a>00017         m_gyroSensor-&gt;SetSensitivity(sensitivity);
-<a name="l00018"></a>00018         this-&gt;<a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
-<a name="l00019"></a>00019 }
-<a name="l00020"></a>00020     
-<a name="l00024"></a><a class="code" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569">00024</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569" title="Initializes the default command for the gyro subsystem.">GyroSubsystem::InitDefaultCommand</a>() 
-<a name="l00025"></a>00025 {
-<a name="l00026"></a>00026         
-<a name="l00027"></a>00027 }
-<a name="l00028"></a>00028 
-<a name="l00033"></a><a class="code" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6">00033</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6" title="Sets the sensitivity of the Gyro sensor.">GyroSubsystem::SetSensitivity</a>(<span class="keywordtype">float</span> sensitivity)
-<a name="l00034"></a>00034 {
-<a name="l00035"></a>00035         m_gyroSensor-&gt;SetSensitivity(sensitivity);
-<a name="l00036"></a>00036 }
-<a name="l00037"></a>00037 
-<a name="l00041"></a><a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b">00041</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">GyroSubsystem::Reset</a>()
-<a name="l00042"></a>00042 {
-<a name="l00043"></a>00043         m_gyroSensor-&gt;Reset();
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00050"></a><a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431">00050</a> <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431" title="Gets the angle that the gyro is reading.">GyroSubsystem::GetAngle</a>()
-<a name="l00051"></a>00051 {
-<a name="l00052"></a>00052         <span class="comment">//@TODO: Convert this value to something meaningful.</span>
-<a name="l00053"></a>00053         <span class="keywordflow">return</span> m_gyroSensor-&gt;GetAngle();
-<a name="l00054"></a>00054 }
+<a name="l00002"></a>00002 
+<a name="l00012"></a><a class="code" href="class_gyro_subsystem.html#a0e335a561a8925f6680fee7502ca83ef">00012</a> <a class="code" href="class_gyro_subsystem.html#a0e335a561a8925f6680fee7502ca83ef" title="Constructs the Gyro subsystem.">GyroSubsystem::GyroSubsystem</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> sensorChannel, <span class="keywordtype">int</span> tempSensorChannel, <span class="keywordtype">float</span> sensitivity) : 
+<a name="l00013"></a>00013         Subsystem(<span class="stringliteral">&quot;GyroSubsystem&quot;</span>),
+<a name="l00014"></a>00014         m_gyroChannel(slot, sensorChannel),
+<a name="l00015"></a>00015         m_gyroTempChannel(slot, tempSensorChannel),
+<a name="l00016"></a>00016         m_gyroLogFile(<span class="stringliteral">&quot;GyroLog.txt&quot;</span>),
+<a name="l00017"></a>00017         m_gyroFilter(0.1, 0.005)
+<a name="l00018"></a>00018 {
+<a name="l00019"></a>00019         m_gyroChannel.SetAccumulatorDeadband(0);
+<a name="l00020"></a>00020         m_gyroTempChannel.SetAccumulatorCenter(0);
+<a name="l00021"></a>00021         m_gyroSensor = <span class="keyword">new</span> Gyro(&amp;m_gyroChannel);
+<a name="l00022"></a>00022         m_gyroSensor-&gt;SetSensitivity(sensitivity);
+<a name="l00023"></a>00023         this-&gt;<a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
+<a name="l00024"></a>00024 }
+<a name="l00025"></a>00025     
+<a name="l00029"></a><a class="code" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569">00029</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569" title="Initializes the default command for the gyro subsystem.">GyroSubsystem::InitDefaultCommand</a>() 
+<a name="l00030"></a>00030 {
+<a name="l00031"></a>00031         
+<a name="l00032"></a>00032 }
+<a name="l00033"></a>00033 
+<a name="l00038"></a><a class="code" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6">00038</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6" title="Sets the sensitivity of the Gyro sensor.">GyroSubsystem::SetSensitivity</a>(<span class="keywordtype">float</span> sensitivity)
+<a name="l00039"></a>00039 {
+<a name="l00040"></a>00040         m_gyroSensor-&gt;SetSensitivity(sensitivity);
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00046"></a><a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b">00046</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">GyroSubsystem::Reset</a>()
+<a name="l00047"></a>00047 {
+<a name="l00048"></a>00048         m_gyroSensor-&gt;Reset();
+<a name="l00049"></a>00049         m_gyroFilter.<a class="code" href="class_alpha_beta_filter.html#ab85f16ca96c5aaf34d1c7e1bccf3f424" title="Clears the filter.">Clear</a>();
+<a name="l00050"></a>00050 }
+<a name="l00051"></a>00051 
+<a name="l00057"></a><a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431">00057</a> <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431" title="Gets the angle that the gyro is reading, and writes it to a log file.">GyroSubsystem::GetAngle</a>()
+<a name="l00058"></a>00058 {
+<a name="l00059"></a>00059         <span class="keywordtype">float</span> angle = m_gyroSensor-&gt;GetAngle();
+<a name="l00060"></a>00060         <span class="keywordtype">char</span> _tmp[32];
+<a name="l00061"></a>00061         <span class="comment">//sprintf(_tmp, &quot;Angle: %f&quot;, angle);</span>
+<a name="l00062"></a>00062         m_gyroLogFile.<a class="code" href="class_log_file.html#aa7efc59cf7e944a6f28e3fcc5574ca94" title="Write data to the log file. The data will automatically be terminated with a newline.">Write</a>(_tmp);
+<a name="l00063"></a>00063         <span class="keywordflow">return</span> angle;
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00071"></a><a class="code" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263">00071</a> <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263" title="Gets the rate from the gyro sensor, and writes it to a log file.">GyroSubsystem::GetRate</a>()
+<a name="l00072"></a>00072 {
+<a name="l00073"></a>00073         this-&gt;Update();
+<a name="l00074"></a>00074         <span class="keywordtype">float</span> voltage = m_gyroFilter.<a class="code" href="class_alpha_beta_filter.html#a077d0628af55971b79b1eb6329ce04a6">GetValue</a>();
+<a name="l00075"></a>00075         <span class="keywordtype">char</span> _tmp[100];
+<a name="l00076"></a>00076         sprintf(_tmp, <span class="stringliteral">&quot;Voltage: %f&quot;</span>, voltage);
+<a name="l00077"></a>00077         <span class="comment">//m_gyroLogFile.Write(_tmp);</span>
+<a name="l00078"></a>00078         <span class="keywordflow">return</span> -0.55*voltage;
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00086"></a><a class="code" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497">00086</a> <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497" title="Completes a stationary calibration for the gyro sensor.">GyroSubsystem::DoStationaryCalibration</a>(<span class="keywordtype">int</span> samples)
+<a name="l00087"></a>00087 {
+<a name="l00088"></a>00088         <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Beginning stationary Gyro calibration...&quot;</span>);
+<a name="l00089"></a>00089         <span class="keywordtype">float</span> _accumulator = 0;
+<a name="l00090"></a>00090         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; samples; i++)
+<a name="l00091"></a>00091                 _accumulator += m_gyroChannel.GetVoltage();
+<a name="l00092"></a>00092         
+<a name="l00093"></a>00093         m_channelCenter = _accumulator / samples;
+<a name="l00094"></a>00094         
+<a name="l00095"></a>00095         <span class="keywordtype">char</span>* _tmp;
+<a name="l00096"></a>00096         sprintf(_tmp, <span class="stringliteral">&quot;Gyro centered at %f&quot;</span>, m_channelCenter);
+<a name="l00097"></a>00097         <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(_tmp);
+<a name="l00098"></a>00098         this-&gt;<a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
+<a name="l00099"></a>00099 }
+<a name="l00100"></a>00100 
+<a name="l00104"></a>00104 <span class="keywordtype">void</span> GyroSubsystem::Update()
+<a name="l00105"></a>00105 {
+<a name="l00106"></a>00106         <span class="keywordtype">float</span> voltage = 0.55 * (m_gyroChannel.GetVoltage() - m_channelCenter);
+<a name="l00107"></a>00107         m_gyroFilter.<a class="code" href="class_alpha_beta_filter.html#a4b8e01dd491c3b713fdffafe78da9a5b">Update</a>(voltage, GetFPGATime());
+<a name="l00108"></a>00108 }
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_gyro_subsystem_8cpp.html">GyroSubsystem.cpp</a>      </li>
 
-    <li class="footer">Generated on Sun Feb 10 2013 22:45:49 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Feb 15 2013 12:30:01 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

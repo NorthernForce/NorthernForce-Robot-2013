@@ -115,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00002"></a>00002 <span class="preprocessor">#include &quot;../Robotmap.h&quot;</span>
 <a name="l00003"></a>00003 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
 <a name="l00004"></a>00004 
-<a name="l00008"></a>00008 IMAQ_FUNC <span class="keywordtype">int</span> <a class="code" href="_log_system_8cpp.html#a2f1e06a99ab4462d81d3bfbfd7486f74" title="Private NI function needed to write to the VxWorks target.">Priv_SetWriteFileAllowed</a>(UINT32 enable); 
+<a name="l00008"></a>00008 IMAQ_FUNC <span class="keywordtype">int</span> <a class="code" href="_log_file_8cpp.html#a2f1e06a99ab4462d81d3bfbfd7486f74" title="Private NI function needed to write to the VxWorks target.">Priv_SetWriteFileAllowed</a>(UINT32 enable); 
 <a name="l00009"></a>00009 
 <a name="l00017"></a><a class="code" href="class_log_system.html#a449521bde416544dd0c8e587e0a3a862">00017</a> <a class="code" href="class_log_system.html#a449521bde416544dd0c8e587e0a3a862" title="Constructs the Logging subsystem.">LogSystem::LogSystem</a>(<a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02" title="The different possible levels of debug logging.">LogPriority</a> level) : 
 <a name="l00018"></a>00018         Subsystem(<span class="stringliteral">&quot;LogSystem&quot;</span>) , 
@@ -134,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00042"></a>00042 <span class="keywordtype">void</span> LogSystem::SetDirectory(<span class="keyword">const</span> <span class="keywordtype">char</span>* directory)
 <a name="l00043"></a>00043 {
 <a name="l00044"></a>00044         strcpy(m_logDirectory, directory);
-<a name="l00045"></a>00045         <a class="code" href="_log_system_8cpp.html#a2f1e06a99ab4462d81d3bfbfd7486f74" title="Private NI function needed to write to the VxWorks target.">Priv_SetWriteFileAllowed</a>(1);
+<a name="l00045"></a>00045         <a class="code" href="_log_file_8cpp.html#a2f1e06a99ab4462d81d3bfbfd7486f74" title="Private NI function needed to write to the VxWorks target.">Priv_SetWriteFileAllowed</a>(1);
 <a name="l00046"></a>00046 }
 <a name="l00047"></a>00047 
 <a name="l00055"></a><a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb">00055</a> <span class="keywordtype">void</span> <a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogSystem::LogMessage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* message, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02" title="The different possible levels of debug logging.">LogPriority</a> level)
@@ -148,14 +148,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00063"></a>00063 
 <a name="l00070"></a>00070 <span class="keywordtype">void</span> LogSystem::Print(<span class="keyword">const</span> <span class="keywordtype">char</span>* message)
 <a name="l00071"></a>00071 {
-<a name="l00072"></a>00072         printf(<span class="stringliteral">&quot;%i:  %s\n&quot;</span>,GetFPGATime(),message);
+<a name="l00072"></a>00072         printf(<span class="stringliteral">&quot;%i:  %s\n&quot;</span>, GetFPGATime()/10000, message);
 <a name="l00073"></a>00073 }
 <a name="l00074"></a>00074 
 <a name="l00081"></a>00081 <span class="keywordtype">void</span> LogSystem::PrintToFile(<span class="keyword">const</span> <span class="keywordtype">char</span>* message)
 <a name="l00082"></a>00082 {
 <a name="l00083"></a>00083         <span class="comment">//@TODO Log message to the logfile.</span>
 <a name="l00084"></a>00084         FILE* logFile = fopen(<span class="stringliteral">&quot;logfile.txt&quot;</span>,<span class="stringliteral">&quot;a&quot;</span>); 
-<a name="l00085"></a>00085         fprintf(logFile, <span class="stringliteral">&quot;%i:  %s\n&quot;</span>,GetFPGATime(),message);
+<a name="l00085"></a>00085         fprintf(logFile, <span class="stringliteral">&quot;%i:  %s\n&quot;</span>, GetFPGATime()/10000, message);
 <a name="l00086"></a>00086         fclose(logFile);
 <a name="l00087"></a>00087 }
 </pre></div></div><!-- contents -->
@@ -164,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_log_system_8cpp.html">LogSystem.cpp</a>      </li>
 
-    <li class="footer">Generated on Sun Feb 10 2013 22:45:49 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Feb 15 2013 12:30:01 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>
