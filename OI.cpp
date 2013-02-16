@@ -2,6 +2,8 @@
 #include "Commands/DisableEncoders.h"
 #include "Commands/EnableEncoders.h"
 #include "Commands/SetDrivePID.h"
+#include "Commands/EnableGyro.h"
+#include "Commands/DisableGyro.h"
 
 /**
  * @brief Initializes the operator interface.
@@ -14,6 +16,8 @@ OI::OI() :
 	m_driverStick.Back.WhenPressed(new DisableEncoders());
 	m_driverStick.Start.WhenPressed(new EnableEncoders());
 	m_driverStick.Y.WhenPressed(new SetDrivePID());
+	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
+	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
 }
 
 /**

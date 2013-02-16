@@ -60,6 +60,16 @@ public:
 	{
 		return m_encodersEnabled;
 	}
+
+	/**
+	 * @brief Gets whether or not the gyro is enabled.
+	 * @return Whether or not the gyro is enabled.
+	 */
+	inline bool GyroEnabled()
+	{
+		return m_gyroEnabled;
+	}
+
 };
 
 #endif
