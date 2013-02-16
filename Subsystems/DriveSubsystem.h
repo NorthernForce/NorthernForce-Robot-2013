@@ -35,6 +35,7 @@ private:
     static const double kDriveI = 0.0;
     static const double kDriveD = 0.0;
     static const int kEncoderPulsesPerRev = 256;
+
 public:
 	DriveSubsystem();
 	void InitDefaultCommand();
@@ -50,6 +51,15 @@ public:
 	void EnableEncoders();
 	void DisableEncoders();
 	void ChangeDrivePID(float p, float i, float d);
+	
+	/**
+	 * @brief Gets whether or not the encoders are enabled.
+	 * @return Whether or not the encoders are enabled.
+	 */
+	inline bool EncodersEnabled()
+	{
+		return m_encodersEnabled;
+	}
 };
 
 #endif

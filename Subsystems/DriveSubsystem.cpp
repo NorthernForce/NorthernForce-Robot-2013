@@ -7,13 +7,13 @@
  */
 DriveSubsystem::DriveSubsystem() try : 
 	Subsystem("DriveSubsystem"),
-	m_frontLeftMotor((CommandBase::s_Log->LogMessage("Initializing front left jaguar. \n", kLogPriorityDebug), 
+	m_frontLeftMotor((CommandBase::s_Log->LogMessage("Initializing front left jaguar.", kLogPriorityDebug), 
 		kFrontLeftJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_frontRightMotor((CommandBase::s_Log->LogMessage("Initializing front right jaguar. \n", kLogPriorityDebug), 
+	m_frontRightMotor((CommandBase::s_Log->LogMessage("Initializing front right jaguar.", kLogPriorityDebug), 
 		kFrontRightJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_rearLeftMotor((CommandBase::s_Log->LogMessage("Initializing rear left jaguar. \n", kLogPriorityDebug), 
+	m_rearLeftMotor((CommandBase::s_Log->LogMessage("Initializing rear left jaguar.", kLogPriorityDebug), 
 		kRearLeftJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_rearRightMotor((CommandBase::s_Log->LogMessage("Initializing rear right jaguar. \n", kLogPriorityDebug), 
+	m_rearRightMotor((CommandBase::s_Log->LogMessage("Initializing rear right jaguar.", kLogPriorityDebug), 
 		kRearRightJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
 	m_driveErrAccumulator(0.0),
@@ -44,7 +44,8 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {	
-	this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger());
+	(m_encodersEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger()) : 
+		this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger());
 }
 
 /**
@@ -158,20 +159,22 @@ void DriveSubsystem::EnableEncoders()
 	m_frontRightMotor.SetPID(kDriveP, kDriveI, kDriveD);
 	m_rearLeftMotor.SetPID(kDriveP, kDriveI, kDriveD);
 	m_rearRightMotor.SetPID(kDriveP, kDriveI, kDriveD);
-	m_frontLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
-	m_frontRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
-	m_rearLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
-	m_rearRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
 
 	m_frontLeftMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 	m_frontRightMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 	m_rearLeftMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 	m_rearRightMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 
+	m_frontLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+	m_frontRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+	m_rearLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+	m_rearRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+
 	m_frontLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 	m_frontRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 	m_rearLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 	m_rearRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	
 	m_encodersEnabled = true;
 
 	m_frontLeftMotor.EnableControl();

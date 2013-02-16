@@ -1,4 +1,7 @@
 #include "OI.h"
+#include "Commands/DisableEncoders.h"
+#include "Commands/EnableEncoders.h"
+#include "Commands/SetDrivePID.h"
 
 /**
  * @brief Initializes the operator interface.
@@ -8,6 +11,9 @@ OI::OI() :
 	m_manipulatorStick(2)
 {
 	// Process operator interface input here.
+	m_driverStick.Back.WhenPressed(new DisableEncoders());
+	m_driverStick.Start.WhenPressed(new EnableEncoders());
+	m_driverStick.Y.WhenPressed(new SetDrivePID());
 }
 
 /**
