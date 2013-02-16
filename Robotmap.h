@@ -65,6 +65,7 @@ enum JaguarAddresses
 	 kRearRightJaguarAddress = 3,
      kRearLeftJaguarAddress = 4,
      kShooterJaguarAddress = 5,
+     kShooterElevatorJaguarAddress = 6,
 };
 
 enum DigitalAdresses {
@@ -113,5 +114,8 @@ static const int kGyroChannel = 1;
 static const int kGyroSlot = 1;
 static const int kGyroTemp = 2;
 static const float kGyroSensitivity = 0.007;
+
+// Shooter Elevator Constants
+static const float kElevatorDegreesPerVolt = 1.0;
 
 #endif

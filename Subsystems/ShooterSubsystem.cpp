@@ -8,12 +8,8 @@ ShooterSubsystem::ShooterSubsystem() try :
 	Subsystem("ShooterSubsystem"),
     m_shooterMotor(kShooterJaguarAddress),
     m_shooterFlicker(kShooterFlickerRelayAddress),
-    m_shooterElevatorMotor(kShooterElevatorRealayAddress),
-    m_elevationPotentiometer(kShooterElevatorPotChannel),
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
     m_counterLastTime(GetFPGATime())
-    
-    
 {
 	// Make sure that the shooter motor has been enabled 
 	EnableMotor();
@@ -79,3 +75,4 @@ void ShooterSubsystem::Stop()
 void ShooterSubsystem::EnableMotor() {
 	m_shooterMotor.EnableControl(0.0);
 }
+
