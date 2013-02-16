@@ -126,7 +126,8 @@ Inheritance diagram for CommandBase:</div>
   <img src="class_command_base.png" usemap="#CommandBase_map" alt=""/>
   <map id="CommandBase_map" name="CommandBase_map">
 <area href="class_drive_with_joystick.html" alt="DriveWithJoystick" shape="rect" coords="0,56,113,80"/>
-<area href="class_update_nav.html" alt="UpdateNav" shape="rect" coords="123,56,236,80"/>
+<area href="class_elevate_shooter.html" alt="ElevateShooter" shape="rect" coords="123,56,236,80"/>
+<area href="class_update_nav.html" alt="UpdateNav" shape="rect" coords="246,56,359,80"/>
 </map>
  </div></div>
 
@@ -149,11 +150,12 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a0025fd9d883de5244af1136ce8882101"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_socket_client.html">SocketClient</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_command_base.html#a0025fd9d883de5244af1136ce8882101">s_SockClient</a> = NULL</td></tr>
 <tr class="memitem:ae924b04453d3a85956b937740cf88dd6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_gyro_subsystem.html">GyroSubsystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_command_base.html#ae924b04453d3a85956b937740cf88dd6">s_Gyro</a> = NULL</td></tr>
 <tr class="memitem:a21456ffb72f694c3fa1939ec4fa06e55"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_robot_nav.html">RobotNav</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55">s_Nav</a> = NULL</td></tr>
+<tr class="memitem:a0a293e68f56778bbc7b0b4f561a9c584"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_command_base.html#a0a293e68f56778bbc7b0b4f561a9c584">s_ShooterElevator</a> = NULL</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The base for all commands. All atomic commands should subclass <a class="el" href="class_command_base.html">CommandBase</a>. <a class="el" href="class_command_base.html">CommandBase</a> stores creates and stores each control system. To access a subsystem elsewhere in your code in your code use CommandBase.examplesubsystem </p>
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00021">21</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00022">22</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a329ddd4c5a6ffd6c9d775a08c361823b"></a>
 <div class="memitem">
@@ -217,7 +219,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Initializes the commandbase. Creates instances of all the subsystems for use elsewhere on the robot. </p>
 
-<p>Definition at line <a class="el" href="_command_base_8cpp_source.html#l00030">30</a> of file <a class="el" href="_command_base_8cpp_source.html">CommandBase.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8cpp_source.html#l00031">31</a> of file <a class="el" href="_command_base_8cpp_source.html">CommandBase.cpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +235,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00029">29</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00030">30</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 
 </div>
 </div>
@@ -248,7 +250,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00031">31</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00032">32</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 
 </div>
 </div>
@@ -263,7 +265,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00033">33</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00034">34</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +280,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00030">30</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00031">31</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 
 </div>
 </div>
@@ -293,7 +295,22 @@ Static Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00034">34</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00035">35</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0a293e68f56778bbc7b0b4f561a9c584"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a> * <a class="el" href="class_command_base.html#a0a293e68f56778bbc7b0b4f561a9c584">CommandBase::s_ShooterElevator</a> = NULL<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00036">36</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 
 </div>
 </div>
@@ -308,7 +325,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00032">32</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_base_8h_source.html#l00033">33</a> of file <a class="el" href="_command_base_8h_source.html">CommandBase.h</a>.</p>
 
 </div>
 </div>
@@ -322,7 +339,7 @@ Static Public Attributes</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_command_base.html">CommandBase</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 12:30:01 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Feb 15 2013 22:01:49 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

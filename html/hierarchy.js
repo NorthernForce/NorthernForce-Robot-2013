@@ -4,6 +4,7 @@ var hierarchy =
     [ "Attack3Joystick", "class_attack3_joystick.html", null ],
     [ "CommandBase", "class_command_base.html", [
       [ "DriveWithJoystick", "class_drive_with_joystick.html", null ],
+      [ "ElevateShooter", "class_elevate_shooter.html", null ],
       [ "UpdateNav", "class_update_nav.html", null ]
     ] ],
     [ "DriveSubsystem", "class_drive_subsystem.html", null ],
@@ -16,6 +17,7 @@ var hierarchy =
     [ "RampedCANJaguar", "class_ramped_c_a_n_jaguar.html", null ],
     [ "RobotNav", "class_robot_nav.html", null ],
     [ "RobotPosition", "struct_robot_position.html", null ],
+    [ "ShooterElevatorSubsystem", "class_shooter_elevator_subsystem.html", null ],
     [ "ShooterSubsystem", "class_shooter_subsystem.html", null ],
     [ "SocketClient", "class_socket_client.html", null ],
     [ "Target", "struct_target.html", null ],

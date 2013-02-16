@@ -11,6 +11,7 @@ var _robotmap_8h =
     [ "kDriveThereTolerance", "_robotmap_8h.html#abaaf4bd5683737ca8c94d6ceeb23b538", null ],
     [ "kDriveTolerance", "_robotmap_8h.html#a6fe0f0f87fddd425407e7472972ea4ce", null ],
     [ "kDriveVelocityLimit", "_robotmap_8h.html#aff8521f71c512bb038f2e1b1b0931c06", null ],
+    [ "kElevatorDegreesPerVolt", "_robotmap_8h.html#aa405277321832b87e69fea5f9de2d635", null ],
     [ "kGyroChannel", "_robotmap_8h.html#af5590dcf9ab0e444977bbddb9d7d7e0a", null ],
     [ "kGyroSensitivity", "_robotmap_8h.html#aa7b55c86fcd8236bae7cd512c78e7f68", null ],
     [ "kGyroSlot", "_robotmap_8h.html#ab43f18ea85206533b741149a290cfc39", null ],

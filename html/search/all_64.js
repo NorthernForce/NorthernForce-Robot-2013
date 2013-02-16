@@ -2,6 +2,7 @@ var searchData=
 [
   ['digitaladresses',['DigitalAdresses',['../_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33',1,'Robotmap.h']]],
   ['disablecontrol',['DisableControl',['../class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0',1,'RampedCANJaguar']]],
+  ['disableencoders',['DisableEncoders',['../class_drive_subsystem.html#aa82d53aadf15da68cc1c9f09a2526c0d',1,'DriveSubsystem']]],
   ['disablegyro',['DisableGyro',['../class_drive_subsystem.html#a917bef2be9aed24d8d04e7c2d0bfea38',1,'DriveSubsystem']]],
   ['disablelogging',['DisableLogging',['../class_alpha_beta_filter.html#a824718de6d205a926dc79714bb19bfc7',1,'AlphaBetaFilter::DisableLogging()'],['../class_drive_subsystem.html#a5f32f0b482127084b43c9ebe38cf0013',1,'DriveSubsystem::DisableLogging()']]],
   ['dostationarycalibration',['DoStationaryCalibration',['../class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497',1,'GyroSubsystem']]],

@@ -143,6 +143,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5f32f0b482127084b43c9ebe38cf0013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a5f32f0b482127084b43c9ebe38cf0013">DisableLogging</a> ()</td></tr>
 <tr class="memdesc:a5f32f0b482127084b43c9ebe38cf0013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables logging of drive information.  <a href="#a5f32f0b482127084b43c9ebe38cf0013"></a><br/></td></tr>
 <tr class="memitem:a58edbe12f157df8f943368017d2cf7ae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a58edbe12f157df8f943368017d2cf7ae">GetAvgDistance</a> ()</td></tr>
+<tr class="memitem:a254412676afd2a736233806a0f4173f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a254412676afd2a736233806a0f4173f4">EnableEncoders</a> ()</td></tr>
+<tr class="memdesc:a254412676afd2a736233806a0f4173f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables driving with encoders. Also used for initializing encoder-driven jaguars.  <a href="#a254412676afd2a736233806a0f4173f4"></a><br/></td></tr>
+<tr class="memitem:aa82d53aadf15da68cc1c9f09a2526c0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#aa82d53aadf15da68cc1c9f09a2526c0d">DisableEncoders</a> ()</td></tr>
+<tr class="memdesc:aa82d53aadf15da68cc1c9f09a2526c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables driving with encoders. Also used for initializing non encoder-driven jaguars.  <a href="#aa82d53aadf15da68cc1c9f09a2526c0d"></a><br/></td></tr>
+<tr class="memitem:a5d93a41e707fbc8b2dc9918c2c67ccbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a5d93a41e707fbc8b2dc9918c2c67ccbf">ChangeDrivePID</a> (float p, float i, float d)</td></tr>
+<tr class="memdesc:a5d93a41e707fbc8b2dc9918c2c67ccbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the PID values on the drive encoders.  <a href="#a5d93a41e707fbc8b2dc9918c2c67ccbf"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This is the class which controls the driving of the robot. This is a subsystem, and behaves just like every other subsystem in the code library. Rather than using a different class for drive like last year, it is better to contain it all inside this one class.</p>
@@ -171,6 +177,71 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a5d93a41e707fbc8b2dc9918c2c67ccbf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a5d93a41e707fbc8b2dc9918c2c67ccbf">DriveSubsystem::ChangeDrivePID</a> </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Changes the PID values on the drive encoders. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>The P value to set. </td></tr>
+    <tr><td class="paramname">i</td><td>The I value to set. </td></tr>
+    <tr><td class="paramname">d</td><td>The D value to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00218">218</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa82d53aadf15da68cc1c9f09a2526c0d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#aa82d53aadf15da68cc1c9f09a2526c0d">DriveSubsystem::DisableEncoders</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Disables driving with encoders. Also used for initializing non encoder-driven jaguars. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00189">189</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a917bef2be9aed24d8d04e7c2d0bfea38"></a>
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +258,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Disables the gyro correction in drive. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00107">107</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00099">99</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -207,7 +278,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Disables logging of drive information. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00134">134</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00126">126</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -234,7 +305,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00048">48</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00045">45</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -272,7 +343,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00058">58</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00055">55</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -310,7 +381,27 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00068">68</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00065">65</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a254412676afd2a736233806a0f4173f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a254412676afd2a736233806a0f4173f4">DriveSubsystem::EnableEncoders</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Enables driving with encoders. Also used for initializing encoder-driven jaguars. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00143">143</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +421,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Enables the gyro correction in drive. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00116">116</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00108">108</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -350,7 +441,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Enables logging of drive information. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00125">125</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00117">117</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -368,7 +459,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00141">141</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00133">133</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -388,7 +479,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the default command for the subsystem. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00039">39</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00036">36</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +499,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Stops all motion on the robot. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00099">99</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00091">91</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
 
 </div>
 </div>
@@ -422,7 +513,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_drive_subsystem.html">DriveSubsystem</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 12:30:01 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Feb 15 2013 22:01:49 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

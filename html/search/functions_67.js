@@ -19,6 +19,7 @@ var searchData=
   ['getbutton8',['GetButton8',['../class_attack3_joystick.html#a0406e53554d419d937d1d0a4314c957a',1,'Attack3Joystick']]],
   ['getbutton9',['GetButton9',['../class_attack3_joystick.html#abebabfc2edc4c5146c5bb52b4958b11b',1,'Attack3Joystick']]],
   ['getdriverstick',['GetDriverStick',['../class_o_i.html#aa2737d12fc7666bb98987ade700b38fc',1,'OI']]],
+  ['getelevationangle',['GetElevationAngle',['../class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49',1,'ShooterElevatorSubsystem']]],
   ['getlastdata',['GetLastData',['../class_socket_client.html#ac672b3c5da856a74a0a3414abba00e94',1,'SocketClient']]],
   ['getlastmeasurementtime',['GetLastMeasurementTime',['../class_alpha_beta_filter.html#a43f4cfaa8e07d20e35c6dd0417ac024d',1,'AlphaBetaFilter']]],
   ['getlastposition',['GetLastPosition',['../class_socket_client.html#a58ead1a8d3adda92f7ad9dcdded58541',1,'SocketClient']]],

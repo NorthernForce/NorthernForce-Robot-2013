@@ -19,6 +19,7 @@ var searchData=
   ['klogprioritysystem',['kLogPrioritySystem',['../_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02a40291a2e7827f05a899d8af5e98adfe7',1,'Robotmap.h']]],
   ['krearleftjaguaraddress',['kRearLeftJaguarAddress',['../_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ac937c786b35aa0bf707747abc9458e8d',1,'Robotmap.h']]],
   ['krearrightjaguaraddress',['kRearRightJaguarAddress',['../_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a9c01d7c92c7d3da2785761a89eb90d1a',1,'Robotmap.h']]],
+  ['kshooterelevatorjaguaraddress',['kShooterElevatorJaguarAddress',['../_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9abb84165b09d7576bcbf2630563e09b0b',1,'Robotmap.h']]],
   ['kshooterelevatorpotchannel',['kShooterElevatorPotChannel',['../_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da01588c5a24462cbc5d3fc94af6781a1e',1,'Robotmap.h']]],
   ['kshooterelevatorrealayaddress',['kShooterElevatorRealayAddress',['../_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffacc02f6ea6303f926cb2f9e134c3f6ea3',1,'Robotmap.h']]],
   ['kshooterflickerrelayaddress',['kShooterFlickerRelayAddress',['../_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544',1,'Robotmap.h']]],
