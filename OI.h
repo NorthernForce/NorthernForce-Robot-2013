@@ -13,11 +13,11 @@ class OI
 {
 private:
 	FRCXboxJoystick m_driverStick;
-	FRCXboxJoystick m_manipulatorStick;
+	Attack3Joystick m_manipulatorStick;
 public:
 	OI();
 	FRCXboxJoystick& GetDriverStick();
-	FRCXboxJoystick& GetManipulatorStick();
+	Attack3Joystick& GetManipulatorStick();
 };
 
 #endif
