@@ -21,13 +21,20 @@ private:
 	RampedCANJaguar m_rearLeftMotor;
 	RampedCANJaguar m_rearRightMotor;
 	RobotDrive m_drive;
+    
     float m_driveErrAccumulator;
     LogFile m_DriveLog;
+    bool m_loggingEnabled;
+    bool m_gyroEnabled;
+    bool m_encodersEnabled;
+
     static const double kDriveSpinP = 1.75;
     static const double kDriveSpinI = 0.15;
     static const double kDriveSpinD = 0.0;
-    bool m_loggingEnabled;
-    bool m_gyroEnabled;
+    static const double kDriveP = 1.0;
+    static const double kDriveI = 0.0;
+    static const double kDriveD = 0.0;
+    static const int kEncoderPulsesPerRev = 256;
 public:
 	DriveSubsystem();
 	void InitDefaultCommand();
@@ -40,6 +47,9 @@ public:
 	void EnableLogging();
 	void DisableLogging();
 	double GetAvgDistance();
+	void EnableEncoders();
+	void DisableEncoders();
+	void ChangeDrivePID(float p, float i, float d);
 };
 
 #endif
