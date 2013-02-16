@@ -9,7 +9,7 @@
 
 ShooterElevatorSubsystem::ShooterElevatorSubsystem() :
 	Subsystem("ShooterElevatorSubsystem"),
-    m_shooterElevatorMotor(kShooterElevatorRealayAddress),
+    m_shooterElevatorMotor(kShooterElevatorVictorAddress),
     m_elevationPotentiometer(kShooterElevatorPotChannel)
 {
 }

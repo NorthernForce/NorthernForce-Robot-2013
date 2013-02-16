@@ -60,25 +60,28 @@ enum LogPriority
  */
 enum JaguarAddresses
 {
-	 kFrontRightJaguarAddress = 1,
-	 kFrontLeftJaguarAddress = 2,
-	 kRearRightJaguarAddress = 3,
-     kRearLeftJaguarAddress = 4,
-     kShooterJaguarAddress = 5,
-     kShooterElevatorJaguarAddress = 6,
+	kFrontRightJaguarAddress = 1,
+	kFrontLeftJaguarAddress = 2,
+	kRearRightJaguarAddress = 3,
+    kRearLeftJaguarAddress = 4,
+    kShooterJaguarAddress = 5,
 };
 
 enum DigitalAdresses {
-	kShooterWheelLightSensorAddress = 1,
+    kShooterWheelLightSensorAddress = 1,
+    kShooterElevatorVictorAddress = 2,
 };
 
+/**
+ * @brief The addresses of the relays
+ */
 enum RelayAdresses {
 	kShooterFlickerRelayAddress = 1,
-	kShooterElevatorRealayAddress = 2,
 };
 
 enum AnalogChannels {
-	kShooterElevatorPotChannel = 1,
+    kGyroChannel = 1,
+	kShooterElevatorPotChannel = 2,
 };
 
 /**
@@ -110,7 +113,6 @@ static const float kDriveTolerance = 0.2;
 static const float kDriveThereTolerance = 0.1;
 
 //Gyro Control Variables
-static const int kGyroChannel = 1;
 static const int kGyroSlot = 1;
 static const int kGyroTemp = 2;
 static const float kGyroSensitivity = 0.007;
