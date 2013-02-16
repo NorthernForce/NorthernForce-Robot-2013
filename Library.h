@@ -19,6 +19,7 @@
 #include "lib/Vector3D.h"
 #include "lib/RampedCANJaguar.h"
 #include "lib/LogFile.h"
+
 #include "Robotmap.h"
 
 #endif

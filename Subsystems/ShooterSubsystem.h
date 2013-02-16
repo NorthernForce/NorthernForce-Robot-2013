@@ -21,8 +21,6 @@ class ShooterSubsystem: public Subsystem
 private:
 	CANJaguar m_shooterMotor;
     Relay m_shooterFlicker;
-    Relay m_shooterElevatorMotor;
-    AnalogChannel m_elevationPotentiometer;
     Counter m_shooterWheelLightSensor;
     // This is the time of the last reset of the counter
     UINT32 m_counterLastTime;

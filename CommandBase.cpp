@@ -22,6 +22,7 @@ DriveSubsystem* CommandBase::s_Drive = NULL;
 SocketClient* CommandBase::s_SockClient = NULL;
 GyroSubsystem* CommandBase::s_Gyro = NULL;
 RobotNav* CommandBase::s_Nav = NULL;
+ShooterElevatorSubsystem* CommandBase::s_ShooterElevator = NULL;
 
 /**
  * @brief Initializes the commandbase. Creates instances of
@@ -32,7 +33,8 @@ void CommandBase::init()
 	oi = new OI();
 	s_Log = new LogSystem(kLogPrioritySystem);
 	s_Drive = new DriveSubsystem();
-	s_SockClient = new SocketClient("10.1.72.11",1180);
-	s_Gyro = new GyroSubsystem(kGyroSlot, kGyroChannel, kGyroSensitivity);
+	s_SockClient = new SocketClient("10.1.72.15",1180);
+	s_Gyro = new GyroSubsystem(kGyroSlot, kGyroChannel, kGyroTemp, kGyroSensitivity);
 	s_Nav  = new RobotNav();
+	//s_ShooterElevator = new ShooterElevatorSubsystem();
 }

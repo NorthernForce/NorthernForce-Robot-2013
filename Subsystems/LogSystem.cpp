@@ -19,8 +19,8 @@ LogSystem::LogSystem(LogPriority level) :
 	m_logLevel(level)
 {
 	this->SetDirectory("/tmp/log");
-	this->PrintToFile("-----System Boot: Starting New Log-----");
-	this->Print("-----System Boot: Starting New Log-----");
+	this->PrintToFile("\n-----System Boot: Starting New Log-----");
+	this->Print("\n-----System Boot: Starting New Log-----");
 }
     
 /**
@@ -69,7 +69,7 @@ void LogSystem::LogMessage(const char* message, LogPriority level)
  */
 void LogSystem::Print(const char* message)
 {
-	printf("%i:  %s\n", GetFPGATime()/10000, message);
+	printf("%i:  %s\n", GetFPGATime()/100000, message);
 }
 
 /**
@@ -82,6 +82,6 @@ void LogSystem::PrintToFile(const char* message)
 {
 	//@TODO Log message to the logfile.
 	FILE* logFile = fopen("logfile.txt","a"); 
-	fprintf(logFile, "%i:  %s\n", GetFPGATime()/10000, message);
+	fprintf(logFile, "%i:  %s\n", GetFPGATime()/100000, message);
 	fclose(logFile);
 }

@@ -9,6 +9,7 @@
 #include "Subsystems/SocketClient.h"
 #include "Subsystems/GyroSubsystem.h"
 #include "Subsystems/RobotNav.h"
+#include "Subsystems/ShooterElevatorSubsystem.h"
 
 class SocketClient;
 class GyroSubsystem;
@@ -32,6 +33,7 @@ public:
 	static SocketClient *s_SockClient;
 	static GyroSubsystem *s_Gyro;
 	static RobotNav *s_Nav;
+	static ShooterElevatorSubsystem *s_ShooterElevator;
 };
 
 #endif
