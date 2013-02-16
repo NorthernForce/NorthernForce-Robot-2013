@@ -1,5 +1,6 @@
 #include "DriveSubsystem.h"
 #include "../Commands/DriveWithJoystick.h"
+
 /**
  * @brief Initializes the drive subsystem. Catches any exception
  * that might occur in creating the jaguars. 
@@ -44,27 +45,8 @@ void DriveSubsystem::InitDefaultCommand()
  * @param stick The FRCXboxJoystick to drive the robot with.
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
-{
-	if (m_gyroEnabled)
-	{
-		float gyroRate = CommandBase::s_Gyro->GetRate();
-	    float spin = stick.GetRightStickX();
-	    float error = spin - gyroRate;
-	    m_driveErrAccumulator = m_driveErrAccumulator + error;
-	    
-	    if (m_loggingEnabled)
-	    {
-		    char _tmp[200];
-		    sprintf(_tmp, "%f,%f,%f,%f",spin,gyroRate,error,m_driveErrAccumulator);
-		    m_DriveLog.Write(_tmp);
-		}
-		
-		m_drive.ArcadeDrive(stick.GetLeftStickY(), kDriveSpinP * error + kDriveSpinI * m_driveErrAccumulator);
-	}
-	else
-	{
-		m_drive.ArcadeDrive(stick.GetLeftStickY(), stick.GetRightStickY());
-	}
+{	
+	this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger());
 }
 
 /**
@@ -74,9 +56,9 @@ void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
  */
 void DriveSubsystem::DriveRobot(Attack3Joystick& moveStick, Attack3Joystick& rotateStick)
 {
-	m_drive.ArcadeDrive(moveStick, 1, rotateStick, 2);
+	this->DriveRobot(moveStick.GetY(), moveStick.GetX());
 }
-
+ 
 /**
  * @brief Drives the robot given a move value and a rotate value.
  * @param moveValue The speed to move forwards and backwards.
@@ -84,7 +66,26 @@ void DriveSubsystem::DriveRobot(Attack3Joystick& moveStick, Attack3Joystick& rot
  */
 void DriveSubsystem::DriveRobot(float moveValue, float rotateValue)
 {
-	m_drive.ArcadeDrive(moveValue, rotateValue, true);
+	if (m_gyroEnabled)
+	{
+		float gyroRate = CommandBase::s_Gyro->GetRate();
+	    float error = rotateValue - gyroRate;
+	    m_driveErrAccumulator += error;
+	    
+	    if (DriverStation::GetInstance()->GetDigitalIn(1))
+	    {
+		    char _tmp[40];
+		    sprintf(_tmp, "%5.3f,%5.3f,%5.3f,%5.3f",
+		    	rotateValue,gyroRate,error,m_driveErrAccumulator);
+		    m_DriveLog.Write(_tmp);
+		}
+		
+		m_drive.ArcadeDrive(moveValue, kDriveSpinP * error + kDriveSpinI * m_driveErrAccumulator, true);
+	}
+	else
+	{
+		m_drive.ArcadeDrive(moveValue, rotateValue, true);
+	}
 }
 
 /**

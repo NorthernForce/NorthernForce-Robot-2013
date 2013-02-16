@@ -24,10 +24,10 @@ private:
     float m_driveErrAccumulator;
     LogFile m_DriveLog;
     static const double kDriveSpinP = 1.75;
-    static const double kDriveSpinI = 0.001;
+    static const double kDriveSpinI = 0.15;
+    static const double kDriveSpinD = 0.0;
     bool m_loggingEnabled;
     bool m_gyroEnabled;
-    float m_lastError;
 public:
 	DriveSubsystem();
 	void InitDefaultCommand();
