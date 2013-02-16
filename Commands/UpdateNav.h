@@ -8,6 +8,7 @@
 
 
 
+
 /**
  *
  *
@@ -24,7 +25,7 @@ class UpdateNav: public CommandBase
 	virtual void Interrupted();
 	
   private:
-	double m_Distance;
+	double m_DistanceEncoder;   
 	
 	
 };

@@ -1,6 +1,7 @@
 #include "RobotNav.h"
 #include "../Robotmap.h"
 #include "math.h"
+#include "../Commands/UpdateNav.h"
 
 RobotNav::RobotNav() : Subsystem("RobotNav") 
 {
@@ -15,7 +16,7 @@ RobotNav::RobotNav() : Subsystem("RobotNav")
 }
 
 
-RobotNav::RobotNav(double CurrentX, double CurrentY, double Theta) : Subsystem("RobotNav")
+RobotNav::RobotNav(float CurrentX, float CurrentY, double Theta) : Subsystem("RobotNav")
 {
 	m_Time     = GetFPGATime();
 	m_CurrentX = CurrentX;
@@ -25,16 +26,18 @@ RobotNav::RobotNav(double CurrentX, double CurrentY, double Theta) : Subsystem("
     
 
 
-void RobotNav::InitDefaultCommand() {
+void RobotNav::InitDefaultCommand() 
+{
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new UpdateNav());
 }
 
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void RobotNav::propagate(unsigned int time, double deltaX, double deltaY, double deltaTheta)
+void RobotNav::propagate(unsigned int time, float deltaX, float deltaY, double deltaTheta)
 {
 	m_Time = time;
 	m_CurrentX = m_CurrentX + deltaX;
@@ -43,20 +46,9 @@ void RobotNav::propagate(unsigned int time, double deltaX, double deltaY, double
 	
 }
 
-/*
-void RobotNav::propagate(unsigned int time, double deltaDistance, double deltaTheta)
-{
-	
-	m_Time = time;
-	m_Theta = m_Theta + deltaTheta;
-	m_CurrentX = m_CurrentX + ( deltaDistance * cos(m_Theta));
-	m_CurrentY = m_CurrentY + (deltaDistance * sin(m_Theta));
-	
-	
-}
-*/
 
-void RobotNav::propagate(unsigned int time, double deltaDistance, double Theta)
+
+void RobotNav::propagate(unsigned int time, float deltaDistance, double Theta)
 {
 	
 	m_Time = time;
@@ -69,20 +61,20 @@ void RobotNav::propagate(unsigned int time, double deltaDistance, double Theta)
 
 
 
-void RobotNav::reset(unsigned int time, double x, double y, double theta)
+void RobotNav::reset(unsigned int time, float x, float y, double theta)
 {
-	m_Time = time;
-	m_CurrentX    = x;
-	m_CurrentY    = y;
-	m_Theta = theta;
+	m_Time 		= time;
+	m_CurrentX  = x;
+	m_CurrentY  = y;
+	m_Theta     = theta;
 	
 }
 
-double RobotNav::GetX() 
+float RobotNav::GetX() 
 {
 	return m_CurrentX;
 }
-double RobotNav::GetY()
+float RobotNav::GetY()
 {
 	return m_CurrentY;
 }

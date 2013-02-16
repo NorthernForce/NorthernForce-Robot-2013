@@ -3,6 +3,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
+
 /**
  * A navigation system for the robot. 
  *
@@ -11,20 +12,20 @@
 class RobotNav: public Subsystem {
 private:
 	unsigned int m_Time;
-	double m_CurrentX;
-	double m_CurrentY;
+	float m_CurrentX;
+	float m_CurrentY;
 	double m_Theta;
 
 public:
 	RobotNav();
-	RobotNav(double CurrentX, double CurrentY, double Theta);
+	RobotNav(float CurrentX, float CurrentY, double Theta);
 	void InitDefaultCommand();
-	void propagate(unsigned int time, double deltaX, double deltaY, double deltaTheta);
+	void propagate(unsigned int time, float deltaX, float deltaY, double deltaTheta);
 	//void propagate(unsigned int time, double deltaDistance, double deltaTheta);
-	void propagate(unsigned int time, double deltaDistance, double Theta);
-	void reset(unsigned int time, double x, double y, double theta);
-	double GetX();
-	double GetY();
+	void propagate(unsigned int time, float deltaDistance, double Theta);
+	void reset(unsigned int time, float x, float y, double theta);
+	float GetX();
+	float GetY();
 	double GetTheta();
 
 };

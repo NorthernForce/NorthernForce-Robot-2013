@@ -17,17 +17,17 @@ void UpdateNav::Execute()
 {
 	float theta;
 	double distance;
-	double deltaDistance;
+	float deltaDistanceInch;
 	
 //  Get Angle from Gyro
 	theta = s_Gyro->GetAngle();
 	
 //  Get Average Distance from the Jaguars
 	distance = s_Drive->GetAvgDistance();
-	deltaDistance = distance - m_Distance;
-	m_Distance = distance;
+	deltaDistanceInch = ( distance - m_DistanceEncoder ) * kWheelEncoderRatio;
+	m_DistanceEncoder = distance;
 	
-	s_Nav->propagate(GetFPGATime(), deltaDistance, theta);	
+	s_Nav->propagate(GetFPGATime(), deltaDistanceInch, theta);	
 	
 }
 
