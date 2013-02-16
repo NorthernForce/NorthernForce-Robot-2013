@@ -119,6 +119,10 @@ static const float kGyroSensitivity = 0.007;
 
 static const float kWheelEncoderRatio = 0.073146875;   //Inches per "tick" of the Encoder
 
+static const float kShooterSpinupSpeed = 0.5;
+static const float kShooterIdleSpeed = 0.0;
+static const float kShooterSpinupTolerance = 0.1;
+
 // Shooter Elevator Constants
 static const float kElevatorDegreesPerVolt = 1.0;
 

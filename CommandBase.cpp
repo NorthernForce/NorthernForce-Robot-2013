@@ -22,6 +22,7 @@ DriveSubsystem* CommandBase::s_Drive = NULL;
 SocketClient* CommandBase::s_SockClient = NULL;
 GyroSubsystem* CommandBase::s_Gyro = NULL;
 RobotNav* CommandBase::s_Nav = NULL;
+ShooterSubsystem* CommandBase::s_Shooter = NULL;
 ShooterElevatorSubsystem* CommandBase::s_ShooterElevator = NULL;
 
 /**
@@ -37,4 +38,5 @@ void CommandBase::init()
 	s_Gyro = new GyroSubsystem(kGyroSlot, kGyroChannel, kGyroTemp, kGyroSensitivity);
 	s_Nav  = new RobotNav();
 	//s_ShooterElevator = new ShooterElevatorSubsystem();
+	s_Shooter = new ShooterSubsystem();
 }

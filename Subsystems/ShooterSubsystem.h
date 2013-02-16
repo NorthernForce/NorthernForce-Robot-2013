@@ -1,24 +1,23 @@
-#ifndef SHOOTER_SUBSYSTEM_H
-#define SHOOTER_SUBSYSTEM_H
-#include "Commands/Subsystem.h"
-#include <CANJaguar.h>
-#include <Relay.h>
-#include <Counter.h>
-#include <AnalogModule.h>
-#include "../Library.h"
+#ifndef SHOOTERSUBSYSTEM_H
+#define SHOOTERSUBSYSTEM_H
+
+#include "Commands/PIDSubsystem.h"
+#include "WPILib.h"
 
 /**
- * This is the class which controls the driving of the robot. This
- * is a subsystem, and behaves just like every other subsystem
- * in the code library. Rather than using a different class
- * for drive like last year, it is better to contain it all
- * inside this one class. 
- * 
- * @author arthurlockman
+ *
+ *
+ * @author Joseph
  */
-class ShooterSubsystem: public Subsystem 
-{
+class ShooterSubsystem: public PIDSubsystem {
 private:
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
+	// set the P, I, and D constants here
+	static const double Kp = 0.0;
+	static const double Ki = 0.0;
+	static const double Kd = 0.0;
+
 	CANJaguar m_shooterMotor;
     Relay m_shooterFlicker;
     Counter m_shooterWheelLightSensor;
@@ -26,9 +25,10 @@ private:
     UINT32 m_counterLastTime;
 public:
 	ShooterSubsystem();
+	double ReturnPIDInput();
+	void UsePIDOutput(double output);
 	void InitDefaultCommand();
-    void SetShooterSpeed(float speed);
-    void Flick(bool extend);
+    void Flick(bool on);
     void ResetCounter();
     float GetAvgSpeed();
 	void Stop();

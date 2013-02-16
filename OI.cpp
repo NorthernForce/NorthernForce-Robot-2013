@@ -29,7 +29,7 @@ FRCXboxJoystick& OI::GetDriverStick()
  * @brief Gets the manipulator joystick.
  * @return A reference to the manipulator joystick. 
  */
-FRCXboxJoystick& OI::GetManipulatorStick()
+Attack3Joystick& OI::GetManipulatorStick()
 {
 	return m_manipulatorStick;
 }

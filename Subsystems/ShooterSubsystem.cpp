@@ -1,49 +1,46 @@
 #include "ShooterSubsystem.h"
+#include "../Library.h"
+#include "SmartDashboard/SmartDashboard.h"
 
-/**
- * @brief Initializes the drive subsystem. Catches any exception
- * that might occur in creating the jaguars. 
- */
-ShooterSubsystem::ShooterSubsystem() try : 
-	Subsystem("ShooterSubsystem"),
+ShooterSubsystem::ShooterSubsystem() : 
+    PIDSubsystem("ShooterSubsystem", Kp, Ki, Kd),
     m_shooterMotor(kShooterJaguarAddress),
     m_shooterFlicker(kShooterFlickerRelayAddress),
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
     m_counterLastTime(GetFPGATime())
 {
-	// Make sure that the shooter motor has been enabled 
-	EnableMotor();
-}
-catch (exception e)
-{
-	printf("Error creating  shooter jaguar, or other shooter components.\n");
-	printf(e.what());
-}
-    
-/**
- * @brief Initializes the default command for the subsystem.
- * currently there is no default command for the shooter subsystem.
- */
-void ShooterSubsystem::InitDefaultCommand() 
-{
-	//SetDefaultCommand();
+	// Use these to get going:
+	// SetSetpoint() -  Sets where the PID controller should move the system
+	//                  to
+	// Enable() - Enables the PID controller.
 }
 
-/**
- * @brief Sets the speed of the shooter wheel
- * @param speed The speed to set the shooter wheel to
- */
-void ShooterSubsystem::SetShooterSpeed(float speed) 
-{
-    m_shooterMotor.Set(speed);
+double ShooterSubsystem::ReturnPIDInput() {
+	// Return your input value for the PID loop
+	// e.g. a sensor, like a potentiometer:
+	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
+    float speed = GetAvgSpeed();
+    ResetCounter();
+    return speed;
+}
+
+void ShooterSubsystem::UsePIDOutput(double output) {
+	// Use output to drive your system, like a motor
+	// e.g. yourMotor->Set(output);
+    m_shooterMotor.Set(output);
+}
+
+void ShooterSubsystem::InitDefaultCommand() {
+	// Set the default command for a subsystem here.
+	//setDefaultCommand(new MySpecialCommand());
 }
 
 /**
  * @brief Set the state of the solenoid which flicks the frisbees.
  * @param extend if true, the relay will be set to on, otherwise, it will be set to off. 
  */
-void ShooterSubsystem::Flick(bool extend) {
-    m_shooterFlicker.Set(extend ? Relay::kOn : Relay::kOff);
+void ShooterSubsystem::Flick(bool on) {
+    m_shooterFlicker.Set(on ? Relay::kOn : Relay::kOff);
 }
 
 /**
