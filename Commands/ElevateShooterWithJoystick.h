@@ -1,5 +1,5 @@
-#ifndef ELEVATE_SHOOTER_H_
-#define ELEVATE_SHOOTER_H_
+#ifndef ELEVATE_SHOOTER_WITH_JOYSTICK_H_
+#define ELEVATE_SHOOTER_WITH_JOYSTICK_H_
 
 #include "../CommandBase.h"
 
@@ -8,12 +8,9 @@
  *
  * @author Joseph Martin
  */
-class ElevateShooter: public CommandBase {
-private:
-	float targetAngle;
-    float errorAccumulator;
+class ElevateShooterWithJoystick: public CommandBase {
 public:
-	ElevateShooter(float angle);
+	ElevateShooterWithJoystick();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

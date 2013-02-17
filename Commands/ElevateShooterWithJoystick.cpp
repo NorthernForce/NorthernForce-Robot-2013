@@ -1,6 +1,6 @@
-#include "ElevateShooter.h"
+#include "ElevateShooterWithJoystick.h"
 
-ElevateShooter::ElevateShooter(float angle) : targetAngle(angle)
+ElevateShooterWithJoystick::ElevateShooterWithJoystick()
 {
 	Requires(s_ShooterElevator);
 }
@@ -8,16 +8,15 @@ ElevateShooter::ElevateShooter(float angle) : targetAngle(angle)
 /**
  * @brief Initializes the command.
  */
-void ElevateShooter::Initialize()
-{
-	s_ShooterElevator->SetSetpoint(targetAngle);
-}
+void ElevateShooterWithJoystick::Initialize() {}
 
 /**
  * @brief Called repeatedly when this Command is scheduled to run
  */
-void ElevateShooter::Execute()
+void ElevateShooterWithJoystick::Execute()
 {
+	s_ShooterElevator->GetElevationAngle();
+	s_ShooterElevator->SetSpeed(oi->GetManipulatorStick().GetY());
 }
 
 /**
@@ -25,15 +24,15 @@ void ElevateShooter::Execute()
  * Make this return true when this Command no longer needs to run execute().
  * @return Bool, if the command is finished or not. 
  */
-bool ElevateShooter::IsFinished()
+bool ElevateShooterWithJoystick::IsFinished()
 {
-    return s_ShooterElevator->OnTarget();
+    return false;
 }
 
 /**
  * @brief Finishes the command. Called once after isFinished returns true.
  */
-void ElevateShooter::End()
+void ElevateShooterWithJoystick::End()
 {
 	
 }
@@ -42,7 +41,7 @@ void ElevateShooter::End()
  * @brief Called when another command which requires one or more of the same
  * subsystems is scheduled to run.
  */
-void ElevateShooter::Interrupted()
+void ElevateShooterWithJoystick::Interrupted()
 {
 	
 }

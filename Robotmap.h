@@ -84,7 +84,7 @@ enum RelayAdresses {
 
 enum AnalogChannels {
     kGyroChannel = 1,
-	kShooterElevatorPotChannel = 2,
+	kShooterElevatorPotChannel = 3,
 };
 
 /**
