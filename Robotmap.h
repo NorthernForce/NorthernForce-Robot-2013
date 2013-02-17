@@ -123,6 +123,10 @@ static const float kShooterSpinupSpeed = 0.5;
 static const float kShooterIdleSpeed = 0.0;
 static const float kShooterSpinupTolerance = 0.1;
 
+static const float kShooterElevatorP = 1.0;
+static const float kShooterElevatorI = 0.0;
+static const float kShooterElevatorD = 0.0;
+
 // Shooter Elevator Constants
 static const float kElevatorDegreesPerVolt = 1.0;
 

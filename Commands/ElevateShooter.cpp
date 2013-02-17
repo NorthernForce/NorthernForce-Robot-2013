@@ -10,7 +10,7 @@ ElevateShooter::ElevateShooter(float angle) : targetAngle(angle), errorAccumulat
  */
 void ElevateShooter::Initialize()
 {
-	
+	s_ShooterElevator->SetSetpoint(targetAngle);
 }
 
 /**
@@ -18,12 +18,6 @@ void ElevateShooter::Initialize()
  */
 void ElevateShooter::Execute()
 {
-	float shooterElevator_p = 1.0;
-	float shooterElevator_i = 0.0;
-	float error = targetAngle - s_ShooterElevator->GetElevationAngle();
-	errorAccumulator += error;
-
-	s_ShooterElevator->SetElevatorSpeed(shooterElevator_p * error + shooterElevator_i * errorAccumulator);
 }
 
 /**
@@ -33,7 +27,7 @@ void ElevateShooter::Execute()
  */
 bool ElevateShooter::IsFinished()
 {
-	return false;
+    return s_ShooterElevator->OnTarget();
 }
 
 /**

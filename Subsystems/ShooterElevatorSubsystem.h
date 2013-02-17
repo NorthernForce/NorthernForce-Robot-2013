@@ -7,22 +7,24 @@
  *      Author: Joseph
  */
 
-#include "Commands/Subsystem.h"
-#include "../Library.h"
-#include <Victor.h>
-#include <AnalogChannel.h>
 
 #ifndef SHOOTERELEVATOR_H_
 #define SHOOTERELEVATOR_H_
 
-class ShooterElevatorSubsystem : public Subsystem {
+#include "Commands/PIDSubsystem.h"
+#include "../Library.h"
+#include <Victor.h>
+#include <AnalogChannel.h>
+
+class ShooterElevatorSubsystem : public PIDSubsystem {
 private:
     Victor m_shooterElevatorMotor;
     AnalogChannel m_elevationPotentiometer;
 public:
 	ShooterElevatorSubsystem();
+	double ReturnPIDInput();
+	void UsePIDOutput(double output);
     float GetElevationAngle();
-    void SetElevatorSpeed(float speed);
 };
 
 #endif /* SHOOTERELEVATOR_H_ */
