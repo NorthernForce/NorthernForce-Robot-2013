@@ -69,7 +69,10 @@ enum JaguarAddresses
 
 enum DigitalAdresses {
     kShooterWheelLightSensorAddress = 1,
-    kShooterElevatorVictorAddress = 2,
+};
+
+enum PWMAddresses {
+    kShooterElevatorVictorAddress = 1,
 };
 
 /**
