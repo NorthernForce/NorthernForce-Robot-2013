@@ -11,7 +11,7 @@ LogPOT::LogPOT()
 void LogPOT::Initialize() 
 {
     s_ShooterElevator->EnableLogging();
-	printf("POT Voltage: %f\n", s_ShooterElevator->GetElevationAngle());
+	s_ShooterElevator->GetElevationAngle();
     s_ShooterElevator->DisableLogging();
 }
 

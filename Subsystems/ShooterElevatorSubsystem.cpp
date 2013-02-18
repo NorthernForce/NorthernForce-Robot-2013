@@ -34,9 +34,9 @@ float ShooterElevatorSubsystem::GetElevationAngle() {
 	float voltage = m_elevationPotentiometer.GetVoltage();
     float angle = kElevatorDegreesPerVolt * (kElevatorZero - voltage);
 	if(m_loggingEnabled) {
-		char _tmp[35];
-		sprintf(_tmp, "Voltage: %5.3f, Angle: %5.3f deg", voltage, angle);
-		printf("Voltage: %5.3f, Angle: %5.3f deg", voltage, angle);
+		char _tmp[55];
+		sprintf(_tmp, "Voltage: %5.3f, Angle: %5.3f deg, Shooter Speed %5.3f", voltage, angle, CommandBase::oi->GetManipulatorStick.GetPOT());
+		printf("Voltage: %5.3f, Angle: %5.3f deg, Shooter Speed %5.3f\n", voltage, angle, CommandBase::oi->GetManipulatorStick.GetPOT());
 		m_elevatorLog.Write(_tmp);
 	}	
 	return angle;
@@ -44,6 +44,8 @@ float ShooterElevatorSubsystem::GetElevationAngle() {
 
 void ShooterElevatorSubsystem::SetPosition(float position) {
 	Enable();
+    if(position > kElevatorMaxAngle) position = kElevatorMaxAngle;
+    if(position < kElevatorMinAngle) position = kElevatorMinAngle;
 	SetSetpoint(position);
 }
 
@@ -54,6 +56,8 @@ void ShooterElevatorSubsystem::SetPositionRelative(float deltaPos) {
 
 void ShooterElevatorSubsystem::SetSpeed(float speed) {
 	Disable();
+    if((GetElevationAngle() > kElevatorMaxAngle) && (speed > 0.0)) return;
+    if((GetElevationAngle() < kElevatorMinAngle) && (speed < 0.0)) return;
 	m_shooterElevatorMotor.Set(speed);
 }
 

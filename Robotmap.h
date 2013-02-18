@@ -142,4 +142,9 @@ static const float kShooterElevatorD = 0.0;
 static const float kElevatorDegreesPerVolt = 54.054054;
 static const float kElevatorZero = 3.742;
 
+static const float kDeadbandLimit = 0.2;
+
+static const float kElevatorMaxAngle = 35.0;
+static const float kElevatorMinAngle = 0.0;
+
 #endif

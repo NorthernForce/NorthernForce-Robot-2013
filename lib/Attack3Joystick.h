@@ -22,6 +22,7 @@
 class Attack3Joystick: public Joystick {
 private:
 	//Private methods.
+    float Deadband(float input);
 public:
 	Attack3Joystick(int port);
 

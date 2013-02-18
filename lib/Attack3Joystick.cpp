@@ -33,7 +33,7 @@
 float Attack3Joystick::GetStickX()
 {
 	//@TODO: Check if this is the correct axis.
-	return Joystick::GetRawAxis(1);
+	return Deadband(Joystick::GetRawAxis(1));
 }
 
 /**
@@ -43,7 +43,11 @@ float Attack3Joystick::GetStickX()
 float Attack3Joystick::GetStickY()
 {
 	//@TODO: Check if this is the correct axis.
-	return Joystick::GetRawAxis(2);
+	return Deadband(Joystick::GetRawAxis(2));
+}
+
+float Attack3Joystick::Deadband(float input) {
+    return (input < kDeadbandLimit && input > -kDeadbandLimit) ? 0 : input;
 }
 
 /**
