@@ -30,13 +30,13 @@ void DriveTo::Execute()
 	CalcVector();
 
 //TODO: Determine Speed & Check Angular Measurement
-	if (absval(m_Theta - theta) <= kDistanceBand)
+	if (absval(m_Theta - theta) <= kAngularRateBand)
 			angularRate = 0.0;
-	else angularRate = 0.1;
+	else angularRate = kSlowAngularRate;
 	
 	if (m_Distance <= (2 * kDistanceBand))
-			speed = 0.1;
-	else speed = 0.3;
+			speed = kSlowAutoSpeed;
+	else speed = kFastAutoSpeed;
 	
 	s_Drive->DriveRobot(speed, angularRate);
 	
@@ -55,7 +55,11 @@ bool DriveTo::IsFinished()
 void DriveTo::End() 
 {
 //TODO: Validate that Change in angle moves robot with no speed set?
-	s_Drive->DriveRobot(0.0, m_EndTheta);
+	while (absval(m_EndTheta - m_Theta) < kAngularRateBand)
+	{
+		s_Drive->DriveRobot(0.0, kSlowAngularRate);
+		
+	}
 	
 }
 
