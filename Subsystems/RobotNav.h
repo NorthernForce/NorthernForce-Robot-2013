@@ -14,19 +14,19 @@ private:
 	unsigned int m_Time;
 	float m_CurrentX;
 	float m_CurrentY;
-	double m_Theta;
+	float m_Theta;
 
 public:
 	RobotNav();
-	RobotNav(float CurrentX, float CurrentY, double Theta);
+	RobotNav(float CurrentX, float CurrentY, float Theta);
 	void InitDefaultCommand();
-	void propagate(unsigned int time, float deltaX, float deltaY, double deltaTheta);
+	void propagate(unsigned int time, float deltaX, float deltaY, float deltaTheta);
 	//void propagate(unsigned int time, double deltaDistance, double deltaTheta);
-	void propagate(unsigned int time, float deltaDistance, double Theta);
-	void reset(unsigned int time, float x, float y, double theta);
+	void propagate(unsigned int time, float deltaDistance, float Theta);
+	void reset(unsigned int time, float x, float y, float theta);
 	float GetX();
 	float GetY();
-	double GetTheta();
+	float GetTheta();
 
 };
 

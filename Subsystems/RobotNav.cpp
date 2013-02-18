@@ -16,7 +16,7 @@ RobotNav::RobotNav() : Subsystem("RobotNav")
 }
 
 
-RobotNav::RobotNav(float CurrentX, float CurrentY, double Theta) : Subsystem("RobotNav")
+RobotNav::RobotNav(float CurrentX, float CurrentY, float Theta) : Subsystem("RobotNav")
 {
 	m_Time     = GetFPGATime();
 	m_CurrentX = CurrentX;
@@ -37,7 +37,7 @@ void RobotNav::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void RobotNav::propagate(unsigned int time, float deltaX, float deltaY, double deltaTheta)
+void RobotNav::propagate(unsigned int time, float deltaX, float deltaY, float deltaTheta)
 {
 	m_Time = time;
 	m_CurrentX = m_CurrentX + deltaX;
@@ -48,7 +48,7 @@ void RobotNav::propagate(unsigned int time, float deltaX, float deltaY, double d
 
 
 
-void RobotNav::propagate(unsigned int time, float deltaDistance, double Theta)
+void RobotNav::propagate(unsigned int time, float deltaDistance, float Theta)
 {
 	
 	m_Time = time;
@@ -61,7 +61,7 @@ void RobotNav::propagate(unsigned int time, float deltaDistance, double Theta)
 
 
 
-void RobotNav::reset(unsigned int time, float x, float y, double theta)
+void RobotNav::reset(unsigned int time, float x, float y, float theta)
 {
 	m_Time 		= time;
 	m_CurrentX  = x;
@@ -79,7 +79,7 @@ float RobotNav::GetY()
 	return m_CurrentY;
 }
 
-double RobotNav::GetTheta()
+float RobotNav::GetTheta()
 {
 	return m_Theta;
 }			
