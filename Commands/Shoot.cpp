@@ -1,6 +1,7 @@
 #include "Shoot.h"
 #include "SpinupShooter.h"
 #include "FlickFrisbee.h"
+#include "ElevateShooter.h"
 
 Shoot::Shoot() {
         // Add Commands here:
@@ -19,6 +20,7 @@ Shoot::Shoot() {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    AddSequential(new ElevateShooter(15.0));
 	AddSequential(new SpinupShooter());
 	AddSequential(new FlickFrisbee());
 }

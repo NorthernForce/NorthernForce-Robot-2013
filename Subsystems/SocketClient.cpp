@@ -163,7 +163,7 @@ bool SocketClient::Read()
 			int count = atoi(_tmpLn);
 			_tmpLn = strtok(NULL, ",");
 			
-			vector<Target> targets;
+			list<Target> targets;
 			
 			for (int i = 0; i < count; i++)
 			{
@@ -243,7 +243,7 @@ void SocketClient::printdebug(char* err)
  * @brief Gets the last data that was read from the socket connection.
  * @return A string, the last data from the connection. 
  */
-const vector<Target> SocketClient::GetLastData()
+const list<Target> SocketClient::GetLastData()
 {
 	const Synchronized sync (m_socketSemaphore);
 	return m_lastTargets;
