@@ -131,6 +131,7 @@ static const float kShooterElevatorI = 0.0;
 static const float kShooterElevatorD = 0.0;
 
 // Shooter Elevator Constants
-static const float kElevatorDegreesPerVolt = 1.0;
+static const float kElevatorDegreesPerVolt = 54.054054;
+static const float kElevatorZero = 3.742;
 
 #endif

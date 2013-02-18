@@ -31,6 +31,8 @@ public:
     void SetSpeed(float speed);
     void SetPosition(float position);
     void SetPositionRelative(float deltaPos);
+    void EnableLogging();
+    void DisableLogging();
 };
 
 #endif /* SHOOTERELEVATOR_H_ */

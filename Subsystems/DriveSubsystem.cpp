@@ -19,7 +19,7 @@ DriveSubsystem::DriveSubsystem() try :
 	m_driveErrAccumulator(0.0),
     m_DriveLog("DriveLog.csv"),
     m_loggingEnabled(false),
-    m_gyroEnabled(true),
+    m_gyroEnabled(false),
     m_encodersEnabled(false)
 {
 	(m_encodersEnabled) ? this->EnableEncoders() : this->DisableEncoders();
@@ -44,8 +44,8 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {	
-	(m_encodersEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger()) : 
-		this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger());
+	(m_encodersEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetRightStickX()) : 
+		this->DriveRobot(stick.GetLeftStickY(), stick.GetRightStickX());
 }
 
 /**
