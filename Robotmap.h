@@ -122,9 +122,11 @@ static const float kGyroSensitivity = 0.007;
 
 static const float kWheelEncoderRatio = 0.073146875;   //Inches per "tick" of the Encoder
 static const double kDistanceBand = 6;
-static const float  kAngularRateBand = 0.2;
+static const float kAngularRateBand = 0.1;
 static const float kSlowAutoSpeed = 0.1;
-static const float kFastAutospeed = 0.3;
+static const float kFastAutoSpeed = 0.3;
+static const float kSlowAngularRate = 0.1;
+static const float kFastAngularRate = 0.3;
 
 static const float kShooterSpinupSpeed = 0.5;
 static const float kShooterIdleSpeed = 0.0;
