@@ -20,6 +20,7 @@ private:
 	LogFile m_gyroLogFile;
 	float m_channelCenter;
 	AlphaBetaFilter<float> m_gyroFilter;
+    bool m_loggingEnabled;
 	void Update();
 public:
 	GyroSubsystem(int slot, int sensorChannel, int tempSensorChannel, float sensitivity = 0.007);
@@ -29,6 +30,8 @@ public:
 	void Reset();
 	float GetRate();
 	void DoStationaryCalibration(int samples);
+    void EnableLogging();
+    void DisableLogging();
 };
 
 #endif

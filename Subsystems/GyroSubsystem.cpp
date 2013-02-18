@@ -14,7 +14,8 @@ GyroSubsystem::GyroSubsystem(int slot, int sensorChannel, int tempSensorChannel,
 	m_gyroChannel(slot, sensorChannel),
 	m_gyroTempChannel(slot, tempSensorChannel),
 	m_gyroLogFile("GyroLog.txt"),
-	m_gyroFilter(0.1, 0.005)
+	m_gyroFilter(0.1, 0.005),
+    m_loggingEnabled(false)
 {
 	m_gyroChannel.SetAccumulatorDeadband(0);
 	m_gyroTempChannel.SetAccumulatorCenter(0);
@@ -57,9 +58,11 @@ void GyroSubsystem::Reset()
 float GyroSubsystem::GetAngle()
 {
 	float angle = m_gyroSensor->GetAngle();
-	char _tmp[32];
-	//sprintf(_tmp, "Angle: %f", angle);
-	m_gyroLogFile.Write(_tmp);
+    if(m_loggingEnabled) {
+        char _tmp[32];
+        sprintf(_tmp, "Angle: %f", angle);
+        m_gyroLogFile.Write(_tmp);
+    }
 	return angle;
 }
 
@@ -106,3 +109,6 @@ void GyroSubsystem::Update()
 	float voltage = 0.55 * (m_gyroChannel.GetVoltage() - m_channelCenter);
 	m_gyroFilter.Update(voltage, GetFPGATime());
 }
+
+void GyroSubsystem::EnableLogging() { m_loggingEnabled = true; }
+void GyroSubsystem::DisableLogging() { m_loggingEnabled = false; }

@@ -6,6 +6,7 @@
 #include "Commands/DisableGyro.h"
 #include "Commands/FlickFrisbee.h"
 #include "Commands/LogPOT.h"
+#include "Commands/Shoot.h"
 
 /**
  * @brief Initializes the operator interface.
@@ -23,6 +24,7 @@ OI::OI() :
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
 
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee());
+    m_manipulatorStick.Button3.WhenPressed(new Shoot());
 }
 
 /**
