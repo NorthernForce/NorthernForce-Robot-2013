@@ -28,8 +28,9 @@ public:
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
 	void InitDefaultCommand();
-    void Flick(bool on);
+    void Flick(Relay::Value dir);
     void ResetCounter();
+    void SetSpeed(float speed);
     float GetAvgSpeed();
 	void Stop();
 	void EnableMotor();

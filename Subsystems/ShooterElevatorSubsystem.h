@@ -20,11 +20,17 @@ class ShooterElevatorSubsystem : public PIDSubsystem {
 private:
     Victor m_shooterElevatorMotor;
     AnalogChannel m_elevationPotentiometer;
+    LogFile m_elevatorLog;
+    bool m_loggingEnabled;
 public:
 	ShooterElevatorSubsystem();
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
+	void InitDefaultCommand();
     float GetElevationAngle();
+    void SetSpeed(float speed);
+    void SetPosition(float position);
+    void SetPositionRelative(float deltaPos);
 };
 
 #endif /* SHOOTERELEVATOR_H_ */
