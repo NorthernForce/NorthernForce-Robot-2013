@@ -36,7 +36,7 @@ private:
 	char* m_host;
 	struct sockaddr_in sa;
 	struct hostent hen;
-	vector<Target> m_lastTargets;
+	list<Target> m_lastTargets;
 	RobotPosition m_lastPosition;
 	const SEM_ID m_socketSemaphore;
 	Task m_socketConnectionTask;
@@ -54,7 +54,7 @@ public:
 	void run();
 	void errsys(char* err);
 	void printdebug(char* err);
-	const vector<Target> GetLastData();
+	const list<Target> GetLastData();
 	const RobotPosition GetLastPosition();
 	int StartDataStream(int updateInterval);
 	int StopDataStream();

@@ -5,6 +5,8 @@
 #include "Commands/EnableGyro.h"
 #include "Commands/DisableGyro.h"
 #include "Commands/FlickFrisbee.h"
+#include "Commands/LogPOT.h"
+#include "Commands/Shoot.h"
 
 /**
  * @brief Initializes the operator interface.
@@ -17,10 +19,12 @@ OI::OI() :
 	m_driverStick.Back.WhenPressed(new DisableEncoders());
 	m_driverStick.Start.WhenPressed(new EnableEncoders());
 	m_driverStick.Y.WhenPressed(new SetDrivePID());
+    m_driverStick.A.WhenPressed(new LogPOT());
 	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
 
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee());
+    m_manipulatorStick.Button3.WhenPressed(new Shoot());
 }
 
 /**

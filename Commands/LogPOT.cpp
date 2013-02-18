@@ -1,22 +1,24 @@
-#include "ElevateShooter.h"
+#include "LogPOT.h"
 
-ElevateShooter::ElevateShooter(float angle) : targetAngle(angle)
+LogPOT::LogPOT() 
 {
-	Requires(s_ShooterElevator);
+    Requires(s_ShooterElevator);
 }
 
 /**
  * @brief Initializes the command.
  */
-void ElevateShooter::Initialize()
+void LogPOT::Initialize() 
 {
-	s_ShooterElevator->SetPosition(targetAngle);
+    s_ShooterElevator->EnableLogging();
+	printf("POT Voltage: %f\n", s_ShooterElevator->GetElevationAngle());
+    s_ShooterElevator->DisableLogging();
 }
 
 /**
  * @brief Called repeatedly when this Command is scheduled to run
  */
-void ElevateShooter::Execute()
+void LogPOT::Execute() 
 {
 }
 
@@ -25,24 +27,23 @@ void ElevateShooter::Execute()
  * Make this return true when this Command no longer needs to run execute().
  * @return Bool, if the command is finished or not. 
  */
-bool ElevateShooter::IsFinished()
+bool LogPOT::IsFinished() 
 {
-    return s_ShooterElevator->OnTarget();
+    return true;
 }
 
 /**
  * @brief Finishes the command. Called once after isFinished returns true.
  */
-void ElevateShooter::End()
+void LogPOT::End() 
 {
-	
 }
 
 /**
  * @brief Called when another command which requires one or more of the same
  * subsystems is scheduled to run.
  */
-void ElevateShooter::Interrupted()
+void LogPOT::Interrupted() 
 {
 	
 }

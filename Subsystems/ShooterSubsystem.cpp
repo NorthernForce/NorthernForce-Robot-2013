@@ -4,7 +4,7 @@
 #include "../Commands/SpinupShooterWithJoystick.h"
 
 ShooterSubsystem::ShooterSubsystem() : 
-    PIDSubsystem("ShooterSubsystem", Kp, Ki, Kd),
+    PIDSubsystem("ShooterSubsystem", kShooterP, kShooterI, kShooterD),
     m_shooterMotor(kShooterJaguarAddress),
     m_shooterFlicker(kShooterFlickerRelayAddress, Relay::kBothDirections),
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
@@ -15,8 +15,8 @@ ShooterSubsystem::ShooterSubsystem() :
 	//                  to
 	// Enable() - Enables the PID controller.
 	Disable();
-	//FIXME: Configure motor correctly
-	// DO NOT ENABLE PID CONTROLLER
+    m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+    m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
 }
 
 double ShooterSubsystem::ReturnPIDInput() 
