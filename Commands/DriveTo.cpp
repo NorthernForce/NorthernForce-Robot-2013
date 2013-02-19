@@ -16,6 +16,7 @@ DriveTo::DriveTo(float x, float y)
 // Called just before this Command runs the first time
 void DriveTo::Initialize() 
 {
+	s_Drive->EnablePositionMode();
 	UpdatePos();
 }
 
@@ -60,14 +61,14 @@ void DriveTo::End()
 		s_Drive->DriveRobot(0.0, kSlowAngularRate);
 		
 	}
-	
+	s_Drive->DisableEncoders();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void DriveTo::Interrupted() 
 {
-	
+	End();
 }
 
 

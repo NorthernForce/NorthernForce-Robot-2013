@@ -75,11 +75,13 @@ void DriveSubsystem::DriveRobot(float moveValue, float rotateValue)
 	    if (m_loggingEnabled)
 	    {
 		    char _tmp[40];
-		    sprintf(_tmp, "%5.3f,%5.3f,%5.3f,%5.3f", rotateValue,gyroRate,error,m_driveErrAccumulator);
+		    sprintf(_tmp, "%5.3f,%5.3f,%5.3f,%5.3f", rotateValue,
+		    		gyroRate,error,m_driveErrAccumulator);
 		    m_DriveLog.Write(_tmp);
 		}
 		
-		m_drive.ArcadeDrive(moveValue, kDriveSpinP * error + kDriveSpinI * m_driveErrAccumulator, true);
+		m_drive.ArcadeDrive(moveValue, kDriveSpinP * error + 
+				kDriveSpinI * m_driveErrAccumulator, true);
 	}
 	else
 	{
@@ -149,12 +151,17 @@ double DriveSubsystem::GetAvgDistance()
  */
 void DriveSubsystem::EnableEncoders()
 {
-	CommandBase::s_Log->LogMessage("Enabling encoders...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage("Enabling encoders in speed mode...", kLogPriorityDebug);
 
 	m_frontLeftMotor.DisableControl();
 	m_frontRightMotor.DisableControl();
 	m_rearLeftMotor.DisableControl();
 	m_rearRightMotor.DisableControl();
+
+	m_frontLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+	m_frontRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+	m_rearLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+	m_rearRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
 
 	m_frontLeftMotor.ChangeControlMode(CANJaguar::kSpeed);
 	m_frontRightMotor.ChangeControlMode(CANJaguar::kSpeed);
@@ -204,6 +211,11 @@ void DriveSubsystem::DisableEncoders()
 	m_rearLeftMotor.DisableControl();
 	m_rearRightMotor.DisableControl();
 
+	m_frontLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+	m_frontRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+	m_rearLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+	m_rearRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+
 	m_frontLeftMotor.ChangeControlMode(CANJaguar::kPercentVbus);
 	m_frontRightMotor.ChangeControlMode(CANJaguar::kPercentVbus);
 	m_rearLeftMotor.ChangeControlMode(CANJaguar::kPercentVbus);
@@ -216,6 +228,58 @@ void DriveSubsystem::DisableEncoders()
 	m_rearRightMotor.EnableControl();
 
 	CommandBase::s_Log->LogMessage("Encoders disabled!", kLogPriorityDebug);
+}
+
+/**
+ * @brief Switches the wheels into position mode.
+ */
+void DriveSubsystem::EnablePositionMode()
+{
+	CommandBase::s_Log->LogMessage("Enabling encoders in speed mode...", kLogPriorityDebug);
+
+		m_frontLeftMotor.DisableControl();
+		m_frontRightMotor.DisableControl();
+		m_rearLeftMotor.DisableControl();
+		m_rearRightMotor.DisableControl();
+
+		m_frontLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+		m_frontRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+		m_rearLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+		m_rearRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+
+		m_frontLeftMotor.ChangeControlMode(CANJaguar::kPosition);
+		m_frontRightMotor.ChangeControlMode(CANJaguar::kPosition);
+		m_rearLeftMotor.ChangeControlMode(CANJaguar::kPosition);
+		m_rearRightMotor.ChangeControlMode(CANJaguar::kPosition);
+
+		m_frontLeftMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+		m_frontRightMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+		m_rearLeftMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+		m_rearRightMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+
+		m_frontLeftMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+		m_frontRightMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+		m_rearLeftMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+		m_rearRightMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+
+		m_frontLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+		m_frontRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+		m_rearLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+		m_rearRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+
+		m_frontLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		m_frontRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		m_rearLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		m_rearRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		
+		m_encodersEnabled = true;
+
+		m_frontLeftMotor.EnableControl();
+		m_frontRightMotor.EnableControl();
+		m_rearLeftMotor.EnableControl();
+		m_rearRightMotor.EnableControl();
+
+		CommandBase::s_Log->LogMessage("Encoders enabled!", kLogPriorityDebug);
 }
 
 /**

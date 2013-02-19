@@ -1,10 +1,3 @@
-/*
- * ShooterElevator.cpp
- *
- *  Created on: Feb 15, 2013
- *      Author: Joseph
- */
-
 #include "ShooterElevatorSubsystem.h"
 #include "../Commands/ElevateShooterWithJoystick.h"
 

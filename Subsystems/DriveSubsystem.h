@@ -34,7 +34,12 @@ private:
     static const double kDriveP = 1.0;
     static const double kDriveI = 0.0;
     static const double kDriveD = 0.0;
+    static const double kDrivePosP = 0.0;
+    static const double kDrivePosI = 0.0;
+    static const double kDrivePosD = 0.0;
     static const int kEncoderPulsesPerRev = 256;
+
+    static const float kDriveMaxOutputVoltage = 12.0;
 
 public:
 	DriveSubsystem();
@@ -51,6 +56,7 @@ public:
 	void EnableEncoders();
 	void DisableEncoders();
 	void ChangeDrivePID(float p, float i, float d);
+	void EnablePositionMode();
 	
 	/**
 	 * @brief Gets whether or not the encoders are enabled.
