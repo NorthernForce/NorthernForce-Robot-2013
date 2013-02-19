@@ -9,8 +9,10 @@
  * @author Joseph
  */
 class SpinupShooter: public CommandBase {
+private:
+	float setSpeed;
 public:
-	SpinupShooter();
+	SpinupShooter(float speed);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

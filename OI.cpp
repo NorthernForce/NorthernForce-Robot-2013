@@ -6,7 +6,8 @@
 #include "Commands/DisableGyro.h"
 #include "Commands/FlickFrisbee.h"
 #include "Commands/LogPOT.h"
-#include "Commands/Shoot.h"
+#include "Commands/PrepareShooter.h"
+#include "Commands/ElevateShooterWithJoystick.h"
 
 /**
  * @brief Initializes the operator interface.
@@ -24,7 +25,14 @@ OI::OI() :
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
 
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee());
-    m_manipulatorStick.Button3.WhenPressed(new Shoot());
+	m_manipulatorStick.Button3.WhenPressed(new PrepareShooter(kPyramidFrontSpeed, 
+			kPyramidFrontAngle));
+	m_manipulatorStick.Button2.WhenPressed(new PrepareShooter(kPyramidBackSpeed, 
+			kPyramidBackAngle));
+	m_manipulatorStick.Button4.WhenPressed(new PrepareShooter(kHangSpeed, kHangAngle));
+	m_manipulatorStick.Button5.WhenPressed(new PrepareShooter(kFeederStationSpeed, 
+			kFeederStationAngle));
+	m_manipulatorStick.Button10.WhenPressed(new ElevateShooterWithJoystick());
 }
 
 /**

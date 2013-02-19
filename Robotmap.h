@@ -149,4 +149,14 @@ static const float kDeadbandLimit = 0.2;
 static const float kElevatorMaxAngle = 35.0;
 static const float kElevatorMinAngle = 0.0;
 
+//Shooter position constants
+static const float kPyramidFrontSpeed = -.742;
+static const float kPyramidFrontAngle = 34.455;
+static const float kPyramidBackSpeed = -.367;
+static const float kPyramidBackAngle = 27.234;
+static const float kFeederStationSpeed = -.414;
+static const float kFeederStationAngle = 17.236;
+static const float kHangSpeed = -.18;
+static const float kHangAngle = 27.234;
+
 #endif

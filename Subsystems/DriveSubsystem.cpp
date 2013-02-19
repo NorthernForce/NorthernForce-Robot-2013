@@ -1,5 +1,6 @@
 #include "DriveSubsystem.h"
 #include "../Commands/DriveWithJoystick.h"
+#include <math.h>
 
 /**
  * @brief Initializes the drive subsystem. Catches any exception
@@ -44,8 +45,8 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {	
-	(m_encodersEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetRightStickX()) : 
-		this->DriveRobot(stick.GetLeftStickY(), stick.GetRightStickX());
+	(m_encodersEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger() / 2) : 
+		this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger() / 2);
 }
 
 /**

@@ -63,7 +63,7 @@ float GyroSubsystem::GetAngle()
         sprintf(_tmp, "Angle: %f", angle);
         m_gyroLogFile.Write(_tmp);
     }
-	return angle;
+	return -angle;
 }
 
 /**
@@ -78,7 +78,7 @@ float GyroSubsystem::GetRate()
 	char _tmp[100];
 	sprintf(_tmp, "Voltage: %f", voltage);
 	//m_gyroLogFile.Write(_tmp);
-	return -0.55*voltage;
+	return 0.55*voltage;
 }
 
 /**

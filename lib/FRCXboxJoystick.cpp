@@ -1,5 +1,6 @@
 #include "FRCXboxJoystick.h"
 #include "Joystick.h"
+#include <math.h>
 
 /**
  * @brief This class constructs the instance
@@ -59,7 +60,7 @@ float FRCXboxJoystick::GetY(JoystickHand hand)
 
 void FRCXboxJoystick::CalculateDeadband()
 {
-    Deadband = 0.01;
+    Deadband = 0.1;
 }
 
 /**
@@ -76,13 +77,18 @@ void FRCXboxJoystick::CalculateDeadband()
  */
 float FRCXboxJoystick::DeadbandAdjust(float val) 
 {
-	if (val > Deadband) {
-		return (val - Deadband) / (1 - Deadband);
-	} else if (val < -Deadband) {
-		return (val + Deadband) / (1 - Deadband);
-	} else {
+//	if (val > Deadband) {
+//		return (val - Deadband) / (1 - Deadband);
+//	} else if (val < -Deadband) {
+//		return (val + Deadband) / (1 - Deadband);
+//	} else {
+//		return 0;
+//	}
+//	
+	if (val < Deadband && val > (Deadband*(-1))) 
 		return 0;
-	}
+	else 
+		return (val-(fabs(val) / val * Deadband)) / (1 - Deadband);
 }
 
 /**

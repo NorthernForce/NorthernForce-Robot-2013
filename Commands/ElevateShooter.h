@@ -11,7 +11,6 @@
 class ElevateShooter: public CommandBase {
 private:
 	float targetAngle;
-    float errorAccumulator;
 public:
 	ElevateShooter(float angle);
 	virtual void Initialize();

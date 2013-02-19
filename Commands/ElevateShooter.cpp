@@ -10,7 +10,7 @@ ElevateShooter::ElevateShooter(float angle) : targetAngle(angle)
  */
 void ElevateShooter::Initialize()
 {
-	s_ShooterElevator->SetPosition(targetAngle);
+
 }
 
 /**
@@ -18,6 +18,7 @@ void ElevateShooter::Initialize()
  */
 void ElevateShooter::Execute()
 {
+	s_ShooterElevator->SetSetpoint(targetAngle);
 }
 
 /**
@@ -27,7 +28,7 @@ void ElevateShooter::Execute()
  */
 bool ElevateShooter::IsFinished()
 {
-    return s_ShooterElevator->OnTarget();
+    return true;
 }
 
 /**
@@ -44,5 +45,5 @@ void ElevateShooter::End()
  */
 void ElevateShooter::Interrupted()
 {
-	
+	End();
 }
