@@ -316,7 +316,8 @@ void DriveSubsystem::ChangeDrivePID(float p, float i, float d)
 	}
 	else
 	{
-		CommandBase::s_Log->LogMessage("Robot not in a mode that accepts PID values!", kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage("Robot not in a mode that accepts PID values!", 
+				kLogPriorityDebug);
 
 	}
 }
