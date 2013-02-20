@@ -164,7 +164,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_drive_with_joystick_8cpp_source.html#l00003">3</a> of file <a class="el" href="_drive_with_joystick_8cpp_source.html">DriveWithJoystick.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        Requires(<a class="code" href="class_command_base.html#ad0706c31cc51896165a34d829c771d70">s_Drive</a>);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -185,7 +188,10 @@ Public Member Functions</h2></td></tr>
 <p>Finishes the command. Called once after isFinished returns true. </p>
 
 <p>Definition at line <a class="el" href="_drive_with_joystick_8cpp_source.html#l00037">37</a> of file <a class="el" href="_drive_with_joystick_8cpp_source.html">DriveWithJoystick.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a4f1ac51e2d3c1e1728758e5ed57886d1"></a>
@@ -205,7 +211,10 @@ Public Member Functions</h2></td></tr>
 <p>Called repeatedly when this Command is scheduled to run. </p>
 
 <p>Definition at line <a class="el" href="_drive_with_joystick_8cpp_source.html#l00019">19</a> of file <a class="el" href="_drive_with_joystick_8cpp_source.html">DriveWithJoystick.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#ad0706c31cc51896165a34d829c771d70">s_Drive</a>-&gt;<a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd" title="Drives the robot with an XBox Joystick.">DriveRobot</a>(<a class="code" href="class_command_base.html#ae6807501159925367f8008fc0534eda5">oi</a>-&gt;<a class="code" href="class_o_i.html#aa2737d12fc7666bb98987ade700b38fc" title="Gets the driver joystick.">GetDriverStick</a>());
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a3051d0e1b8807c36d7cc4ea4fcee026f"></a>
@@ -225,7 +234,10 @@ Public Member Functions</h2></td></tr>
 <p>Initializes the command. </p>
 
 <p>Definition at line <a class="el" href="_drive_with_joystick_8cpp_source.html#l00011">11</a> of file <a class="el" href="_drive_with_joystick_8cpp_source.html">DriveWithJoystick.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a90bf315e55b42a9ae845f5118fc22b92"></a>
@@ -245,7 +257,10 @@ Public Member Functions</h2></td></tr>
 <p>Called when another command which requires one or more of the same subsystems is scheduled to run. </p>
 
 <p>Definition at line <a class="el" href="_drive_with_joystick_8cpp_source.html#l00046">46</a> of file <a class="el" href="_drive_with_joystick_8cpp_source.html">DriveWithJoystick.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a2c86cbfae0ec5a45b6174f35a68fe2a0"></a>
@@ -266,7 +281,10 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns:</dt><dd>Bool, if the command is finished or not. </dd></dl>
 
 <p>Definition at line <a class="el" href="_drive_with_joystick_8cpp_source.html#l00029">29</a> of file <a class="el" href="_drive_with_joystick_8cpp_source.html">DriveWithJoystick.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span> <span class="keyword">false</span>;
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -279,7 +297,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_drive_with_joystick.html">DriveWithJoystick</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

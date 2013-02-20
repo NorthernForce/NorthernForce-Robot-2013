@@ -11,7 +11,10 @@ var class_drive_subsystem =
     [ "EnableEncoders", "class_drive_subsystem.html#a254412676afd2a736233806a0f4173f4", null ],
     [ "EnableGyro", "class_drive_subsystem.html#a120417f222b93e290ee47dd5d075d77f", null ],
     [ "EnableLogging", "class_drive_subsystem.html#a45b7c4aa6ad19f98eec78452493f4365", null ],
+    [ "EnablePositionMode", "class_drive_subsystem.html#a3e1257bda9f3db6d5f9a06774bc745fc", null ],
+    [ "EncodersEnabled", "class_drive_subsystem.html#ad10c1344e3932709ed25eaebef5e7405", null ],
     [ "GetAvgDistance", "class_drive_subsystem.html#a58edbe12f157df8f943368017d2cf7ae", null ],
+    [ "GyroEnabled", "class_drive_subsystem.html#a5413378ef54cde0ceac1f38e0c1c7ed3", null ],
     [ "InitDefaultCommand", "class_drive_subsystem.html#ab5bc12cc6ea5355b1f6199706c520049", null ],
     [ "Stop", "class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6", null ]
 ];

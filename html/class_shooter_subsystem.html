@@ -123,25 +123,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a06b6b7bd9ec8caebd7202fcce1507496"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a06b6b7bd9ec8caebd7202fcce1507496">ShooterSubsystem</a> ()</td></tr>
-<tr class="memdesc:a06b6b7bd9ec8caebd7202fcce1507496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the drive subsystem. Catches any exception that might occur in creating the jaguars.  <a href="#a06b6b7bd9ec8caebd7202fcce1507496"></a><br/></td></tr>
+<tr class="memitem:a656f963aa85a1e3478b255a5dda41081"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a656f963aa85a1e3478b255a5dda41081">ReturnPIDInput</a> ()</td></tr>
+<tr class="memitem:a51fce6152b21ca6859eef12a4d6a8a31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a51fce6152b21ca6859eef12a4d6a8a31">UsePIDOutput</a> (double output)</td></tr>
 <tr class="memitem:a593405796d9fbad70bdb58108b417731"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a593405796d9fbad70bdb58108b417731">InitDefaultCommand</a> ()</td></tr>
-<tr class="memdesc:a593405796d9fbad70bdb58108b417731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the default command for the subsystem. currently there is no default command for the shooter subsystem.  <a href="#a593405796d9fbad70bdb58108b417731"></a><br/></td></tr>
-<tr class="memitem:a8f9d27728313b1ea5ec8092431e1a4e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a8f9d27728313b1ea5ec8092431e1a4e0">SetShooterSpeed</a> (float speed)</td></tr>
-<tr class="memdesc:a8f9d27728313b1ea5ec8092431e1a4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the speed of the shooter wheel.  <a href="#a8f9d27728313b1ea5ec8092431e1a4e0"></a><br/></td></tr>
-<tr class="memitem:a0ac748aea1921ed2f95f2a6f95222928"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a0ac748aea1921ed2f95f2a6f95222928">Flick</a> (bool extend)</td></tr>
-<tr class="memdesc:a0ac748aea1921ed2f95f2a6f95222928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of the solenoid which flicks the frisbees.  <a href="#a0ac748aea1921ed2f95f2a6f95222928"></a><br/></td></tr>
+<tr class="memitem:ad4de97c1ff1cab011ef5aa637dabca10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#ad4de97c1ff1cab011ef5aa637dabca10">Flick</a> (Relay::Value dir)</td></tr>
+<tr class="memdesc:ad4de97c1ff1cab011ef5aa637dabca10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of the solenoid which flicks the frisbees.  <a href="#ad4de97c1ff1cab011ef5aa637dabca10"></a><br/></td></tr>
 <tr class="memitem:a0acd66e61e7b195efaa8935ed1d8829a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a">ResetCounter</a> ()</td></tr>
 <tr class="memdesc:a0acd66e61e7b195efaa8935ed1d8829a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the counter for determining the speed of the shooter wheel.  <a href="#a0acd66e61e7b195efaa8935ed1d8829a"></a><br/></td></tr>
+<tr class="memitem:a470947d793dd22425634c5f38c3f5a7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a470947d793dd22425634c5f38c3f5a7f">SetSpeed</a> (float speed)</td></tr>
 <tr class="memitem:a611dc79531d5f96c3cf8fe4151b66baf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">GetAvgSpeed</a> ()</td></tr>
 <tr class="memitem:af0f4db96f33459d687f9f6070a3e1690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#af0f4db96f33459d687f9f6070a3e1690">Stop</a> ()</td></tr>
 <tr class="memdesc:af0f4db96f33459d687f9f6070a3e1690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the shooter motor. NOTE: This will disable the motor, which will not be re-enabled until after the robot has been restarted, or the <a class="el" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">ShooterSubsystem::EnableMotor</a> method is called.  <a href="#af0f4db96f33459d687f9f6070a3e1690"></a><br/></td></tr>
 <tr class="memitem:a32dbb0002dc5fd1c9b55e65ec92f1f36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">EnableMotor</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This is the class which controls the driving of the robot. This is a subsystem, and behaves just like every other subsystem in the code library. Rather than using a different class for drive like last year, it is better to contain it all inside this one class.</p>
-<dl class="section author"><dt>Author:</dt><dd>arthurlockman </dd></dl>
+<div class="textblock"><dl class="section author"><dt>Author:</dt><dd>Joseph </dd></dl>
 
-<p>Definition at line <a class="el" href="_shooter_subsystem_8h_source.html#l00019">19</a> of file <a class="el" href="_shooter_subsystem_8h_source.html">ShooterSubsystem.h</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_subsystem_8h_source.html#l00012">12</a> of file <a class="el" href="_shooter_subsystem_8h_source.html">ShooterSubsystem.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a06b6b7bd9ec8caebd7202fcce1507496"></a>
 <div class="memitem">
@@ -157,10 +155,23 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Initializes the drive subsystem. Catches any exception that might occur in creating the jaguars. </p>
-
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00007">7</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00006">6</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                   : 
+    PIDSubsystem(<span class="stringliteral">&quot;ShooterSubsystem&quot;</span>, kShooterP, kShooterI, kShooterD),
+    m_shooterMotor(<a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31">kShooterJaguarAddress</a>),
+    m_shooterFlicker(<a class="code" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544">kShooterFlickerRelayAddress</a>, Relay::kBothDirections),
+    m_shooterWheelLightSensor(<a class="code" href="_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33a62879d957713674ecf674606e2e48f36">kShooterWheelLightSensorAddress</a>),
+    m_counterLastTime(GetFPGATime())
+{
+        <span class="comment">// Use these to get going:</span>
+        <span class="comment">// SetSetpoint() -  Sets where the PID controller should move the system</span>
+        <span class="comment">//                  to</span>
+        <span class="comment">// Enable() - Enables the PID controller.</span>
+        Disable();
+    m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+    m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -178,19 +189,22 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00075">75</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00089">89</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        m_shooterMotor.EnableControl(0.0);
+}
+</pre></div>
 </div>
 </div>
-<a class="anchor" id="a0ac748aea1921ed2f95f2a6f95222928"></a>
+<a class="anchor" id="ad4de97c1ff1cab011ef5aa637dabca10"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_shooter_subsystem.html#a0ac748aea1921ed2f95f2a6f95222928">ShooterSubsystem::Flick</a> </td>
+          <td class="memname">void <a class="el" href="class_shooter_subsystem.html#ad4de97c1ff1cab011ef5aa637dabca10">ShooterSubsystem::Flick</a> </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>extend</em></td><td>)</td>
+          <td class="paramtype">Relay::Value&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -200,13 +214,16 @@ Public Member Functions</h2></td></tr>
 <p>Set the state of the solenoid which flicks the frisbees. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">extend</td><td>if true, the relay will be set to on, otherwise, it will be set to off. </td></tr>
+    <tr><td class="paramname">dir</td><td>The direction to set the relay to. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00045">45</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00050">50</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    m_shooterFlicker.Set(dir);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a611dc79531d5f96c3cf8fe4151b66baf"></a>
@@ -224,8 +241,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 <dl class="section return"><dt>Returns:</dt><dd>the average speed since the last counter reset. </dd></dl>
 
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00060">60</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00073">73</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span> 2 * ((float)m_shooterWheelLightSensor.Get())/(GetFPGATime() - m_counterLastTime);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a593405796d9fbad70bdb58108b417731"></a>
@@ -242,10 +262,13 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Initializes the default command for the subsystem. currently there is no default command for the shooter subsystem. </p>
-
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00027">27</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00039">39</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="comment">// Set the default command for a subsystem here.</span>
+        <span class="comment">//setDefaultCommand(new MySpecialCommand());</span>
+<span class="comment">//      SetDefaultCommand(new SpinupShooterWithJoystick());</span>
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a0acd66e61e7b195efaa8935ed1d8829a"></a>
@@ -264,16 +287,46 @@ Public Member Functions</h2></td></tr>
 
 <p>Resets the counter for determining the speed of the shooter wheel. </p>
 
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00052">52</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00058">58</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        m_counterLastTime = GetFPGATime();
+        m_shooterWheelLightSensor.Reset();
+}
+</pre></div>
 </div>
 </div>
-<a class="anchor" id="a8f9d27728313b1ea5ec8092431e1a4e0"></a>
+<a class="anchor" id="a656f963aa85a1e3478b255a5dda41081"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_shooter_subsystem.html#a8f9d27728313b1ea5ec8092431e1a4e0">ShooterSubsystem::SetShooterSpeed</a> </td>
+          <td class="memname">double <a class="el" href="class_shooter_subsystem.html#a656f963aa85a1e3478b255a5dda41081">ShooterSubsystem::ReturnPIDInput</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00022">22</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="comment">// Return your input value for the PID loop</span>
+        <span class="comment">// e.g. a sensor, like a potentiometer:</span>
+        <span class="comment">// yourPot-&gt;SetAverageVoltage() / kYourMaxVoltage;</span>
+    <span class="keywordtype">float</span> speed = <a class="code" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">GetAvgSpeed</a>();
+    <a class="code" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a" title="Resets the counter for determining the speed of the shooter wheel.">ResetCounter</a>();
+    <span class="keywordflow">return</span> speed;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a470947d793dd22425634c5f38c3f5a7f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_subsystem.html#a470947d793dd22425634c5f38c3f5a7f">ShooterSubsystem::SetSpeed</a> </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>speed</em></td><td>)</td>
@@ -283,16 +336,12 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Sets the speed of the shooter wheel. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">speed</td><td>The speed to set the shooter wheel to </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00036">36</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00064">64</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        Disable();
+        m_shooterMotor.Set(speed);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="af0f4db96f33459d687f9f6070a3e1690"></a>
@@ -311,8 +360,35 @@ Public Member Functions</h2></td></tr>
 
 <p>Stops the shooter motor. NOTE: This will disable the motor, which will not be re-enabled until after the robot has been restarted, or the <a class="el" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">ShooterSubsystem::EnableMotor</a> method is called. </p>
 
-<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00070">70</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00084">84</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    m_shooterMotor.DisableControl();
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a51fce6152b21ca6859eef12a4d6a8a31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_subsystem.html#a51fce6152b21ca6859eef12a4d6a8a31">ShooterSubsystem::UsePIDOutput</a> </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
+<p>Definition at line <a class="el" href="_shooter_subsystem_8cpp_source.html#l00032">32</a> of file <a class="el" href="_shooter_subsystem_8cpp_source.html">ShooterSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="comment">// Use output to drive your system, like a motor</span>
+        <span class="comment">// e.g. yourMotor-&gt;Set(output);</span>
+    m_shooterMotor.Set(output);
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -325,7 +401,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_shooter_subsystem.html">ShooterSubsystem</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

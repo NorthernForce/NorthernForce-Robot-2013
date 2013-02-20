@@ -112,62 +112,89 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="_shooter_subsystem_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="_shooter_subsystem_8h.html">ShooterSubsystem.h</a>&quot;</span>
-<a name="l00002"></a>00002 
-<a name="l00007"></a><a class="code" href="class_shooter_subsystem.html#a06b6b7bd9ec8caebd7202fcce1507496">00007</a> <a class="code" href="class_shooter_subsystem.html#a06b6b7bd9ec8caebd7202fcce1507496" title="Initializes the drive subsystem. Catches any exception that might occur in creating the jaguars...">ShooterSubsystem::ShooterSubsystem</a>() <span class="keyword">try</span> : 
-<a name="l00008"></a>00008         Subsystem(<span class="stringliteral">&quot;ShooterSubsystem&quot;</span>),
-<a name="l00009"></a>00009     m_shooterMotor(<a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31">kShooterJaguarAddress</a>),
-<a name="l00010"></a>00010     m_shooterFlicker(<a class="code" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544">kShooterFlickerRelayAddress</a>),
-<a name="l00011"></a>00011     m_shooterWheelLightSensor(<a class="code" href="_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33a62879d957713674ecf674606e2e48f36">kShooterWheelLightSensorAddress</a>),
-<a name="l00012"></a>00012     m_counterLastTime(GetFPGATime())
-<a name="l00013"></a>00013 {
-<a name="l00014"></a>00014         <span class="comment">// Make sure that the shooter motor has been enabled </span>
-<a name="l00015"></a>00015         <a class="code" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">EnableMotor</a>();
-<a name="l00016"></a>00016 }
-<a name="l00017"></a>00017 <span class="keywordflow">catch</span> (exception e)
-<a name="l00018"></a>00018 {
-<a name="l00019"></a>00019         printf(<span class="stringliteral">&quot;Error creating  shooter jaguar, or other shooter components.\n&quot;</span>);
-<a name="l00020"></a>00020         printf(e.what());
-<a name="l00021"></a>00021 }
-<a name="l00022"></a>00022     
-<a name="l00027"></a><a class="code" href="class_shooter_subsystem.html#a593405796d9fbad70bdb58108b417731">00027</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a593405796d9fbad70bdb58108b417731" title="Initializes the default command for the subsystem. currently there is no default command for the shoo...">ShooterSubsystem::InitDefaultCommand</a>() 
-<a name="l00028"></a>00028 {
-<a name="l00029"></a>00029         <span class="comment">//SetDefaultCommand();</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;../Library.h&quot;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;SmartDashboard/SmartDashboard.h&quot;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;../Commands/SpinupShooterWithJoystick.h&quot;</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="class_shooter_subsystem.html#a06b6b7bd9ec8caebd7202fcce1507496">00006</a> <a class="code" href="class_shooter_subsystem.html#a06b6b7bd9ec8caebd7202fcce1507496">ShooterSubsystem::ShooterSubsystem</a>() : 
+<a name="l00007"></a>00007     PIDSubsystem(<span class="stringliteral">&quot;ShooterSubsystem&quot;</span>, kShooterP, kShooterI, kShooterD),
+<a name="l00008"></a>00008     m_shooterMotor(<a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31">kShooterJaguarAddress</a>),
+<a name="l00009"></a>00009     m_shooterFlicker(<a class="code" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544">kShooterFlickerRelayAddress</a>, Relay::kBothDirections),
+<a name="l00010"></a>00010     m_shooterWheelLightSensor(<a class="code" href="_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33a62879d957713674ecf674606e2e48f36">kShooterWheelLightSensorAddress</a>),
+<a name="l00011"></a>00011     m_counterLastTime(GetFPGATime())
+<a name="l00012"></a>00012 {
+<a name="l00013"></a>00013         <span class="comment">// Use these to get going:</span>
+<a name="l00014"></a>00014         <span class="comment">// SetSetpoint() -  Sets where the PID controller should move the system</span>
+<a name="l00015"></a>00015         <span class="comment">//                  to</span>
+<a name="l00016"></a>00016         <span class="comment">// Enable() - Enables the PID controller.</span>
+<a name="l00017"></a>00017         Disable();
+<a name="l00018"></a>00018     m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+<a name="l00019"></a>00019     m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+<a name="l00020"></a>00020 }
+<a name="l00021"></a>00021 
+<a name="l00022"></a><a class="code" href="class_shooter_subsystem.html#a656f963aa85a1e3478b255a5dda41081">00022</a> <span class="keywordtype">double</span> <a class="code" href="class_shooter_subsystem.html#a656f963aa85a1e3478b255a5dda41081">ShooterSubsystem::ReturnPIDInput</a>() 
+<a name="l00023"></a>00023 {
+<a name="l00024"></a>00024         <span class="comment">// Return your input value for the PID loop</span>
+<a name="l00025"></a>00025         <span class="comment">// e.g. a sensor, like a potentiometer:</span>
+<a name="l00026"></a>00026         <span class="comment">// yourPot-&gt;SetAverageVoltage() / kYourMaxVoltage;</span>
+<a name="l00027"></a>00027     <span class="keywordtype">float</span> speed = <a class="code" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">GetAvgSpeed</a>();
+<a name="l00028"></a>00028     <a class="code" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a" title="Resets the counter for determining the speed of the shooter wheel.">ResetCounter</a>();
+<a name="l00029"></a>00029     <span class="keywordflow">return</span> speed;
 <a name="l00030"></a>00030 }
 <a name="l00031"></a>00031 
-<a name="l00036"></a><a class="code" href="class_shooter_subsystem.html#a8f9d27728313b1ea5ec8092431e1a4e0">00036</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a8f9d27728313b1ea5ec8092431e1a4e0" title="Sets the speed of the shooter wheel.">ShooterSubsystem::SetShooterSpeed</a>(<span class="keywordtype">float</span> speed) 
-<a name="l00037"></a>00037 {
-<a name="l00038"></a>00038     m_shooterMotor.Set(speed);
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00045"></a><a class="code" href="class_shooter_subsystem.html#a0ac748aea1921ed2f95f2a6f95222928">00045</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a0ac748aea1921ed2f95f2a6f95222928" title="Set the state of the solenoid which flicks the frisbees.">ShooterSubsystem::Flick</a>(<span class="keywordtype">bool</span> extend) {
-<a name="l00046"></a>00046     m_shooterFlicker.Set(extend ? Relay::kOn : Relay::kOff);
-<a name="l00047"></a>00047 }
-<a name="l00048"></a>00048 
-<a name="l00052"></a><a class="code" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a">00052</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a" title="Resets the counter for determining the speed of the shooter wheel.">ShooterSubsystem::ResetCounter</a>() {
-<a name="l00053"></a>00053         m_counterLastTime = GetFPGATime();
-<a name="l00054"></a>00054         m_shooterWheelLightSensor.Reset();
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00060"></a><a class="code" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">00060</a> <span class="keywordtype">float</span> <a class="code" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">ShooterSubsystem::GetAvgSpeed</a>() {
-<a name="l00061"></a>00061         <span class="keywordflow">return</span> (<span class="keywordtype">float</span>)m_shooterWheelLightSensor.Get()/(GetFPGATime() - m_counterLastTime);
+<a name="l00032"></a><a class="code" href="class_shooter_subsystem.html#a51fce6152b21ca6859eef12a4d6a8a31">00032</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a51fce6152b21ca6859eef12a4d6a8a31">ShooterSubsystem::UsePIDOutput</a>(<span class="keywordtype">double</span> output) 
+<a name="l00033"></a>00033 {
+<a name="l00034"></a>00034         <span class="comment">// Use output to drive your system, like a motor</span>
+<a name="l00035"></a>00035         <span class="comment">// e.g. yourMotor-&gt;Set(output);</span>
+<a name="l00036"></a>00036     m_shooterMotor.Set(output);
+<a name="l00037"></a>00037 }
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="class_shooter_subsystem.html#a593405796d9fbad70bdb58108b417731">00039</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a593405796d9fbad70bdb58108b417731">ShooterSubsystem::InitDefaultCommand</a>() 
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041         <span class="comment">// Set the default command for a subsystem here.</span>
+<a name="l00042"></a>00042         <span class="comment">//setDefaultCommand(new MySpecialCommand());</span>
+<a name="l00043"></a>00043 <span class="comment">//      SetDefaultCommand(new SpinupShooterWithJoystick());</span>
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00050"></a><a class="code" href="class_shooter_subsystem.html#ad4de97c1ff1cab011ef5aa637dabca10">00050</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#ad4de97c1ff1cab011ef5aa637dabca10" title="Set the state of the solenoid which flicks the frisbees.">ShooterSubsystem::Flick</a>(Relay::Value dir) 
+<a name="l00051"></a>00051 {
+<a name="l00052"></a>00052     m_shooterFlicker.Set(dir);
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00058"></a><a class="code" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a">00058</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a0acd66e61e7b195efaa8935ed1d8829a" title="Resets the counter for determining the speed of the shooter wheel.">ShooterSubsystem::ResetCounter</a>() 
+<a name="l00059"></a>00059 {
+<a name="l00060"></a>00060         m_counterLastTime = GetFPGATime();
+<a name="l00061"></a>00061         m_shooterWheelLightSensor.Reset();
 <a name="l00062"></a>00062 }
 <a name="l00063"></a>00063 
-<a name="l00070"></a><a class="code" href="class_shooter_subsystem.html#af0f4db96f33459d687f9f6070a3e1690">00070</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#af0f4db96f33459d687f9f6070a3e1690" title="Stops the shooter motor. NOTE: This will disable the motor, which will not be re-enabled until after ...">ShooterSubsystem::Stop</a>()
-<a name="l00071"></a>00071 {
-<a name="l00072"></a>00072     m_shooterMotor.DisableControl();
-<a name="l00073"></a>00073 }
-<a name="l00074"></a>00074 
-<a name="l00075"></a><a class="code" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">00075</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">ShooterSubsystem::EnableMotor</a>() {
-<a name="l00076"></a>00076         m_shooterMotor.EnableControl(0.0);
-<a name="l00077"></a>00077 }
-<a name="l00078"></a>00078 
+<a name="l00064"></a><a class="code" href="class_shooter_subsystem.html#a470947d793dd22425634c5f38c3f5a7f">00064</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a470947d793dd22425634c5f38c3f5a7f">ShooterSubsystem::SetSpeed</a>(<span class="keywordtype">float</span> speed) 
+<a name="l00065"></a>00065 {
+<a name="l00066"></a>00066         Disable();
+<a name="l00067"></a>00067         m_shooterMotor.Set(speed);
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00073"></a><a class="code" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">00073</a> <span class="keywordtype">float</span> <a class="code" href="class_shooter_subsystem.html#a611dc79531d5f96c3cf8fe4151b66baf">ShooterSubsystem::GetAvgSpeed</a>() 
+<a name="l00074"></a>00074 {
+<a name="l00075"></a>00075         <span class="keywordflow">return</span> 2 * ((float)m_shooterWheelLightSensor.Get())/(GetFPGATime() - m_counterLastTime);
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00084"></a><a class="code" href="class_shooter_subsystem.html#af0f4db96f33459d687f9f6070a3e1690">00084</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#af0f4db96f33459d687f9f6070a3e1690" title="Stops the shooter motor. NOTE: This will disable the motor, which will not be re-enabled until after ...">ShooterSubsystem::Stop</a>()
+<a name="l00085"></a>00085 {
+<a name="l00086"></a>00086     m_shooterMotor.DisableControl();
+<a name="l00087"></a>00087 }
+<a name="l00088"></a>00088 
+<a name="l00089"></a><a class="code" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">00089</a> <span class="keywordtype">void</span> <a class="code" href="class_shooter_subsystem.html#a32dbb0002dc5fd1c9b55e65ec92f1f36">ShooterSubsystem::EnableMotor</a>() 
+<a name="l00090"></a>00090 {
+<a name="l00091"></a>00091         m_shooterMotor.EnableControl(0.0);
+<a name="l00092"></a>00092 }
+<a name="l00093"></a>00093 
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_shooter_subsystem_8cpp.html">ShooterSubsystem.cpp</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

@@ -164,7 +164,15 @@ Public Member Functions</h2></td></tr>
 <dl class="section author"><dt>Author:</dt><dd>Arthur Lockman </dd></dl>
 
 <p>Definition at line <a class="el" href="_log_system_8cpp_source.html#l00017">17</a> of file <a class="el" href="_log_system_8cpp_source.html">LogSystem.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                                      : 
+        Subsystem(<span class="stringliteral">&quot;LogSystem&quot;</span>) , 
+        m_logLevel(level)
+{
+        this-&gt;SetDirectory(<span class="stringliteral">&quot;/tmp/log&quot;</span>);
+        this-&gt;PrintToFile(<span class="stringliteral">&quot;-----System Boot: Starting New Log-----&quot;</span>);
+        this-&gt;Print(<span class="stringliteral">&quot;-----System Boot: Starting New Log-----&quot;</span>);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -186,7 +194,10 @@ Public Member Functions</h2></td></tr>
 <dl class="section author"><dt>Author:</dt><dd>WPILib </dd></dl>
 
 <p>Definition at line <a class="el" href="_log_system_8cpp_source.html#l00031">31</a> of file <a class="el" href="_log_system_8cpp_source.html">LogSystem.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a36749db234555f3875cffeef47ac56cb"></a>
@@ -225,7 +236,14 @@ Public Member Functions</h2></td></tr>
 <dl class="section author"><dt>Author:</dt><dd>Arthur Lockman </dd></dl>
 
 <p>Definition at line <a class="el" href="_log_system_8cpp_source.html#l00055">55</a> of file <a class="el" href="_log_system_8cpp_source.html">LogSystem.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">if</span> (level &gt;= m_logLevel)
+        {
+                this-&gt;Print(message);
+                this-&gt;PrintToFile(message);
+        }
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -238,7 +256,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_log_system.html">LogSystem</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

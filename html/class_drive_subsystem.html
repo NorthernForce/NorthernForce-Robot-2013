@@ -149,6 +149,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa82d53aadf15da68cc1c9f09a2526c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables driving with encoders. Also used for initializing non encoder-driven jaguars.  <a href="#aa82d53aadf15da68cc1c9f09a2526c0d"></a><br/></td></tr>
 <tr class="memitem:a5d93a41e707fbc8b2dc9918c2c67ccbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a5d93a41e707fbc8b2dc9918c2c67ccbf">ChangeDrivePID</a> (float p, float i, float d)</td></tr>
 <tr class="memdesc:a5d93a41e707fbc8b2dc9918c2c67ccbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the PID values on the drive encoders.  <a href="#a5d93a41e707fbc8b2dc9918c2c67ccbf"></a><br/></td></tr>
+<tr class="memitem:a3e1257bda9f3db6d5f9a06774bc745fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3e1257bda9f3db6d5f9a06774bc745fc">EnablePositionMode</a> ()</td></tr>
+<tr class="memdesc:a3e1257bda9f3db6d5f9a06774bc745fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switches the wheels into position mode.  <a href="#a3e1257bda9f3db6d5f9a06774bc745fc"></a><br/></td></tr>
+<tr class="memitem:ad10c1344e3932709ed25eaebef5e7405"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#ad10c1344e3932709ed25eaebef5e7405">EncodersEnabled</a> ()</td></tr>
+<tr class="memdesc:ad10c1344e3932709ed25eaebef5e7405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not the encoders are enabled.  <a href="#ad10c1344e3932709ed25eaebef5e7405"></a><br/></td></tr>
+<tr class="memitem:a5413378ef54cde0ceac1f38e0c1c7ed3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a5413378ef54cde0ceac1f38e0c1c7ed3">GyroEnabled</a> ()</td></tr>
+<tr class="memdesc:a5413378ef54cde0ceac1f38e0c1c7ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not the gyro is enabled.  <a href="#a5413378ef54cde0ceac1f38e0c1c7ed3"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This is the class which controls the driving of the robot. This is a subsystem, and behaves just like every other subsystem in the code library. Rather than using a different class for drive like last year, it is better to contain it all inside this one class.</p>
@@ -172,8 +178,32 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the drive subsystem. Catches any exception that might occur in creating the jaguars. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00008">8</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00009">9</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                   : 
+        Subsystem(<span class="stringliteral">&quot;DriveSubsystem&quot;</span>),
+        m_frontLeftMotor((<a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;LogMessage(<span class="stringliteral">&quot;Initializing front left jaguar.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>), 
+                <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ad2f082afb327e014287e1cca082ce55d">kFrontLeftJaguarAddress</a>), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+        m_frontRightMotor((<a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;LogMessage(<span class="stringliteral">&quot;Initializing front right jaguar.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>), 
+                <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ae829fdd281a80e471c56e5fe79bc4d7b">kFrontRightJaguarAddress</a>), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+        m_rearLeftMotor((<a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;LogMessage(<span class="stringliteral">&quot;Initializing rear left jaguar.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>), 
+                <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ac937c786b35aa0bf707747abc9458e8d">kRearLeftJaguarAddress</a>), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+        m_rearRightMotor((<a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;LogMessage(<span class="stringliteral">&quot;Initializing rear right jaguar.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>), 
+                <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a9c01d7c92c7d3da2785761a89eb90d1a">kRearRightJaguarAddress</a>), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
+        m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
+        m_driveErrAccumulator(0.0),
+    m_DriveLog(<span class="stringliteral">&quot;DriveLog.csv&quot;</span>),
+    m_loggingEnabled(<span class="keyword">false</span>),
+    m_gyroEnabled(<span class="keyword">false</span>),
+    m_encodersEnabled(<span class="keyword">false</span>)
+{
+        (m_encodersEnabled) ? this-&gt;<a class="code" href="class_drive_subsystem.html#a254412676afd2a736233806a0f4173f4" title="Enables driving with encoders. Also used for initializing encoder-driven jaguars.">EnableEncoders</a>() : this-&gt;<a class="code" href="class_drive_subsystem.html#aa82d53aadf15da68cc1c9f09a2526c0d" title="Disables driving with encoders. Also used for initializing non encoder-driven jaguars.">DisableEncoders</a>();
+}
+<span class="keywordflow">catch</span> (exception e)
+{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Error creating drive motor jaguars.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02af4d9974193a9ec0aad47c6144905b38f">kLogPriorityError</a>);
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(e.what(), <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02af4d9974193a9ec0aad47c6144905b38f">kLogPriorityError</a>);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -218,8 +248,40 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00218">218</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00291">291</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">if</span> ((m_frontLeftMotor.GetControlMode() == CANJaguar::kSpeed) || 
+                (m_frontLeftMotor.GetControlMode() == CANJaguar::kPosition))
+        {
+                <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Changing drive PID values...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
 
+                m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+                m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+                m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+                m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+
+                m_frontLeftMotor.SetPID(p, i, d);
+                m_frontRightMotor.SetPID(p, i, d);
+                m_rearLeftMotor.SetPID(p, i, d);
+                m_rearRightMotor.SetPID(p, i, d);
+                
+                m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+                m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+                m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+                m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+
+                <span class="keywordtype">char</span> _tmp[100];
+                sprintf(_tmp, <span class="stringliteral">&quot;Drive PID values changed to %f %f %f.&quot;</span>, p, i, d);
+                <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(_tmp, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+        }
+        <span class="keywordflow">else</span>
+        {
+                <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Robot not in a mode that accepts PID values!&quot;</span>, 
+                                <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+
+        }
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aa82d53aadf15da68cc1c9f09a2526c0d"></a>
@@ -238,8 +300,34 @@ Public Member Functions</h2></td></tr>
 
 <p>Disables driving with encoders. Also used for initializing non encoder-driven jaguars. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00189">189</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00205">205</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Disabling encoders...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
 
+        m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+        m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+        m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+        m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+
+        m_frontLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+        m_frontRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+        m_rearLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+        m_rearRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+
+        m_frontLeftMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+        m_frontRightMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+        m_rearLeftMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+        m_rearRightMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+        m_encodersEnabled = <span class="keyword">false</span>;
+
+        m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+        m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+        m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+        m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Encoders disabled!&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a917bef2be9aed24d8d04e7c2d0bfea38"></a>
@@ -258,8 +346,13 @@ Public Member Functions</h2></td></tr>
 
 <p>Disables the gyro correction in drive. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00099">99</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00104">104</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Disabling gyro-aided drive...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+        m_gyroEnabled = <span class="keyword">false</span>;
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Done.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a5f32f0b482127084b43c9ebe38cf0013"></a>
@@ -278,8 +371,13 @@ Public Member Functions</h2></td></tr>
 
 <p>Disables logging of drive information. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00126">126</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00134">134</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Disabling drive logging...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+        m_loggingEnabled = <span class="keyword">false</span>;
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Done.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a64574f4ef16d79c1a2deae67fb1e24fd"></a>
@@ -305,8 +403,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00045">45</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00046">46</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{       
+        (m_gyroEnabled) ? this-&gt;<a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd" title="Drives the robot with an XBox Joystick.">DriveRobot</a>(stick.<a class="code" href="class_f_r_c_xbox_joystick.html#ae399db2c5fd4e656ab74d6b223cf37da" title="Gets the Y of the left stick on the controller.">GetLeftStickY</a>(), stick.<a class="code" href="class_f_r_c_xbox_joystick.html#aab0f633fdc53322561219f1821a049e1" title="Gets the X of the right stick on the controller.">GetRightStickX</a>() / 2) : 
+                this-&gt;<a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd" title="Drives the robot with an XBox Joystick.">DriveRobot</a>(stick.<a class="code" href="class_f_r_c_xbox_joystick.html#ae399db2c5fd4e656ab74d6b223cf37da" title="Gets the Y of the left stick on the controller.">GetLeftStickY</a>(), stick.<a class="code" href="class_f_r_c_xbox_joystick.html#aab0f633fdc53322561219f1821a049e1" title="Gets the X of the right stick on the controller.">GetRightStickX</a>());
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="af839f84acb5a68c9c351a1761052167f"></a>
@@ -343,8 +445,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00055">55</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00057">57</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        this-&gt;<a class="code" href="class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd" title="Drives the robot with an XBox Joystick.">DriveRobot</a>(moveStick.GetY(), moveStick.GetX());
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="acbceea3fc62d12f99d18b6043068ec33"></a>
@@ -381,8 +486,31 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00065">65</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00067">67</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">if</span> (m_gyroEnabled)
+        {
+                <span class="keywordtype">float</span> gyroRate = <a class="code" href="class_command_base.html#ae924b04453d3a85956b937740cf88dd6">CommandBase::s_Gyro</a>-&gt;<a class="code" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263" title="Gets the rate from the gyro sensor, and writes it to a log file.">GetRate</a>();
+            <span class="keywordtype">float</span> error = rotateValue - gyroRate;
+            m_driveErrAccumulator += error;
+            
+            <span class="keywordflow">if</span> (m_loggingEnabled)
+            {
+                    <span class="keywordtype">char</span> _tmp[40];
+                    sprintf(_tmp, <span class="stringliteral">&quot;%5.3f,%5.3f,%5.3f,%5.3f&quot;</span>, rotateValue,
+                                gyroRate,error,m_driveErrAccumulator);
+                    m_DriveLog.<a class="code" href="class_log_file.html#aa7efc59cf7e944a6f28e3fcc5574ca94" title="Write data to the log file. The data will automatically be terminated with a newline.">Write</a>(_tmp);
+                }
+                
+                m_drive.ArcadeDrive(moveValue, kDriveSpinP * error + 
+                                kDriveSpinI * m_driveErrAccumulator, <span class="keyword">true</span>);
+        }
+        <span class="keywordflow">else</span>
+        {
+                m_drive.ArcadeDrive(moveValue, rotateValue, <span class="keyword">true</span>);
+        }
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a254412676afd2a736233806a0f4173f4"></a>
@@ -401,8 +529,55 @@ Public Member Functions</h2></td></tr>
 
 <p>Enables driving with encoders. Also used for initializing encoder-driven jaguars. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00143">143</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00152">152</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Enabling encoders in speed mode...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
 
+        m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+        m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+        m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+        m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+
+        m_frontLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+        m_frontRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+        m_rearLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+        m_rearRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+
+        m_frontLeftMotor.ChangeControlMode(CANJaguar::kSpeed);
+        m_frontRightMotor.ChangeControlMode(CANJaguar::kSpeed);
+        m_rearLeftMotor.ChangeControlMode(CANJaguar::kSpeed);
+        m_rearRightMotor.ChangeControlMode(CANJaguar::kSpeed);
+
+        m_frontLeftMotor.SetPID(kDriveP, kDriveI, kDriveD);
+        m_frontRightMotor.SetPID(kDriveP, kDriveI, kDriveD);
+        m_rearLeftMotor.SetPID(kDriveP, kDriveI, kDriveD);
+        m_rearRightMotor.SetPID(kDriveP, kDriveI, kDriveD);
+
+        m_frontLeftMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+        m_frontRightMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+        m_rearLeftMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+        m_rearRightMotor.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+
+        m_frontLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+        m_frontRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+        m_rearLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+        m_rearRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+
+        m_frontLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+        m_frontRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+        m_rearLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+        m_rearRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+        
+        m_encodersEnabled = <span class="keyword">true</span>;
+
+        m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+        m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+        m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+        m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Encoders enabled!&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a120417f222b93e290ee47dd5d075d77f"></a>
@@ -421,8 +596,13 @@ Public Member Functions</h2></td></tr>
 
 <p>Enables the gyro correction in drive. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00108">108</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00114">114</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Enabling gyro-aided drive...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+        m_gyroEnabled = <span class="keyword">true</span>;
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Done.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a45b7c4aa6ad19f98eec78452493f4365"></a>
@@ -441,8 +621,104 @@ Public Member Functions</h2></td></tr>
 
 <p>Enables logging of drive information. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00117">117</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00124">124</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Enabling drive logging...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+        m_loggingEnabled = <span class="keyword">true</span>;
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Done.&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a3e1257bda9f3db6d5f9a06774bc745fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_drive_subsystem.html#a3e1257bda9f3db6d5f9a06774bc745fc">DriveSubsystem::EnablePositionMode</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
+<p>Switches the wheels into position mode. </p>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00236">236</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Enabling encoders in speed mode...&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+
+                m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+                m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+                m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+                m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">DisableControl</a>();
+
+                m_frontLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+                m_frontRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+                m_rearLeftMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+                m_rearRightMotor.ConfigMaxOutputVoltage(kDriveMaxOutputVoltage);
+
+                m_frontLeftMotor.ChangeControlMode(CANJaguar::kPosition);
+                m_frontRightMotor.ChangeControlMode(CANJaguar::kPosition);
+                m_rearLeftMotor.ChangeControlMode(CANJaguar::kPosition);
+                m_rearRightMotor.ChangeControlMode(CANJaguar::kPosition);
+
+                m_frontLeftMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+                m_frontRightMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+                m_rearLeftMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+                m_rearRightMotor.SetPID(kDrivePosP, kDrivePosI, kDrivePosD);
+
+                m_frontLeftMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+                m_frontRightMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+                m_rearLeftMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+                m_rearRightMotor.SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+
+                m_frontLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+                m_frontRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+                m_rearLeftMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+                m_rearRightMotor.ConfigEncoderCodesPerRev(kEncoderPulsesPerRev);
+
+                m_frontLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+                m_frontRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+                m_rearLeftMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+                m_rearRightMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+                
+                m_encodersEnabled = <span class="keyword">true</span>;
+
+                m_frontLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+                m_frontRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+                m_rearLeftMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+                m_rearRightMotor.<a class="code" href="class_ramped_c_a_n_jaguar.html#abd55a13ceee1f5bb3441651ba268e30e">EnableControl</a>();
+
+                <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Encoders enabled!&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ad10c1344e3932709ed25eaebef5e7405"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_drive_subsystem.html#ad10c1344e3932709ed25eaebef5e7405">DriveSubsystem::EncodersEnabled</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Gets whether or not the encoders are enabled. </p>
+<dl class="section return"><dt>Returns:</dt><dd>Whether or not the encoders are enabled. </dd></dl>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8h_source.html#l00065">65</a> of file <a class="el" href="_drive_subsystem_8h_source.html">DriveSubsystem.h</a>.</p>
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">return</span> m_encodersEnabled;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a58edbe12f157df8f943368017d2cf7ae"></a>
@@ -459,8 +735,36 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00133">133</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00142">142</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span>( ( m_frontLeftMotor.GetPosition() + m_frontRightMotor.GetPosition() ) / 2 );     
 
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a5413378ef54cde0ceac1f38e0c1c7ed3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_drive_subsystem.html#a5413378ef54cde0ceac1f38e0c1c7ed3">DriveSubsystem::GyroEnabled</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Gets whether or not the gyro is enabled. </p>
+<dl class="section return"><dt>Returns:</dt><dd>Whether or not the gyro is enabled. </dd></dl>
+
+<p>Definition at line <a class="el" href="_drive_subsystem_8h_source.html#l00074">74</a> of file <a class="el" href="_drive_subsystem_8h_source.html">DriveSubsystem.h</a>.</p>
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">return</span> m_gyroEnabled;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ab5bc12cc6ea5355b1f6199706c520049"></a>
@@ -479,8 +783,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the default command for the subsystem. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00036">36</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00037">37</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        SetDefaultCommand(<span class="keyword">new</span> <a class="code" href="class_drive_with_joystick.html">DriveWithJoystick</a>());
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a26084e362570f6f971676c17a8c584a6"></a>
@@ -499,8 +806,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Stops all motion on the robot. </p>
 
-<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00091">91</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_drive_subsystem_8cpp_source.html#l00095">95</a> of file <a class="el" href="_drive_subsystem_8cpp_source.html">DriveSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        m_drive.StopMotor();
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Robot stopped!&quot;</span>, <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02af4d9974193a9ec0aad47c6144905b38f">kLogPriorityError</a>);
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -513,7 +824,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_drive_subsystem.html">DriveSubsystem</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

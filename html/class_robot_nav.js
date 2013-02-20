@@ -1,12 +1,12 @@
 var class_robot_nav =
 [
     [ "RobotNav", "class_robot_nav.html#a29df98419c7902bdddbd7792ab1939e4", null ],
-    [ "RobotNav", "class_robot_nav.html#a21f7aefd1b7eee9f52ab700d68fa43cb", null ],
-    [ "GetTheta", "class_robot_nav.html#ab2d0c13eeb489a139b20bd796a89c0ca", null ],
-    [ "GetX", "class_robot_nav.html#a0ce860b5f8abd096c21ed9f1930c95c3", null ],
-    [ "GetY", "class_robot_nav.html#ad417979d4584477edf39947e215bf3d4", null ],
+    [ "RobotNav", "class_robot_nav.html#addb1198d206cc323ab3cf81abfad1d34", null ],
+    [ "GetTheta", "class_robot_nav.html#a2a3156e2d8793023f97ec329f3a43615", null ],
+    [ "GetX", "class_robot_nav.html#abb8a0a123d9a015ed75767d8d2a5d3dd", null ],
+    [ "GetY", "class_robot_nav.html#a3b0f92c619a55c69076e27af70985248", null ],
     [ "InitDefaultCommand", "class_robot_nav.html#a77dd978ff8ce20c115f03c61a2b23e7c", null ],
-    [ "propagate", "class_robot_nav.html#a40f0df434325f606cb4c471c9b290c92", null ],
-    [ "propagate", "class_robot_nav.html#a54fa2895a112d1e8313a70d782186b72", null ],
-    [ "reset", "class_robot_nav.html#a93c05041bf2f0117971bba9092f3c4ef", null ]
+    [ "propagate", "class_robot_nav.html#ac7ea60e16542b65044dffb992048d52a", null ],
+    [ "propagate", "class_robot_nav.html#a245ba3d2f1ee2644260cf9205abb2b0e", null ],
+    [ "reset", "class_robot_nav.html#a53fbd6b7b27cb4acd32a51639d0b8a35", null ]
 ];

@@ -123,12 +123,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4c65d103199091b142fd79a18c58b6a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a4c65d103199091b142fd79a18c58b6a3">ShooterElevatorSubsystem</a> ()</td></tr>
+<tr class="memitem:aa460f9040d993873793a91d244e80ef6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#aa460f9040d993873793a91d244e80ef6">ReturnPIDInput</a> ()</td></tr>
+<tr class="memitem:a952fa133441cefa32e13c6316d05ae6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a952fa133441cefa32e13c6316d05ae6d">UsePIDOutput</a> (double output)</td></tr>
+<tr class="memitem:aba8929fc87b77f0356fd08e28cb705ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#aba8929fc87b77f0356fd08e28cb705ca">InitDefaultCommand</a> ()</td></tr>
 <tr class="memitem:ac4483582454601ae6048b1e74d783d49"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a> ()</td></tr>
-<tr class="memitem:a5bf906fb06187783548c73d0e1e5f99e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a5bf906fb06187783548c73d0e1e5f99e">SetElevatorSpeed</a> (float speed)</td></tr>
+<tr class="memitem:a509b934f9ff8a6b717c119a259761ab8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a509b934f9ff8a6b717c119a259761ab8">SetSpeed</a> (float speed)</td></tr>
+<tr class="memitem:a0a8dacb678dad14147c587ad4b9d0b7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a0a8dacb678dad14147c587ad4b9d0b7d">SetPosition</a> (float position)</td></tr>
+<tr class="memitem:a2005979ecfa7db8b8ec6387684a25853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a2005979ecfa7db8b8ec6387684a25853">SetPositionRelative</a> (float deltaPos)</td></tr>
+<tr class="memitem:a76473c0a8d5664ebdae031319533bcf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a76473c0a8d5664ebdae031319533bcf9">EnableLogging</a> ()</td></tr>
+<tr class="memitem:a15a11e3ebdd0baaff2ffffcc64715acd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shooter_elevator_subsystem.html#a15a11e3ebdd0baaff2ffffcc64715acd">DisableLogging</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8h_source.html#l00018">18</a> of file <a class="el" href="_shooter_elevator_subsystem_8h_source.html">ShooterElevatorSubsystem.h</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8h_source.html#l00019">19</a> of file <a class="el" href="_shooter_elevator_subsystem_8h_source.html">ShooterElevatorSubsystem.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4c65d103199091b142fd79a18c58b6a3"></a>
 <div class="memitem">
@@ -144,11 +151,64 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00010">10</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00004">4</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                                   :
+        PIDSubsystem(<span class="stringliteral">&quot;ShooterElevatorSubsystem&quot;</span>, kShooterElevatorP, kShooterElevatorI, kShooterElevatorD),
+    m_shooterElevatorMotor(<a class="code" href="_robotmap_8h.html#a37437b7411baeb81c271f06179771fe3a3c1853bf78f2b0dc626d463249880751">kShooterElevatorVictorAddress</a>),
+    m_elevationPotentiometer(<a class="code" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da01588c5a24462cbc5d3fc94af6781a1e">kShooterElevatorPotChannel</a>),
+    m_elevatorLog(<span class="stringliteral">&quot;POTLog.txt&quot;</span>),
+    m_loggingEnabled(<span class="keyword">false</span>)
+{
+<span class="comment">//      this-&gt;SetSetpoint(kPyramidBackAngle);</span>
+<span class="comment">//      Enable();</span>
+        Disable();
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a15a11e3ebdd0baaff2ffffcc64715acd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a15a11e3ebdd0baaff2ffffcc64715acd">ShooterElevatorSubsystem::DisableLogging</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00082">82</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    m_loggingEnabled = <span class="keyword">false</span>;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a76473c0a8d5664ebdae031319533bcf9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a76473c0a8d5664ebdae031319533bcf9">ShooterElevatorSubsystem::EnableLogging</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00077">77</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    m_loggingEnabled = <span class="keyword">true</span>;
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="ac4483582454601ae6048b1e74d783d49"></a>
 <div class="memitem">
 <div class="memproto">
@@ -163,16 +223,128 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00016">16</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00031">31</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordtype">float</span> voltage = m_elevationPotentiometer.GetVoltage();
+    <span class="keywordtype">float</span> angle = kElevatorDegreesPerVolt * (kElevatorZero - voltage);
+    
+        <span class="keywordflow">if</span>(m_loggingEnabled) {
+                <span class="keywordtype">char</span> _tmp[55];
+                sprintf(_tmp, <span class="stringliteral">&quot;Voltage: %5.3f, Angle: %5.3f deg, Shooter Speed %5.3f&quot;</span>, 
+                                voltage, angle, <a class="code" href="class_command_base.html#ae6807501159925367f8008fc0534eda5">CommandBase::oi</a>-&gt;GetManipulatorStick().GetPOT());
+                printf(<span class="stringliteral">&quot;Voltage: %5.3f, Angle: %5.3f deg, Shooter Speed %5.3f\n&quot;</span>, 
+                                voltage, angle, <a class="code" href="class_command_base.html#ae6807501159925367f8008fc0534eda5">CommandBase::oi</a>-&gt;GetManipulatorStick().GetPOT());
+                m_elevatorLog.<a class="code" href="class_log_file.html#aa7efc59cf7e944a6f28e3fcc5574ca94" title="Write data to the log file. The data will automatically be terminated with a newline.">Write</a>(_tmp);
+        }
+        
+        <span class="keywordflow">return</span> angle;
+}
+</pre></div>
 </div>
 </div>
-<a class="anchor" id="a5bf906fb06187783548c73d0e1e5f99e"></a>
+<a class="anchor" id="aba8929fc87b77f0356fd08e28cb705ca"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a5bf906fb06187783548c73d0e1e5f99e">ShooterElevatorSubsystem::SetElevatorSpeed</a> </td>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#aba8929fc87b77f0356fd08e28cb705ca">ShooterElevatorSubsystem::InitDefaultCommand</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00026">26</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="comment">//SetDefaultCommand(new ElevateShooterWithJoystick());</span>
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="aa460f9040d993873793a91d244e80ef6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_shooter_elevator_subsystem.html#aa460f9040d993873793a91d244e80ef6">ShooterElevatorSubsystem::ReturnPIDInput</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00016">16</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a>();
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a0a8dacb678dad14147c587ad4b9d0b7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a0a8dacb678dad14147c587ad4b9d0b7d">ShooterElevatorSubsystem::SetPosition</a> </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00048">48</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="comment">//@TODO: Test this. </span>
+    <span class="keywordflow">if</span>(position &gt; kElevatorMaxAngle) { SetSetpoint(kElevatorMaxAngle); }
+    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(position &lt; kElevatorMinAngle) { SetSetpoint(kElevatorMinAngle); }
+        <span class="keywordflow">else</span> { SetSetpoint(position); }
+
+        Enable();
+
+        <span class="comment">// if(position &gt; kElevatorMaxAngle) position = kElevatorMaxAngle;</span>
+        <span class="comment">// if(position &lt; kElevatorMinAngle) position = kElevatorMinAngle;</span>
+        <span class="comment">// SetSetpoint(position);</span>
+        <span class="comment">// Enable();</span>
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a2005979ecfa7db8b8ec6387684a25853"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a2005979ecfa7db8b8ec6387684a25853">ShooterElevatorSubsystem::SetPositionRelative</a> </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaPos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00063">63</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        Enable();
+        SetSetpointRelative(deltaPos);
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a509b934f9ff8a6b717c119a259761ab8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a509b934f9ff8a6b717c119a259761ab8">ShooterElevatorSubsystem::SetSpeed</a> </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>speed</em></td><td>)</td>
@@ -182,8 +354,36 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00020">20</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00069">69</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        Disable();
+    <span class="keywordflow">if</span>((<a class="code" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a>() &gt; kElevatorMaxAngle) &amp;&amp; (speed &gt; 0.0)) <span class="keywordflow">return</span>;
+    <span class="keywordflow">if</span>((<a class="code" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a>() &lt; kElevatorMinAngle) &amp;&amp; (speed &lt; 0.0)) <span class="keywordflow">return</span>;
+        m_shooterElevatorMotor.Set(speed);
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a952fa133441cefa32e13c6316d05ae6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_shooter_elevator_subsystem.html#a952fa133441cefa32e13c6316d05ae6d">ShooterElevatorSubsystem::UsePIDOutput</a> </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00021">21</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        m_shooterElevatorMotor.Set(output);
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -196,7 +396,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

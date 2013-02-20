@@ -126,8 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a77c2c4630ca19e64a7885154f3dc202f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the operator interface.  <a href="#a77c2c4630ca19e64a7885154f3dc202f"></a><br/></td></tr>
 <tr class="memitem:aa2737d12fc7666bb98987ade700b38fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_i.html#aa2737d12fc7666bb98987ade700b38fc">GetDriverStick</a> ()</td></tr>
 <tr class="memdesc:aa2737d12fc7666bb98987ade700b38fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the driver joystick.  <a href="#aa2737d12fc7666bb98987ade700b38fc"></a><br/></td></tr>
-<tr class="memitem:a391d742e8cb7bb797e811239c9015d81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_i.html#a391d742e8cb7bb797e811239c9015d81">GetManipulatorStick</a> ()</td></tr>
-<tr class="memdesc:a391d742e8cb7bb797e811239c9015d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the manipulator joystick.  <a href="#a391d742e8cb7bb797e811239c9015d81"></a><br/></td></tr>
+<tr class="memitem:a553f19aa2cdcffd8a08729bed83d7614"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_attack3_joystick.html">Attack3Joystick</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_i.html#a553f19aa2cdcffd8a08729bed83d7614">GetManipulatorStick</a> ()</td></tr>
+<tr class="memdesc:a553f19aa2cdcffd8a08729bed83d7614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the manipulator joystick.  <a href="#a553f19aa2cdcffd8a08729bed83d7614"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class handles all operator input on the robot. All joysticks, custom boards, and any other method of interacting with real humans go in here. </p>
@@ -150,8 +150,32 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the operator interface. </p>
 
-<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00006">6</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00018">18</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">       :
+        m_driverStick(1),
+        m_manipulatorStick(2)
+{
+        <span class="comment">// Process operator interface input here.</span>
+<span class="comment">//      m_driverStick.Back.WhenPressed(new DisableEncoders());</span>
+<span class="comment">//      m_driverStick.Start.WhenPressed(new EnableEncoders());</span>
+        m_driverStick.<a class="code" href="class_f_r_c_xbox_joystick.html#a8a1b7d773e3fdb040e55b711569f612e">Y</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_set_drive_p_i_d.html">SetDrivePID</a>());
+    m_driverStick.<a class="code" href="class_f_r_c_xbox_joystick.html#a5b242e290d4a9274e7e9430344710c90">A</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_log_p_o_t.html">LogPOT</a>());
+        m_driverStick.<a class="code" href="class_f_r_c_xbox_joystick.html#a659a07b4940a9e5e50ad8e21e0711ac7">LeftBumper</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_disable_gyro.html">DisableGyro</a>());
+        m_driverStick.<a class="code" href="class_f_r_c_xbox_joystick.html#a93327043d5dc8be35e3e569a8d7b86ec">RightBumper</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_enable_gyro.html">EnableGyro</a>());
 
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#a331e5d80d0e8d960f76d433dc23149a2">Trigger</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_flick_frisbee.html">FlickFrisbee</a>());
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#a2ae8e0237c90b8cf8a79158e48aec726">Button3</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter_relative.html">ElevateShooterRelative</a>(1.5));
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#ac7b0d21864507f9db1556c4e78a4e8c1">Button2</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter_relative.html">ElevateShooterRelative</a>(-1.5));
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#ac81acbade284fe9d49284fca94a9e936">Button4</a>.WhenPressed(
+                        <span class="keyword">new</span> <a class="code" href="class_prepare_shooter.html">PrepareShooter</a>(kPyramidBackSpeed, kPyramidBackAngle));
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#aa41b357c70ca2b2e78fde0653ba800b7">Button5</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_prepare_shooter.html">PrepareShooter</a>(kHangSpeed, kHangAngle));
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#a7eedde02f2532a37a8099241a93137ec">Button6</a>.WhenPressed(
+                        <span class="keyword">new</span> <a class="code" href="class_prepare_shooter.html">PrepareShooter</a>(kFeederStationSpeed, kFeederStationAngle));
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#af9cd7ad12082739198b8027b9b003e36">Button10</a>.WhileHeld(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter_with_joystick.html">ElevateShooterWithJoystick</a>());
+<span class="comment">//      m_manipulatorStick.Button8.WhenPressed(new DriveToRelativeAngle(5.0));</span>
+        m_manipulatorStick.<a class="code" href="class_attack3_joystick.html#aa508b91a50ede31519f59531e8772761">Button9</a>.WhenPressed(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter.html">ElevateShooter</a>(0.0));
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -172,16 +196,19 @@ Public Member Functions</h2></td></tr>
 <p>Gets the driver joystick. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A reference to the driver's joystick. </dd></dl>
 
-<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00017">17</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00047">47</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span> m_driverStick;
+}
+</pre></div>
 </div>
 </div>
-<a class="anchor" id="a391d742e8cb7bb797e811239c9015d81"></a>
+<a class="anchor" id="a553f19aa2cdcffd8a08729bed83d7614"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_f_r_c_xbox_joystick.html">FRCXboxJoystick</a> &amp; <a class="el" href="class_o_i.html#a391d742e8cb7bb797e811239c9015d81">OI::GetManipulatorStick</a> </td>
+          <td class="memname"><a class="el" href="class_attack3_joystick.html">Attack3Joystick</a> &amp; <a class="el" href="class_o_i.html#a553f19aa2cdcffd8a08729bed83d7614">OI::GetManipulatorStick</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -193,8 +220,11 @@ Public Member Functions</h2></td></tr>
 <p>Gets the manipulator joystick. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A reference to the manipulator joystick. </dd></dl>
 
-<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00026">26</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_o_i_8cpp_source.html#l00056">56</a> of file <a class="el" href="_o_i_8cpp_source.html">OI.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span> m_manipulatorStick;
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -207,7 +237,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_o_i.html">OI</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

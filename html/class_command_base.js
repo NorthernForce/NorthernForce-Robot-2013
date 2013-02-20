@@ -8,6 +8,7 @@ var class_command_base =
     [ "s_Gyro", "class_command_base.html#ae924b04453d3a85956b937740cf88dd6", null ],
     [ "s_Log", "class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87", null ],
     [ "s_Nav", "class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55", null ],
+    [ "s_Shooter", "class_command_base.html#ac2794d977b2019e40e87f190f11fccba", null ],
     [ "s_ShooterElevator", "class_command_base.html#a0a293e68f56778bbc7b0b4f561a9c584", null ],
     [ "s_SockClient", "class_command_base.html#a0025fd9d883de5244af1136ce8882101", null ]
 ];

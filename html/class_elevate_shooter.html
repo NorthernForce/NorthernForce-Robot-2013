@@ -165,7 +165,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00003">3</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                                          : targetAngle(angle)
+{
+        Requires(<a class="code" href="class_command_base.html#a0a293e68f56778bbc7b0b4f561a9c584">s_ShooterElevator</a>);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -185,8 +189,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Finishes the command. Called once after isFinished returns true. </p>
 
-<p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00042">42</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00037">37</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a5ffae5b584d5f7006a45d9dad74f9fc1"></a>
@@ -206,7 +213,10 @@ Public Member Functions</h2></td></tr>
 <p>Called repeatedly when this Command is scheduled to run. </p>
 
 <p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00019">19</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a0a293e68f56778bbc7b0b4f561a9c584">s_ShooterElevator</a>-&gt;<a class="code" href="class_shooter_elevator_subsystem.html#a0a8dacb678dad14147c587ad4b9d0b7d">SetPosition</a>(targetAngle);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="adc1dfc72d501c2d702caa30aecb834db"></a>
@@ -226,7 +236,10 @@ Public Member Functions</h2></td></tr>
 <p>Initializes the command. </p>
 
 <p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00011">11</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
 
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a7bc1dd49804c8330dc71878be0545c54"></a>
@@ -245,8 +258,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Called when another command which requires one or more of the same subsystems is scheduled to run. </p>
 
-<p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00051">51</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00046">46</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_elevate_shooter.html#ace52a3326ed17a0798d9983461645d48" title="Finishes the command. Called once after isFinished returns true.">End</a>();
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a67b230108ab70ae3860055eaa3f4f9c0"></a>
@@ -266,8 +282,11 @@ Public Member Functions</h2></td></tr>
 <p>Whether or not the command is finished. Make this return true when this Command no longer needs to run execute(). </p>
 <dl class="section return"><dt>Returns:</dt><dd>Bool, if the command is finished or not. </dd></dl>
 
-<p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00034">34</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_elevate_shooter_8cpp_source.html#l00029">29</a> of file <a class="el" href="_elevate_shooter_8cpp_source.html">ElevateShooter.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    <span class="keywordflow">return</span> TimeSinceInitialized() &gt; 1;
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -280,7 +299,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_elevate_shooter.html">ElevateShooter</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

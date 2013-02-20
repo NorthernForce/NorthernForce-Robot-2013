@@ -128,25 +128,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020         <a class="code" href="class_log_file.html">LogFile</a> m_gyroLogFile;
 <a name="l00021"></a>00021         <span class="keywordtype">float</span> m_channelCenter;
 <a name="l00022"></a>00022         <a class="code" href="class_alpha_beta_filter.html">AlphaBetaFilter&lt;float&gt;</a> m_gyroFilter;
-<a name="l00023"></a>00023         <span class="keywordtype">void</span> Update();
-<a name="l00024"></a>00024 <span class="keyword">public</span>:
-<a name="l00025"></a>00025         <a class="code" href="class_gyro_subsystem.html#a0e335a561a8925f6680fee7502ca83ef" title="Constructs the Gyro subsystem.">GyroSubsystem</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> sensorChannel, <span class="keywordtype">int</span> tempSensorChannel, <span class="keywordtype">float</span> sensitivity = 0.007);
-<a name="l00026"></a>00026         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569" title="Initializes the default command for the gyro subsystem.">InitDefaultCommand</a>();
-<a name="l00027"></a>00027         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6" title="Sets the sensitivity of the Gyro sensor.">SetSensitivity</a>(<span class="keywordtype">float</span> sensitivity);
-<a name="l00028"></a>00028         <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431" title="Gets the angle that the gyro is reading, and writes it to a log file.">GetAngle</a>();
-<a name="l00029"></a>00029         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
-<a name="l00030"></a>00030         <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263" title="Gets the rate from the gyro sensor, and writes it to a log file.">GetRate</a>();
-<a name="l00031"></a>00031         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497" title="Completes a stationary calibration for the gyro sensor.">DoStationaryCalibration</a>(<span class="keywordtype">int</span> samples);
-<a name="l00032"></a>00032 };
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="preprocessor">#endif</span>
+<a name="l00023"></a>00023     <span class="keywordtype">bool</span> m_loggingEnabled;
+<a name="l00024"></a>00024         <span class="keywordtype">void</span> Update();
+<a name="l00025"></a>00025 <span class="keyword">public</span>:
+<a name="l00026"></a>00026         <a class="code" href="class_gyro_subsystem.html#a0e335a561a8925f6680fee7502ca83ef" title="Constructs the Gyro subsystem.">GyroSubsystem</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> sensorChannel, <span class="keywordtype">int</span> tempSensorChannel, <span class="keywordtype">float</span> sensitivity = 0.007);
+<a name="l00027"></a>00027         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a4f80be505ad1347cfddb52903d347569" title="Initializes the default command for the gyro subsystem.">InitDefaultCommand</a>();
+<a name="l00028"></a>00028         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#ad7985df303536d3fc66bbc4a20acb8c6" title="Sets the sensitivity of the Gyro sensor.">SetSensitivity</a>(<span class="keywordtype">float</span> sensitivity);
+<a name="l00029"></a>00029         <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431" title="Gets the angle that the gyro is reading, and writes it to a log file.">GetAngle</a>();
+<a name="l00030"></a>00030         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
+<a name="l00031"></a>00031         <span class="keywordtype">float</span> <a class="code" href="class_gyro_subsystem.html#aa823b0d30bff6692d2c303ad7255a263" title="Gets the rate from the gyro sensor, and writes it to a log file.">GetRate</a>();
+<a name="l00032"></a>00032         <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497" title="Completes a stationary calibration for the gyro sensor.">DoStationaryCalibration</a>(<span class="keywordtype">int</span> samples);
+<a name="l00033"></a>00033     <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#acb7c8f4af8d405b076902e9bf94b8e5d">EnableLogging</a>();
+<a name="l00034"></a>00034     <span class="keywordtype">void</span> <a class="code" href="class_gyro_subsystem.html#a4692c34f0b3b11a8cc4048cb8793e9b8">DisableLogging</a>();
+<a name="l00035"></a>00035 };
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_gyro_subsystem_8h.html">GyroSubsystem.h</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

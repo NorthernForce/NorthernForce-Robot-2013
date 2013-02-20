@@ -185,7 +185,12 @@ template&lt;typename T&gt; </div>
 <p>Initializes everything in the filter to 0. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00027">27</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">                                  :
+                m_lastTime(), m_alpha(), m_beta(), m_value(), m_rateOfChange(),
+                m_enableLogging (<span class="keyword">false</span>), m_hasValue (<span class="keyword">false</span>)
+        {
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ae73f1ce8376075ff32f495b3dac5de78"></a>
@@ -217,7 +222,12 @@ template&lt;typename T&gt; </div>
 <p>Initializes the filter using the specified alpha and beta correction gains, everything else is initialized to 0 </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00035">35</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">                                                               :
+                m_lastTime(), m_alpha(alpha), m_beta(beta), m_value(), m_rateOfChange(),
+                m_enableLogging (<span class="keyword">false</span>), m_hasValue (<span class="keyword">false</span>)
+        {
+        }
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -240,7 +250,11 @@ template&lt;typename T&gt; </div>
 <p>Clears the filter. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00042">42</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                m_hasValue = <span class="keyword">false</span>;
+                m_value = T();
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a824718de6d205a926dc79714bb19bfc7"></a>
@@ -262,7 +276,10 @@ template&lt;typename T&gt; </div>
 <p>Disabled the filter logging. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00082">82</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                m_enableLogging = <span class="keyword">false</span>;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a24a5de45038a68271bc5ea74c8bcb1f9"></a>
@@ -284,7 +301,11 @@ template&lt;typename T&gt; </div>
 <p>Initializes the logging for the filter. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00075">75</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                m_enableLogging = <span class="keyword">true</span>;
+                m_history.reserve (1000);
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a43f4cfaa8e07d20e35c6dd0417ac024d"></a>
@@ -306,7 +327,10 @@ template&lt;typename T&gt; </div>
 <p>Returns the time of the last measurement passed to . </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00159">159</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">return</span> m_lastTime;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a712eb4f1493cbedf2bed61d4b8b62d24"></a>
@@ -328,7 +352,10 @@ template&lt;typename T&gt; </div>
 <p>Returns the rate of change in the filter. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00165">165</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">return</span> m_rateOfChange;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a077d0628af55971b79b1eb6329ce04a6"></a>
@@ -349,7 +376,10 @@ template&lt;typename T&gt; </div>
 <p>Returns the current filter value, this is the same as the last value returned by <code>Update</code> </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00153">153</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">return</span> m_value;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a04c14f47cf799a389d3603b3614cb4bc"></a>
@@ -371,7 +401,10 @@ template&lt;typename T&gt; </div>
 <p>Returns true if filter logging is currently enabled. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00088">88</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">return</span> m_enableLogging;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ab825914ac120f759980f9e9bbcd6f2f3"></a>
@@ -409,7 +442,13 @@ template&lt;typename T&gt; </div>
 <p>Seeds the filter with an initial value and rate of change at a given time </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00057">57</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                m_value = value;
+                m_rateOfChange = speed;
+                m_lastTime = now;
+                m_hasValue = <span class="keyword">true</span>;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a1d01226cf36be36781cf11682b7fb852"></a>
@@ -441,7 +480,12 @@ template&lt;typename T&gt; </div>
 <p>Seeds the filter with an initial value at a given time but does not change the rate of change </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00067">67</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                m_value = value;
+                m_lastTime = now;
+                m_hasValue = <span class="keyword">true</span>;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a10be556c47b51f2f1a1a6749d09b254a"></a>
@@ -474,7 +518,11 @@ template&lt;typename T&gt; </div>
 <p>Sets the alpha beta correction gains. </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00049">49</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                m_alpha = alpha;
+                m_beta = beta;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a4b8e01dd491c3b713fdffafe78da9a5b"></a>
@@ -506,7 +554,49 @@ template&lt;typename T&gt; </div>
 <p>Updates the filter with using the new measured value and the time of the measurement, returning the smoothed value </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00107">107</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
+<div class="fragment"><pre class="fragment">        {
+                <span class="keywordflow">if</span> (m_hasValue == <span class="keyword">false</span>)
+                {
+                        <span class="comment">// First time through an unseeded filter without a previous value</span>
+                        <span class="comment">// we seed the filter.  This allows the filter to settle faster</span>
+                        <span class="comment">// if the target value is not 0 (the default value at construction</span>
+                        <span class="comment">// time).</span>
+                        m_value = measuredVal;
+                        m_hasValue = <span class="keyword">true</span>;
+                }
+                <span class="keywordflow">else</span>
+                {
+                        <span class="comment">// If the filter has been previous seeded, or Update has been</span>
+                        <span class="comment">// previously called giving the filter a value, we push the</span>
+                        <span class="comment">// new value into the filter</span>
+                        <span class="keyword">const</span> <span class="keywordtype">double</span> dTime = (measurementTime - m_lastTime) * 1e-6;
+                        <span class="keyword">const</span> T predictedValue (m_value + m_rateOfChange * dTime);
+                        <span class="keyword">const</span> T residual (measuredVal - predictedValue);
+                        m_value = predictedValue + m_alpha * residual;
+                        m_rateOfChange = <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span> (m_rateOfChange + m_beta * residual / dTime);
 
+                        <span class="comment">// If we are logging the values we add the new filter state to the</span>
+                        <span class="comment">// history container.</span>
+                        <span class="keywordflow">if</span> (m_enableLogging)
+                        {
+                                m_history.resize (m_history.size() + 1);
+                                FilterHistory&amp; last = m_history.back();
+                                last.m_measuredVal = measuredVal;
+                                last.m_time = measurementTime;
+                                last.m_dTime = dTime;
+                                last.m_predictedValue = predictedValue;
+                                last.m_residual = residual;
+                                last.m_rateOfChange = m_rateOfChange;
+                                last.m_value = m_value;
+                        }
+                }
+
+                <span class="comment">// Set the last measurement time</span>
+                m_lastTime = measurementTime;
+
+                <span class="keywordflow">return</span> m_value;
+        }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aa357bedc26efbdad67a9c978f5226978"></a>
@@ -528,7 +618,15 @@ template&lt;typename T&gt; </div>
 <p>Writes the filter's history to the specified stream in a comma delimitered file format with a header line </p>
 
 <p>Definition at line <a class="el" href="_alpha_beta_filter_8h_source.html#l00095">95</a> of file <a class="el" href="_alpha_beta_filter_8h_source.html">AlphaBetaFilter.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">        {
+                FilterHistory::WriteHeader (os);
+                <span class="keywordflow">for</span> (<span class="keyword">typename</span> HistoryContainer::const_iterator i =
+                        m_history.begin(); i != m_history.end(); ++i)
+                {
+                        os &lt;&lt; *i;
+                }
+        }
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -540,7 +638,7 @@ template&lt;typename T&gt; </div>
     <ul>
       <li class="navelem"><a class="el" href="class_alpha_beta_filter.html">AlphaBetaFilter</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

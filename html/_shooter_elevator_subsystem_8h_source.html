@@ -120,32 +120,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00007"></a>00007 <span class="comment"> *      Author: Joseph</span>
 <a name="l00008"></a>00008 <span class="comment"> */</span>
 <a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;Commands/Subsystem.h&quot;</span>
-<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;../Library.h&quot;</span>
-<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;Victor.h&gt;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;AnalogChannel.h&gt;</span>
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015 <span class="preprocessor">#ifndef SHOOTERELEVATOR_H_</span>
-<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define SHOOTERELEVATOR_H_</span>
-<a name="l00017"></a>00017 <span class="preprocessor"></span>
-<a name="l00018"></a><a class="code" href="class_shooter_elevator_subsystem.html">00018</a> <span class="keyword">class </span><a class="code" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a> : <span class="keyword">public</span> Subsystem {
-<a name="l00019"></a>00019 <span class="keyword">private</span>:
-<a name="l00020"></a>00020     Victor m_shooterElevatorMotor;
-<a name="l00021"></a>00021     AnalogChannel m_elevationPotentiometer;
-<a name="l00022"></a>00022 <span class="keyword">public</span>:
-<a name="l00023"></a>00023         <a class="code" href="class_shooter_elevator_subsystem.html#a4c65d103199091b142fd79a18c58b6a3">ShooterElevatorSubsystem</a>();
-<a name="l00024"></a>00024     <span class="keywordtype">float</span> <a class="code" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a>();
-<a name="l00025"></a>00025     <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a5bf906fb06187783548c73d0e1e5f99e">SetElevatorSpeed</a>(<span class="keywordtype">float</span> speed);
-<a name="l00026"></a>00026 };
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="preprocessor">#endif </span><span class="comment">/* SHOOTERELEVATOR_H_ */</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="preprocessor">#ifndef SHOOTERELEVATOR_H_</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define SHOOTERELEVATOR_H_</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;Commands/PIDSubsystem.h&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;../Library.h&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;Victor.h&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;AnalogChannel.h&gt;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a><a class="code" href="class_shooter_elevator_subsystem.html">00019</a> <span class="keyword">class </span><a class="code" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a> : <span class="keyword">public</span> PIDSubsystem {
+<a name="l00020"></a>00020 <span class="keyword">private</span>:
+<a name="l00021"></a>00021     Victor m_shooterElevatorMotor;
+<a name="l00022"></a>00022     AnalogChannel m_elevationPotentiometer;
+<a name="l00023"></a>00023     <a class="code" href="class_log_file.html">LogFile</a> m_elevatorLog;
+<a name="l00024"></a>00024     <span class="keywordtype">bool</span> m_loggingEnabled;
+<a name="l00025"></a>00025 <span class="keyword">public</span>:
+<a name="l00026"></a>00026         <a class="code" href="class_shooter_elevator_subsystem.html#a4c65d103199091b142fd79a18c58b6a3">ShooterElevatorSubsystem</a>();
+<a name="l00027"></a>00027         <span class="keywordtype">double</span> <a class="code" href="class_shooter_elevator_subsystem.html#aa460f9040d993873793a91d244e80ef6">ReturnPIDInput</a>();
+<a name="l00028"></a>00028         <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a952fa133441cefa32e13c6316d05ae6d">UsePIDOutput</a>(<span class="keywordtype">double</span> output);
+<a name="l00029"></a>00029         <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#aba8929fc87b77f0356fd08e28cb705ca">InitDefaultCommand</a>();
+<a name="l00030"></a>00030     <span class="keywordtype">float</span> <a class="code" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a>();
+<a name="l00031"></a>00031     <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a509b934f9ff8a6b717c119a259761ab8">SetSpeed</a>(<span class="keywordtype">float</span> speed);
+<a name="l00032"></a>00032     <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a0a8dacb678dad14147c587ad4b9d0b7d">SetPosition</a>(<span class="keywordtype">float</span> position);
+<a name="l00033"></a>00033     <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a2005979ecfa7db8b8ec6387684a25853">SetPositionRelative</a>(<span class="keywordtype">float</span> deltaPos);
+<a name="l00034"></a>00034     <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a76473c0a8d5664ebdae031319533bcf9">EnableLogging</a>();
+<a name="l00035"></a>00035     <span class="keywordtype">void</span> <a class="code" href="class_shooter_elevator_subsystem.html#a15a11e3ebdd0baaff2ffffcc64715acd">DisableLogging</a>();
+<a name="l00036"></a>00036 };
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="preprocessor">#endif </span><span class="comment">/* SHOOTERELEVATOR_H_ */</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_shooter_elevator_subsystem_8h.html">ShooterElevatorSubsystem.h</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7f4e8f6034ea6efccb028262be0f52a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a system error to the log system.  <a href="#a7f4e8f6034ea6efccb028262be0f52a3"></a><br/></td></tr>
 <tr class="memitem:a5cdff94e4e3aea3146e419770e9696a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a5cdff94e4e3aea3146e419770e9696a3">printdebug</a> (char *err)</td></tr>
 <tr class="memdesc:a5cdff94e4e3aea3146e419770e9696a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a debug message to the log system.  <a href="#a5cdff94e4e3aea3146e419770e9696a3"></a><br/></td></tr>
-<tr class="memitem:ac672b3c5da856a74a0a3414abba00e94"><td class="memItemLeft" align="right" valign="top">const vector&lt; <a class="el" href="struct_target.html">Target</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#ac672b3c5da856a74a0a3414abba00e94">GetLastData</a> ()</td></tr>
-<tr class="memdesc:ac672b3c5da856a74a0a3414abba00e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#ac672b3c5da856a74a0a3414abba00e94"></a><br/></td></tr>
+<tr class="memitem:a2622164e559d0fe37cdeecab67bcb76d"><td class="memItemLeft" align="right" valign="top">const list&lt; <a class="el" href="struct_target.html">Target</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a2622164e559d0fe37cdeecab67bcb76d">GetLastData</a> ()</td></tr>
+<tr class="memdesc:a2622164e559d0fe37cdeecab67bcb76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#a2622164e559d0fe37cdeecab67bcb76d"></a><br/></td></tr>
 <tr class="memitem:a58ead1a8d3adda92f7ad9dcdded58541"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_robot_position.html">RobotPosition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a58ead1a8d3adda92f7ad9dcdded58541">GetLastPosition</a> ()</td></tr>
 <tr class="memitem:a3ce46c8c78d6c13213bee97f87d589f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4">StartDataStream</a> (int updateInterval)</td></tr>
 <tr class="memdesc:a3ce46c8c78d6c13213bee97f87d589f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the stream of data from the server.  <a href="#a3ce46c8c78d6c13213bee97f87d589f4"></a><br/></td></tr>
@@ -183,7 +183,45 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00014">14</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                               : 
+        Subsystem(<span class="stringliteral">&quot;SocketClient&quot;</span>),
+        m_port(port),
+        m_host(host),
+        sa(),
+        hen(),
+        m_socketSemaphore(semBCreate (SEM_Q_PRIORITY, SEM_FULL)),
+        m_socketConnectionTask(<span class="stringliteral">&quot;SocketConnection&quot;</span>, (FUNCPTR)SocketClient::SocketConnectionTask, Task::kDefaultPriority + 10)
+{
+        printf(<span class="stringliteral">&quot;Connecting to %s:%d...\n&quot;</span>,m_host,m_port);       
+        
+        <span class="keywordtype">char</span> buff[255];
+        strcpy(buff, m_host);
+        <span class="keywordtype">char</span>* _tmp;
+        _tmp = strtok(buff,<span class="stringliteral">&quot;.&quot;</span>);
+        
+        <span class="keywordtype">char</span>* list =  <span class="keyword">new</span> <span class="keywordtype">char</span>[4];
+        list[0] = atoi(_tmp);
+        _tmp = strtok(NULL,<span class="stringliteral">&quot;.&quot;</span>);
+        list[1] = atoi(_tmp);
+        _tmp = strtok(NULL,<span class="stringliteral">&quot;.&quot;</span>);
+        list[2] = atoi(_tmp);
+        _tmp = strtok(NULL,<span class="stringliteral">&quot;.&quot;</span>);
+        list[3] = atoi(_tmp);
+        
+        hen.h_name = m_host;
+        hen.h_aliases = NULL;
+        hen.h_addrtype = 2;
+        hen.h_length = 4;
+        hen.h_addr_list = &amp;list;
+        
+        memset(&amp;sa,0,<span class="keyword">sizeof</span> sa);
+        sa.sin_family = AF_INET;
+        sa.sin_port = htons(port);
+        memcpy(&amp;sa.sin_addr.s_addr, hen.h_addr_list[0], hen.h_length);
 
+        m_socketConnectionTask.Start(reinterpret_cast&lt;UINT32&gt; (<span class="keyword">this</span>));
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="af4ecba63b08737b5be4fef324cef1df6"></a>
@@ -203,7 +241,10 @@ Public Member Functions</h2></td></tr>
 <p>Destroys the socket client, and its data semaphore. </p>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00056">56</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        semDelete(m_socketSemaphore);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -231,15 +272,18 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00228">228</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(err,<a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02af4d9974193a9ec0aad47c6144905b38f">kLogPriorityError</a>);
+}
+</pre></div>
 </div>
 </div>
-<a class="anchor" id="ac672b3c5da856a74a0a3414abba00e94"></a>
+<a class="anchor" id="a2622164e559d0fe37cdeecab67bcb76d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const vector&lt; <a class="el" href="struct_target.html">Target</a> &gt; <a class="el" href="class_socket_client.html#ac672b3c5da856a74a0a3414abba00e94">SocketClient::GetLastData</a> </td>
+          <td class="memname">const list&lt; <a class="el" href="struct_target.html">Target</a> &gt; <a class="el" href="class_socket_client.html#a2622164e559d0fe37cdeecab67bcb76d">SocketClient::GetLastData</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -252,7 +296,11 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns:</dt><dd>A string, the last data from the connection. </dd></dl>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00246">246</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keyword">const</span> Synchronized sync (m_socketSemaphore);
+        <span class="keywordflow">return</span> m_lastTargets;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a58ead1a8d3adda92f7ad9dcdded58541"></a>
@@ -270,7 +318,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00252">252</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keyword">const</span> Synchronized sync (m_socketSemaphore);
+        <span class="keywordflow">return</span> m_lastPosition;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a05c99f4bb63cc9a66fa45ad043dc9658"></a>
@@ -290,7 +342,10 @@ Public Member Functions</h2></td></tr>
 <p>Initializes the default command for the subsystem. </p>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00064">64</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a5cdff94e4e3aea3146e419770e9696a3"></a>
@@ -317,7 +372,10 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00237">237</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(err,<a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a1163fe544606f856c0c81066ab355df6"></a>
@@ -337,7 +395,38 @@ Public Member Functions</h2></td></tr>
 <p>Handles connection to the socket server. </p>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00081">81</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordtype">int</span> n;
+        <span class="keywordflow">while</span> (1)
+        {
+                <span class="keywordflow">if</span> (Connect())
+                {
+                        <span class="keywordflow">while</span> (Read())
+                        {
+                                n = 0;
+                        }
+                }
+                
+                n++;
+                <span class="keywordflow">if</span> (n &gt; 10)
+                {
+                        <span class="keywordflow">if</span> (n == 11)
+                                <a class="code" href="class_socket_client.html#a7f4e8f6034ea6efccb028262be0f52a3" title="Prints a system error to the log system.">errsys</a>(<span class="stringliteral">&quot;Throttling reconnect to every 10s...\n&quot;</span>);
+                        Wait(10.0);
+                }
+                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &gt; 5)
+                {
+                        <span class="keywordflow">if</span> (n == 6)
+                                <a class="code" href="class_socket_client.html#a7f4e8f6034ea6efccb028262be0f52a3" title="Prints a system error to the log system.">errsys</a>(<span class="stringliteral">&quot;Throttling reconnect to every 5s...\n&quot;</span>);
+                        Wait(5.0);
+                }
+                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n &lt;= 5)
+                {
+                        Wait(1.0);
+                }
+        }
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a3ce46c8c78d6c13213bee97f87d589f4"></a>
@@ -364,7 +453,12 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00262">262</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordtype">char</span> msg[80];
+        sprintf(msg, <span class="stringliteral">&quot;CAMC %i&quot;</span>, updateInterval);
+        <span class="keywordflow">return</span> sendln(msg);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ab53e33045614a155b55769adce6ffa71"></a>
@@ -384,7 +478,10 @@ Public Member Functions</h2></td></tr>
 <p>Stops the stream of data from the server. </p>
 
 <p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00272">272</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">return</span> sendln(<span class="stringliteral">&quot;STOP&quot;</span>);
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -397,7 +494,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_socket_client.html">SocketClient</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

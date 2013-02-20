@@ -109,7 +109,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Robotmap.h File Reference</div>  </div>
 </div><!--header-->
@@ -168,18 +169,24 @@ Enumerations</h2></td></tr>
 <a class="el" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a9c01d7c92c7d3da2785761a89eb90d1a">kRearRightJaguarAddress</a> =  3, 
 <a class="el" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ac937c786b35aa0bf707747abc9458e8d">kRearLeftJaguarAddress</a> =  4, 
 <br/>
-&#160;&#160;<a class="el" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31">kShooterJaguarAddress</a> =  5, 
-<a class="el" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9abb84165b09d7576bcbf2630563e09b0b">kShooterElevatorJaguarAddress</a> =  6
+&#160;&#160;<a class="el" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31">kShooterJaguarAddress</a> =  5
 <br/>
  }</td></tr>
 <tr class="memdesc:a69ea54eb59dc05541a0767f7a11168d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addresses of the jaguars on the CAN bus.  <a href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9">More...</a><br/></td></tr>
 <tr class="memitem:ae017032b8f032691a5a88c7f4b2e3a33"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33">DigitalAdresses</a> { <a class="el" href="_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33a62879d957713674ecf674606e2e48f36">kShooterWheelLightSensorAddress</a> =  1
  }</td></tr>
-<tr class="memitem:a63da99d7c25458c694fe0eea913401ff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ff">RelayAdresses</a> { <a class="el" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544">kShooterFlickerRelayAddress</a> =  1, 
-<a class="el" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffacc02f6ea6303f926cb2f9e134c3f6ea3">kShooterElevatorRealayAddress</a> =  2
+<tr class="memitem:a37437b7411baeb81c271f06179771fe3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#a37437b7411baeb81c271f06179771fe3">PWMAddresses</a> { <a class="el" href="_robotmap_8h.html#a37437b7411baeb81c271f06179771fe3a3c1853bf78f2b0dc626d463249880751">kShooterElevatorVictorAddress</a> =  1
  }</td></tr>
-<tr class="memitem:a3f77c6398fb02752d9778fe61aa50f3d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3d">AnalogChannels</a> { <a class="el" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da01588c5a24462cbc5d3fc94af6781a1e">kShooterElevatorPotChannel</a> =  1
+<tr class="memitem:a63da99d7c25458c694fe0eea913401ff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ff">RelayAdresses</a> { <a class="el" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544">kShooterFlickerRelayAddress</a> =  1
  }</td></tr>
+<tr class="memdesc:a63da99d7c25458c694fe0eea913401ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addresses of the relays.  <a href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ff">More...</a><br/></td></tr>
+<tr class="memitem:a3f77c6398fb02752d9778fe61aa50f3d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3d">AnalogChannels</a> { <a class="el" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da7a62a3779355f97abc8b354d4d79d8e4">kGyroChannel</a> =  1, 
+<a class="el" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da01588c5a24462cbc5d3fc94af6781a1e">kShooterElevatorPotChannel</a> =  3
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a69bb694a4898016b08b60405131389f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_robotmap_8h.html#a69bb694a4898016b08b60405131389f6">WithinTolerance</a> (float value, float desiredValue, float tolerance)</td></tr>
+<tr class="memdesc:a69bb694a4898016b08b60405131389f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells whether or not a value is within a certain tolerance of another value.  <a href="#a69bb694a4898016b08b60405131389f6"></a><br/></td></tr>
 </table>
 <hr/><h2>Enumeration Type Documentation</h2>
 <a class="anchor" id="a3f77c6398fb02752d9778fe61aa50f3d"></a>
@@ -193,14 +200,20 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a3f77c6398fb02752d9778fe61aa50f3da7a62a3779355f97abc8b354d4d79d8e4"></a>kGyroChannel</em>&nbsp;</td><td>
+</td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a3f77c6398fb02752d9778fe61aa50f3da01588c5a24462cbc5d3fc94af6781a1e"></a>kShooterElevatorPotChannel</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00080">80</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
-
+<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00085">85</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">                    {
+    <a class="code" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da7a62a3779355f97abc8b354d4d79d8e4">kGyroChannel</a> = 1,
+        <a class="code" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da01588c5a24462cbc5d3fc94af6781a1e">kShooterElevatorPotChannel</a> = 3,
+};
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a8e595aa2a01fabbe5021e749e7957890"></a>
@@ -243,7 +256,21 @@ Enumerations</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00032">32</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a84f5af56fab7dcd626efdde9a5a8d480">kAttackJoystickButtonTrigger</a> = 1,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890ae042f8aa719cdc6227ad5dba8ce187e9">kAttackJoystickButton2</a> = 2,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a70eebb3d4b2ade02cf549b7298c13e40">kAttackJoystickButton3</a> = 3,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a77c98bf0289f69bb534f3b6908748792">kAttackJoystickButton4</a> = 4,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a0c3c08603fff0abb3e29c7628d3ef049">kAttackJoystickButton5</a> = 5,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a1aea7c9a79688d5c490d0d8461b72226">kAttackJoystickButton6</a> = 6,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a9e882838bf3eb7987469c0c49e45bf51">kAttackJoystickButton7</a> = 7,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890af169d171ca2ddd172e0fc75c278f289b">kAttackJoystickButton8</a> = 8,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a30dc72e16ff45f73b436252f68aec1a1">kAttackJoystickButton9</a> = 9,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a64b0824b0a16677a2ae92ce6ffed278d">kAttackJoystickButton10</a> = 10,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890af10aa66fd463e0d14ade6e12b72bdf22">kAttackJoystickButton11</a> = 11,
+        <a class="code" href="_robotmap_8h.html#a8e595aa2a01fabbe5021e749e7957890a1020d325353a2ff1bce721d59bafed09">kAttackJoystickButton12</a> = 12,
+};
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ae017032b8f032691a5a88c7f4b2e3a33"></a>
@@ -263,8 +290,11 @@ Enumerations</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00071">71</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
-
+<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00070">70</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">                     {
+    <a class="code" href="_robotmap_8h.html#ae017032b8f032691a5a88c7f4b2e3a33a62879d957713674ecf674606e2e48f36">kShooterWheelLightSensorAddress</a> = 1,
+};
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a69ea54eb59dc05541a0767f7a11168d9"></a>
@@ -290,14 +320,19 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31"></a>kShooterJaguarAddress</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a69ea54eb59dc05541a0767f7a11168d9abb84165b09d7576bcbf2630563e09b0b"></a>kShooterElevatorJaguarAddress</em>&nbsp;</td><td>
-</td></tr>
 </table>
 </dd>
 </dl>
 
 <p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00061">61</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ae829fdd281a80e471c56e5fe79bc4d7b">kFrontRightJaguarAddress</a> = 1,
+        <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ad2f082afb327e014287e1cca082ce55d">kFrontLeftJaguarAddress</a> = 2,
+        <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a9c01d7c92c7d3da2785761a89eb90d1a">kRearRightJaguarAddress</a> = 3,
+    <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9ac937c786b35aa0bf707747abc9458e8d">kRearLeftJaguarAddress</a> = 4,
+    <a class="code" href="_robotmap_8h.html#a69ea54eb59dc05541a0767f7a11168d9a37ab7d8e2a74bdc2bc946858af4d4a31">kShooterJaguarAddress</a> = 5,
+};
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aa8b1c6568df4ee385e4d1d12f7153f02"></a>
@@ -324,7 +359,36 @@ Enumerations</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00051">51</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02a40291a2e7827f05a899d8af5e98adfe7">kLogPrioritySystem</a> = 1,
+        <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a> = 2,
+        <a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02af4d9974193a9ec0aad47c6144905b38f">kLogPriorityError</a> = 3
+};
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a37437b7411baeb81c271f06179771fe3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_robotmap_8h.html#a37437b7411baeb81c271f06179771fe3">PWMAddresses</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a37437b7411baeb81c271f06179771fe3a3c1853bf78f2b0dc626d463249880751"></a>kShooterElevatorVictorAddress</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
 
+<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00074">74</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">                  {
+    <a class="code" href="_robotmap_8h.html#a37437b7411baeb81c271f06179771fe3a3c1853bf78f2b0dc626d463249880751">kShooterElevatorVictorAddress</a> = 1,
+};
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a63da99d7c25458c694fe0eea913401ff"></a>
@@ -337,17 +401,20 @@ Enumerations</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>The addresses of the relays. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544"></a>kShooterFlickerRelayAddress</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a63da99d7c25458c694fe0eea913401ffacc02f6ea6303f926cb2f9e134c3f6ea3"></a>kShooterElevatorRealayAddress</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00075">75</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
-
+<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00081">81</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">                   {
+        <a class="code" href="_robotmap_8h.html#a63da99d7c25458c694fe0eea913401ffa41acffd7c7a6aea99dff50c93f457544">kShooterFlickerRelayAddress</a> = 1,
+};
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a5e576a70b3d5bc70c6740a58495a7c1f"></a>
@@ -387,7 +454,71 @@ Enumerations</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00015">15</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fa3dc9edc75f05426625e8dcaef8bc6e76">kXBoxButtonA</a> = 1,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fa64bc1ff07c954dcf1c669807795e15a9">kXBoxButtonB</a> = 2,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fa9cbbcef4ed4844915b49394560c1f4a8">kXBoxButtonX</a> = 3,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fa8c4d3a5e5d23b8194f179fead0af8973">kXBoxButtonY</a> = 4,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fa446d8fc50b6b64e66056d235ec2acc13">kXBoxButtonLeft</a> = 5,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fab8a938b900439a8d6759e95116bdad38">kXBoxButtonRight</a> = 6,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1faf050be0c2ffec37b7f1b094a77a1ae55">kXBoxButtonBack</a> = 7,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fafb93e84d1e175f0908e7c0839b2aedcc">kXBoxButtonStart</a> = 8,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fa95af49164efcfe4791eec1043f0b87b3">kXBoxButtonLeftJoystick</a> = 9,
+        <a class="code" href="_robotmap_8h.html#a5e576a70b3d5bc70c6740a58495a7c1fab19cbe59461e5d9dcd518ea8b2cae5ac">kXBoxButtonRightJoystick</a> = 10,
+};
+</pre></div>
+</div>
+</div>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a69bb694a4898016b08b60405131389f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="_robotmap_8h.html#a69bb694a4898016b08b60405131389f6">WithinTolerance</a> </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>desiredValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>tolerance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
+<p>Tells whether or not a value is within a certain tolerance of another value. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to check. </td></tr>
+    <tr><td class="paramname">desiredValue</td><td>The value to check value against. </td></tr>
+    <tr><td class="paramname">tolerance</td><td>The desired tolerance. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_robotmap_8h_source.html#l00168">168</a> of file <a class="el" href="_robotmap_8h_source.html">Robotmap.h</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">if</span> ((value &lt; desiredValue + tolerance) &amp;&amp; (value &gt; desiredValue - tolerance))
+                <span class="keywordflow">return</span> <span class="keyword">true</span>;
+        <span class="keywordflow">else</span>
+                <span class="keywordflow">return</span> <span class="keyword">false</span>;
+}
+</pre></div>
 </div>
 </div>
 </div><!-- contents -->
@@ -396,7 +527,7 @@ Enumerations</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="_robotmap_8h.html">Robotmap.h</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

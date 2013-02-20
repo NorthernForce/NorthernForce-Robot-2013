@@ -141,7 +141,7 @@ Public Member Functions</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author:</dt><dd>jcrosby </dd></dl>
 
-<p>Definition at line <a class="el" href="_update_nav_8h_source.html#l00016">16</a> of file <a class="el" href="_update_nav_8h_source.html">UpdateNav.h</a>.</p>
+<p>Definition at line <a class="el" href="_update_nav_8h_source.html#l00014">14</a> of file <a class="el" href="_update_nav_8h_source.html">UpdateNav.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad10f4efd61b74eadc6b7c8a5d57a7119"></a>
 <div class="memitem">
@@ -158,7 +158,12 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_update_nav_8cpp_source.html#l00003">3</a> of file <a class="el" href="_update_nav_8cpp_source.html">UpdateNav.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        Requires(<a class="code" href="class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55">s_Nav</a>);
+        <span class="comment">// Use requires() here to declare subsystem dependencies</span>
+        <span class="comment">// eg. Requires(s_chassis);</span>
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -177,7 +182,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_update_nav_8cpp_source.html#l00040">40</a> of file <a class="el" href="_update_nav_8cpp_source.html">UpdateNav.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                    {
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aba128d24c12824ba3ce2031e9178bb8c"></a>
@@ -195,7 +203,23 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_update_nav_8cpp_source.html#l00016">16</a> of file <a class="el" href="_update_nav_8cpp_source.html">UpdateNav.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordtype">float</span> theta;
+        <span class="keywordtype">double</span> distance;
+        <span class="keywordtype">float</span> deltaDistanceInch;
+        
+<span class="comment">//  Get Angle from Gyro</span>
+        theta = <a class="code" href="class_command_base.html#ae924b04453d3a85956b937740cf88dd6">s_Gyro</a>-&gt;<a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431" title="Gets the angle that the gyro is reading, and writes it to a log file.">GetAngle</a>();
+        
+<span class="comment">//  Get Average Distance from the Jaguars</span>
+        distance = <a class="code" href="class_command_base.html#ad0706c31cc51896165a34d829c771d70">s_Drive</a>-&gt;<a class="code" href="class_drive_subsystem.html#a58edbe12f157df8f943368017d2cf7ae">GetAvgDistance</a>();
+        deltaDistanceInch = ( distance - m_DistanceEncoder ) * kWheelEncoderRatio;
+        m_DistanceEncoder = distance;
+        
+        <a class="code" href="class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55">s_Nav</a>-&gt;<a class="code" href="class_robot_nav.html#ac7ea60e16542b65044dffb992048d52a">propagate</a>(GetFPGATime(), deltaDistanceInch, theta);      
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a398187bc4b1ce30a43e65f7d40df4fe6"></a>
@@ -213,7 +237,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_update_nav_8cpp_source.html#l00011">11</a> of file <a class="el" href="_update_nav_8cpp_source.html">UpdateNav.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                           {
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ae8b3349f53b8690ac52b6414836c16e7"></a>
@@ -231,7 +258,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_update_nav_8cpp_source.html#l00046">46</a> of file <a class="el" href="_update_nav_8cpp_source.html">UpdateNav.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a348085bd871f928e25d0dfe95bdd413e"></a>
@@ -249,7 +279,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_update_nav_8cpp_source.html#l00035">35</a> of file <a class="el" href="_update_nav_8cpp_source.html">UpdateNav.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                           {
+        <span class="keywordflow">return</span> <span class="keyword">true</span>;
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -262,7 +295,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_update_nav.html">UpdateNav</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

@@ -181,7 +181,21 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00004">4</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                                                           :
+    CANJaguar(deviceNumber),
+    m_maxAcceleration(maxAcceleration),
+    m_maxVelocity(ramp),
+    m_tolerance(tolerance),
+    m_thereTolerance(thereTolerance),
+    m_prevTime(0.0),
+    m_prevPosition(0.0),
+    m_prevVelocity(0.0),
+    m_prevAccel(0.0),
+    m_ramp(ramp)
+{
+        ; <span class="comment">// do nothing, all initialization is done above</span>
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -200,7 +214,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00045">45</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    <span class="comment">//m_prevPosition = 0.0; // &lt;-- Not sure why we did this last year</span>
+    <a class="code" href="class_ramped_c_a_n_jaguar.html#a104f240160fd76d36fce6a9f9309aac0">CANJaguar::DisableControl</a>();
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="abd55a13ceee1f5bb3441651ba268e30e"></a>
@@ -219,7 +237,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00051">51</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    <a class="code" href="class_ramped_c_a_n_jaguar.html#a1c05bb1eecde61aa59f36a7a8516abd6">CANJaguar::EnableControl</a>(encoderInitialPosition);
+    m_prevPosition = encoderInitialPosition;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a1c05bb1eecde61aa59f36a7a8516abd6"></a>
@@ -237,7 +259,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00057">57</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    <a class="code" href="class_ramped_c_a_n_jaguar.html#a1c05bb1eecde61aa59f36a7a8516abd6">CANJaguar::EnableControl</a>(m_prevPosition);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a3152c1c599cf96b19e88f47edde8cdbe"></a>
@@ -255,7 +280,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00137">137</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    <span class="keywordflow">return</span> m_prevPosition;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a8aed089f416754421bae6fb8769515a4"></a>
@@ -273,7 +301,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00023">23</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    printf(<span class="stringliteral">&quot;max Velocity: %f&quot;</span>,m_maxVelocity);
+    printf(<span class="stringliteral">&quot;max Acceleration: %f&quot;</span>,m_maxAcceleration);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ab999c82b41f3f7dd9e2b22d297528a8d"></a>
@@ -292,7 +324,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00040">40</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    m_maxAcceleration = maxAcceleration;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="af82f27d4ccf19e7db7408b55acec1483"></a>
@@ -311,7 +346,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00035">35</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    m_maxVelocity = maxVelocity;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aed711fb19f86eda53872112020a95473"></a>
@@ -330,7 +368,68 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00062">62</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    <span class="comment">//float curTime = GetTime();</span>
+    <span class="keywordtype">float</span> position = m_prevPosition;
+    <span class="keywordtype">float</span> velocity = m_prevVelocity;
+    <span class="keywordtype">float</span> accel = m_prevAccel;
+    <span class="keywordflow">switch</span>(GetControlMode()) 
+    {
+        <span class="keywordflow">case</span> kPercentVbus:
+        <span class="keywordflow">case</span> kSpeed:
+            <span class="comment">//accel = Limit( (outputValue - m_prevVelocity)/deltaT, m_maxAcceleration );</span>
+            <span class="comment">//velocity = Limit( m_prevVelocity + (accel * deltaT), m_maxVelocity );</span>
+                
+                <span class="comment">//accel = Limit( (outputValue - m_prevVelocity), m_maxVelocity /* 0.2 works*/ );</span>
+                <span class="comment">//velocity = Limit( m_prevVelocity + accel, 1 );</span>
 
+                velocity = m_prevVelocity + (outputValue-m_prevVelocity) * m_ramp;
+            CANJaguar::Set(velocity);
+            <span class="keywordflow">break</span>;
+        <span class="keywordflow">case</span> kPosition:
+            <span class="keywordtype">float</span> deltaP = outputValue - m_prevPosition;
+            <span class="keywordflow">if</span> ( fabs(deltaP) &lt;= m_thereTolerance )
+            {
+                CANJaguar::Set(outputValue);
+                <span class="keywordflow">break</span>;
+            }
+            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( fabs(deltaP) &lt;= m_tolerance )
+            {
+                CANJaguar::Set(m_prevPosition + 0.4*(deltaP));
+                <span class="keywordflow">break</span>;
+            }
+            velocity = Limit( deltaP/deltaT, m_maxVelocity );
+            accel = Limit( (velocity - m_prevVelocity) / deltaT, m_maxAcceleration );
+            velocity = m_prevVelocity + accel * deltaT;
+            position = m_prevPosition + m_prevVelocity * deltaT + 0.5 * accel * deltaT * deltaT;
+            <span class="keywordflow">if</span> ( 
+                    (((outputValue - position) &gt; 0) &amp;&amp; 
+                     ((outputValue - position) &lt; ((velocity*velocity) / (2*m_maxAcceleration)))) || 
+                    (((outputValue - position) &lt; 0) &amp;&amp; 
+                     ((outputValue - position) &gt; -((velocity*velocity) / (2*m_maxAcceleration)))) 
+               )
+            {
+                <span class="keywordflow">if</span>( (deltaP) &gt; m_tolerance )
+                {
+                    accel = -m_maxAcceleration;
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( (deltaP) &lt; -m_tolerance )
+                {
+                    accel = m_maxAcceleration;
+                } 
+                velocity = m_prevVelocity + accel * deltaT;
+                position = m_prevPosition + m_prevVelocity * deltaT + 0.5 * accel * deltaT * deltaT;
+            }
+            CANJaguar::Set(position);
+            <span class="keywordflow">break</span>;
+        <span class="keywordflow">default</span>:
+            CANJaguar::Set(outputValue);
+            <span class="keywordflow">break</span>;
+    }
+    <span class="comment">//m_prevTime = curTime;</span>
+    m_prevVelocity = velocity;
+    m_prevAccel = accel;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aa9597747286b8eac5e5cbc394b5279b5"></a>
@@ -359,7 +458,11 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html#l00029">29</a> of file <a class="el" href="_ramped_c_a_n_jaguar_8cpp_source.html">RampedCANJaguar.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+    m_tolerance = tolerance;
+    m_thereTolerance = thereTolerance;
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -372,7 +475,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_ramped_c_a_n_jaguar.html">RampedCANJaguar</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

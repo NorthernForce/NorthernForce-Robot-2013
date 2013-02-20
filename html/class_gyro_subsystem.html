@@ -136,6 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa823b0d30bff6692d2c303ad7255a263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the rate from the gyro sensor, and writes it to a log file.  <a href="#aa823b0d30bff6692d2c303ad7255a263"></a><br/></td></tr>
 <tr class="memitem:a3e449d6eab2491d663c6524ff6fe3497"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#a3e449d6eab2491d663c6524ff6fe3497">DoStationaryCalibration</a> (int samples)</td></tr>
 <tr class="memdesc:a3e449d6eab2491d663c6524ff6fe3497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completes a stationary calibration for the gyro sensor.  <a href="#a3e449d6eab2491d663c6524ff6fe3497"></a><br/></td></tr>
+<tr class="memitem:acb7c8f4af8d405b076902e9bf94b8e5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#acb7c8f4af8d405b076902e9bf94b8e5d">EnableLogging</a> ()</td></tr>
+<tr class="memitem:a4692c34f0b3b11a8cc4048cb8793e9b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_gyro_subsystem.html#a4692c34f0b3b11a8cc4048cb8793e9b8">DisableLogging</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A subsystem for accessing the data from the Gyro subsystem.</p>
@@ -192,10 +194,43 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00012">12</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">                                                                                                  : 
+        Subsystem(<span class="stringliteral">&quot;GyroSubsystem&quot;</span>),
+        m_gyroChannel(slot, sensorChannel),
+        m_gyroTempChannel(slot, tempSensorChannel),
+        m_gyroLogFile(<span class="stringliteral">&quot;GyroLog.txt&quot;</span>),
+        m_gyroFilter(0.1, 0.005),
+    m_loggingEnabled(<span class="keyword">false</span>)
+{
+        m_gyroChannel.SetAccumulatorDeadband(0);
+        m_gyroTempChannel.SetAccumulatorCenter(0);
+        m_gyroSensor = <span class="keyword">new</span> Gyro(&amp;m_gyroChannel);
+        m_gyroSensor-&gt;SetSensitivity(sensitivity);
+        this-&gt;<a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a4692c34f0b3b11a8cc4048cb8793e9b8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_gyro_subsystem.html#a4692c34f0b3b11a8cc4048cb8793e9b8">GyroSubsystem::DisableLogging</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00114">114</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{ m_loggingEnabled = <span class="keyword">false</span>; }
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="a3e449d6eab2491d663c6524ff6fe3497"></a>
 <div class="memitem">
 <div class="memproto">
@@ -219,8 +254,40 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00086">86</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00089">89</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(<span class="stringliteral">&quot;Beginning stationary Gyro calibration...&quot;</span>);
+        <span class="keywordtype">float</span> _accumulator = 0;
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; samples; i++)
+                _accumulator += m_gyroChannel.GetVoltage();
+        
+        m_channelCenter = _accumulator / samples;
+        
+        <span class="keywordtype">char</span>* _tmp;
+        sprintf(_tmp, <span class="stringliteral">&quot;Gyro centered at %f&quot;</span>, m_channelCenter);
+        <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(_tmp);
+        this-&gt;<a class="code" href="class_gyro_subsystem.html#aa9b24b74976a49a453e4e16e5f3da30b" title="Resets the gyro sensor to 0.">Reset</a>();
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="acb7c8f4af8d405b076902e9bf94b8e5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_gyro_subsystem.html#acb7c8f4af8d405b076902e9bf94b8e5d">GyroSubsystem::EnableLogging</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00113">113</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{ m_loggingEnabled = <span class="keyword">true</span>; }
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="acbea92b181949a1f4e0fbfd0562ca431"></a>
@@ -240,8 +307,17 @@ Public Member Functions</h2></td></tr>
 <p>Gets the angle that the gyro is reading, and writes it to a log file. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A float, the angle from the gyro. </dd></dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00057">57</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00058">58</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordtype">float</span> angle = m_gyroSensor-&gt;GetAngle();
+    <span class="keywordflow">if</span>(m_loggingEnabled) {
+        <span class="keywordtype">char</span> _tmp[32];
+        sprintf(_tmp, <span class="stringliteral">&quot;Angle: %f&quot;</span>, angle);
+        m_gyroLogFile.<a class="code" href="class_log_file.html#aa7efc59cf7e944a6f28e3fcc5574ca94" title="Write data to the log file. The data will automatically be terminated with a newline.">Write</a>(_tmp);
+    }
+        <span class="keywordflow">return</span> -angle;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aa823b0d30bff6692d2c303ad7255a263"></a>
@@ -261,8 +337,16 @@ Public Member Functions</h2></td></tr>
 <p>Gets the rate from the gyro sensor, and writes it to a log file. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A float, the voltage (rate). </dd></dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00071">71</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00074">74</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        this-&gt;Update();
+        <span class="keywordtype">float</span> voltage = m_gyroFilter.<a class="code" href="class_alpha_beta_filter.html#a077d0628af55971b79b1eb6329ce04a6">GetValue</a>();
+        <span class="keywordtype">char</span> _tmp[100];
+        sprintf(_tmp, <span class="stringliteral">&quot;Voltage: %f&quot;</span>, voltage);
+        <span class="comment">//m_gyroLogFile.Write(_tmp);</span>
+        <span class="keywordflow">return</span> 0.55*voltage;
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a4f80be505ad1347cfddb52903d347569"></a>
@@ -281,8 +365,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the default command for the gyro subsystem. </p>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00029">29</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00030">30</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="aa9b24b74976a49a453e4e16e5f3da30b"></a>
@@ -301,8 +388,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Resets the gyro sensor to 0. </p>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00046">46</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00047">47</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        m_gyroSensor-&gt;Reset();
+        m_gyroFilter.<a class="code" href="class_alpha_beta_filter.html#ab85f16ca96c5aaf34d1c7e1bccf3f424" title="Clears the filter.">Clear</a>();
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="ad7985df303536d3fc66bbc4a20acb8c6"></a>
@@ -328,8 +419,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00038">38</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_gyro_subsystem_8cpp_source.html#l00039">39</a> of file <a class="el" href="_gyro_subsystem_8cpp_source.html">GyroSubsystem.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        m_gyroSensor-&gt;SetSensitivity(sensitivity);
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -342,7 +436,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_gyro_subsystem.html">GyroSubsystem</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

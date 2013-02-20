@@ -149,7 +149,12 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_log_file_8cpp_source.html#l00012">12</a> of file <a class="el" href="_log_file_8cpp_source.html">LogFile.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        printf(<span class="stringliteral">&quot;Opening new logfile with name %s\n&quot;</span>,name);
+        sprintf(m_fileName, name);
+        <a class="code" href="_log_file_8cpp.html#a2f1e06a99ab4462d81d3bfbfd7486f74" title="Private NI function needed to write to the VxWorks target.">Priv_SetWriteFileAllowed</a>(1);
+}
+</pre></div>
 </div>
 </div>
 <a class="anchor" id="a440a7de2dcbb9facb68e56dc47cb9dea"></a>
@@ -167,7 +172,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_log_file_8cpp_source.html#l00022">22</a> of file <a class="el" href="_log_file_8cpp_source.html">LogFile.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        <span class="keyword">delete</span>(m_fileName);
+}
+</pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -195,7 +203,12 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="_log_file_8cpp_source.html#l00032">32</a> of file <a class="el" href="_log_file_8cpp_source.html">LogFile.cpp</a>.</p>
-
+<div class="fragment"><pre class="fragment">{
+        FILE* logFile = fopen(m_fileName,<span class="stringliteral">&quot;a&quot;</span>); 
+        fprintf(logFile, <span class="stringliteral">&quot;%s\n&quot;</span>, data);
+        fclose(logFile);
+}
+</pre></div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -208,7 +221,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_log_file.html">LogFile</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

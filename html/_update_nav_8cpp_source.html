@@ -130,17 +130,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 {
 <a name="l00018"></a>00018         <span class="keywordtype">float</span> theta;
 <a name="l00019"></a>00019         <span class="keywordtype">double</span> distance;
-<a name="l00020"></a>00020         <span class="keywordtype">double</span> deltaDistance;
+<a name="l00020"></a>00020         <span class="keywordtype">float</span> deltaDistanceInch;
 <a name="l00021"></a>00021         
 <a name="l00022"></a>00022 <span class="comment">//  Get Angle from Gyro</span>
 <a name="l00023"></a>00023         theta = <a class="code" href="class_command_base.html#ae924b04453d3a85956b937740cf88dd6">s_Gyro</a>-&gt;<a class="code" href="class_gyro_subsystem.html#acbea92b181949a1f4e0fbfd0562ca431" title="Gets the angle that the gyro is reading, and writes it to a log file.">GetAngle</a>();
 <a name="l00024"></a>00024         
 <a name="l00025"></a>00025 <span class="comment">//  Get Average Distance from the Jaguars</span>
 <a name="l00026"></a>00026         distance = <a class="code" href="class_command_base.html#ad0706c31cc51896165a34d829c771d70">s_Drive</a>-&gt;<a class="code" href="class_drive_subsystem.html#a58edbe12f157df8f943368017d2cf7ae">GetAvgDistance</a>();
-<a name="l00027"></a>00027         deltaDistance = distance - m_Distance;
-<a name="l00028"></a>00028         m_Distance = distance;
+<a name="l00027"></a>00027         deltaDistanceInch = ( distance - m_DistanceEncoder ) * kWheelEncoderRatio;
+<a name="l00028"></a>00028         m_DistanceEncoder = distance;
 <a name="l00029"></a>00029         
-<a name="l00030"></a>00030         <a class="code" href="class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55">s_Nav</a>-&gt;<a class="code" href="class_robot_nav.html#a40f0df434325f606cb4c471c9b290c92">propagate</a>(GetFPGATime(), deltaDistance, theta);  
+<a name="l00030"></a>00030         <a class="code" href="class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55">s_Nav</a>-&gt;<a class="code" href="class_robot_nav.html#ac7ea60e16542b65044dffb992048d52a">propagate</a>(GetFPGATime(), deltaDistanceInch, theta);      
 <a name="l00031"></a>00031         
 <a name="l00032"></a>00032 }
 <a name="l00033"></a>00033 
@@ -166,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_update_nav_8cpp.html">UpdateNav.cpp</a>      </li>
 
-    <li class="footer">Generated on Fri Feb 15 2013 22:04:46 for Ultimate Ascent by
+    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>
