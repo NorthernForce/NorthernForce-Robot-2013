@@ -18,7 +18,7 @@ void ElevateShooter::Initialize()
  */
 void ElevateShooter::Execute()
 {
-	s_ShooterElevator->SetSetpoint(targetAngle);
+	s_ShooterElevator->SetPosition(targetAngle);
 }
 
 /**
@@ -28,7 +28,7 @@ void ElevateShooter::Execute()
  */
 bool ElevateShooter::IsFinished()
 {
-    return true;
+    return TimeSinceInitialized() > 1;
 }
 
 /**

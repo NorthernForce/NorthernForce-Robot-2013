@@ -136,27 +136,41 @@ static const float kShooterP = 1.0;
 static const float kShooterI = 0.0;
 static const float kShooterD = 0.0;
 
-static const float kShooterElevatorP = 1.0;
-static const float kShooterElevatorI = 0.0;
+static const float kShooterElevatorP = 0.25;
+static const float kShooterElevatorI = 0.0001;
 static const float kShooterElevatorD = 0.0;
 
 // Shooter Elevator Constants
 static const float kElevatorDegreesPerVolt = 54.054054;
 static const float kElevatorZero = 3.742;
 
-static const float kDeadbandLimit = 0.2;
+static const float kDeadbandLimit = 0.3;
 
-static const float kElevatorMaxAngle = 35.0;
+static const float kElevatorMaxAngle = 33.5;
 static const float kElevatorMinAngle = 0.0;
 
 //Shooter position constants
 static const float kPyramidFrontSpeed = -.742;
 static const float kPyramidFrontAngle = 34.455;
 static const float kPyramidBackSpeed = -.367;
-static const float kPyramidBackAngle = 27.234;
-static const float kFeederStationSpeed = -.414;
+static const float kPyramidBackAngle = 23.234;
+static const float kFeederStationSpeed = -.425;
 static const float kFeederStationAngle = 17.236;
 static const float kHangSpeed = -.18;
 static const float kHangAngle = 27.234;
+
+/**
+ * @brief Tells whether or not a value is within a certain tolerance of another value.
+ * @param value The value to check.
+ * @param desiredValue The value to check value against.
+ * @param tolerance The desired tolerance.
+ */
+inline bool WithinTolerance(float value, float desiredValue, float tolerance)
+{
+	if ((value < desiredValue + tolerance) && (value > desiredValue - tolerance))
+		return true;
+	else
+		return false;
+}
 
 #endif

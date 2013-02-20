@@ -45,8 +45,8 @@ void DriveSubsystem::InitDefaultCommand()
  */
 void DriveSubsystem::DriveRobot(FRCXboxJoystick& stick)
 {	
-	(m_encodersEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger() / 2) : 
-		this->DriveRobot(stick.GetLeftStickY(), stick.GetTrigger() / 2);
+	(m_gyroEnabled) ? this->DriveRobot(stick.GetLeftStickY(), stick.GetRightStickX() / 2) : 
+		this->DriveRobot(stick.GetLeftStickY(), stick.GetRightStickX());
 }
 
 /**

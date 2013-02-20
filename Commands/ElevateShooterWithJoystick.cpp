@@ -15,8 +15,7 @@ void ElevateShooterWithJoystick::Initialize() {}
  */
 void ElevateShooterWithJoystick::Execute()
 {
-	s_ShooterElevator->GetElevationAngle();
-	s_ShooterElevator->SetSpeed(oi->GetManipulatorStick().GetY());
+	s_ShooterElevator->SetPositionRelative(oi->GetManipulatorStick().GetY() / 5);
 }
 
 /**

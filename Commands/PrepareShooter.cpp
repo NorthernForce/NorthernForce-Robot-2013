@@ -4,6 +4,6 @@
 
 PrepareShooter::PrepareShooter(float speed, float angle)
 {
-    AddParallel(new SpinupShooter(speed));
+    AddSequential(new SpinupShooter(speed));
     AddSequential(new ElevateShooter(angle));
 }

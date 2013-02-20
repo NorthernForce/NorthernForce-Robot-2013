@@ -1,5 +1,6 @@
 #include "Attack3Joystick.h"
 #include "Joystick.h"
+#include <math.h>
 
 /**
  * @brief This method constructs the instance 
@@ -46,8 +47,12 @@ float Attack3Joystick::GetStickY()
 	return Deadband(Joystick::GetRawAxis(2));
 }
 
-float Attack3Joystick::Deadband(float input) {
-    return (input < kDeadbandLimit && input > -kDeadbandLimit) ? 0 : input;
+float Attack3Joystick::Deadband(float input) 
+{
+    if (input < kDeadbandLimit && input > (kDeadbandLimit*(-1))) 
+		return 0;
+	else 
+		return (input-(fabs(input) / input * kDeadbandLimit)) / (1 - kDeadbandLimit);
 }
 
 /**

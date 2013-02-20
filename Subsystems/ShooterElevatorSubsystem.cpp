@@ -8,12 +8,14 @@ ShooterElevatorSubsystem::ShooterElevatorSubsystem() :
     m_elevatorLog("POTLog.txt"),
     m_loggingEnabled(false)
 {
+//	this->SetSetpoint(kPyramidBackAngle);
+//	Enable();
 	Disable();
 }
 
 double ShooterElevatorSubsystem::ReturnPIDInput() 
 {
-	return GetElevationAngle();
+	return this->GetElevationAngle();
 }
 
 void ShooterElevatorSubsystem::UsePIDOutput(double output) 
@@ -23,7 +25,7 @@ void ShooterElevatorSubsystem::UsePIDOutput(double output)
 
 void ShooterElevatorSubsystem::InitDefaultCommand() 
 {
-	SetDefaultCommand(new ElevateShooterWithJoystick());
+	//SetDefaultCommand(new ElevateShooterWithJoystick());
 }
 
 float ShooterElevatorSubsystem::GetElevationAngle() 
@@ -45,10 +47,17 @@ float ShooterElevatorSubsystem::GetElevationAngle()
 
 void ShooterElevatorSubsystem::SetPosition(float position) 
 {
+	//@TODO: Test this. 
+    if(position > kElevatorMaxAngle) { SetSetpoint(kElevatorMaxAngle); }
+    else if(position < kElevatorMinAngle) { SetSetpoint(kElevatorMinAngle); }
+	else { SetSetpoint(position); }
+
 	Enable();
-    if(position > kElevatorMaxAngle) position = kElevatorMaxAngle;
-    if(position < kElevatorMinAngle) position = kElevatorMinAngle;
-	SetSetpoint(position);
+
+	// if(position > kElevatorMaxAngle) position = kElevatorMaxAngle;
+	// if(position < kElevatorMinAngle) position = kElevatorMinAngle;
+	// SetSetpoint(position);
+	// Enable();
 }
 
 void ShooterElevatorSubsystem::SetPositionRelative(float deltaPos) 

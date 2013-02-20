@@ -40,7 +40,7 @@ void ShooterSubsystem::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//setDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new SpinupShooterWithJoystick());
+//	SetDefaultCommand(new SpinupShooterWithJoystick());
 }
 
 /**

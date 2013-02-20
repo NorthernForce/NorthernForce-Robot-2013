@@ -2,7 +2,7 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Library.h"
-#include "Commands/DriveTo.h"
+#include "Commands/AutonomousCommand.h"
 
 /**
  * This class controls the entire robot.
@@ -14,7 +14,7 @@ class NorthernForceRobot : public IterativeRobot
 	
 private:
 	LiveWindow *lw;
-	DriveTo    *autoGoTo;
+	AutonomousCommand *autoCommand;
 
 	
 	/**
@@ -25,7 +25,7 @@ private:
 		CommandBase::init();
 		lw = LiveWindow::GetInstance();
 		
-		autoGoTo = new DriveTo(36, 0);
+		autoCommand = new AutonomousCommand();
 
 	}
 	
@@ -38,7 +38,7 @@ private:
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
 		
-		autoGoTo->Start();
+		Scheduler::GetInstance()->AddCommand(autoCommand);
 		
 	}
 	

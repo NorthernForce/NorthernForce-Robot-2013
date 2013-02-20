@@ -60,7 +60,7 @@ float FRCXboxJoystick::GetY(JoystickHand hand)
 
 void FRCXboxJoystick::CalculateDeadband()
 {
-    Deadband = 0.1;
+    Deadband = 0.2;
 }
 
 /**

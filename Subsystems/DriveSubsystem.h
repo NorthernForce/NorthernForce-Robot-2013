@@ -29,7 +29,7 @@ private:
     bool m_encodersEnabled;
 
     static const double kDriveSpinP = 1.75;
-    static const double kDriveSpinI = 0.07;
+    static const double kDriveSpinI = 0.15;
     static const double kDriveSpinD = 0.0;
     static const double kDriveP = 1.0;
     static const double kDriveI = 0.0;
@@ -75,7 +75,6 @@ public:
 	{
 		return m_gyroEnabled;
 	}
-
 };
 
 #endif
