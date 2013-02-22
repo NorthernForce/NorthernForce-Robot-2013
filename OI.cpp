@@ -10,8 +10,6 @@
 #include "Commands/ElevateShooter.h"
 #include "Commands/ElevateShooterWithJoystick.h"
 #include "Commands/ElevateShooterRelative.h"
-#include "Commands/DriveToRelativeAngle.h"
-
 /**
  * @brief Initializes the operator interface.
  */
@@ -20,23 +18,20 @@ OI::OI() :
 	m_manipulatorStick(2)
 {
 	// Process operator interface input here.
-//	m_driverStick.Back.WhenPressed(new DisableEncoders());
-//	m_driverStick.Start.WhenPressed(new EnableEncoders());
-	m_driverStick.Y.WhenPressed(new SetDrivePID());
-    m_driverStick.A.WhenPressed(new LogPOT());
+	// m_driverStick.Back.WhenPressed(new DisableEncoders());
+	// m_driverStick.Start.WhenPressed(new EnableEncoders());
+	// m_driverStick.Y.WhenPressed(new SetDrivePID());
+    // m_driverStick.A.WhenPressed(new LogPOT());
 	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
 
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee());
 	m_manipulatorStick.Button3.WhenPressed(new ElevateShooterRelative(1.5));
 	m_manipulatorStick.Button2.WhenPressed(new ElevateShooterRelative(-1.5));
-	m_manipulatorStick.Button4.WhenPressed(
-			new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
+	m_manipulatorStick.Button4.WhenPressed(new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
 	m_manipulatorStick.Button5.WhenPressed(new PrepareShooter(kHangSpeed, kHangAngle));
-	m_manipulatorStick.Button6.WhenPressed(
-			new PrepareShooter(kFeederStationSpeed, kFeederStationAngle));
+	m_manipulatorStick.Button6.WhenPressed(new PrepareShooter(kFeederStationSpeed, kFeederStationAngle));
 	m_manipulatorStick.Button10.WhileHeld(new ElevateShooterWithJoystick());
-//	m_manipulatorStick.Button8.WhenPressed(new DriveToRelativeAngle(5.0));
 	m_manipulatorStick.Button9.WhenPressed(new ElevateShooter(0.0));
 }
 

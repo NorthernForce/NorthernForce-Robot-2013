@@ -159,29 +159,18 @@ bool SocketClient::Read()
 		}
 		else if (!strcasecmp(cmd,"CAMC"))
 		{
+			Target t;
+			
 			char* _tmpLn = strtok(recvline+5, ",");
-			int count = atoi(_tmpLn);
+			t.vertAngle = atof(_tmpLn);
 			_tmpLn = strtok(NULL, ",");
-			
-			list<Target> targets;
-			
-			for (int i = 0; i < count; i++)
-			{
-				Target t;
-				t.x = atof(_tmpLn);
-				_tmpLn = strtok(NULL, ",");
-				t.y = atof(_tmpLn);
-				_tmpLn = strtok(NULL, ",");
-				t.pixelCount = atoi(_tmpLn);
-				_tmpLn = strtok(NULL, ",");
-				
-				targets.push_back(t);
-			}
+			t.horizAngle = atof(_tmpLn);
+			_tmpLn = strtok(NULL, ",");
+			t.distance = atof(_tmpLn);
 			
 			{
 				const Synchronized sync(m_socketSemaphore);
-				m_lastTargets.clear();
-				m_lastTargets = targets;
+				m_lastTarget = t;
 			}
 		}
 		else if (!strcasecmp(cmd,"ROBP"))
@@ -243,10 +232,10 @@ void SocketClient::printdebug(char* err)
  * @brief Gets the last data that was read from the socket connection.
  * @return A string, the last data from the connection. 
  */
-const list<Target> SocketClient::GetLastData()
+const Target SocketClient::GetLastData()
 {
 	const Synchronized sync (m_socketSemaphore);
-	return m_lastTargets;
+	return m_lastTarget;
 }
 
 const RobotPosition SocketClient::GetLastPosition()

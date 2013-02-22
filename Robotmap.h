@@ -92,9 +92,9 @@ enum AnalogChannels {
  */
 struct Target
 {
-	float x;
-	float y;
-	int pixelCount;
+	float vertAngle;
+	float horizAngle;
+	float distance;
 };
 
 /**
