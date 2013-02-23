@@ -1,7 +1,6 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -31,7 +30,7 @@ enum XBoxJoystickButtonPort
  */
 enum Attack3JoystickPort
 {
- 	kAttackJoystickButtonTrigger = 1,
+ 	kAttackJoystickButtonTrigger = 1, 
  	kAttackJoystickButton2 = 2,
  	kAttackJoystickButton3 = 3,
  	kAttackJoystickButton4 = 4,
@@ -67,22 +66,26 @@ enum JaguarAddresses
     kShooterJaguarAddress = 5,
 };
 
-enum DigitalAdresses {
+enum DigitalAdresses 
+{
     kShooterWheelLightSensorAddress = 1,
 };
 
-enum PWMAddresses {
+enum PWMAddresses 
+{
     kShooterElevatorVictorAddress = 1,
 };
 
 /**
  * @brief The addresses of the relays
  */
-enum RelayAdresses {
+enum RelayAdresses 
+{
 	kShooterFlickerRelayAddress = 1,
 };
 
-enum AnalogChannels {
+enum AnalogChannels 
+{
     kGyroChannel = 1,
 	kShooterElevatorPotChannel = 3,
 };
@@ -164,13 +167,34 @@ static const float kHangAngle = 27.234;
  * @param value The value to check.
  * @param desiredValue The value to check value against.
  * @param tolerance The desired tolerance.
+ * @return A boolean, whether or not the value is within the tolerance.
  */
-inline bool WithinTolerance(float value, float desiredValue, float tolerance)
+template <typename T>
+inline bool WithinTolerance(T value, T desiredValue, T tolerance)
 {
 	if ((value < desiredValue + tolerance) && (value > desiredValue - tolerance))
 		return true;
 	else
 		return false;
-}
+};
+
+/**
+ * @brief Limits a value to a defined limit.
+ * @param input The input value.
+ * @param max The value to limit it to.
+ * @return The limited value. 
+ */
+template <typename T> 
+inline T Limit(T input, T max)
+{
+    if (input > max)
+    {
+        return max;
+    } else if (input < -max)
+    {
+        return -max;
+    }
+    return input;
+};
 
 #endif

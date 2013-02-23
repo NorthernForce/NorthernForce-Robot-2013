@@ -29,7 +29,7 @@ void TurnToAngle::Execute()
  */
 bool TurnToAngle::IsFinished() 
 {
-	return WithinTolerance(s_Gyro->GetAngle(), m_targetAngle, 0.2);
+	return WithinTolerance<float>(s_Gyro->GetAngle(), m_targetAngle, 0.2);
 }
 
 /**
