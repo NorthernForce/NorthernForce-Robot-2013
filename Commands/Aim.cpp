@@ -5,12 +5,12 @@
 
 #include "ElevateShooter.h"
 #include "SpinupShooter.h"
-#include "TurnToAngle.h"
+#include "TurnToRelativeAngle.h"
 
 Aim::Aim() 
 {
 	AddParallel(new ElevateShooter(CommandBase::s_SockClient->GetLastData().vertAngle));
-        AddParallel(new TurnToAngle(CommandBase::s_Gyro->GetAngle() 
+        AddParallel(new TurnToRelativeAngle(CommandBase::s_Gyro->GetAngle() 
                 + CommandBase::s_SockClient->GetLastData().horizAngle));
         //@TODO: Implement spinup speed based on distance.
 	AddParallel(new SpinupShooter(kPyramidBackSpeed));

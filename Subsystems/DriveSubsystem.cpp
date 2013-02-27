@@ -20,7 +20,7 @@ DriveSubsystem::DriveSubsystem() try :
 	m_driveErrAccumulator(0.0),
     m_DriveLog("DriveLog.csv"),
     m_loggingEnabled(false),
-    m_gyroEnabled(false),
+    m_gyroEnabled(true),
     m_encodersEnabled(false)
 {
 	(m_encodersEnabled) ? this->EnableEncoders() : this->DisableEncoders();

@@ -1,13 +1,13 @@
-#ifndef DISABLEENCODERS_H
-#define DISABLEENCODERS_H
+#ifndef TURNTORELATIVEANGLE_H
+#define TURNTORELATIVEANGLE_H
 
 #include "../CommandBase.h"
 
-class TurnToAngle: public CommandBase {
+class TurnToRelativeAngle: public CommandBase {
 private:
 	float m_targetAngle;
 public:
-	TurnToAngle(float angle);
+	TurnToRelativeAngle(float angle);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

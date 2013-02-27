@@ -10,6 +10,8 @@
 #include "Commands/ElevateShooter.h"
 #include "Commands/ElevateShooterWithJoystick.h"
 #include "Commands/ElevateShooterRelative.h"
+#include "Commands/TurnToRelativeAngle.h"
+
 /**
  * @brief Initializes the operator interface.
  */
@@ -24,6 +26,8 @@ OI::OI() :
     // m_driverStick.A.WhenPressed(new LogPOT());
 	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
+	m_driverStick.A.WhenPressed(new TurnToRelativeAngle(10.0));
+	m_driverStick.Y.WhenPressed(new TurnToRelativeAngle(10.0));
 
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee());
 	m_manipulatorStick.Button3.WhenPressed(new ElevateShooterRelative(1.5));
