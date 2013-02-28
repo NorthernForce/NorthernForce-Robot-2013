@@ -9,9 +9,9 @@
 
 Aim::Aim() 
 {
-	AddParallel(new ElevateShooter(CommandBase::s_SockClient->GetLastData().vertAngle));
-        AddParallel(new TurnToRelativeAngle(CommandBase::s_Gyro->GetAngle() 
-                + CommandBase::s_SockClient->GetLastData().horizAngle));
+	//AddParallel(new ElevateShooter(CommandBase::s_SockClient->GetLastData().vertAngle));
+        AddParallel(new TurnToRelativeAngle(//CommandBase::s_Gyro->GetAngle() 
+                /*+*/ CommandBase::s_SockClient->GetLastData().horizAngle));
         //@TODO: Implement spinup speed based on distance.
-	AddParallel(new SpinupShooter(kPyramidBackSpeed));
+	//AddParallel(new SpinupShooter(kPyramidBackSpeed));
 }

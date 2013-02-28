@@ -55,6 +55,8 @@ public:
 	void errsys(char* err);
 	void printdebug(char* err);
 	const Target GetLastData();
+	float GetLastHorizAngle();
+	float GetLastVertAngle();
 	const RobotPosition GetLastPosition();
 	int StartDataStream(int updateInterval);
 	int StopDataStream();

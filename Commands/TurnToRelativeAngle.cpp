@@ -1,9 +1,17 @@
 #include "TurnToRelativeAngle.h"
 
 TurnToRelativeAngle::TurnToRelativeAngle(float angle) :
-	m_targetAngle(angle)
+	m_targetAngle(angle),
+    m_integral(0.0)
 {
 	Requires(s_Drive);
+}
+
+TurnToRelativeAngle::TurnToRelativeAngle(float (*method)()) :
+    m_targetAngle(0.0),
+    m_integral(0.0),
+    m_method(method)
+{
 }
 
 /**
@@ -11,9 +19,10 @@ TurnToRelativeAngle::TurnToRelativeAngle(float angle) :
  */
 void TurnToRelativeAngle::Initialize() 
 {
+    if(m_method != NULL) m_targetAngle = m_method();
 //	printf("Initializing...\n");
 	s_Gyro->Reset();
-//	printf("Turning to %f.\n",m_targetAngle);
+	printf("Turning to %f.\n",m_targetAngle);
 }
 
 /**
@@ -21,7 +30,9 @@ void TurnToRelativeAngle::Initialize()
  */
 void TurnToRelativeAngle::Execute() 
 {
-	 s_Drive->DriveRobot(0.0, -0.057 * (m_targetAngle - s_Gyro->GetAngle()));
+    float error = m_targetAngle - s_Gyro->GetAngle();
+    m_integral += error;
+	s_Drive->DriveRobot(0.0, -0.02 * error - 0.001 * m_integral);
 }
 
 /**

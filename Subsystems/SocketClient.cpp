@@ -162,6 +162,8 @@ bool SocketClient::Read()
 			Target t;
 			
 			char* _tmpLn = strtok(recvline+5, ",");
+            atof(_tmpLn);
+            _tmpLn = strtok(NULL, ",");
 			t.vertAngle = atof(_tmpLn);
 			_tmpLn = strtok(NULL, ",");
 			t.horizAngle = atof(_tmpLn);
@@ -236,6 +238,14 @@ const Target SocketClient::GetLastData()
 {
 	const Synchronized sync (m_socketSemaphore);
 	return m_lastTarget;
+}
+
+float SocketClient::GetLastHorizAngle() {
+    return GetLastData().horizAngle;
+}
+
+float SocketClient::GetLastVertAngle() {
+    return GetLastData().vertAngle;
 }
 
 const RobotPosition SocketClient::GetLastPosition()
