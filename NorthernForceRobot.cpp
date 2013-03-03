@@ -3,6 +3,7 @@
 #include "CommandBase.h"
 #include "Library.h"
 #include "Commands/AutonomousCommand.h"
+#include "Commands/SpinupShooter.h"
 
 /**
  * This class controls the entire robot.
@@ -15,6 +16,7 @@ class NorthernForceRobot : public IterativeRobot
 private:
 	LiveWindow *lw;
 	AutonomousCommand *autoCommand;
+    SpinupShooter* spinupCommand;
 
 	
 	/**
@@ -26,7 +28,7 @@ private:
 		lw = LiveWindow::GetInstance();
 		
 		autoCommand = new AutonomousCommand();
-
+        spinupCommand = new SpinupShooter(kPyramidBackSpeed);
 	}
 	
 	/**
@@ -58,6 +60,7 @@ private:
 		CommandBase::s_Log->LogMessage("Entering teleoperated mode.",kLogPriorityDebug);
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
+		Scheduler::GetInstance()->AddCommand(spinupCommand);
 	}
 	
 	/**

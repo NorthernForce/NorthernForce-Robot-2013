@@ -21,8 +21,8 @@ AutonomousCommand::AutonomousCommand()
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-	AddSequential(new ElevateShooter(kPyramidBackAngle));
-	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 4));
+	AddParallel(new ElevateShooter(kPyramidBackAngle+1.0));
+	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 6));
 	AddSequential(new FlickFrisbee());
 	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 3));
 	AddSequential(new FlickFrisbee());

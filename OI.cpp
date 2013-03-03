@@ -12,6 +12,9 @@
 #include "Commands/ElevateShooterRelative.h"
 #include "Commands/TurnToRelativeAngle.h"
 #include "Commands/Aim.h"
+#include "Commands/SpinupShooter.h"
+#include "Commands/SpinShooter.h"
+#include "Commands/StopShooter.h"
 
 /**
  * @brief Initializes the operator interface.
@@ -39,6 +42,8 @@ OI::OI() :
 	m_manipulatorStick.Button6.WhenPressed(new PrepareShooter(kFeederStationSpeed, kFeederStationAngle));
 	m_manipulatorStick.Button10.WhileHeld(new ElevateShooterWithJoystick());
 	m_manipulatorStick.Button9.WhenPressed(new ElevateShooter(0.0));
+    m_manipulatorStick.Button8.WhenPressed(new StopShooter());
+    m_manipulatorStick.Button7.WhileHeld(new SpinShooter(-1.0, false));
 }
 
 /**

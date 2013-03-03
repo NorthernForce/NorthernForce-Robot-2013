@@ -63,7 +63,9 @@ void ShooterElevatorSubsystem::SetPosition(float position)
 void ShooterElevatorSubsystem::SetPositionRelative(float deltaPos) 
 {
 	Enable();
-	SetSetpointRelative(deltaPos);
+    if((deltaPos + GetSetpoint()) > kElevatorMaxAngle) { SetSetpoint(kElevatorMaxAngle); }
+    else if((deltaPos + GetSetpoint()) < kElevatorMinAngle) { SetSetpoint(kElevatorMinAngle); }
+	else { SetSetpointRelative(deltaPos); }
 }
 
 void ShooterElevatorSubsystem::SetSpeed(float speed) 

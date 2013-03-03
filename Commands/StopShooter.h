@@ -1,5 +1,5 @@
-#ifndef SPINUP_SHOOTER_H
-#define SPINUP_SHOOTER_H
+#ifndef STOP_SHOOTER_H
+#define STOP_SHOOTER_H
 
 #include "../CommandBase.h"
 
@@ -8,12 +8,9 @@
  *
  * @author Joseph
  */
-class SpinupShooter: public CommandBase {
-private:
-	float setSpeed;
-    bool joystickVal;
+class StopShooter: public CommandBase {
 public:
-	SpinupShooter(float speed, bool joystickVal = true);
+	StopShooter();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

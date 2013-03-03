@@ -1,7 +1,6 @@
-#include "TurnToRelativeAngle.h"
+#include "TurnToAngleCamera.h"
 
-TurnToRelativeAngle::TurnToRelativeAngle(float angle) :
-	m_targetAngle(angle),
+TurnToAngleCamera::TurnToAngleCamera() :
     m_integral(0.0)
 {
 	Requires(s_Drive);
@@ -10,17 +9,18 @@ TurnToRelativeAngle::TurnToRelativeAngle(float angle) :
 /**
  * @brief Initializes the command.
  */
-void TurnToRelativeAngle::Initialize() 
+void TurnToAngleCamera::Initialize() 
 {
 //	printf("Initializing...\n");
+  	m_targetAngle = s_SockClient->GetLastHorizAngle();
+    printf("[Camera] Turning to %f\n", m_targetAngle);
 	s_Gyro->Reset();
-	printf("Turning to %f.\n",m_targetAngle);
 }
 
 /**
  * @brief Called repeatedly when this Command is scheduled to run
  */
-void TurnToRelativeAngle::Execute() 
+void TurnToAngleCamera::Execute() 
 {
     float error = m_targetAngle - s_Gyro->GetAngle();
     m_integral += error;
@@ -32,7 +32,7 @@ void TurnToRelativeAngle::Execute()
  * Make this return true when this Command no longer needs to run execute().
  * @return Bool, if the command is finished or not. 
  */
-bool TurnToRelativeAngle::IsFinished() 
+bool TurnToAngleCamera::IsFinished() 
 {
 	return WithinTolerance<float>(s_Gyro->GetAngle(), m_targetAngle, 1);
 }
@@ -40,18 +40,18 @@ bool TurnToRelativeAngle::IsFinished()
 /**
  * @brief Finishes the command. Called once after isFinished returns true.
  */
-void TurnToRelativeAngle::End() 
+void TurnToAngleCamera::End() 
 {
-	s_Drive->DriveRobot(0.0, 0.0);
-	printf("At target angle.\n");
+	s_Drive->Stop();
+	printf("At target horizontal angle.\n");
 }
 
 /**
  * @brief Called when another command which requires one or more of the same
  * subsystems is scheduled to run.
  */
-void TurnToRelativeAngle::Interrupted() 
+void TurnToAngleCamera::Interrupted() 
 {
-	printf("Interrupted!\n");
+	printf("Turn to angle interrupted!\n");
 	End();
 }

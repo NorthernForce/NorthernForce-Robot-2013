@@ -28,7 +28,7 @@ void ElevateShooter::Execute()
  */
 bool ElevateShooter::IsFinished()
 {
-    return TimeSinceInitialized() > 1;
+    return TimeSinceInitialized() > 1.0;
 }
 
 /**

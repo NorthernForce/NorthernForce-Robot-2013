@@ -1,14 +1,14 @@
-#ifndef TURNTORELATIVEANGLE_H
-#define TURNTORELATIVEANGLE_H
+#ifndef TURNTOANGLECAMERA_H
+#define TURNTOANGLECAMERA_H
 
 #include "../CommandBase.h"
 
-class TurnToRelativeAngle: public CommandBase {
+class TurnToAngleCamera: public CommandBase {
 private:
 	float m_targetAngle;
     float m_integral;
 public:
-	TurnToRelativeAngle(float angle);
+	TurnToAngleCamera();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
