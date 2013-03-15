@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pixelcount',['pixelCount',['../struct_target.html#a29f131c35661dd3ff78d64f04e2ab8dd',1,'Target']]],
   ['prepareshooter',['PrepareShooter',['../class_prepare_shooter.html',1,'PrepareShooter'],['../class_prepare_shooter.html#ac72bc26efa854ca2dff9b71fd7c0a7d7',1,'PrepareShooter::PrepareShooter()']]],
   ['prepareshooter_2ecpp',['PrepareShooter.cpp',['../_prepare_shooter_8cpp.html',1,'']]],
   ['prepareshooter_2eh',['PrepareShooter.h',['../_prepare_shooter_8h.html',1,'']]],

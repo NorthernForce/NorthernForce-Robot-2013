@@ -134,8 +134,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7f4e8f6034ea6efccb028262be0f52a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a system error to the log system.  <a href="#a7f4e8f6034ea6efccb028262be0f52a3"></a><br/></td></tr>
 <tr class="memitem:a5cdff94e4e3aea3146e419770e9696a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a5cdff94e4e3aea3146e419770e9696a3">printdebug</a> (char *err)</td></tr>
 <tr class="memdesc:a5cdff94e4e3aea3146e419770e9696a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a debug message to the log system.  <a href="#a5cdff94e4e3aea3146e419770e9696a3"></a><br/></td></tr>
-<tr class="memitem:a2622164e559d0fe37cdeecab67bcb76d"><td class="memItemLeft" align="right" valign="top">const list&lt; <a class="el" href="struct_target.html">Target</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a2622164e559d0fe37cdeecab67bcb76d">GetLastData</a> ()</td></tr>
-<tr class="memdesc:a2622164e559d0fe37cdeecab67bcb76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#a2622164e559d0fe37cdeecab67bcb76d"></a><br/></td></tr>
+<tr class="memitem:a20a407cf5947b196154c31a4a50507f6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_target.html">Target</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a20a407cf5947b196154c31a4a50507f6">GetLastData</a> ()</td></tr>
+<tr class="memdesc:a20a407cf5947b196154c31a4a50507f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last data that was read from the socket connection.  <a href="#a20a407cf5947b196154c31a4a50507f6"></a><br/></td></tr>
+<tr class="memitem:ab8de0f835d2fe6d5c341a5a889ba2bfd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#ab8de0f835d2fe6d5c341a5a889ba2bfd">GetLastHorizAngle</a> ()</td></tr>
+<tr class="memitem:a7038e62096566ea5aef55c3b1dfc7d7b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a7038e62096566ea5aef55c3b1dfc7d7b">GetLastVertAngle</a> ()</td></tr>
 <tr class="memitem:a58ead1a8d3adda92f7ad9dcdded58541"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_robot_position.html">RobotPosition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a58ead1a8d3adda92f7ad9dcdded58541">GetLastPosition</a> ()</td></tr>
 <tr class="memitem:a3ce46c8c78d6c13213bee97f87d589f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4">StartDataStream</a> (int updateInterval)</td></tr>
 <tr class="memdesc:a3ce46c8c78d6c13213bee97f87d589f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the stream of data from the server.  <a href="#a3ce46c8c78d6c13213bee97f87d589f4"></a><br/></td></tr>
@@ -271,19 +273,19 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00228">228</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00219">219</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(err,<a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02af4d9974193a9ec0aad47c6144905b38f">kLogPriorityError</a>);
 }
 </pre></div>
 </div>
 </div>
-<a class="anchor" id="a2622164e559d0fe37cdeecab67bcb76d"></a>
+<a class="anchor" id="a20a407cf5947b196154c31a4a50507f6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const list&lt; <a class="el" href="struct_target.html">Target</a> &gt; <a class="el" href="class_socket_client.html#a2622164e559d0fe37cdeecab67bcb76d">SocketClient::GetLastData</a> </td>
+          <td class="memname">const <a class="el" href="struct_target.html">Target</a> <a class="el" href="class_socket_client.html#a20a407cf5947b196154c31a4a50507f6">SocketClient::GetLastData</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -295,10 +297,31 @@ Public Member Functions</h2></td></tr>
 <p>Gets the last data that was read from the socket connection. </p>
 <dl class="section return"><dt>Returns:</dt><dd>A string, the last data from the connection. </dd></dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00246">246</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00237">237</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keyword">const</span> Synchronized sync (m_socketSemaphore);
-        <span class="keywordflow">return</span> m_lastTargets;
+        <span class="keywordflow">return</span> m_lastTarget;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ab8de0f835d2fe6d5c341a5a889ba2bfd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_socket_client.html#ab8de0f835d2fe6d5c341a5a889ba2bfd">SocketClient::GetLastHorizAngle</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00243">243</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                      {
+    <span class="keywordflow">return</span> <a class="code" href="class_socket_client.html#a20a407cf5947b196154c31a4a50507f6" title="Gets the last data that was read from the socket connection.">GetLastData</a>().<a class="code" href="struct_target.html#abff58122b3a4a1083b97de671927b51b">horizAngle</a>;
 }
 </pre></div>
 </div>
@@ -317,10 +340,31 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00252">252</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00251">251</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keyword">const</span> Synchronized sync (m_socketSemaphore);
         <span class="keywordflow">return</span> m_lastPosition;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a7038e62096566ea5aef55c3b1dfc7d7b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_socket_client.html#a7038e62096566ea5aef55c3b1dfc7d7b">SocketClient::GetLastVertAngle</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00247">247</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">                                     {
+    <span class="keywordflow">return</span> <a class="code" href="class_socket_client.html#a20a407cf5947b196154c31a4a50507f6" title="Gets the last data that was read from the socket connection.">GetLastData</a>().<a class="code" href="struct_target.html#af85476a896726c7e3b2ac9ac851c3514">vertAngle</a>;
 }
 </pre></div>
 </div>
@@ -371,7 +415,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00237">237</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00228">228</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">CommandBase::s_Log</a>-&gt;<a class="code" href="class_log_system.html#a36749db234555f3875cffeef47ac56cb" title="Logs a message to the logfile and to the console.">LogMessage</a>(err,<a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02aabca211891daf20ae75c437334f9e3ac">kLogPriorityDebug</a>);
 }
@@ -452,7 +496,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00262">262</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00261">261</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordtype">char</span> msg[80];
         sprintf(msg, <span class="stringliteral">&quot;CAMC %i&quot;</span>, updateInterval);
@@ -477,7 +521,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Stops the stream of data from the server. </p>
 
-<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00272">272</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_socket_client_8cpp_source.html#l00271">271</a> of file <a class="el" href="_socket_client_8cpp_source.html">SocketClient.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         <span class="keywordflow">return</span> sendln(<span class="stringliteral">&quot;STOP&quot;</span>);
 }
@@ -494,7 +538,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_socket_client.html">SocketClient</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:33 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

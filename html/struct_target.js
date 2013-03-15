@@ -1,6 +1,6 @@
 var struct_target =
 [
-    [ "pixelCount", "struct_target.html#a29f131c35661dd3ff78d64f04e2ab8dd", null ],
-    [ "x", "struct_target.html#a9cada33260aabbfa58f2a7c39fa171bc", null ],
-    [ "y", "struct_target.html#a600fc4993b83d45223496e83bef395bd", null ]
+    [ "distance", "struct_target.html#a9e7fa57929df060b26b9919686c3c2df", null ],
+    [ "horizAngle", "struct_target.html#abff58122b3a4a1083b97de671927b51b", null ],
+    [ "vertAngle", "struct_target.html#af85476a896726c7e3b2ac9ac851c3514", null ]
 ];

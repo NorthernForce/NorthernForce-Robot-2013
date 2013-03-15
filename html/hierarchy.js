@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Aim", "class_aim.html", null ],
     [ "AlphaBetaFilter< T >", "class_alpha_beta_filter.html", null ],
     [ "Attack3Joystick", "class_attack3_joystick.html", null ],
     [ "AutonomousCommand", "class_autonomous_command.html", null ],
@@ -7,10 +8,9 @@ var hierarchy =
       [ "DisableEncoders", "class_disable_encoders.html", null ],
       [ "DisableGyro", "class_disable_gyro.html", null ],
       [ "DriveTo", "class_drive_to.html", null ],
-      [ "DriveToAngle", "class_drive_to_angle.html", null ],
-      [ "DriveToRelativeAngle", "class_drive_to_relative_angle.html", null ],
       [ "DriveWithJoystick", "class_drive_with_joystick.html", null ],
       [ "ElevateShooter", "class_elevate_shooter.html", null ],
+      [ "ElevateShooterCamera", "class_elevate_shooter_camera.html", null ],
       [ "ElevateShooterRelative", "class_elevate_shooter_relative.html", null ],
       [ "ElevateShooterWithJoystick", "class_elevate_shooter_with_joystick.html", null ],
       [ "EnableEncoders", "class_enable_encoders.html", null ],
@@ -18,9 +18,13 @@ var hierarchy =
       [ "FlickFrisbee", "class_flick_frisbee.html", null ],
       [ "LogPOT", "class_log_p_o_t.html", null ],
       [ "SetDrivePID", "class_set_drive_p_i_d.html", null ],
+      [ "SpinShooter", "class_spin_shooter.html", null ],
       [ "SpinupShooter", "class_spinup_shooter.html", null ],
       [ "SpinupShooterAuto", "class_spinup_shooter_auto.html", null ],
       [ "SpinupShooterWithJoystick", "class_spinup_shooter_with_joystick.html", null ],
+      [ "StopShooter", "class_stop_shooter.html", null ],
+      [ "TurnToAngleCamera", "class_turn_to_angle_camera.html", null ],
+      [ "TurnToRelativeAngle", "class_turn_to_relative_angle.html", null ],
       [ "UpdateNav", "class_update_nav.html", null ]
     ] ],
     [ "DriveSubsystem", "class_drive_subsystem.html", null ],

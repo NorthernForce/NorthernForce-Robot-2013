@@ -181,7 +181,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00082">82</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00084">84</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     m_loggingEnabled = <span class="keyword">false</span>;
 }
@@ -202,7 +202,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00077">77</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00079">79</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     m_loggingEnabled = <span class="keyword">true</span>;
 }
@@ -334,7 +334,9 @@ Public Member Functions</h2></td></tr>
 <p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00063">63</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         Enable();
-        SetSetpointRelative(deltaPos);
+    <span class="keywordflow">if</span>((deltaPos + GetSetpoint()) &gt; kElevatorMaxAngle) { SetSetpoint(kElevatorMaxAngle); }
+    <span class="keywordflow">else</span> <span class="keywordflow">if</span>((deltaPos + GetSetpoint()) &lt; kElevatorMinAngle) { SetSetpoint(kElevatorMinAngle); }
+        <span class="keywordflow">else</span> { SetSetpointRelative(deltaPos); }
 }
 </pre></div>
 </div>
@@ -354,7 +356,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00069">69</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html#l00071">71</a> of file <a class="el" href="_shooter_elevator_subsystem_8cpp_source.html">ShooterElevatorSubsystem.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
         Disable();
     <span class="keywordflow">if</span>((<a class="code" href="class_shooter_elevator_subsystem.html#ac4483582454601ae6048b1e74d783d49">GetElevationAngle</a>() &gt; kElevatorMaxAngle) &amp;&amp; (speed &gt; 0.0)) <span class="keywordflow">return</span>;
@@ -396,7 +398,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:33 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

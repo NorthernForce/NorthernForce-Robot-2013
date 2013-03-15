@@ -1,5 +1,6 @@
 var annotated =
 [
+    [ "Aim", "class_aim.html", "class_aim" ],
     [ "AlphaBetaFilter< T >", "class_alpha_beta_filter.html", "class_alpha_beta_filter" ],
     [ "Attack3Joystick", "class_attack3_joystick.html", "class_attack3_joystick" ],
     [ "AutonomousCommand", "class_autonomous_command.html", "class_autonomous_command" ],
@@ -8,10 +9,9 @@ var annotated =
     [ "DisableGyro", "class_disable_gyro.html", "class_disable_gyro" ],
     [ "DriveSubsystem", "class_drive_subsystem.html", "class_drive_subsystem" ],
     [ "DriveTo", "class_drive_to.html", "class_drive_to" ],
-    [ "DriveToAngle", "class_drive_to_angle.html", "class_drive_to_angle" ],
-    [ "DriveToRelativeAngle", "class_drive_to_relative_angle.html", "class_drive_to_relative_angle" ],
     [ "DriveWithJoystick", "class_drive_with_joystick.html", "class_drive_with_joystick" ],
     [ "ElevateShooter", "class_elevate_shooter.html", "class_elevate_shooter" ],
+    [ "ElevateShooterCamera", "class_elevate_shooter_camera.html", "class_elevate_shooter_camera" ],
     [ "ElevateShooterRelative", "class_elevate_shooter_relative.html", "class_elevate_shooter_relative" ],
     [ "ElevateShooterWithJoystick", "class_elevate_shooter_with_joystick.html", "class_elevate_shooter_with_joystick" ],
     [ "EnableEncoders", "class_enable_encoders.html", "class_enable_encoders" ],
@@ -32,10 +32,14 @@ var annotated =
     [ "ShooterElevatorSubsystem", "class_shooter_elevator_subsystem.html", "class_shooter_elevator_subsystem" ],
     [ "ShooterSubsystem", "class_shooter_subsystem.html", "class_shooter_subsystem" ],
     [ "SocketClient", "class_socket_client.html", "class_socket_client" ],
+    [ "SpinShooter", "class_spin_shooter.html", "class_spin_shooter" ],
     [ "SpinupShooter", "class_spinup_shooter.html", "class_spinup_shooter" ],
     [ "SpinupShooterAuto", "class_spinup_shooter_auto.html", "class_spinup_shooter_auto" ],
     [ "SpinupShooterWithJoystick", "class_spinup_shooter_with_joystick.html", "class_spinup_shooter_with_joystick" ],
+    [ "StopShooter", "class_stop_shooter.html", "class_stop_shooter" ],
     [ "Target", "struct_target.html", "struct_target" ],
+    [ "TurnToAngleCamera", "class_turn_to_angle_camera.html", "class_turn_to_angle_camera" ],
+    [ "TurnToRelativeAngle", "class_turn_to_relative_angle.html", "class_turn_to_relative_angle" ],
     [ "UpdateNav", "class_update_nav.html", "class_update_nav" ],
     [ "Vector2D", "class_vector2_d.html", "class_vector2_d" ],
     [ "Vector3D", "class_vector3_d.html", "class_vector3_d" ]

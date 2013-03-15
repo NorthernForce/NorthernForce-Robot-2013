@@ -29,7 +29,10 @@ var searchData=
   ['socketclient',['SocketClient',['../class_socket_client.html',1,'SocketClient'],['../class_socket_client.html#ac3e658a1810d2d91e0a995f5d0f02ef2',1,'SocketClient::SocketClient()']]],
   ['socketclient_2ecpp',['SocketClient.cpp',['../_socket_client_8cpp.html',1,'']]],
   ['socketclient_2eh',['SocketClient.h',['../_socket_client_8h.html',1,'']]],
-  ['spinupshooter',['SpinupShooter',['../class_spinup_shooter.html',1,'SpinupShooter'],['../class_spinup_shooter.html#a9585c656123b0fdfe20ced44355b3948',1,'SpinupShooter::SpinupShooter()']]],
+  ['spinshooter',['SpinShooter',['../class_spin_shooter.html',1,'SpinShooter'],['../class_spin_shooter.html#a3438b2bf7cedb64a839e9b4fdc3b4abe',1,'SpinShooter::SpinShooter()']]],
+  ['spinshooter_2ecpp',['SpinShooter.cpp',['../_spin_shooter_8cpp.html',1,'']]],
+  ['spinshooter_2eh',['SpinShooter.h',['../_spin_shooter_8h.html',1,'']]],
+  ['spinupshooter',['SpinupShooter',['../class_spinup_shooter.html',1,'SpinupShooter'],['../class_spinup_shooter.html#aa3447e88713251e4a8a2dbec47481e5f',1,'SpinupShooter::SpinupShooter()']]],
   ['spinupshooter_2ecpp',['SpinupShooter.cpp',['../_spinup_shooter_8cpp.html',1,'']]],
   ['spinupshooter_2eh',['SpinupShooter.h',['../_spinup_shooter_8h.html',1,'']]],
   ['spinupshooterauto',['SpinupShooterAuto',['../class_spinup_shooter_auto.html',1,'SpinupShooterAuto'],['../class_spinup_shooter_auto.html#a0936426896a63ae44a9104176cf97b24',1,'SpinupShooterAuto::SpinupShooterAuto()']]],
@@ -45,5 +48,8 @@ var searchData=
   ['stddevx',['stdDevX',['../struct_robot_position.html#ad2533176016c8f67f71eda84499960e8',1,'RobotPosition']]],
   ['stddevy',['stdDevY',['../struct_robot_position.html#af0f0a49e1cf88cd4581a993451e31deb',1,'RobotPosition']]],
   ['stop',['Stop',['../class_drive_subsystem.html#a26084e362570f6f971676c17a8c584a6',1,'DriveSubsystem::Stop()'],['../class_shooter_subsystem.html#af0f4db96f33459d687f9f6070a3e1690',1,'ShooterSubsystem::Stop()']]],
-  ['stopdatastream',['StopDataStream',['../class_socket_client.html#ab53e33045614a155b55769adce6ffa71',1,'SocketClient']]]
+  ['stopdatastream',['StopDataStream',['../class_socket_client.html#ab53e33045614a155b55769adce6ffa71',1,'SocketClient']]],
+  ['stopshooter',['StopShooter',['../class_stop_shooter.html',1,'StopShooter'],['../class_stop_shooter.html#a441b8e5b1fe4da4e352e53e7b5a530c2',1,'StopShooter::StopShooter()']]],
+  ['stopshooter_2ecpp',['StopShooter.cpp',['../_stop_shooter_8cpp.html',1,'']]],
+  ['stopshooter_2eh',['StopShooter.h',['../_stop_shooter_8h.html',1,'']]]
 ];

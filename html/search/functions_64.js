@@ -9,7 +9,5 @@ var searchData=
   ['driverobot',['DriveRobot',['../class_drive_subsystem.html#a64574f4ef16d79c1a2deae67fb1e24fd',1,'DriveSubsystem::DriveRobot(FRCXboxJoystick &amp;stick)'],['../class_drive_subsystem.html#af839f84acb5a68c9c351a1761052167f',1,'DriveSubsystem::DriveRobot(Attack3Joystick &amp;moveStick, Attack3Joystick &amp;rotateStick)'],['../class_drive_subsystem.html#acbceea3fc62d12f99d18b6043068ec33',1,'DriveSubsystem::DriveRobot(float moveValue, float rotateValue)']]],
   ['drivesubsystem',['DriveSubsystem',['../class_drive_subsystem.html#a3407432f9123b97c5d0bfc8601db76c2',1,'DriveSubsystem']]],
   ['driveto',['DriveTo',['../class_drive_to.html#a05f6b36aed092c7442ed3a0915eee81d',1,'DriveTo']]],
-  ['drivetoangle',['DriveToAngle',['../class_drive_to_angle.html#a21338e353187e7843a32e1592e2163ae',1,'DriveToAngle']]],
-  ['drivetorelativeangle',['DriveToRelativeAngle',['../class_drive_to_relative_angle.html#acab5d294ab54ed3ca36d019059982520',1,'DriveToRelativeAngle']]],
   ['drivewithjoystick',['DriveWithJoystick',['../class_drive_with_joystick.html#aec663d65d48661b956e8db0011092140',1,'DriveWithJoystick']]]
 ];

@@ -2,6 +2,8 @@ var searchData=
 [
   ['elevateshooter_2ecpp',['ElevateShooter.cpp',['../_elevate_shooter_8cpp.html',1,'']]],
   ['elevateshooter_2eh',['ElevateShooter.h',['../_elevate_shooter_8h.html',1,'']]],
+  ['elevateshootercamera_2ecpp',['ElevateShooterCamera.cpp',['../_elevate_shooter_camera_8cpp.html',1,'']]],
+  ['elevateshootercamera_2eh',['ElevateShooterCamera.h',['../_elevate_shooter_camera_8h.html',1,'']]],
   ['elevateshooterrelative_2ecpp',['ElevateShooterRelative.cpp',['../_elevate_shooter_relative_8cpp.html',1,'']]],
   ['elevateshooterrelative_2eh',['ElevateShooterRelative.h',['../_elevate_shooter_relative_8h.html',1,'']]],
   ['elevateshooterwithjoystick_2ecpp',['ElevateShooterWithJoystick.cpp',['../_elevate_shooter_with_joystick_8cpp.html',1,'']]],

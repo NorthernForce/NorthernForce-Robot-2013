@@ -139,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00034"></a>00034         <a class="code" href="class_command_base.html#ae6807501159925367f8008fc0534eda5">oi</a> = <span class="keyword">new</span> <a class="code" href="class_o_i.html">OI</a>();
 <a name="l00035"></a>00035         <a class="code" href="class_command_base.html#a2982cf183cec7c0d585b9bfcbe475d87">s_Log</a> = <span class="keyword">new</span> <a class="code" href="class_log_system.html" title="A logging system for the Robot. This log will log anything to the netconsole, as well as save all log...">LogSystem</a>(<a class="code" href="_robotmap_8h.html#aa8b1c6568df4ee385e4d1d12f7153f02a40291a2e7827f05a899d8af5e98adfe7">kLogPrioritySystem</a>);
 <a name="l00036"></a>00036         <a class="code" href="class_command_base.html#ad0706c31cc51896165a34d829c771d70">s_Drive</a> = <span class="keyword">new</span> <a class="code" href="class_drive_subsystem.html">DriveSubsystem</a>();
-<a name="l00037"></a>00037         <span class="comment">//s_SockClient = new SocketClient(&quot;10.1.72.15&quot;,1180);</span>
+<a name="l00037"></a>00037         <a class="code" href="class_command_base.html#a0025fd9d883de5244af1136ce8882101">s_SockClient</a> = <span class="keyword">new</span> <a class="code" href="class_socket_client.html">SocketClient</a>(<span class="stringliteral">&quot;10.1.72.15&quot;</span>,1180);
 <a name="l00038"></a>00038         <a class="code" href="class_command_base.html#ae924b04453d3a85956b937740cf88dd6">s_Gyro</a> = <span class="keyword">new</span> <a class="code" href="class_gyro_subsystem.html">GyroSubsystem</a>(kGyroSlot, <a class="code" href="_robotmap_8h.html#a3f77c6398fb02752d9778fe61aa50f3da7a62a3779355f97abc8b354d4d79d8e4">kGyroChannel</a>, kGyroTemp, kGyroSensitivity);
 <a name="l00039"></a>00039         <a class="code" href="class_command_base.html#a21456ffb72f694c3fa1939ec4fa06e55">s_Nav</a>  = <span class="keyword">new</span> <a class="code" href="class_robot_nav.html">RobotNav</a>();
 <a name="l00040"></a>00040         <a class="code" href="class_command_base.html#a0a293e68f56778bbc7b0b4f561a9c584">s_ShooterElevator</a> = <span class="keyword">new</span> <a class="code" href="class_shooter_elevator_subsystem.html">ShooterElevatorSubsystem</a>();
@@ -151,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_command_base_8cpp.html">CommandBase.cpp</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:32 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

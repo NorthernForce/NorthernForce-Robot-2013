@@ -5,5 +5,6 @@ var searchData=
   ['vector2d_2eh',['Vector2D.h',['../_vector2_d_8h.html',1,'']]],
   ['vector3d',['Vector3D',['../class_vector3_d.html',1,'Vector3D'],['../class_vector3_d.html#a0b11a8d75da427b27443d8a94d0d296c',1,'Vector3D::Vector3D()'],['../class_vector3_d.html#a2fbd56b65acff95442c416989aa52ad5',1,'Vector3D::Vector3D(float x_init, float y_init, float z_init)']]],
   ['vector3d_2ecpp',['Vector3D.cpp',['../_vector3_d_8cpp.html',1,'']]],
-  ['vector3d_2eh',['Vector3D.h',['../_vector3_d_8h.html',1,'']]]
+  ['vector3d_2eh',['Vector3D.h',['../_vector3_d_8h.html',1,'']]],
+  ['vertangle',['vertAngle',['../struct_target.html#af85476a896726c7e3b2ac9ac851c3514',1,'Target']]]
 ];

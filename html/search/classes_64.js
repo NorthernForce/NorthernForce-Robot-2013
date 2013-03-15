@@ -4,7 +4,5 @@ var searchData=
   ['disablegyro',['DisableGyro',['../class_disable_gyro.html',1,'']]],
   ['drivesubsystem',['DriveSubsystem',['../class_drive_subsystem.html',1,'']]],
   ['driveto',['DriveTo',['../class_drive_to.html',1,'']]],
-  ['drivetoangle',['DriveToAngle',['../class_drive_to_angle.html',1,'']]],
-  ['drivetorelativeangle',['DriveToRelativeAngle',['../class_drive_to_relative_angle.html',1,'']]],
   ['drivewithjoystick',['DriveWithJoystick',['../class_drive_with_joystick.html',1,'']]]
 ];

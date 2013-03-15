@@ -2,6 +2,7 @@ var searchData=
 [
   ['leftbumper',['LeftBumper',['../class_f_r_c_xbox_joystick.html#a659a07b4940a9e5e50ad8e21e0711ac7',1,'FRCXboxJoystick']]],
   ['library_2eh',['Library.h',['../_library_8h.html',1,'']]],
+  ['limit',['Limit',['../_robotmap_8h.html#a02b02307e99ad8b0447798e1009d6cb8',1,'Robotmap.h']]],
   ['logfile',['LogFile',['../class_log_file.html',1,'LogFile'],['../class_log_file.html#aa365a5e0aebd968ef168b2871cfdee31',1,'LogFile::LogFile()']]],
   ['logfile_2ecpp',['LogFile.cpp',['../_log_file_8cpp.html',1,'']]],
   ['logfile_2eh',['LogFile.h',['../_log_file_8h.html',1,'']]],

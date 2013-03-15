@@ -131,7 +131,7 @@ Inheritance diagram for SpinupShooter:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9585c656123b0fdfe20ced44355b3948"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spinup_shooter.html#a9585c656123b0fdfe20ced44355b3948">SpinupShooter</a> (float speed)</td></tr>
+<tr class="memitem:aa3447e88713251e4a8a2dbec47481e5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spinup_shooter.html#aa3447e88713251e4a8a2dbec47481e5f">SpinupShooter</a> (float speed, bool joystickVal=true)</td></tr>
 <tr class="memitem:a55a83f011a0202f0b84a626aed373e03"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spinup_shooter.html#a55a83f011a0202f0b84a626aed373e03">Initialize</a> ()</td></tr>
 <tr class="memitem:a16eb6492c966dd3e6e7bdddfdd347f86"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spinup_shooter.html#a16eb6492c966dd3e6e7bdddfdd347f86">Execute</a> ()</td></tr>
 <tr class="memitem:a7869f5024d5b3ef9bacbbcb41f8968cc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spinup_shooter.html#a7869f5024d5b3ef9bacbbcb41f8968cc">IsFinished</a> ()</td></tr>
@@ -143,26 +143,36 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_spinup_shooter_8h_source.html#l00011">11</a> of file <a class="el" href="_spinup_shooter_8h_source.html">SpinupShooter.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a9585c656123b0fdfe20ced44355b3948"></a>
+<a class="anchor" id="aa3447e88713251e4a8a2dbec47481e5f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_spinup_shooter.html#a9585c656123b0fdfe20ced44355b3948">SpinupShooter::SpinupShooter</a> </td>
+          <td class="memname"><a class="el" href="class_spinup_shooter.html#aa3447e88713251e4a8a2dbec47481e5f">SpinupShooter::SpinupShooter</a> </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>speed</em></td><td>)</td>
+          <td class="paramname"><em>speed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>joystickVal</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="_spinup_shooter_8cpp_source.html#l00003">3</a> of file <a class="el" href="_spinup_shooter_8cpp_source.html">SpinupShooter.cpp</a>.</p>
-<div class="fragment"><pre class="fragment">                                        :
-    setSpeed(speed)
+<div class="fragment"><pre class="fragment">                                                          :
+    setSpeed(speed),
+    joystickVal(joystickVal)
 {
-
 }
 </pre></div>
 </div>
@@ -229,7 +239,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_spinup_shooter_8cpp_source.html#l00010">10</a> of file <a class="el" href="_spinup_shooter_8cpp_source.html">SpinupShooter.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-    <a class="code" href="class_command_base.html#ac2794d977b2019e40e87f190f11fccba">s_Shooter</a>-&gt;<a class="code" href="class_shooter_subsystem.html#a470947d793dd22425634c5f38c3f5a7f">SetSpeed</a>((setSpeed - 1 ) / 2);
+    <a class="code" href="class_command_base.html#ac2794d977b2019e40e87f190f11fccba">s_Shooter</a>-&gt;<a class="code" href="class_shooter_subsystem.html#a470947d793dd22425634c5f38c3f5a7f">SetSpeed</a>(joystickVal ? (setSpeed - 1 ) / 2 : -setSpeed);
     <span class="comment">// Not using PID loop because we don&#39;t have a way</span>
     <span class="comment">// of measuring the shooter wheel speed yet.</span>
     <span class="comment">//s_Shooter-&gt;SetAbsoluteTolerance(kShooterSpinupTolerance);</span>
@@ -293,7 +303,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_spinup_shooter.html">SpinupShooter</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:03 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:33 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

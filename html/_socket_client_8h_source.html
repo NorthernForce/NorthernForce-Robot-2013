@@ -141,7 +141,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036         <span class="keywordtype">char</span>* m_host;
 <a name="l00037"></a>00037         <span class="keyword">struct </span>sockaddr_in sa;
 <a name="l00038"></a>00038         <span class="keyword">struct </span>hostent hen;
-<a name="l00039"></a>00039         list&lt;Target&gt; m_lastTargets;
+<a name="l00039"></a>00039         <a class="code" href="struct_target.html" title="A structure to hold a target data.">Target</a> m_lastTarget;
 <a name="l00040"></a>00040         <a class="code" href="struct_robot_position.html" title="A structure to hold the camera-estimated position data.">RobotPosition</a> m_lastPosition;
 <a name="l00041"></a>00041         <span class="keyword">const</span> SEM_ID m_socketSemaphore;
 <a name="l00042"></a>00042         Task m_socketConnectionTask;
@@ -159,20 +159,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00054"></a>00054         <span class="keywordtype">void</span> <a class="code" href="class_socket_client.html#a1163fe544606f856c0c81066ab355df6" title="Handles connection to the socket server.">run</a>();
 <a name="l00055"></a>00055         <span class="keywordtype">void</span> <a class="code" href="class_socket_client.html#a7f4e8f6034ea6efccb028262be0f52a3" title="Prints a system error to the log system.">errsys</a>(<span class="keywordtype">char</span>* err);
 <a name="l00056"></a>00056         <span class="keywordtype">void</span> <a class="code" href="class_socket_client.html#a5cdff94e4e3aea3146e419770e9696a3" title="Prints a debug message to the log system.">printdebug</a>(<span class="keywordtype">char</span>* err);
-<a name="l00057"></a>00057         <span class="keyword">const</span> list&lt;Target&gt; <a class="code" href="class_socket_client.html#a2622164e559d0fe37cdeecab67bcb76d" title="Gets the last data that was read from the socket connection.">GetLastData</a>();
-<a name="l00058"></a>00058         <span class="keyword">const</span> <a class="code" href="struct_robot_position.html" title="A structure to hold the camera-estimated position data.">RobotPosition</a> <a class="code" href="class_socket_client.html#a58ead1a8d3adda92f7ad9dcdded58541">GetLastPosition</a>();
-<a name="l00059"></a>00059         <span class="keywordtype">int</span> <a class="code" href="class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4" title="Starts the stream of data from the server.">StartDataStream</a>(<span class="keywordtype">int</span> updateInterval);
-<a name="l00060"></a>00060         <span class="keywordtype">int</span> <a class="code" href="class_socket_client.html#ab53e33045614a155b55769adce6ffa71" title="Stops the stream of data from the server.">StopDataStream</a>();
-<a name="l00061"></a>00061 };
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
+<a name="l00057"></a>00057         <span class="keyword">const</span> <a class="code" href="struct_target.html" title="A structure to hold a target data.">Target</a> <a class="code" href="class_socket_client.html#a20a407cf5947b196154c31a4a50507f6" title="Gets the last data that was read from the socket connection.">GetLastData</a>();
+<a name="l00058"></a>00058         <span class="keywordtype">float</span> <a class="code" href="class_socket_client.html#ab8de0f835d2fe6d5c341a5a889ba2bfd">GetLastHorizAngle</a>();
+<a name="l00059"></a>00059         <span class="keywordtype">float</span> <a class="code" href="class_socket_client.html#a7038e62096566ea5aef55c3b1dfc7d7b">GetLastVertAngle</a>();
+<a name="l00060"></a>00060         <span class="keyword">const</span> <a class="code" href="struct_robot_position.html" title="A structure to hold the camera-estimated position data.">RobotPosition</a> <a class="code" href="class_socket_client.html#a58ead1a8d3adda92f7ad9dcdded58541">GetLastPosition</a>();
+<a name="l00061"></a>00061         <span class="keywordtype">int</span> <a class="code" href="class_socket_client.html#a3ce46c8c78d6c13213bee97f87d589f4" title="Starts the stream of data from the server.">StartDataStream</a>(<span class="keywordtype">int</span> updateInterval);
+<a name="l00062"></a>00062         <span class="keywordtype">int</span> <a class="code" href="class_socket_client.html#ab53e33045614a155b55769adce6ffa71" title="Stops the stream of data from the server.">StopDataStream</a>();
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_socket_client_8h.html">SocketClient.h</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:32 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

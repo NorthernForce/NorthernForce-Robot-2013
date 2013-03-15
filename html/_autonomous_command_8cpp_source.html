@@ -134,8 +134,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021         <span class="comment">// e.g. if Command1 requires chassis, and Command2 requires arm,</span>
 <a name="l00022"></a>00022         <span class="comment">// a CommandGroup containing them would require both the chassis and the</span>
 <a name="l00023"></a>00023         <span class="comment">// arm.</span>
-<a name="l00024"></a>00024         AddSequential(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter.html">ElevateShooter</a>(kPyramidBackAngle));
-<a name="l00025"></a>00025         AddSequential(<span class="keyword">new</span> <a class="code" href="class_spinup_shooter_auto.html">SpinupShooterAuto</a>(kPyramidBackSpeed, 4));
+<a name="l00024"></a>00024         AddParallel(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter.html">ElevateShooter</a>(kPyramidBackAngle+1.0));
+<a name="l00025"></a>00025         AddSequential(<span class="keyword">new</span> <a class="code" href="class_spinup_shooter_auto.html">SpinupShooterAuto</a>(kPyramidBackSpeed, 6));
 <a name="l00026"></a>00026         AddSequential(<span class="keyword">new</span> <a class="code" href="class_flick_frisbee.html">FlickFrisbee</a>());
 <a name="l00027"></a>00027         AddSequential(<span class="keyword">new</span> <a class="code" href="class_spinup_shooter_auto.html">SpinupShooterAuto</a>(kPyramidBackSpeed, 3));
 <a name="l00028"></a>00028         AddSequential(<span class="keyword">new</span> <a class="code" href="class_flick_frisbee.html">FlickFrisbee</a>());
@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_autonomous_command_8cpp.html">AutonomousCommand.cpp</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:32 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

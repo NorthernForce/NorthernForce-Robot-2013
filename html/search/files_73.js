@@ -8,10 +8,14 @@ var searchData=
   ['shootersubsystem_2eh',['ShooterSubsystem.h',['../_shooter_subsystem_8h.html',1,'']]],
   ['socketclient_2ecpp',['SocketClient.cpp',['../_socket_client_8cpp.html',1,'']]],
   ['socketclient_2eh',['SocketClient.h',['../_socket_client_8h.html',1,'']]],
+  ['spinshooter_2ecpp',['SpinShooter.cpp',['../_spin_shooter_8cpp.html',1,'']]],
+  ['spinshooter_2eh',['SpinShooter.h',['../_spin_shooter_8h.html',1,'']]],
   ['spinupshooter_2ecpp',['SpinupShooter.cpp',['../_spinup_shooter_8cpp.html',1,'']]],
   ['spinupshooter_2eh',['SpinupShooter.h',['../_spinup_shooter_8h.html',1,'']]],
   ['spinupshooterauto_2ecpp',['SpinupShooterAuto.cpp',['../_spinup_shooter_auto_8cpp.html',1,'']]],
   ['spinupshooterauto_2eh',['SpinupShooterAuto.h',['../_spinup_shooter_auto_8h.html',1,'']]],
   ['spinupshooterwithjoystick_2ecpp',['SpinupShooterWithJoystick.cpp',['../_spinup_shooter_with_joystick_8cpp.html',1,'']]],
-  ['spinupshooterwithjoystick_2eh',['SpinupShooterWithJoystick.h',['../_spinup_shooter_with_joystick_8h.html',1,'']]]
+  ['spinupshooterwithjoystick_2eh',['SpinupShooterWithJoystick.h',['../_spinup_shooter_with_joystick_8h.html',1,'']]],
+  ['stopshooter_2ecpp',['StopShooter.cpp',['../_stop_shooter_8cpp.html',1,'']]],
+  ['stopshooter_2eh',['StopShooter.h',['../_stop_shooter_8h.html',1,'']]]
 ];

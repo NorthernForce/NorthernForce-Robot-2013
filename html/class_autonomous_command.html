@@ -161,8 +161,8 @@ Public Member Functions</h2></td></tr>
         <span class="comment">// e.g. if Command1 requires chassis, and Command2 requires arm,</span>
         <span class="comment">// a CommandGroup containing them would require both the chassis and the</span>
         <span class="comment">// arm.</span>
-        AddSequential(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter.html">ElevateShooter</a>(kPyramidBackAngle));
-        AddSequential(<span class="keyword">new</span> <a class="code" href="class_spinup_shooter_auto.html">SpinupShooterAuto</a>(kPyramidBackSpeed, 4));
+        AddParallel(<span class="keyword">new</span> <a class="code" href="class_elevate_shooter.html">ElevateShooter</a>(kPyramidBackAngle+1.0));
+        AddSequential(<span class="keyword">new</span> <a class="code" href="class_spinup_shooter_auto.html">SpinupShooterAuto</a>(kPyramidBackSpeed, 6));
         AddSequential(<span class="keyword">new</span> <a class="code" href="class_flick_frisbee.html">FlickFrisbee</a>());
         AddSequential(<span class="keyword">new</span> <a class="code" href="class_spinup_shooter_auto.html">SpinupShooterAuto</a>(kPyramidBackSpeed, 3));
         AddSequential(<span class="keyword">new</span> <a class="code" href="class_flick_frisbee.html">FlickFrisbee</a>());
@@ -183,7 +183,7 @@ Public Member Functions</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="class_autonomous_command.html">AutonomousCommand</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:33 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

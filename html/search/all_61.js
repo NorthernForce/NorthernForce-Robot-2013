@@ -1,6 +1,9 @@
 var searchData=
 [
   ['a',['A',['../class_f_r_c_xbox_joystick.html#a5b242e290d4a9274e7e9430344710c90',1,'FRCXboxJoystick']]],
+  ['aim',['Aim',['../class_aim.html',1,'Aim'],['../class_aim.html#ad2a0641d7570409514315348a28a6b51',1,'Aim::Aim()']]],
+  ['aim_2ecpp',['Aim.cpp',['../_aim_8cpp.html',1,'']]],
+  ['aim_2eh',['Aim.h',['../_aim_8h.html',1,'']]],
   ['alphabetafilter',['AlphaBetaFilter',['../class_alpha_beta_filter.html',1,'AlphaBetaFilter&lt; T &gt;'],['../class_alpha_beta_filter.html#af36421917957aba3305ebe0ab7d2d2e1',1,'AlphaBetaFilter::AlphaBetaFilter()'],['../class_alpha_beta_filter.html#ae73f1ce8376075ff32f495b3dac5de78',1,'AlphaBetaFilter::AlphaBetaFilter(const T &amp;alpha, const T &amp;beta)']]],
   ['alphabetafilter_2eh',['AlphaBetaFilter.h',['../_alpha_beta_filter_8h.html',1,'']]],
   ['alphabetafilter_3c_20float_20_3e',['AlphaBetaFilter< float >',['../class_alpha_beta_filter.html',1,'']]],

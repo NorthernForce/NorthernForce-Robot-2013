@@ -1,6 +1,6 @@
 var class_spinup_shooter =
 [
-    [ "SpinupShooter", "class_spinup_shooter.html#a9585c656123b0fdfe20ced44355b3948", null ],
+    [ "SpinupShooter", "class_spinup_shooter.html#aa3447e88713251e4a8a2dbec47481e5f", null ],
     [ "End", "class_spinup_shooter.html#a27a69cb0902f5eb109d4024250100d9d", null ],
     [ "Execute", "class_spinup_shooter.html#a16eb6492c966dd3e6e7bdddfdd347f86", null ],
     [ "Initialize", "class_spinup_shooter.html#a55a83f011a0202f0b84a626aed373e03", null ],

@@ -119,23 +119,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a><a class="code" href="class_spinup_shooter.html">00011</a> <span class="keyword">class </span><a class="code" href="class_spinup_shooter.html">SpinupShooter</a>: <span class="keyword">public</span> <a class="code" href="class_command_base.html">CommandBase</a> {
 <a name="l00012"></a>00012 <span class="keyword">private</span>:
 <a name="l00013"></a>00013         <span class="keywordtype">float</span> setSpeed;
-<a name="l00014"></a>00014 <span class="keyword">public</span>:
-<a name="l00015"></a>00015         <a class="code" href="class_spinup_shooter.html#a9585c656123b0fdfe20ced44355b3948">SpinupShooter</a>(<span class="keywordtype">float</span> speed);
-<a name="l00016"></a>00016         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a55a83f011a0202f0b84a626aed373e03">Initialize</a>();
-<a name="l00017"></a>00017         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a16eb6492c966dd3e6e7bdddfdd347f86">Execute</a>();
-<a name="l00018"></a>00018         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_spinup_shooter.html#a7869f5024d5b3ef9bacbbcb41f8968cc">IsFinished</a>();
-<a name="l00019"></a>00019         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a27a69cb0902f5eb109d4024250100d9d">End</a>();
-<a name="l00020"></a>00020         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a08a7dbac5aaf42ea6822bb8ae46fb34b">Interrupted</a>();
-<a name="l00021"></a>00021 };
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="preprocessor">#endif</span>
+<a name="l00014"></a>00014     <span class="keywordtype">bool</span> joystickVal;
+<a name="l00015"></a>00015 <span class="keyword">public</span>:
+<a name="l00016"></a>00016         <a class="code" href="class_spinup_shooter.html#aa3447e88713251e4a8a2dbec47481e5f">SpinupShooter</a>(<span class="keywordtype">float</span> speed, <span class="keywordtype">bool</span> joystickVal = <span class="keyword">true</span>);
+<a name="l00017"></a>00017         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a55a83f011a0202f0b84a626aed373e03">Initialize</a>();
+<a name="l00018"></a>00018         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a16eb6492c966dd3e6e7bdddfdd347f86">Execute</a>();
+<a name="l00019"></a>00019         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_spinup_shooter.html#a7869f5024d5b3ef9bacbbcb41f8968cc">IsFinished</a>();
+<a name="l00020"></a>00020         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a27a69cb0902f5eb109d4024250100d9d">End</a>();
+<a name="l00021"></a>00021         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_spinup_shooter.html#a08a7dbac5aaf42ea6822bb8ae46fb34b">Interrupted</a>();
+<a name="l00022"></a>00022 };
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_spinup_shooter_8h.html">SpinupShooter.h</a>      </li>
 
-    <li class="footer">Generated on Tue Feb 19 2013 23:03:02 for Ultimate Ascent by
+    <li class="footer">Generated on Fri Mar 15 2013 15:48:32 for Ultimate Ascent by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>
