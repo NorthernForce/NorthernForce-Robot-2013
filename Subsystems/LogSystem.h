@@ -27,6 +27,7 @@ public:
 	LogSystem(LogPriority level);
 	void InitDefaultCommand();
 	void LogMessage(LogPriority level, const char* message, ...);
+	void LogMessage(const char* message, ...);
 };
 
 #endif

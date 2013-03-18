@@ -45,7 +45,7 @@ void LogSystem::LogMessage(LogPriority level, const char* message, ...)
 
 	if (level >= m_logLevel)
 	{
-		char _tmp[100];
+		char _tmp[200];
 		vsprintf(_tmp, message, argptr);
 		m_robotLogFile.Write("%.3f:  %s\n", GetFPGATime() / 1000000.0, _tmp);
 
@@ -54,3 +54,19 @@ void LogSystem::LogMessage(LogPriority level, const char* message, ...)
 
 	va_end(argptr); 
 }
+/**
+ * @brief Logs a message to the logfile with the default priority level.
+ * @param message The message to be logged.
+ */
+void LogSystem::LogMessage(const char* message, ...)
+{
+	va_list argptr;
+    va_start(argptr, message);
+    char _tmp[200];
+    vsprintf(_tmp, message, argptr);
+
+    this->LogMessage(kLogPriorityDebug, _tmp);
+
+   	va_end(argptr); 
+}
+
