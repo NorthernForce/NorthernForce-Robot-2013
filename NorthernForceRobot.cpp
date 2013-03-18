@@ -36,7 +36,7 @@ private:
 	 */
 	virtual void AutonomousInit() 
 	{
-		CommandBase::s_Log->LogMessage("Entering autonomous mode.",kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Entering autonomous mode.");
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
 		
@@ -57,7 +57,7 @@ private:
 	 */
 	virtual void TeleopInit() 
 	{
-		CommandBase::s_Log->LogMessage("Entering teleoperated mode.",kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Entering teleoperated mode.");
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
 		Scheduler::GetInstance()->AddCommand(spinupCommand);
@@ -77,7 +77,7 @@ private:
 	 */
 	virtual void DisabledInit()
 	{
-		CommandBase::s_Log->LogMessage("Robot disabled.",kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Robot disabled.");
 		CommandBase::s_Gyro->Reset();
 	}
 	

@@ -218,7 +218,7 @@ bool SocketClient::Read()
  */
 void SocketClient::errsys(char* err)
 {
-	CommandBase::s_Log->LogMessage(err,kLogPriorityError);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, err);
 }
 
 /**
@@ -227,7 +227,7 @@ void SocketClient::errsys(char* err)
  */
 void SocketClient::printdebug(char* err)
 {
-	CommandBase::s_Log->LogMessage(err,kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, err);
 }
 
 /**

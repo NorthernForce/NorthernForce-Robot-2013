@@ -8,13 +8,13 @@
  */
 DriveSubsystem::DriveSubsystem() try : 
 	Subsystem("DriveSubsystem"),
-	m_frontLeftMotor((CommandBase::s_Log->LogMessage("Initializing front left jaguar.", kLogPriorityDebug), 
+	m_frontLeftMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing front left jaguar.\n"), 
 		kFrontLeftJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_frontRightMotor((CommandBase::s_Log->LogMessage("Initializing front right jaguar.", kLogPriorityDebug), 
+	m_frontRightMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing front right jaguar.\n"), 
 		kFrontRightJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_rearLeftMotor((CommandBase::s_Log->LogMessage("Initializing rear left jaguar.", kLogPriorityDebug), 
+	m_rearLeftMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing rear left jaguar.\n"), 
 		kRearLeftJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_rearRightMotor((CommandBase::s_Log->LogMessage("Initializing rear right jaguar.", kLogPriorityDebug), 
+	m_rearRightMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing rear right jaguar.\n"), 
 		kRearRightJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
 	m_driveErrAccumulator(0.0),
@@ -27,8 +27,8 @@ DriveSubsystem::DriveSubsystem() try :
 }
 catch (exception e)
 {
-	CommandBase::s_Log->LogMessage("Error creating drive motor jaguars.", kLogPriorityError);
-	CommandBase::s_Log->LogMessage(e.what(), kLogPriorityError);
+	CommandBase::s_Log->LogMessage(kLogPriorityError, "Error creating drive motor jaguars.\n");
+	CommandBase::s_Log->LogMessage(kLogPriorityError, e.what());
 }
     
 /**
@@ -93,7 +93,7 @@ void DriveSubsystem::DriveRobot(float moveValue, float rotateValue)
 void DriveSubsystem::Stop()
 {
 	m_drive.StopMotor();
-	CommandBase::s_Log->LogMessage("Robot stopped!", kLogPriorityError);
+	CommandBase::s_Log->LogMessage(kLogPriorityError, "Robot stopped!");
 }
 
 /**
@@ -101,9 +101,9 @@ void DriveSubsystem::Stop()
  */
 void DriveSubsystem::DisableGyro()
 {
-	CommandBase::s_Log->LogMessage("Disabling gyro-aided drive...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Disabling gyro-aided drive...");
 	m_gyroEnabled = false;
-	CommandBase::s_Log->LogMessage("Done.", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Done.");
 }
 
 /**
@@ -111,9 +111,9 @@ void DriveSubsystem::DisableGyro()
  */
 void DriveSubsystem::EnableGyro()
 {
-	CommandBase::s_Log->LogMessage("Enabling gyro-aided drive...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Enabling gyro-aided drive...");
 	m_gyroEnabled = true;
-	CommandBase::s_Log->LogMessage("Done.", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Done.");
 }
 
 /**
@@ -121,9 +121,9 @@ void DriveSubsystem::EnableGyro()
  */
 void DriveSubsystem::EnableLogging()
 {
-	CommandBase::s_Log->LogMessage("Enabling drive logging...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Enabling drive logging...");
 	m_loggingEnabled = true;
-	CommandBase::s_Log->LogMessage("Done.", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Done.");
 }
 
 /**
@@ -131,9 +131,9 @@ void DriveSubsystem::EnableLogging()
  */
 void DriveSubsystem::DisableLogging()
 {
-	CommandBase::s_Log->LogMessage("Disabling drive logging...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Disabling drive logging...");
 	m_loggingEnabled = false;
-	CommandBase::s_Log->LogMessage("Done.", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Done.");
 }
 
 
@@ -149,7 +149,7 @@ double DriveSubsystem::GetAvgDistance()
  */
 void DriveSubsystem::EnableEncoders()
 {
-	CommandBase::s_Log->LogMessage("Enabling encoders in speed mode...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Enabling encoders in speed mode...");
 
 	m_frontLeftMotor.DisableControl();
 	m_frontRightMotor.DisableControl();
@@ -193,7 +193,7 @@ void DriveSubsystem::EnableEncoders()
 	m_rearLeftMotor.EnableControl();
 	m_rearRightMotor.EnableControl();
 
-	CommandBase::s_Log->LogMessage("Encoders enabled!", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Encoders enabled!");
 }
 
 /**
@@ -202,7 +202,7 @@ void DriveSubsystem::EnableEncoders()
  */
 void DriveSubsystem::DisableEncoders()
 {
-	CommandBase::s_Log->LogMessage("Disabling encoders...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Disabling encoders...");
 
 	m_frontLeftMotor.DisableControl();
 	m_frontRightMotor.DisableControl();
@@ -225,7 +225,7 @@ void DriveSubsystem::DisableEncoders()
 	m_rearLeftMotor.EnableControl();
 	m_rearRightMotor.EnableControl();
 
-	CommandBase::s_Log->LogMessage("Encoders disabled!", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Encoders disabled!");
 }
 
 /**
@@ -233,7 +233,7 @@ void DriveSubsystem::DisableEncoders()
  */
 void DriveSubsystem::EnablePositionMode()
 {
-	CommandBase::s_Log->LogMessage("Enabling encoders in speed mode...", kLogPriorityDebug);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Enabling encoders in speed mode...");
 
 		m_frontLeftMotor.DisableControl();
 		m_frontRightMotor.DisableControl();
@@ -277,7 +277,7 @@ void DriveSubsystem::EnablePositionMode()
 		m_rearLeftMotor.EnableControl();
 		m_rearRightMotor.EnableControl();
 
-		CommandBase::s_Log->LogMessage("Encoders enabled!", kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Encoders enabled!");
 }
 
 /**
@@ -291,7 +291,7 @@ void DriveSubsystem::ChangeDrivePID(float p, float i, float d)
 	if ((m_frontLeftMotor.GetControlMode() == CANJaguar::kSpeed) || 
 		(m_frontLeftMotor.GetControlMode() == CANJaguar::kPosition))
 	{
-		CommandBase::s_Log->LogMessage("Changing drive PID values...", kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Changing drive PID values...");
 
 		m_frontLeftMotor.DisableControl();
 		m_frontRightMotor.DisableControl();
@@ -308,14 +308,11 @@ void DriveSubsystem::ChangeDrivePID(float p, float i, float d)
 		m_rearLeftMotor.EnableControl();
 		m_rearRightMotor.EnableControl();
 
-		char _tmp[100];
-		sprintf(_tmp, "Drive PID values changed to %f %f %f.", p, i, d);
-		CommandBase::s_Log->LogMessage(_tmp, kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Drive PID values changed to %f %f %f.", p, i, d);
 	}
 	else
 	{
-		CommandBase::s_Log->LogMessage("Robot not in a mode that accepts PID values!", 
-				kLogPriorityDebug);
+		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Robot not in a mode that accepts PID values!");
 
 	}
 }

@@ -3,6 +3,9 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "../Robotmap.h"
+#include "../lib/LogFile.h"
+#include <stdarg.h>
+#include <stdio.h>
 
 /**
  * @brief A logging system for the Robot. This log will log anything
@@ -18,15 +21,12 @@
 class LogSystem: public Subsystem 
 {
 private:
-	void Print(const char* message);
-	void PrintToFile(const char* message);
 	LogPriority m_logLevel;
-	char m_logDirectory[32];
-	void SetDirectory(const char* directory);
+	LogFile m_robotLogFile;
 public:
 	LogSystem(LogPriority level);
 	void InitDefaultCommand();
-	void LogMessage(const char* message, LogPriority level = kLogPriorityDebug);
+	void LogMessage(LogPriority level, const char* message, ...);
 };
 
 #endif

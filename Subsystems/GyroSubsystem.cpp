@@ -87,16 +87,14 @@ float GyroSubsystem::GetRate()
  */
 void GyroSubsystem::DoStationaryCalibration(int samples)
 {
-	CommandBase::s_Log->LogMessage("Beginning stationary Gyro calibration...");
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Beginning stationary Gyro calibration...\n");
 	float _accumulator = 0;
 	for (int i = 0; i < samples; i++)
 		_accumulator += m_gyroChannel.GetVoltage();
 	
 	m_channelCenter = _accumulator / samples;
 	
-	char* _tmp;
-	sprintf(_tmp, "Gyro centered at %f", m_channelCenter);
-	CommandBase::s_Log->LogMessage(_tmp);
+	CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Gyro centered at %f\n", m_channelCenter);
 	this->Reset();
 }
 
