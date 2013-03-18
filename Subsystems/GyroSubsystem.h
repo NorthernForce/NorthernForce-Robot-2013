@@ -4,6 +4,8 @@
 #include "WPILib.h"
 #include "../Library.h"
 #include "../CommandBase.h"
+#include "NetworkTables/NetworkTable.h"
+
 /**
  * A subsystem for accessing the data from the Gyro subsystem.
  *
@@ -22,7 +24,10 @@ private:
 	AlphaBetaFilter<float> m_gyroFilter;
     bool m_loggingEnabled;
 	void Update();
+	
 public:
+	NetworkTable *GyroTab;
+	
 	GyroSubsystem(int slot, int sensorChannel, int tempSensorChannel, float sensitivity = 0.007);
 	void InitDefaultCommand();
 	void SetSensitivity(float sensitivity);

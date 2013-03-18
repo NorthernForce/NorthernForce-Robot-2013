@@ -2,7 +2,7 @@
 #define ROBOTNAV_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-
+#include "NetworkTables/NetworkTable.h"
 
 /**
  * A navigation system for the robot. 
@@ -17,6 +17,8 @@ private:
 	float m_Theta;
 
 public:
+	NetworkTable *NavTab;
+	
 	RobotNav();
 	RobotNav(float CurrentX, float CurrentY, float Theta);
 	void InitDefaultCommand();

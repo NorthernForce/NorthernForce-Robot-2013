@@ -17,6 +17,8 @@ GyroSubsystem::GyroSubsystem(int slot, int sensorChannel, int tempSensorChannel,
 	m_gyroFilter(0.1, 0.005),
     m_loggingEnabled(false)
 {
+	GyroTab = NetworkTable::GetTable("Gyro");
+	
 	m_gyroChannel.SetAccumulatorDeadband(0);
 	m_gyroTempChannel.SetAccumulatorCenter(0);
 	m_gyroSensor = new Gyro(&m_gyroChannel);
@@ -39,6 +41,8 @@ void GyroSubsystem::InitDefaultCommand()
 void GyroSubsystem::SetSensitivity(float sensitivity)
 {
 	m_gyroSensor->SetSensitivity(sensitivity);
+	
+	GyroTab->PutNumber("Sensitivty", sensitivity);
 }
 
 /**
@@ -59,6 +63,7 @@ float GyroSubsystem::GetAngle()
 {
 	float angle = m_gyroSensor->GetAngle();
     if (m_loggingEnabled) { m_gyroLogFile.Write("Angle: %f\n", angle); }
+    GyroTab->PutNumber("Angle", -angle);
 	return -angle;
 }
 
