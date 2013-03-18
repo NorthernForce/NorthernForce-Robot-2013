@@ -74,10 +74,8 @@ void DriveSubsystem::DriveRobot(float moveValue, float rotateValue)
 	    
 	    if (m_loggingEnabled)
 	    {
-		    char _tmp[40];
-		    sprintf(_tmp, "%5.3f,%5.3f,%5.3f,%5.3f", rotateValue,
+		    m_DriveLog.Write("%5.3f,%5.3f,%5.3f,%5.3f\n", rotateValue,
 		    		gyroRate,error,m_driveErrAccumulator);
-		    m_DriveLog.Write(_tmp);
 		}
 		
 		m_drive.ArcadeDrive(moveValue, kDriveSpinP * error + 

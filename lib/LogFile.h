@@ -4,6 +4,7 @@
 #include "WPILib.h"
 #include "../Robotmap.h"
 #include <stdio.h>
+#include <stdarg.h>
 
 /**
  * A class for creating a versatile log file for any 
@@ -20,7 +21,7 @@ private:
 public:
 	LogFile(const char* name);
 	~LogFile();
-	void Write(const char* data);
+	void Write(const char* data, ...);
 };
 
 #endif

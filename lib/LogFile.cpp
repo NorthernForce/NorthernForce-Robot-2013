@@ -25,13 +25,18 @@ LogFile::~LogFile()
 }
 
 /**
- * @brief Write data to the log file. The data will 
- * automatically be terminated with a newline.
+ * @brief Write data to the log file.
  * @param data The data to write to the file. 
  */
-void LogFile::Write(const char* data)
+void LogFile::Write(const char* data, ...)
 {
 	FILE* logFile = fopen(m_fileName,"a"); 
-	fprintf(logFile, "%s\n", data);
+
+	va_list args;
+    va_start(args, data);
+
+	vfprintf(logFile, data, args);
+	
+	va_end (args);
 	fclose(logFile);
 }

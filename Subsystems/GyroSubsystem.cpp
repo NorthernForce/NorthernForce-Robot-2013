@@ -58,11 +58,7 @@ void GyroSubsystem::Reset()
 float GyroSubsystem::GetAngle()
 {
 	float angle = m_gyroSensor->GetAngle();
-    if(m_loggingEnabled) {
-        char _tmp[32];
-        sprintf(_tmp, "Angle: %f", angle);
-        m_gyroLogFile.Write(_tmp);
-    }
+    if (m_loggingEnabled) { m_gyroLogFile.Write("Angle: %f\n", angle); }
 	return -angle;
 }
 
@@ -75,9 +71,7 @@ float GyroSubsystem::GetRate()
 {
 	this->Update();
 	float voltage = m_gyroFilter.GetValue();
-	char _tmp[100];
-	sprintf(_tmp, "Voltage: %f", voltage);
-	//m_gyroLogFile.Write(_tmp);
+    if (m_loggingEnabled) { m_gyroLogFile.Write("Voltage: %f\n", voltage); }
 	return 0.55*voltage;
 }
 
