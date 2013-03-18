@@ -8,13 +8,13 @@
  */
 DriveSubsystem::DriveSubsystem() try : 
 	Subsystem("DriveSubsystem"),
-	m_frontLeftMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing front left jaguar.\n"), 
+	m_frontLeftMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing front left jaguar."), 
 		kFrontLeftJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_frontRightMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing front right jaguar.\n"), 
+	m_frontRightMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing front right jaguar."), 
 		kFrontRightJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_rearLeftMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing rear left jaguar.\n"), 
+	m_rearLeftMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing rear left jaguar."), 
 		kRearLeftJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
-	m_rearRightMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing rear right jaguar.\n"), 
+	m_rearRightMotor((CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Initializing rear right jaguar."), 
 		kRearRightJaguarAddress), kDriveRamp, kDriveVelocityLimit, kDriveTolerance, kDriveThereTolerance),
 	m_drive(m_frontLeftMotor, m_rearLeftMotor, m_frontRightMotor, m_rearRightMotor),
 	m_driveErrAccumulator(0.0),
