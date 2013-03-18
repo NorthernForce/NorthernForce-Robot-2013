@@ -13,6 +13,7 @@ RobotNav::RobotNav() : Subsystem("RobotNav")
 //TODO: get theta from smart-dashboard    
     m_Theta    = 0;
     
+    NavTab = NetworkTable::GetTable("Nav");
 }
 
 
@@ -22,6 +23,8 @@ RobotNav::RobotNav(float CurrentX, float CurrentY, float Theta) : Subsystem("Rob
 	m_CurrentX = CurrentX;
 	m_CurrentY = CurrentY;
 	m_Theta    = Theta;
+	
+	NavTab = NetworkTable::GetTable("Nav");
 }
     
 
@@ -44,18 +47,27 @@ void RobotNav::propagate(unsigned int time, float deltaX, float deltaY, float de
 	m_CurrentY = m_CurrentY + deltaY;
 	m_Theta    = m_Theta + deltaTheta;
 	
+	NavTab->PutNumber("Time", m_Time);
+	NavTab->PutNumber("X", m_CurrentX);
+	NavTab->PutNumber("Y", m_CurrentY);
+	NavTab->PutNumber("Angle", m_Theta);
+	
+
 }
 
 
 
 void RobotNav::propagate(unsigned int time, float deltaDistance, float Theta)
 {
-	
 	m_Time = time;
 	m_Theta = Theta;
 	m_CurrentX = m_CurrentX + ( deltaDistance * cos(m_Theta));
 	m_CurrentY = m_CurrentY + (deltaDistance * sin(m_Theta));
 	
+	NavTab->PutNumber("Time", m_Time);
+	NavTab->PutNumber("X", m_CurrentX);
+	NavTab->PutNumber("Y", m_CurrentY);
+	NavTab->PutNumber("Angle", m_Theta);
 	
 }
 
@@ -68,16 +80,25 @@ void RobotNav::reset(unsigned int time, float x, float y, float theta)
 	m_CurrentY  = y;
 	m_Theta     = theta;
 	
+	NavTab->PutNumber("Time", m_Time);
+	NavTab->PutNumber("X", m_CurrentX);
+	NavTab->PutNumber("Y", m_CurrentY);
+	NavTab->PutNumber("Angle", m_Theta);
+	
 }
+
 
 float RobotNav::GetX() 
 {
 	return m_CurrentX;
 }
+
+
 float RobotNav::GetY()
 {
 	return m_CurrentY;
 }
+
 
 float RobotNav::GetTheta()
 {
