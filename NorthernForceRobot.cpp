@@ -29,6 +29,19 @@ private:
 		
 		autoCommand = new AutonomousCommand();
         spinupCommand = new SpinupShooter(kPyramidBackSpeed);
+
+        switch (DriverStation::GetInstance()->GetAlliance())
+        {
+        case (DriverStation::kRed):
+       		CommandBase::s_Log->LogMessage("Robot ready. On red alliance.\n");
+       		break;
+       	case (DriverStation::kBlue):
+       		CommandBase::s_Log->LogMessage("Robot ready. On blue alliance.\n");
+       		break;
+       	case (DriverStation::kInvalid):
+       		CommandBase::s_Log->LogMessage("Robot ready. Alliance color unknown.\n");
+       		break;
+        }
 	}
 	
 	/**
