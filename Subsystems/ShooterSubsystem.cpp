@@ -72,7 +72,7 @@ void ShooterSubsystem::SetSpeed(float speed)
  */
 float ShooterSubsystem::GetAvgSpeed() 
 {
-	return 2 * ((float)m_shooterWheelLightSensor.Get())/(GetFPGATime() - m_counterLastTime);
+	return ((float)m_shooterWheelLightSensor.Get())/(GetFPGATime() - m_counterLastTime);
 }
 
 /**
