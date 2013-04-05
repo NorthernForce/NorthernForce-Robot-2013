@@ -4,6 +4,7 @@
 #include "Library.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/SpinupShooter.h"
+#include "Commands/LogSpeed.h"
 
 /**
  * This class controls the entire robot.
@@ -17,6 +18,7 @@ private:
 	LiveWindow *lw;
 	AutonomousCommand *autoCommand;
     SpinupShooter* spinupCommand;
+    LogSpeed* speedprinter;
 
 	
 	/**
@@ -29,6 +31,7 @@ private:
 		
 		autoCommand = new AutonomousCommand();
         spinupCommand = new SpinupShooter(kPyramidBackSpeed);
+        speedprinter = new LogSpeed();
 
         switch (DriverStation::GetInstance()->GetAlliance())
         {
@@ -74,6 +77,7 @@ private:
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
 		Scheduler::GetInstance()->AddCommand(spinupCommand);
+        Scheduler::GetInstance()->AddCommand(speedprinter);
 	}
 	
 	/**

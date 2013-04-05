@@ -17,6 +17,7 @@ ShooterSubsystem::ShooterSubsystem() :
 	Disable();
     m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
     m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+    m_shooterWheelLightSensor.Start();
 }
 
 double ShooterSubsystem::ReturnPIDInput() 
@@ -72,7 +73,12 @@ void ShooterSubsystem::SetSpeed(float speed)
  */
 float ShooterSubsystem::GetAvgSpeed() 
 {
-	return ((float)m_shooterWheelLightSensor.Get())/(GetFPGATime() - m_counterLastTime);
+    float now = GetFPGATime();
+    float rotations = m_shooterWheelLightSensor.Get();
+    printf("ROTS: %f\n", rotations);
+    float speed = rotations/(now - m_counterLastTime);
+    m_counterLastTime = now;
+	return speed;
 }
 
 /**
