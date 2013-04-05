@@ -30,11 +30,13 @@ OI::OI() :
     // m_driverStick.A.WhenPressed(new LogPOT());
 	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
-	m_driverStick.A.WhenPressed(new TurnToRelativeAngle(10.0));
-    m_driverStick.B.WhenPressed(new Aim());
-	m_driverStick.Y.WhenPressed(new TurnToRelativeAngle(-10.0));
+	//m_driverStick.A.WhenPressed(new TurnToRelativeAngle(10.0));
+    //m_driverStick.B.WhenPressed(new Aim());
+	//m_driverStick.Y.WhenPressed(new TurnToRelativeAngle(-10.0));
 
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee());
+	m_driverStick.X.WhenPressed(new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
+	m_driverStick.A.WhenPressed(new FlickFrisbee());
 	m_manipulatorStick.Button3.WhenPressed(new ElevateShooterRelative(1.5));
 	m_manipulatorStick.Button2.WhenPressed(new ElevateShooterRelative(-1.5));
 	m_manipulatorStick.Button4.WhenPressed(new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
@@ -42,6 +44,7 @@ OI::OI() :
 	m_manipulatorStick.Button6.WhenPressed(new PrepareShooter(kFeederStationSpeed, kFeederStationAngle));
 	m_manipulatorStick.Button10.WhileHeld(new ElevateShooterWithJoystick());
 	m_manipulatorStick.Button9.WhenPressed(new ElevateShooter(0.0));
+	m_driverStick.B.WhenPressed(new ElevateShooter(0.0));
     m_manipulatorStick.Button8.WhenPressed(new StopShooter());
     m_manipulatorStick.Button7.WhileHeld(new SpinShooter(-1.0, false));
 }
