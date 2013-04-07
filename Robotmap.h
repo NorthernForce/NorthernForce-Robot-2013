@@ -69,6 +69,7 @@ enum JaguarAddresses
 enum DigitalAdresses 
 {
     kShooterWheelLightSensorAddress = 1,
+    kFlickerRearLimit = 2,
 };
 
 enum PWMAddresses 
@@ -156,6 +157,7 @@ static const float kElevatorMinAngle = 0.0;
 static const float kPyramidFrontSpeed = -.742;
 static const float kPyramidFrontAngle = 34.455;
 static const float kPyramidBackSpeed = -.367;
+//static const float kPyramidBackSpeed = 3000.0;
 static const float kPyramidBackAngle = 23.234;
 static const float kFeederStationSpeed = -.425;
 static const float kFeederStationAngle = 17.236;

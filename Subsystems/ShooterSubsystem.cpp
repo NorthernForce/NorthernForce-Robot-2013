@@ -8,7 +8,8 @@ ShooterSubsystem::ShooterSubsystem() :
     m_shooterMotor(kShooterJaguarAddress),
     m_shooterFlicker(kShooterFlickerRelayAddress, Relay::kBothDirections),
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
-    m_counterLastTime(GetFPGATime())
+    m_counterLastTime(GetFPGATime()),
+    m_flickerLimit(kFlickerRearLimit)
 {
 	// Use these to get going:
 	// SetSetpoint() -  Sets where the PID controller should move the system
@@ -25,8 +26,9 @@ double ShooterSubsystem::ReturnPIDInput()
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
-    float speed = GetAvgSpeed();
-    ResetCounter();
+    float speed = this->GetAvgSpeed();
+    printf("i:%f\n",speed);
+    this->ResetCounter();
     return speed;
 }
 
@@ -34,7 +36,8 @@ void ShooterSubsystem::UsePIDOutput(double output)
 {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
-    m_shooterMotor.Set(output);
+	printf("o:%f\n",(float)-output);
+    m_shooterMotor.Set(-1.0);
 }
 
 void ShooterSubsystem::InitDefaultCommand() 
@@ -62,6 +65,12 @@ void ShooterSubsystem::ResetCounter()
 	m_shooterWheelLightSensor.Reset();
 }
 
+//void ShooterSubsystem::SetSpeed(float speed) 
+//{
+//	Enable();
+//	SetSetpoint(speed);
+//}
+
 void ShooterSubsystem::SetSpeed(float speed) 
 {
 	Disable();
@@ -73,16 +82,16 @@ void ShooterSubsystem::SetSpeed(float speed)
  */
 float ShooterSubsystem::GetAvgSpeed() 
 {
-    float now = GetFPGATime();
+    UINT32 now = GetFPGATime();
     float rotations = m_shooterWheelLightSensor.Get();
-    printf("ROTS: %f\n", rotations);
+//    printf("ROTS: %f\n", rotations);
     float speed = rotations/(now - m_counterLastTime);
     m_counterLastTime = now;
-	return speed;
+	return speed * 1000000.0 * 60;
 }
 
 /**
- * @brief Stops the shooter motor.
+ * @brief Stops the shooter motor.t
  * NOTE: This will disable the motor, which will not
  * be re-enabled until after the robot has been restarted,
  * or the ShooterSubsystem::EnableMotor method is called
@@ -90,6 +99,7 @@ float ShooterSubsystem::GetAvgSpeed()
 void ShooterSubsystem::Stop()
 {
     m_shooterMotor.DisableControl();
+//    Disable();
 }
 
 void ShooterSubsystem::EnableMotor() 

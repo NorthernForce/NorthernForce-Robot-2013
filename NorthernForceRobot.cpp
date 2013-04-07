@@ -77,7 +77,7 @@ private:
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
 		Scheduler::GetInstance()->AddCommand(spinupCommand);
-        Scheduler::GetInstance()->AddCommand(speedprinter);
+        //Scheduler::GetInstance()->AddCommand(speedprinter);
 	}
 	
 	/**
@@ -96,6 +96,7 @@ private:
 	{
 		CommandBase::s_Log->LogMessage(kLogPriorityDebug, "Robot disabled.");
 		CommandBase::s_Gyro->Reset();
+		CommandBase::s_Shooter->Stop();
 	}
 	
 	/**

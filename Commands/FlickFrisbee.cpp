@@ -16,7 +16,7 @@ void FlickFrisbee::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void FlickFrisbee::Execute() 
 {
-	if (TimeSinceInitialized() > 0.2)
+	if (TimeSinceInitialized() > 0.15)
 	{
 		s_Shooter->Flick(Relay::kForward);
 	}
@@ -25,7 +25,9 @@ void FlickFrisbee::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool FlickFrisbee::IsFinished() 
 {
-	return TimeSinceInitialized() > 0.5;
+	return TimeSinceInitialized() > 0.3;
+//	return (s_Shooter->m_flickerLimit.Get() && TimeSinceInitialized() > 0.1)
+//			|| (TimeSinceInitialized() > 0.4);
 }
 
 // Called once after isFinished returns true
