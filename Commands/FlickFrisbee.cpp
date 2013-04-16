@@ -10,30 +10,26 @@ FlickFrisbee::FlickFrisbee()
 // Called just before this Command runs the first time
 void FlickFrisbee::Initialize() 
 {
-	s_Shooter->Flick(Relay::kReverse);
+	s_Flicker->Forward();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void FlickFrisbee::Execute() 
 {
-	if (TimeSinceInitialized() > 0.15)
-	{
-		s_Shooter->Flick(Relay::kForward);
-	}
+	if (s_Flicker->GetForwardLimit() && TimeSinceInitialized() > 0.05)
+		s_Flicker->Reverse();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool FlickFrisbee::IsFinished() 
 {
-	return TimeSinceInitialized() > 0.3;
-//	return (s_Shooter->m_flickerLimit.Get() && TimeSinceInitialized() > 0.1)
-//			|| (TimeSinceInitialized() > 0.4);
+	return s_Flicker->GetRearLimit();
 }
 
 // Called once after isFinished returns true
 void FlickFrisbee::End() 
 {
-	s_Shooter->Flick(Relay::kOff);
+	s_Flicker->Stop();
 }
 
 // Called when another command which requires one or more of the same

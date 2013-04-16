@@ -24,6 +24,7 @@ GyroSubsystem* CommandBase::s_Gyro = NULL;
 RobotNav* CommandBase::s_Nav = NULL;
 ShooterSubsystem* CommandBase::s_Shooter = NULL;
 ShooterElevatorSubsystem* CommandBase::s_ShooterElevator = NULL;
+FlickerSubsystem* CommandBase::s_Flicker = NULL;
 
 /**
  * @brief Initializes the commandbase. Creates instances of
@@ -39,4 +40,5 @@ void CommandBase::init()
 	s_Nav  = new RobotNav();
 	s_ShooterElevator = new ShooterElevatorSubsystem();
 	s_Shooter = new ShooterSubsystem();
+	s_Flicker = new FlickerSubsystem();
 }

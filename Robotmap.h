@@ -70,11 +70,13 @@ enum DigitalAdresses
 {
     kShooterWheelLightSensorAddress = 1,
     kFlickerRearLimit = 2,
+    kFlickerForwardLimit = 3,
 };
 
 enum PWMAddresses 
 {
     kShooterElevatorVictorAddress = 1,
+    kFlickerVictorAddress = 2,
 };
 
 /**

@@ -6,10 +6,8 @@
 ShooterSubsystem::ShooterSubsystem() : 
     PIDSubsystem("ShooterSubsystem", kShooterP, kShooterI, kShooterD),
     m_shooterMotor(kShooterJaguarAddress),
-    m_shooterFlicker(kShooterFlickerRelayAddress, Relay::kBothDirections),
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
-    m_counterLastTime(GetFPGATime()),
-    m_flickerLimit(kFlickerRearLimit)
+    m_counterLastTime(GetFPGATime())
 {
 	// Use these to get going:
 	// SetSetpoint() -  Sets where the PID controller should move the system
@@ -45,15 +43,6 @@ void ShooterSubsystem::InitDefaultCommand()
 	// Set the default command for a subsystem here.
 	//setDefaultCommand(new MySpecialCommand());
 //	SetDefaultCommand(new SpinupShooterWithJoystick());
-}
-
-/**
- * @brief Set the state of the solenoid which flicks the frisbees.
- * @param dir The direction to set the relay to. 
- */
-void ShooterSubsystem::Flick(Relay::Value dir) 
-{
-    m_shooterFlicker.Set(dir);
 }
 
 /**

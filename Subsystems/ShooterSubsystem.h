@@ -19,7 +19,6 @@ private:
 	static const double Kd = 0.0;
 
 	CANJaguar m_shooterMotor;
-    Relay m_shooterFlicker;
     Counter m_shooterWheelLightSensor;
     // This is the time of the last reset of the counter
     UINT32 m_counterLastTime;
@@ -28,13 +27,11 @@ public:
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
 	void InitDefaultCommand();
-    void Flick(Relay::Value dir);
     void ResetCounter();
     void SetSpeed(float speed);
     float GetAvgSpeed();
 	void Stop();
 	void EnableMotor();
-	DigitalInput m_flickerLimit;
 };
 
 #endif
