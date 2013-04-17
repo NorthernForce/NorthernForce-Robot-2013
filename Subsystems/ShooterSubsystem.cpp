@@ -14,9 +14,11 @@ ShooterSubsystem::ShooterSubsystem() :
 	//                  to
 	// Enable() - Enables the PID controller.
 	Disable();
+	SetInputRange(0.0, 4000.0);
     m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
     m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
     m_shooterWheelLightSensor.Start();
+
 }
 
 double ShooterSubsystem::ReturnPIDInput() 
@@ -25,7 +27,7 @@ double ShooterSubsystem::ReturnPIDInput()
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
     float speed = this->GetAvgSpeed();
-    printf("i:%f\n",speed);
+//    printf("i:%f\n",speed);
     this->ResetCounter();
     return speed;
 }
@@ -34,8 +36,8 @@ void ShooterSubsystem::UsePIDOutput(double output)
 {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
-	printf("o:%f\n",(float)-output);
-    m_shooterMotor.Set(-1.0);
+//	printf("o:%f\n",(float)-output);
+    m_shooterMotor.Set(output / 4000);
 }
 
 void ShooterSubsystem::InitDefaultCommand() 

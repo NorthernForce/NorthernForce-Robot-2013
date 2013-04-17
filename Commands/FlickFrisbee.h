@@ -1,21 +1,16 @@
 #ifndef FLICKFRISBEE_H
 #define FLICKFRISBEE_H
 
-#include "../CommandBase.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
- * @author Joseph
+ * @author arthurlockman
  */
-class FlickFrisbee: public CommandBase {
-public:
+class FlickFrisbee: public CommandGroup {
+public:	
 	FlickFrisbee();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
 };
 
 #endif

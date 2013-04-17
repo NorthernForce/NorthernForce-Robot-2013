@@ -4,9 +4,10 @@
 FlickerSubsystem::FlickerSubsystem() : Subsystem("FlickerSubsystem"),
 	m_rearLimit(kFlickerRearLimit),
 	m_forwardLimit(kFlickerForwardLimit),
-	m_flickerVictor(kFlickerVictorAddress)
+	m_flickerVictor(kFlickerVictorAddress),
+	m_lock(kShooterLockRelayAddress, Relay::kForwardOnly)
 {
-	
+	Lock();
 }
     
 void FlickerSubsystem::InitDefaultCommand() 
@@ -19,7 +20,7 @@ void FlickerSubsystem::InitDefaultCommand()
  */
 void FlickerSubsystem::Forward()
 {
-	m_flickerVictor.Set(1.0);
+	m_flickerVictor.Set(-1.0);
 }
 
 /**
@@ -27,7 +28,7 @@ void FlickerSubsystem::Forward()
  */
 void FlickerSubsystem::Reverse()
 {
-	m_flickerVictor.Set(-1.0);
+	m_flickerVictor.Set(1.0);
 }
 
 /**
@@ -36,6 +37,22 @@ void FlickerSubsystem::Reverse()
 void FlickerSubsystem::Stop()
 {
 	m_flickerVictor.StopMotor();
+}
+
+/**
+ * @brief Lock the shooter lock.
+ */
+void FlickerSubsystem::Lock()
+{
+	m_lock.Set(Relay::kOn);
+}
+
+/**
+ * @brief Unlock the shooter lock.
+ */
+void FlickerSubsystem::Unlock()
+{
+	m_lock.Set(Relay::kOff);
 }
 
 /**
