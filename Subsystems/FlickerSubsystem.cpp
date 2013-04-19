@@ -20,7 +20,7 @@ void FlickerSubsystem::InitDefaultCommand()
  */
 void FlickerSubsystem::Forward()
 {
-	m_flickerVictor.Set(-1.0);
+	m_flickerVictor.Set(-0.7);
 }
 
 /**
@@ -28,7 +28,7 @@ void FlickerSubsystem::Forward()
  */
 void FlickerSubsystem::Reverse()
 {
-	m_flickerVictor.Set(1.0);
+	m_flickerVictor.Set(0.7);
 }
 
 /**
@@ -44,7 +44,7 @@ void FlickerSubsystem::Stop()
  */
 void FlickerSubsystem::Lock()
 {
-	m_lock.Set(Relay::kOn);
+	m_lock.Set(Relay::kOff);
 }
 
 /**
@@ -52,7 +52,7 @@ void FlickerSubsystem::Lock()
  */
 void FlickerSubsystem::Unlock()
 {
-	m_lock.Set(Relay::kOff);
+	m_lock.Set(Relay::kOn);
 }
 
 /**
@@ -61,7 +61,7 @@ void FlickerSubsystem::Unlock()
  */
 bool FlickerSubsystem::GetForwardLimit()
 {
-	return m_forwardLimit.Get();
+	return !m_forwardLimit.Get();
 }
 
 /**
@@ -70,5 +70,5 @@ bool FlickerSubsystem::GetForwardLimit()
  */
 bool FlickerSubsystem::GetRearLimit()
 {
-	return m_rearLimit.Get();
+	return !m_rearLimit.Get();
 }

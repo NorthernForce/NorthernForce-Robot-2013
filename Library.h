@@ -19,6 +19,7 @@
 #include "lib/Vector3D.h"
 #include "lib/RampedCANJaguar.h"
 #include "lib/LogFile.h"
+#include "lib/LimitSwitch.h"
 
 #include "Robotmap.h"
 

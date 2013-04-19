@@ -1,6 +1,7 @@
 #ifndef FLICKERSUBSYSTEM_H
 #define FLICKERSUBSYSTEM_H
 #include "Commands/Subsystem.h"
+#include "../Library.h"
 #include "WPILib.h"
 
 /**
