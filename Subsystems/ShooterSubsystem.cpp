@@ -14,7 +14,8 @@ ShooterSubsystem::ShooterSubsystem() :
 	//                  to
 	// Enable() - Enables the PID controller.
 	Disable();
-	SetInputRange(0.0, 4000.0);
+	GetPIDController()->SetInputRange(0.0, 4100.0);
+	GetPIDController()->SetOutputRange(0.0, 1.0);
     m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
     m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
     m_shooterWheelLightSensor.Start();
@@ -29,22 +30,19 @@ double ShooterSubsystem::ReturnPIDInput()
     float speed = this->GetAvgSpeed();
 //    printf("i:%f\n",speed);
     this->ResetCounter();
+    SmartDashboard::PutBoolean("On Target", WithinTolerance((double)speed, GetSetpoint(), 100.0));
     return speed;
 }
 
 void ShooterSubsystem::UsePIDOutput(double output) 
 {
-	// Use output to drive your system, like a motor
-	// e.g. yourMotor->Set(output);
-//	printf("o:%f\n",(float)-output);
-    m_shooterMotor.Set(output / 4000);
+
+    m_shooterMotor.PIDWrite((float)output);
 }
 
 void ShooterSubsystem::InitDefaultCommand() 
 {
-	// Set the default command for a subsystem here.
-	//setDefaultCommand(new MySpecialCommand());
-//	SetDefaultCommand(new SpinupShooterWithJoystick());
+
 }
 
 /**
@@ -60,6 +58,7 @@ void ShooterSubsystem::ResetCounter()
 //{
 //	Enable();
 //	SetSetpoint(speed);
+//	SmartDashboard::PutNumber("Shooter Setpoint", speed);
 //}
 
 void ShooterSubsystem::SetSpeed(float speed) 
@@ -75,14 +74,14 @@ float ShooterSubsystem::GetAvgSpeed()
 {
     UINT32 now = GetFPGATime();
     float rotations = m_shooterWheelLightSensor.Get();
-//    printf("ROTS: %f\n", rotations);
     float speed = rotations/(now - m_counterLastTime);
     m_counterLastTime = now;
+    SmartDashboard::PutNumber("Shooter Measured Speed", speed * 1000000.0 * 60);
 	return speed * 1000000.0 * 60;
 }
 
 /**
- * @brief Stops the shooter motor.t
+ * @brief Stops the shooter motor.
  * NOTE: This will disable the motor, which will not
  * be re-enabled until after the robot has been restarted,
  * or the ShooterSubsystem::EnableMotor method is called

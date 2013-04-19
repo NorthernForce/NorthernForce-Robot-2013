@@ -1,38 +1,37 @@
-#include "UnlockShooter.h"
+#include "LockShooter.h"
 
-UnlockShooter::UnlockShooter() 
+LockShooter::LockShooter()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void UnlockShooter::Initialize() 
+void LockShooter::Initialize() 
 {
-	s_Flicker->Unlock();
+	s_Flicker->Lock();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void UnlockShooter::Execute() 
+void LockShooter::Execute() 
 {
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool UnlockShooter::IsFinished() 
+bool LockShooter::IsFinished() 
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void UnlockShooter::End() 
+void LockShooter::End() 
 {
-//	s_Flicker->Lock();
+	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void UnlockShooter::Interrupted() 
+void LockShooter::Interrupted() 
 {
-	End();
 }

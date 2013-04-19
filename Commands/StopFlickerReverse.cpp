@@ -1,38 +1,38 @@
-#include "UnlockShooter.h"
+#include "StopFlickerReverse.h"
 
-UnlockShooter::UnlockShooter() 
+StopFlickerReverse::StopFlickerReverse() 
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void UnlockShooter::Initialize() 
+void StopFlickerReverse::Initialize() 
 {
-	s_Flicker->Unlock();
+	s_Flicker->Forward();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void UnlockShooter::Execute() 
+void StopFlickerReverse::Execute() 
 {
-	
+	//Do nothing.
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool UnlockShooter::IsFinished() 
+bool StopFlickerReverse::IsFinished() 
 {
-	return true;
+	return TimeSinceInitialized() > 0.05;
 }
 
 // Called once after isFinished returns true
-void UnlockShooter::End() 
+void StopFlickerReverse::End()
 {
-//	s_Flicker->Lock();
+	s_Flicker->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void UnlockShooter::Interrupted() 
+void StopFlickerReverse::Interrupted() 
 {
 	End();
 }
