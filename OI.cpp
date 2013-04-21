@@ -52,6 +52,9 @@ OI::OI() :
     SmartDashboard::PutData("Zero Shooter", new ElevateShooter(0.0));
     SmartDashboard::PutData("Unlock Shooter", new UnlockShooter());
     SmartDashboard::PutData("Lock Shooter", new LockShooter());
+    SmartDashboard::PutData("Prepare for Tower Shooting", new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
+    SmartDashboard::PutData("Prepare for Feeder Shooting", new PrepareShooter(kFeederStationSpeed, kFeederStationAngle));
+    SmartDashboard::PutData("Prepare for Hanging Shooting", new PrepareShooter(kHangSpeed, kHangAngle));
 }
 
 /**

@@ -9,7 +9,7 @@ StopFlickerReverse::StopFlickerReverse()
 // Called just before this Command runs the first time
 void StopFlickerReverse::Initialize() 
 {
-	s_Flicker->Forward();
+	s_Flicker->Forward(0.15);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -21,7 +21,7 @@ void StopFlickerReverse::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool StopFlickerReverse::IsFinished() 
 {
-	return TimeSinceInitialized() > 0.05;
+	return TimeSinceInitialized() > 0.015;
 }
 
 // Called once after isFinished returns true

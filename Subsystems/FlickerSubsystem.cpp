@@ -32,6 +32,22 @@ void FlickerSubsystem::Reverse()
 }
 
 /**
+ * @brief Sets the flicker to turn forward.
+ */
+void FlickerSubsystem::Forward(float speed)
+{
+	m_flickerVictor.Set(-speed);
+}
+
+/**
+ * @brief Sets the flicker to turn backwards.
+ */
+void FlickerSubsystem::Reverse(float speed)
+{
+	m_flickerVictor.Set(speed);
+}
+
+/**
  * @brief Stops the flicker.
  */
 void FlickerSubsystem::Stop()

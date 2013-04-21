@@ -19,7 +19,9 @@ public:
 	FlickerSubsystem();
 	void InitDefaultCommand();
 	void Forward();
+	void Forward(float speed);
 	void Reverse();
+	void Reverse(float speed);
 	void Stop();
 	void Unlock();
 	void Lock();

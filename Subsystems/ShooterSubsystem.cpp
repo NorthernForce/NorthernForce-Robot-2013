@@ -9,34 +9,26 @@ ShooterSubsystem::ShooterSubsystem() :
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
     m_counterLastTime(GetFPGATime())
 {
-	// Use these to get going:
-	// SetSetpoint() -  Sets where the PID controller should move the system
-	//                  to
-	// Enable() - Enables the PID controller.
 	Disable();
 	GetPIDController()->SetInputRange(0.0, 4100.0);
 	GetPIDController()->SetOutputRange(0.0, 1.0);
-    m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
-    m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
+//    m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+//    m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
     m_shooterWheelLightSensor.Start();
 
 }
 
 double ShooterSubsystem::ReturnPIDInput() 
 {
-	// Return your input value for the PID loop
-	// e.g. a sensor, like a potentiometer:
-	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
     float speed = this->GetAvgSpeed();
-//    printf("i:%f\n",speed);
     this->ResetCounter();
     SmartDashboard::PutBoolean("On Target", WithinTolerance((double)speed, GetSetpoint(), 100.0));
+    SmartDashboard::PutNumber("Shooter Measured Speed", speed);
     return speed;
 }
 
 void ShooterSubsystem::UsePIDOutput(double output) 
 {
-
     m_shooterMotor.PIDWrite((float)output);
 }
 
@@ -57,8 +49,8 @@ void ShooterSubsystem::ResetCounter()
 //void ShooterSubsystem::SetSpeed(float speed) 
 //{
 //	Enable();
-//	SetSetpoint(speed);
-//	SmartDashboard::PutNumber("Shooter Setpoint", speed);
+//	SetSetpoint((double)speed);
+//	SmartDashboard::PutNumber("Shooter Setpoint", GetSetpoint());
 //}
 
 void ShooterSubsystem::SetSpeed(float speed) 
@@ -76,7 +68,6 @@ float ShooterSubsystem::GetAvgSpeed()
     float rotations = m_shooterWheelLightSensor.Get();
     float speed = rotations/(now - m_counterLastTime);
     m_counterLastTime = now;
-    SmartDashboard::PutNumber("Shooter Measured Speed", speed * 1000000.0 * 60);
 	return speed * 1000000.0 * 60;
 }
 
@@ -88,12 +79,12 @@ float ShooterSubsystem::GetAvgSpeed()
  */
 void ShooterSubsystem::Stop()
 {
-    m_shooterMotor.DisableControl();
+//    m_shooterMotor.DisableControl();
 //    Disable();
 }
 
 void ShooterSubsystem::EnableMotor() 
 {
-	m_shooterMotor.EnableControl(0.0);
+//	m_shooterMotor.EnableControl(0.0);
 }
 
