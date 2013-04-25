@@ -23,7 +23,7 @@ void LogSpeed::Initialize()
 void LogSpeed::Execute() 
 {
     c++;
-    if(c>100) {
+    if(c>10) {
         c = 0;
         float speed = s_Shooter->GetAvgSpeed();
         SmartDashboard::PutBoolean("On Target", WithinTolerance((double)speed, 3000.0, 100.0));

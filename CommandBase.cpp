@@ -35,7 +35,7 @@ void CommandBase::init()
 	oi = new OI();
 	s_Log = new LogSystem(kLogPrioritySystem);
 	s_Drive = new DriveSubsystem();
-	s_SockClient = new SocketClient("10.1.72.15",1180);
+	//s_SockClient = new SocketClient("10.1.72.15",1180);
 	s_Gyro = new GyroSubsystem(kGyroSlot, kGyroChannel, kGyroTemp, kGyroSensitivity);
 	s_Nav  = new RobotNav();
 	s_ShooterElevator = new ShooterElevatorSubsystem();
