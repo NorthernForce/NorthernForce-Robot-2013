@@ -1,4 +1,5 @@
 #include "LogSpeed.h"
+#include "../Library.h"
 
 LogSpeed::LogSpeed() 
 {
@@ -24,7 +25,10 @@ void LogSpeed::Execute()
     c++;
     if(c>100) {
         c = 0;
-        printf("%f\n", s_Shooter->GetAvgSpeed());
+        float speed = s_Shooter->GetAvgSpeed();
+        SmartDashboard::PutBoolean("On Target", WithinTolerance((double)speed, 3000.0, 100.0));
+        SmartDashboard::PutNumber("Shooter Measured Speed", speed);
+        SmartDashboard::PutNumber("Shooter Setpoint", 3000.0);
         s_Shooter->ResetCounter();
     }
 }

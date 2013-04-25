@@ -7,10 +7,10 @@
 
 FlickFrisbee::FlickFrisbee() 
 {
-	AddSequential(new UnlockShooter());
+//	AddSequential(new UnlockShooter());
 	AddSequential(new FlickFrisbeeForward());
 	AddSequential(new FlickFrisbeeReverse());
-	AddSequential(new StopFlickerReverse());
-	Wait(0.2);
-	AddSequential(new LockShooter());
+//	AddSequential(new StopFlickerReverse());
+//	Wait(0.2);
+//	AddSequential(new LockShooter());
 }

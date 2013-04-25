@@ -68,9 +68,9 @@ enum JaguarAddresses
 
 enum DigitalAdresses 
 {
-    kFlickerRearLimit = 7,
-    kFlickerForwardLimit = 8,
-    kShooterWheelLightSensorAddress = 9,
+    kFlickerRearLimit = 1,
+    kFlickerForwardLimit = 2,
+    kShooterWheelLightSensorAddress = 3,
 };
 
 enum PWMAddresses 

@@ -2,6 +2,8 @@
 #include "FlickFrisbee.h"
 #include "ElevateShooter.h"
 #include "SpinupShooterAuto.h"
+#include "UnlockShooter.h"
+#include "LockShooter.h"
 
 AutonomousCommand::AutonomousCommand() 
 {
@@ -21,6 +23,7 @@ AutonomousCommand::AutonomousCommand()
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+	AddSequential(new UnlockShooter());
 	AddParallel(new ElevateShooter(kPyramidBackAngle+1.0));
 	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 6));
 	AddSequential(new FlickFrisbee());
@@ -28,5 +31,6 @@ AutonomousCommand::AutonomousCommand()
 	AddSequential(new FlickFrisbee());
 	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 3));
 	AddSequential(new FlickFrisbee());
+	AddSequential(new LockShooter());
 
 }

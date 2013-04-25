@@ -21,7 +21,7 @@ void FlickFrisbeeForward::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool FlickFrisbeeForward::IsFinished() 
 {
-	return s_Flicker->GetForwardLimit() || TimeSinceInitialized() > 0.15;
+	return s_Flicker->GetForwardLimit() || TimeSinceInitialized() > 0.35;
 }
 
 // Called once after isFinished returns true
