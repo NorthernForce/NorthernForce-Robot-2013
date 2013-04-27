@@ -20,7 +20,7 @@ void FlickerSubsystem::InitDefaultCommand()
  */
 void FlickerSubsystem::Forward()
 {
-	m_flickerVictor.Set(-0.7);
+	m_flickerVictor.Set(-1.0);
 }
 
 /**
@@ -28,7 +28,7 @@ void FlickerSubsystem::Forward()
  */
 void FlickerSubsystem::Reverse()
 {
-	m_flickerVictor.Set(0.7);
+	m_flickerVictor.Set(1.0);
 }
 
 /**

@@ -15,6 +15,7 @@ ShooterSubsystem::ShooterSubsystem() :
 //    m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 //    m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
     m_shooterWheelLightSensor.Start();
+    atTarget = false;
 
 }
 

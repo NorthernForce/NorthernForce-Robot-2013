@@ -32,6 +32,7 @@ public:
     float GetAvgSpeed();
 	void Stop();
 	void EnableMotor();
+	bool atTarget;
 };
 
 #endif

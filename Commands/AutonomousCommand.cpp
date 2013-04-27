@@ -26,11 +26,12 @@ AutonomousCommand::AutonomousCommand()
 	AddSequential(new UnlockShooter());
 	AddParallel(new ElevateShooter(kPyramidBackAngle+1.0));
 	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 6));
-	AddSequential(new FlickFrisbee());
+	AddSequential(new FlickFrisbee(false));
 	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 3));
-	AddSequential(new FlickFrisbee());
+	AddSequential(new FlickFrisbee(false));
 	AddSequential(new SpinupShooterAuto(kPyramidBackSpeed, 3));
-	AddSequential(new FlickFrisbee());
+	AddSequential(new FlickFrisbee(false));
+	AddSequential(new FlickFrisbee(false));
 	AddSequential(new LockShooter());
 
 }

@@ -2,6 +2,7 @@
 #define FLICKFRISBEE_H
 
 #include "Commands/CommandGroup.h"
+#include "../Library.h"
 
 /**
  *
@@ -10,7 +11,7 @@
  */
 class FlickFrisbee: public CommandGroup {
 public:	
-	FlickFrisbee();
+	FlickFrisbee(bool ramp, float speed = kPyramidBackSpeed, float angle = kPyramidBackAngle);
 };
 
 #endif
