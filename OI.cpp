@@ -28,10 +28,22 @@ OI::OI() :
 	// Driver Joystick Buttons.
 	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
 	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
+	m_driverStick.Back.WhenPressed(new ElevateShooterRelative(-1.0));
+	m_driverStick.Start.WhenPressed(new ElevateShooterRelative(1.0));
 	m_driverStick.B.WhenPressed(new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
 	m_driverStick.X.WhenPressed(new FlickFrisbee(true));
 	m_driverStick.A.WhenPressed(new UnlockShooter());
 	m_driverStick.A.WhenReleased(new LockShooter());
+	
+	//DEMO MODE: Uncomment for deomonstrations.
+//	m_driverStick.B.WhenPressed(new SpinupShooter(-0.4, true));
+//	m_driverStick.Back.WhenPressed(new ElevateShooterRelative(-1.0));
+//	m_driverStick.Start.WhenPressed(new ElevateShooterRelative(1.0));
+//	m_driverStick.X.WhenPressed(new FlickFrisbee(false));
+//	m_driverStick.A.WhenPressed(new UnlockShooter());
+//	m_driverStick.A.WhenReleased(new LockShooter());
+//	m_driverStick.LeftBumper.WhenPressed(new DisableGyro());
+//	m_driverStick.RightBumper.WhenPressed(new EnableGyro());
 
 	// Manipulator Joystick Buttons.
 	m_manipulatorStick.Trigger.WhenPressed(new FlickFrisbee(true));
