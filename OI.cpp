@@ -34,6 +34,7 @@ OI::OI() :
 	m_driverStick.X.WhenPressed(new FlickFrisbee(true));
 	m_driverStick.A.WhenPressed(new UnlockShooter());
 	m_driverStick.A.WhenReleased(new LockShooter());
+	m_driverStick.Y.WhenPressed(new StopShooter());
 	
 	//DEMO MODE: Uncomment for deomonstrations.
 //	m_driverStick.B.WhenPressed(new SpinupShooter(-0.4, true));
