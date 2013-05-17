@@ -139,7 +139,7 @@ static const float kShooterIdleSpeed = 0.0;
 static const float kShooterSpinupTolerance = 0.1;
 
 static const float kShooterP = 1.0;
-static const float kShooterI = 0.0;
+static const float kShooterI = 0.01;
 static const float kShooterD = 0.0;
 
 static const float kShooterElevatorP = 0.25;
@@ -165,6 +165,10 @@ static const float kFeederStationSpeed = -.425;
 static const float kFeederStationAngle = 17.236;
 static const float kHangSpeed = -.18;
 static const float kHangAngle = 27.234;
+
+// JJC *************
+static const float kShootCalcPeriod = 0.1;
+//****************
 
 /**
  * @brief Tells whether or not a value is within a certain tolerance of another value.
@@ -202,3 +206,4 @@ inline T Limit(T input, T max)
 };
 
 #endif
+

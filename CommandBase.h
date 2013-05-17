@@ -38,6 +38,9 @@ public:
 	static ShooterElevatorSubsystem *s_ShooterElevator;
 	static ShooterSubsystem* s_Shooter;
 	static FlickerSubsystem* s_Flicker;
+
 };
+
+
 
 #endif

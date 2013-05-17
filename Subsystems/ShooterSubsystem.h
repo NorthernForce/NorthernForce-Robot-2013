@@ -33,6 +33,11 @@ public:
 	void Stop();
 	void EnableMotor();
 	bool atTarget;
+	
+	// JJC ********************
+	double gShooter;
+	double gCycleCount;
+	//*************************
 };
 
 #endif

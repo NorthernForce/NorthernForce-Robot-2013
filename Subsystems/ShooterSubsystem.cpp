@@ -4,7 +4,11 @@
 #include "../Commands/SpinupShooterWithJoystick.h"
 
 ShooterSubsystem::ShooterSubsystem() : 
+//  JJC ***************************
     PIDSubsystem("ShooterSubsystem", kShooterP, kShooterI, kShooterD),
+//    PIDSubsystem("ShooterSubsystem", kShooterP, kShooterI, kShooterD, kShootCalcPeriod),
+//
+
     m_shooterMotor(kShooterJaguarAddress),
     m_shooterWheelLightSensor(kShooterWheelLightSensorAddress),
     m_counterLastTime(GetFPGATime())
@@ -12,6 +16,11 @@ ShooterSubsystem::ShooterSubsystem() :
 	Disable();
 	GetPIDController()->SetInputRange(0.0, 4100.0);
 	GetPIDController()->SetOutputRange(0.0, 1.0);
+	
+//  JJC ****************************************
+//	GetPIDController()->SetContinuous(false);
+//	*******
+	
 //    m_shooterMotor.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 //    m_shooterMotor.ChangeControlMode(CANJaguar::kPercentVbus);
     m_shooterWheelLightSensor.Start();
@@ -22,7 +31,11 @@ ShooterSubsystem::ShooterSubsystem() :
 double ShooterSubsystem::ReturnPIDInput() 
 {
     float speed = this->GetAvgSpeed();
+
+//  JJC ***************************
     this->ResetCounter();
+//*************
+    
     SmartDashboard::PutBoolean("On Target", WithinTolerance((double)speed, GetSetpoint(), 100.0));
     SmartDashboard::PutNumber("Shooter Measured Speed", speed);
     return speed;
@@ -65,11 +78,21 @@ void ShooterSubsystem::SetSpeed(float speed)
  */
 float ShooterSubsystem::GetAvgSpeed() 
 {
-    UINT32 now = GetFPGATime();
-    float rotations = m_shooterWheelLightSensor.Get();
-    float speed = rotations/(now - m_counterLastTime);
-    m_counterLastTime = now;
-	return speed * 1000000.0 * 60;
+//	if ( gCycleCount++ >= 5 )
+//	{
+		UINT32 now = GetFPGATime();
+		float rotations = m_shooterWheelLightSensor.Get();
+		float speed = rotations/(now - m_counterLastTime);
+		m_counterLastTime = now;
+//		this->ResetCounter();
+//		gCycleCount = 0;
+//		gShooter = speed * 1000000.0 * 60;
+		return speed * 1000000.0 * 60;
+
+//	}
+	
+//	return gShooter;
+		
 }
 
 /**
