@@ -20,6 +20,7 @@
 #include "lib/RampedCANJaguar.h"
 #include "lib/LogFile.h"
 #include "lib/LimitSwitch.h"
+#include "lib/PulseBasedEncoder.h"
 
 #include "Robotmap.h"
 

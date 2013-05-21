@@ -25,12 +25,11 @@ void LogSpeed::Execute()
     c++;
     if(c>10) {
         c = 0;
-        float speed = s_Shooter->GetAvgSpeed();
+        float speed = s_Shooter->GetSpeed();
         s_Shooter->atTarget = (speed > 3000.0);
         SmartDashboard::PutBoolean("On Target", s_Shooter->atTarget);
         SmartDashboard::PutNumber("Shooter Measured Speed", speed);
         SmartDashboard::PutNumber("Shooter Setpoint", 3000.0);
-        s_Shooter->ResetCounter();
     }
 }
 

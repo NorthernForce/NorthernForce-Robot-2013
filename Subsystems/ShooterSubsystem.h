@@ -3,6 +3,7 @@
 
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
+#include "../Library.h"
 
 /**
  *
@@ -19,7 +20,7 @@ private:
 	static const double Kd = 0.0;
 
 	CANJaguar m_shooterMotor;
-    Counter m_shooterWheelLightSensor;
+    PulseBasedEncoder m_shooterWheelEncoder;
     // This is the time of the last reset of the counter
     UINT32 m_counterLastTime;
 public:
@@ -27,10 +28,10 @@ public:
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
 	void InitDefaultCommand();
-    void ResetCounter();
+    void ResetEncoder();
     void SetSpeed(float speed);
-    float GetAvgSpeed();
 	void Stop();
+	double GetSpeed() { return m_shooterWheelEncoder.GetVelocity(); }
 	void EnableMotor();
 	bool atTarget;
 };
