@@ -43,17 +43,19 @@ void ShooterSubsystem::ResetEncoder()
 	m_shooterWheelEncoder.Reset();
 }
 
-//void ShooterSubsystem::SetSpeed(float speed) 
-//{
-//	Enable();
-//	SetSetpoint((double)speed);
-//	SmartDashboard::PutNumber("Shooter Setpoint", GetSetpoint());
-//}
-
 void ShooterSubsystem::SetSpeed(float speed) 
 {
-	Disable();
-	m_shooterMotor.Set(speed);
+	if (SHOOTER_PID_ENABLE)
+	{
+		Enable();
+		SetSetpoint((double)speed);
+		SmartDashboard::PutNumber("Shooter Setpoint", GetSetpoint());
+	}
+	else if (!SHOOTER_PID_ENABLE)
+	{
+		Disable();
+		m_shooterMotor.Set(speed);
+	}
 }
 
 /**
