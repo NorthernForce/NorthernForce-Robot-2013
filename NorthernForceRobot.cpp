@@ -5,6 +5,7 @@
 #include "Commands/AutonomousCommand.h"
 #include "Commands/SpinupShooter.h"
 #include "Commands/LogSpeed.h"
+#include "Commands/ElevateShooter.h"
 
 /**
  * This class controls the entire robot.
@@ -19,6 +20,7 @@ private:
 	AutonomousCommand *autoCommand;
     SpinupShooter* spinupCommand;
     LogSpeed* speedprinter;
+    ElevateShooter* elevateCommand;
 
 	
 	/**
@@ -32,6 +34,7 @@ private:
 		autoCommand = new AutonomousCommand();
         spinupCommand = new SpinupShooter(kPyramidBackSpeed);
         speedprinter = new LogSpeed();
+        elevateCommand = new ElevateShooter(kPyramidBackAngle);
 
         switch (DriverStation::GetInstance()->GetAlliance())
         {
@@ -77,6 +80,7 @@ private:
 		CommandBase::s_Gyro->Reset();
 		CommandBase::s_Gyro->DoStationaryCalibration(10);
 		Scheduler::GetInstance()->AddCommand(spinupCommand);
+		Scheduler::GetInstance()->AddCommand(elevateCommand);
 		if (!SHOOTER_PID_ENABLE)
 		{
 			Scheduler::GetInstance()->AddCommand(speedprinter);
@@ -89,7 +93,6 @@ private:
 	virtual void TeleopPeriodic() 
 	{
 		Scheduler::GetInstance()->Run();
-		//printf("%f\n",CommandBase::s_Gyro->GetRate());
 	}
 	
 	/**
