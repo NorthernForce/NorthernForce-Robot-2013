@@ -9,7 +9,8 @@
 PulseBasedEncoder::PulseBasedEncoder(int channel, int pulsesPerRev, double distancePerPulse) :
 	c(channel),
 	m_distPerPulse(distancePerPulse),
-	m_pulsesPerRev(pulsesPerRev)
+	m_pulsesPerRev(pulsesPerRev),
+	m_resetCounter(0)
 {
 	c.Start();
 }
@@ -29,8 +30,9 @@ PulseBasedEncoder::~PulseBasedEncoder()
 double PulseBasedEncoder::GetVelocity()
 {
 	double per = c.GetPeriod();
-	//@TODO: Verify this math.
-	return (per / 60.0) * (double)m_pulsesPerRev;
+	if (m_resetCounter > 10) { c.Reset(); }
+	else { m_resetCounter++; }
+	return ((60.0 / per) * (double)m_pulsesPerRev);
 }
 
 /**

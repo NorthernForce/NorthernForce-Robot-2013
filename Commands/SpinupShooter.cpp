@@ -9,7 +9,14 @@ SpinupShooter::SpinupShooter(float speed, bool joystickVal) :
 // Called just before this Command runs the first time
 void SpinupShooter::Initialize() 
 {
-    s_Shooter->SetSpeed(joystickVal ? (setSpeed - 1 ) / 2 : -setSpeed);
+	if (SHOOTER_PID_ENABLE)
+	{
+		s_Shooter->SetSpeed(setSpeed);
+	}
+	else
+	{
+		s_Shooter->SetSpeed(joystickVal ? (setSpeed - 1 ) / 2 : -setSpeed);
+	}
 //	s_Shooter->SetSpeed(setSpeed);
     // Not using PID loop because we don't have a way
     // of measuring the shooter wheel speed yet.

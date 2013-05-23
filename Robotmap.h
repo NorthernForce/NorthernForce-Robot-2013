@@ -116,7 +116,7 @@ struct RobotPosition
 	float stdDevTheta;
 };
 
-static const bool SHOOTER_PID_ENABLE = false;
+static const bool SHOOTER_PID_ENABLE = true;
 
 static const float kDriveRamp = 0.4;
 static const float kDriveVelocityLimit = 1.0;
@@ -158,32 +158,17 @@ static const float kElevatorMaxAngle = 33.5;
 static const float kElevatorMinAngle = 0.0;
 
 //Shooter position constants
-#if !SHOOTER_PID_ENABLE
-
 static const float kPyramidFrontSpeed = -.742;
 static const float kPyramidFrontAngle = 34.455;
-static const float kPyramidBackSpeed = -.367;
-// static const float kPyramidBackSpeed = 3000.0;
+//static const float kPyramidBackSpeed = -.367;
+static const float kPyramidBackSpeed = 3000.0;
 static const float kPyramidBackAngle = 23.234;
-static const float kFeederStationSpeed = -.425;
+//static const float kFeederStationSpeed = -.425;
+static const float kFeederStationSpeed = 3250.0;
 static const float kFeederStationAngle = 17.236;
-static const float kHangSpeed = -.18;
+//static const float kHangSpeed = -.18;
 static const float kHangAngle = 27.234;
-
-#endif
-
-#if SHOOTER_PID_ENABLE
-
-static const float kPyramidFrontSpeed = -.742;
-static const float kPyramidFrontAngle = 34.455;
- static const float kPyramidBackSpeed = 3000.0;
-static const float kPyramidBackAngle = 23.234;
-static const float kFeederStationSpeed = -.425;
-static const float kFeederStationAngle = 17.236;
-static const float kHangSpeed = -.18;
-static const float kHangAngle = 27.234;
-
-#endif
+static const float kHangSpeed = 2720.0;
 
 /**
  * @brief Tells whether or not a value is within a certain tolerance of another value.

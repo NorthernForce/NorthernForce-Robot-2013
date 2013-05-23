@@ -23,4 +23,5 @@ private:
 	Counter c;
 	double m_distPerPulse;
 	int m_pulsesPerRev;
+	int m_resetCounter;
 };

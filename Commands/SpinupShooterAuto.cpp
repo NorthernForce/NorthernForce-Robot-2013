@@ -10,7 +10,7 @@ SpinupShooterAuto::SpinupShooterAuto(float speed, float timeout) :
 // Called just before this Command runs the first time
 void SpinupShooterAuto::Initialize() 
 {
-    s_Shooter->SetSpeed((setSpeed - 1 ) / 2);
+	(SHOOTER_PID_ENABLE) ? s_Shooter->SetSpeed(setSpeed) : s_Shooter->SetSpeed((setSpeed - 1 ) / 2);
     // Not using PID loop because we don't have a way
     // of measuring the shooter wheel speed yet.
     //s_Shooter->SetAbsoluteTolerance(kShooterSpinupTolerance);
@@ -37,8 +37,6 @@ void SpinupShooterAuto::End()
 {
     // Not using PID loop because we don't have a way
     // of measuring the shooter wheel speed yet.
-	//s_Shooter->SetSetpoint(kShooterIdleSpeed);
-    s_Shooter->SetSpeed((setSpeed - 1 ) / 2);
 }
 
 // Called when another command which requires one or more of the same

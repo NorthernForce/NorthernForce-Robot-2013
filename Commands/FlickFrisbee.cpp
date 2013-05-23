@@ -12,8 +12,5 @@ FlickFrisbee::FlickFrisbee(bool ramp, float speed, float angle)
 {
 	AddSequential(new FlickFrisbeeForward());
 	AddSequential(new FlickFrisbeeReverse());
-	if (ramp) { AddSequential(new RampUpShooter(speed, angle)); }
-//	AddSequential(new SpinupShooter(-1.0, false));
-//	Wait(0.5);
-//	AddSequential(new PrepareShooter(kPyramidBackSpeed, kPyramidBackAngle));
+	if (!SHOOTER_PID_ENABLE && ramp) { AddSequential(new RampUpShooter(speed, angle)); }
 }

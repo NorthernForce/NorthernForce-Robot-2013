@@ -3,6 +3,9 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "../Commands/SpinupShooterWithJoystick.h"
 
+/**
+ * @brief Constructs the shooter subsystem.
+ */
 ShooterSubsystem::ShooterSubsystem() : 
     PIDSubsystem("ShooterSubsystem", kShooterP, kShooterI, kShooterD),
     m_shooterMotor(kShooterJaguarAddress),
@@ -12,24 +15,34 @@ ShooterSubsystem::ShooterSubsystem() :
 	Disable();
 	GetPIDController()->SetInputRange(0.0, 4100.0);
 	GetPIDController()->SetOutputRange(0.0, 1.0);
-	GetPIDController()->SetTolerance(0.035);
     atTarget = false;
 
 }
 
+/**
+ * @brief Returns the PID input for the internal subsystem PID loop.
+ */
 double ShooterSubsystem::ReturnPIDInput() 
 {
     double speed = m_shooterWheelEncoder.GetVelocity();
-    SmartDashboard::PutBoolean("On Target", GetPIDController()->OnTarget());
+    SmartDashboard::PutBoolean("On Target", WithinTolerance(speed, GetSetpoint(), 50.0));
+    atTarget = WithinTolerance(speed, GetSetpoint(), 50.0);
     SmartDashboard::PutNumber("Shooter Measured Speed", speed);
     return speed;
 }
 
+/**
+ * @brief Uses the output of the internal PID loop.
+ * @param output The output of the PID loop. 
+ */
 void ShooterSubsystem::UsePIDOutput(double output) 
 {
-    m_shooterMotor.PIDWrite((float)output);
+    m_shooterMotor.Set(-output);
 }
 
+/**
+ * @brief Initializes the default command for the subsystem.
+ */
 void ShooterSubsystem::InitDefaultCommand() 
 {
 
@@ -43,6 +56,11 @@ void ShooterSubsystem::ResetEncoder()
 	m_shooterWheelEncoder.Reset();
 }
 
+/**
+ * @brief Sets the speed of the wheel. Works with either PID 
+ * or voltage values.
+ * @param speed The speed to set the wheel to, either in percentage or RPM. 
+ */
 void ShooterSubsystem::SetSpeed(float speed) 
 {
 	if (SHOOTER_PID_ENABLE)
@@ -66,12 +84,32 @@ void ShooterSubsystem::SetSpeed(float speed)
  */
 void ShooterSubsystem::Stop()
 {
-//    m_shooterMotor.DisableControl();
-//    Disable();
+	if (SHOOTER_PID_ENABLE)
+	{
+		m_shooterMotor.DisableControl();
+		Disable();
+	}
+	else if (!SHOOTER_PID_ENABLE)
+	{
+		m_shooterMotor.DisableControl();
+	}
+	m_shooterWheelEncoder.Reset();
 }
 
+/**
+ * @brief Re-enables the shooter motor.
+ */
 void ShooterSubsystem::EnableMotor() 
 {
-//	m_shooterMotor.EnableControl(0.0);
+	m_shooterWheelEncoder.Reset();
+	if (SHOOTER_PID_ENABLE)
+	{
+		m_shooterMotor.EnableControl(0.0);
+		Enable();
+	}
+	else if (!SHOOTER_PID_ENABLE)
+	{
+		m_shooterMotor.EnableControl(0.0);
+	}
 }
 

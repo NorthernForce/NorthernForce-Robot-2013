@@ -7,7 +7,7 @@
 FlickFour::FlickFour(float shotSpeed, float shotAngle) 
 {
 	AddSequential(new UnlockShooter());
-	AddSequential(new RampUpShooter(shotSpeed, shotAngle));
+//	AddSequential(new RampUpShooter(shotSpeed, shotAngle));
 	AddSequential(new FlickFrisbee(true, shotSpeed, shotAngle));
 	AddSequential(new FlickFrisbee(true, shotSpeed, shotAngle));
 	AddSequential(new FlickFrisbee(true, shotSpeed, shotAngle));
