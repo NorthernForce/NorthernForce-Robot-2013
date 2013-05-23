@@ -84,16 +84,7 @@ void ShooterSubsystem::SetSpeed(float speed)
  */
 void ShooterSubsystem::Stop()
 {
-	if (SHOOTER_PID_ENABLE)
-	{
-		m_shooterMotor.DisableControl();
-		Disable();
-	}
-	else if (!SHOOTER_PID_ENABLE)
-	{
-		m_shooterMotor.DisableControl();
-	}
-	m_shooterWheelEncoder.Reset();
+	SetSpeed(0.0);
 }
 
 /**

@@ -8,10 +8,6 @@ StopShooter::StopShooter()
 void StopShooter::Initialize() 
 {
     s_Shooter->Stop();
-    // Not using PID loop because we don't have a way
-    // of measuring the shooter wheel speed yet.
-    //s_Shooter->SetAbsoluteTolerance(kShooterStopTolerance);
-	//s_Shooter->SetSetpoint(kShooterStopSpeed);
 }
 
 // Called repeatedly when this Command is scheduled to run
