@@ -18,6 +18,9 @@ LogSystem::LogSystem(LogPriority level) :
 	m_logLevel(level),
 	m_robotLogFile("RobotLog.txt")
 {
+	if (m_robotLogFile.GetSize() > 10485760)
+		m_robotLogFile.DeleteFile();
+	
 	this->LogMessage(kLogPriorityError, "-----System Boot: Starting New Log-----");
 }
     
